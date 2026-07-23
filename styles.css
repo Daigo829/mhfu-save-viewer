@@ -41,15 +41,55 @@ table { width: 100%; border-collapse: collapse; }
 th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--edge); font-size: 14px; }
 th { color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
 td.num, .num { font-variant-numeric: tabular-nums; }
-.montbl tr.mrow { cursor: pointer; }
-.montbl tr.mrow:hover { background: rgba(110,168,254,.06); }
-.montbl tr.open { background: rgba(110,168,254,.08); }
+.montbl tr.mrow { cursor: default; }
+.montbl tr.mrow.hassub { cursor: pointer; }
+.montbl tr.mrow.hassub:hover { background: rgba(110,168,254,.06); }
+.montbl tr.mrow.open { background: rgba(110,168,254,.08); }
 .montbl tr.nothunted td { color: var(--muted); }
 .caret { display: inline-block; width: 14px; color: var(--muted); transition: transform .12s; }
 .mrow.open .caret { transform: rotate(90deg); }
 .cardno { color: var(--muted); font-variant-numeric: tabular-nums; }
 .mname { font-weight: 600; }
 .mname .subcount { color: var(--muted); font-weight: 400; font-size: 11px; margin-left: 6px; }
+
+/* inline subspecies rows */
+.montbl tr.subrow td { background: rgba(255,255,255,.014); }
+.montbl tr.subrow .mname.sub { font-weight: 500; color: var(--muted); padding-left: 20px; position: relative; }
+.montbl tr.subrow .mname.sub::before { content: "\21B3"; position: absolute; left: 2px; color: var(--edge); }
+
+/* controls bar */
+.controls { display: flex; gap: 8px; margin: 0 0 12px; align-items: center; flex-wrap: wrap; }
+.btn { background: transparent; color: var(--txt); border: 1px solid var(--edge); border-radius: 7px;
+  padding: 6px 12px; font: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer; }
+.btn:hover { border-color: var(--accent); }
+.ctlsep { width: 1px; align-self: stretch; background: var(--edge); margin: 2px 4px; }
+.ctl { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12.5px; }
+.ctl select { background: #0d0f13; color: var(--txt); border: 1px solid var(--edge); border-radius: 6px;
+  padding: 5px 7px; font: inherit; font-size: 12.5px; }
+.ctl input[type=checkbox] { accent-color: var(--accent); }
+
+/* column toggle + dashes */
+.montbl.hide-size .szcol { display: none; }
+.dash { color: var(--muted); }
+.crowncell .dash { color: var(--edge); }
+
+/* family total chip on the parent row */
+.fhunt { color: var(--muted); font-weight: 400; font-size: 11px; margin-left: 8px;
+  background: rgba(154,162,175,.12); border-radius: 5px; padding: 1px 7px; white-space: nowrap; }
+
+/* advanced (debug) panel */
+.advanced { margin-top: 16px; border-top: 1px solid var(--edge); padding-top: 10px; }
+.advanced > summary { cursor: pointer; color: var(--muted); font-weight: 600; font-size: 13px; list-style: none; }
+.advanced > summary::before { content: "\25B8"; display: inline-block; margin-right: 7px; transition: transform .12s; }
+.advanced[open] > summary::before { transform: rotate(90deg); }
+.warn-note { background: rgba(224,182,79,.08); border: 1px solid rgba(224,182,79,.3); border-radius: 8px;
+  padding: 10px 13px; font-size: 12.5px; color: #d9c489; margin: 12px 0; line-height: 1.5; }
+.warn-note strong { color: var(--warn); }
+.scrollx { overflow-x: auto; }
+.slottbl { min-width: 640px; }
+.slottbl th, .slottbl td { padding: 5px 9px; font-size: 12.5px; }
+.slottbl tr.slot-dead td { color: var(--muted); font-style: italic; }
+.mono { font-family: ui-monospace, Menlo, Consolas, monospace; }
 
 /* subspecies detail table */
 .detail td { border-bottom: 1px solid var(--edge); }
@@ -73,6 +113,21 @@ td.num, .num { font-variant-numeric: tabular-nums; }
 .badge.bad { background: rgba(224,100,95,.18); color: var(--bad); }
 .badge.shown { background: rgba(110,168,254,.16); color: var(--accent); }
 .badge.hiddent { background: rgba(154,162,175,.12); color: var(--muted); }
+
+/* crown badges — gold label; the TEXT colour marks the crown type.
+   small crown = red (the red dot on the in-game yellow crown);
+   big crown   = light blue (its in-game colour). hidden = greyed down. */
+.badge.sc  { background: rgba(224,182,79,.18); color: var(--bad); }
+.badge.bc  { background: rgba(224,182,79,.18); color: #9cc4ff; }
+.badge.sch { background: rgba(154,162,175,.10); color: #b58c88; }
+.badge.bch { background: rgba(154,162,175,.10); color: #8f9bb2; }
+.badge.oncard { background: rgba(110,168,254,.14); color: var(--accent); }
+.badge.norec  { background: rgba(154,162,175,.12); color: var(--muted); }
+
+/* a Min-size / Max-size value that reached this monster's crown */
+.szval.sz-sc { color: var(--bad); font-weight: 600; }
+.szval.sz-bc { color: #9cc4ff; font-weight: 600; }
+
 .crowncell .badge { margin-right: 4px; }
 .crowncell .dash { color: var(--edge); }
 .legend { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 14px; }
