@@ -13,89 +13,89 @@
   // n=name g=in-game# sub=is-subspecies sl=slain@ cp=captured@ lg=largest@ sm=smallest@
   // sz=has-size cap=capturable b=base-cm mi=small-crown% kg=big-crown%
   const DATA = [
-    {n:"Felyne",g:1,sub:0,sl:0x425A,cp:0x403E,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Melynx",g:2,sub:0,sl:0x4276,cp:0x405A,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Shakalaka",g:3,sub:0,sl:0x42BA,cp:0x409E,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"King Shakalaka",g:4,sub:0,sl:0x42E6,cp:0x40CA,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Vespoid",g:5,sub:0,sl:0x426E,cp:0x4052,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Vespoid Queen",g:6,sub:0,sl:0x42E8,cp:0x40CC,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Hornetaur",g:7,sub:0,sl:0x4278,cp:0x405C,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Great Thunderbug",g:8,sub:0,sl:0x42B8,cp:0x409C,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Anteka",g:9,sub:0,sl:0x42D2,cp:0x40B6,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Popo",g:10,sub:0,sl:0x42D4,cp:0x40B8,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Kelbi",g:11,sub:0,sl:0x424E,cp:0x4032,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Mosswine",g:12,sub:0,sl:0x4250,cp:0x4034,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Aptonoth",g:13,sub:0,sl:0x4260,cp:0x4044,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Apceros",g:14,sub:0,sl:0x427A,cp:0x405E,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Giaprey",g:15,sub:0,sl:0x428E,cp:0x4072,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Giadrome",g:16,sub:0,sl:0x42E2,cp:0x40C6,lg:0x417A,sm:0x422E,sz:1,cap:1,b:738.4,mi:90,kg:123},
-    {n:"Velociprey",g:17,sub:0,sl:0x4268,cp:0x404C,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Velocidrome",g:18,sub:0,sl:0x427E,cp:0x4062,lg:0x4116,sm:0x41CA,sz:1,cap:1,b:738.4,mi:90,kg:123},
-    {n:"Genprey",g:19,sub:0,sl:0x4262,cp:0x4046,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Gendrome",g:20,sub:0,sl:0x4280,cp:0x4064,lg:0x4118,sm:0x41CC,sz:1,cap:1,b:732.1,mi:90,kg:123},
-    {n:"Ioprey",g:21,sub:0,sl:0x4284,cp:0x4068,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Iodrome",g:22,sub:0,sl:0x4286,cp:0x406A,lg:0x411E,sm:0x41D2,sz:1,cap:1,b:774.6,mi:90,kg:136},
-    {n:"Yian Kut-Ku",g:23,sub:0,sl:0x4254,cp:0x4038,lg:0x40EC,sm:0x41A0,sz:1,cap:1,b:919.8,mi:90,kg:122},
-    {n:"Blue Yian Kut-Ku",g:23,sub:1,sl:0x4294,cp:0x4078,lg:0x412C,sm:0x41E0,sz:1,cap:1,b:919.8,mi:90,kg:122},
-    {n:"Yian Garuga",g:24,sub:0,sl:0x4298,cp:0x407C,lg:0x4130,sm:0x41E4,sz:1,cap:1,b:1031.7,mi:91,kg:121},
-    {n:"Yian Garuga (One-Eyed)",g:24,sub:1,sl:0x42E4,cp:0x40C8,lg:0x417C,sm:0x4230,sz:1,cap:1,b:1031.7,mi:91,kg:121},
-    {n:"Gypceros",g:25,sub:0,sl:0x4270,cp:0x4054,lg:0x4108,sm:0x41BC,sz:1,cap:1,b:1013.7,mi:93,kg:125},
-    {n:"Purple Gypceros",g:25,sub:1,sl:0x4296,cp:0x407A,lg:0x412E,sm:0x41E2,sz:1,cap:1,b:1013.7,mi:93,kg:125},
-    {n:"Hypnocatrice",g:26,sub:0,sl:0x42EC,cp:0x40D0,lg:0x4184,sm:0x4238,sz:1,cap:1,b:834.9,mi:91,kg:121},
-    {n:"Remobra",g:27,sub:0,sl:0x42C6,cp:0x40AA,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Rathian",g:28,sub:0,sl:0x424A,cp:0x402E,lg:0x40E2,sm:0x4196,sz:1,cap:1,b:1645.6,mi:93,kg:129},
-    {n:"Pink Rathian",g:28,sub:1,sl:0x4292,cp:0x4076,lg:0x412A,sm:0x41DE,sz:1,cap:1,b:1645.6,mi:93,kg:129},
-    {n:"Gold Rathian",g:28,sub:1,sl:0x429C,cp:0x4080,lg:0x4134,sm:0x41E8,sz:1,cap:1,b:1645.6,mi:93,kg:129},
-    {n:"Rathalos",g:29,sub:0,sl:0x425E,cp:0x4042,lg:0x40F6,sm:0x41AA,sz:1,cap:1,b:1629.4,mi:90,kg:127},
-    {n:"Azure Rathalos",g:29,sub:1,sl:0x429A,cp:0x407E,lg:0x4132,sm:0x41E6,sz:1,cap:1,b:1629.4,mi:90,kg:127},
-    {n:"Silver Rathalos",g:29,sub:1,sl:0x42AA,cp:0x408E,lg:0x4142,sm:0x41F6,sz:1,cap:1,b:1629.4,mi:90,kg:127},
-    {n:"Khezu",g:30,sub:0,sl:0x4266,cp:0x404A,lg:0x40FE,sm:0x41B2,sz:1,cap:1,b:873.2,mi:93,kg:135},
-    {n:"Red Khezu",g:30,sub:1,sl:0x42A2,cp:0x4086,lg:0x413A,sm:0x41EE,sz:1,cap:1,b:873.2,mi:93,kg:135},
-    {n:"Basarios",g:31,sub:0,sl:0x4274,cp:0x4058,lg:0x410C,sm:0x41C0,sz:1,cap:1,b:1297.6,mi:93,kg:129},
-    {n:"Gravios",g:32,sub:0,sl:0x426A,cp:0x404E,lg:0x4102,sm:0x41B6,sz:1,cap:1,b:2099.9,mi:97,kg:135},
-    {n:"Black Gravios",g:32,sub:1,sl:0x42A6,cp:0x408A,lg:0x413E,sm:0x41F2,sz:1,cap:1,b:2099.9,mi:97,kg:135},
-    {n:"Monoblos",g:33,sub:0,sl:0x427C,cp:0x4060,lg:0x4114,sm:0x41C8,sz:1,cap:1,b:2004.2,mi:94,kg:127},
-    {n:"White Monoblos",g:33,sub:1,sl:0x42A0,cp:0x4084,lg:0x4138,sm:0x41EC,sz:1,cap:1,b:2004.2,mi:94,kg:127},
-    {n:"Diablos",g:34,sub:0,sl:0x4264,cp:0x4048,lg:0x40FC,sm:0x41B0,sz:1,cap:1,b:1993.4,mi:97,kg:139},
-    {n:"Black Diablos",g:34,sub:1,sl:0x429E,cp:0x4082,lg:0x4136,sm:0x41EA,sz:1,cap:1,b:1993.4,mi:97,kg:139},
-    {n:"Tigrex",g:35,sub:0,sl:0x42DE,cp:0x40C2,lg:0x4176,sm:0x422A,sz:1,cap:1,b:1735.3,mi:90,kg:123},
-    {n:"Nargacuga",g:36,sub:0,sl:0x42EA,cp:0x40CE,lg:0x4182,sm:0x4236,sz:1,cap:1,b:1602.2,mi:90,kg:123},
-    {n:"Akantor",g:37,sub:0,sl:0x42E0,cp:0x40C4,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Ukanlos",g:38,sub:0,sl:0x42F8,cp:0x40DC,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Cephalos",g:39,sub:0,sl:0x428C,cp:0x4070,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Cephadrome",g:40,sub:0,sl:0x4258,cp:0x403C,lg:0x40F0,sm:0x41A4,sz:1,cap:1,b:1538.3,mi:93,kg:122},
-    {n:"Plesioth",g:41,sub:0,sl:0x4272,cp:0x4056,lg:0x410A,sm:0x41BE,sz:1,cap:1,b:2315.2,mi:97,kg:134},
-    {n:"Green Plesioth",g:41,sub:1,sl:0x42A4,cp:0x4088,lg:0x413C,sm:0x41F0,sz:1,cap:1,b:2315.2,mi:97,kg:134},
-    {n:"Lavasioth",g:42,sub:0,sl:0x42EE,cp:0x40D2,lg:0x4186,sm:0x423A,sz:1,cap:1,b:2223.2,mi:85,kg:116},
-    {n:"Hermitaur",g:43,sub:0,sl:0x42CC,cp:0x40B0,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Daimyo Hermitaur",g:44,sub:0,sl:0x42A8,cp:0x408C,lg:0x4140,sm:0x41F4,sz:1,cap:1,b:1044,mi:88,kg:123},
-    {n:"Plum Daimyo Hermitaur",g:44,sub:1,sl:0x42F4,cp:0x40D8,lg:0x418C,sm:0x4240,sz:1,cap:1,b:1044,mi:88,kg:123},
-    {n:"Ceanataur",g:45,sub:0,sl:0x42DA,cp:0x40BE,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Shogun Ceanataur",g:46,sub:0,sl:0x42CE,cp:0x40B2,lg:0x4166,sm:0x421A,sz:1,cap:1,b:863,mi:94,kg:120},
-    {n:"Terra Shogun Ceanataur",g:46,sub:1,sl:0x42F6,cp:0x40DA,lg:0x418E,sm:0x4242,sz:1,cap:1,b:863,mi:94,kg:120},
-    {n:"Shen Gaoren",g:47,sub:0,sl:0x42B6,cp:0x409A,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Bullfango",g:48,sub:0,sl:0x4252,cp:0x4036,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Bulldrome",g:49,sub:0,sl:0x42D0,cp:0x40B4,lg:0x4168,sm:0x421C,sz:1,cap:1,b:566,mi:98,kg:130},
-    {n:"Conga",g:50,sub:0,sl:0x42C4,cp:0x40A8,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Congalala",g:51,sub:0,sl:0x42B0,cp:0x4094,lg:0x4148,sm:0x41FC,sz:1,cap:1,b:984,mi:97,kg:125},
-    {n:"Emerald Congalala",g:51,sub:1,sl:0x42F2,cp:0x40D6,lg:0x418A,sm:0x423E,sz:1,cap:1,b:984,mi:97,kg:125},
-    {n:"Blango",g:52,sub:0,sl:0x42C2,cp:0x40A6,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Blangonga",g:53,sub:0,sl:0x42AE,cp:0x4092,lg:0x4146,sm:0x41FA,sz:1,cap:1,b:860,mi:99,kg:138},
-    {n:"Copper Blangonga",g:53,sub:1,sl:0x42F0,cp:0x40D4,lg:0x4188,sm:0x423C,sz:1,cap:1,b:860,mi:99,kg:138},
-    {n:"Rajang",g:54,sub:0,sl:0x42B2,cp:0x4096,lg:0x414A,sm:0x41FE,sz:1,cap:1,b:960,mi:105,kg:140},
-    {n:"Golden Rajang",g:54,sub:1,sl:0x42FA,cp:0x40DE,lg:0x4192,sm:0x4246,sz:1,cap:1,b:960,mi:105,kg:140},
-    {n:"Kirin",g:55,sub:0,sl:0x428A,cp:0x406E,lg:0x4122,sm:0x41D6,sz:1,cap:0,b:464.3,mi:97,kg:177},
-    {n:"Kushala Daora",g:56,sub:0,sl:0x42B4,cp:0x4098,lg:0x414C,sm:0x4200,sz:1,cap:0,b:1577,mi:91,kg:120},
-    {n:"Rusted Kushala Daora",g:56,sub:1,sl:0x42C0,cp:0x40A4,lg:0x4158,sm:0x420C,sz:1,cap:0,b:1577,mi:91,kg:120},
-    {n:"Chameleos",g:57,sub:0,sl:0x42BE,cp:0x40A2,lg:0x4156,sm:0x420A,sz:1,cap:0,b:1744,mi:96,kg:141},
-    {n:"Lunastra",g:58,sub:0,sl:0x42C8,cp:0x40AC,lg:0x4160,sm:0x4214,sz:1,cap:0,b:1740,mi:91,kg:121},
-    {n:"Teostra",g:59,sub:0,sl:0x42CA,cp:0x40AE,lg:0x4162,sm:0x4216,sz:1,cap:0,b:1740,mi:88,kg:125},
-    {n:"Lao-Shan Lung (base)",g:60,sub:0,sl:0x4256,cp:0x403A,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Ashen Lao-Shan Lung",g:60,sub:1,sl:0x42AC,cp:0x4090,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Yama Tsukami",g:61,sub:0,sl:0x42BC,cp:0x40A0,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Black Fatalis",g:62,sub:0,sl:0x424C,cp:0x4030,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"Crimson Fatalis",g:62,sub:1,sl:0x4290,cp:0x4074,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
-    {n:"White Fatalis",g:62,sub:1,sl:0x42D6,cp:0x40BA,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0},
+    {n:"Felyne",g:1,sub:0,sl:0x425A,cp:0x403E,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Melynx",g:2,sub:0,sl:0x4276,cp:0x405A,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Shakalaka",g:3,sub:0,sl:0x42BA,cp:0x409E,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"King Shakalaka",g:4,sub:0,sl:0x42E6,cp:0x40CA,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Vespoid",g:5,sub:0,sl:0x426E,cp:0x4052,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Vespoid Queen",g:6,sub:0,sl:0x42E8,cp:0x40CC,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Hornetaur",g:7,sub:0,sl:0x4278,cp:0x405C,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Great Thunderbug",g:8,sub:0,sl:0x42B8,cp:0x409C,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Anteka",g:9,sub:0,sl:0x42D2,cp:0x40B6,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Popo",g:10,sub:0,sl:0x42D4,cp:0x40B8,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Kelbi",g:11,sub:0,sl:0x424E,cp:0x4032,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Mosswine",g:12,sub:0,sl:0x4250,cp:0x4034,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Aptonoth",g:13,sub:0,sl:0x4260,cp:0x4044,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Apceros",g:14,sub:0,sl:0x427A,cp:0x405E,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Giaprey",g:15,sub:0,sl:0x428E,cp:0x4072,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Giadrome",g:16,sub:0,sl:0x42E2,cp:0x40C6,lg:0x417A,sm:0x422E,sz:1,cap:1,b:738.4,mi:90,kg:123,gmn:88,gmx:135},
+    {n:"Velociprey",g:17,sub:0,sl:0x4268,cp:0x404C,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Velocidrome",g:18,sub:0,sl:0x427E,cp:0x4062,lg:0x4116,sm:0x41CA,sz:1,cap:1,b:738.4,mi:90,kg:123,gmn:88,gmx:130},
+    {n:"Genprey",g:19,sub:0,sl:0x4262,cp:0x4046,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Gendrome",g:20,sub:0,sl:0x4280,cp:0x4064,lg:0x4118,sm:0x41CC,sz:1,cap:1,b:732.1,mi:90,kg:123,gmn:89,gmx:131},
+    {n:"Ioprey",g:21,sub:0,sl:0x4284,cp:0x4068,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Iodrome",g:22,sub:0,sl:0x4286,cp:0x406A,lg:0x411E,sm:0x41D2,sz:1,cap:1,b:774.6,mi:90,kg:136,gmn:89,gmx:145},
+    {n:"Yian Kut-Ku",g:23,sub:0,sl:0x4254,cp:0x4038,lg:0x40EC,sm:0x41A0,sz:1,cap:1,b:919.8,mi:90,kg:122,gmn:50,gmx:131},
+    {n:"Blue Yian Kut-Ku",g:23,sub:1,sl:0x4294,cp:0x4078,lg:0x412C,sm:0x41E0,sz:1,cap:1,b:919.8,mi:90,kg:122,gmn:50,gmx:131},
+    {n:"Yian Garuga",g:24,sub:0,sl:0x4298,cp:0x407C,lg:0x4130,sm:0x41E4,sz:1,cap:1,b:1031.7,mi:91,kg:121,gmn:86,gmx:130},
+    {n:"Yian Garuga (One-Eyed)",g:24,sub:1,sl:0x42E4,cp:0x40C8,lg:0x417C,sm:0x4230,sz:1,cap:1,b:1031.7,mi:91,kg:121,gmn:86,gmx:130},
+    {n:"Gypceros",g:25,sub:0,sl:0x4270,cp:0x4054,lg:0x4108,sm:0x41BC,sz:1,cap:1,b:1013.7,mi:93,kg:125,gmn:88,gmx:135},
+    {n:"Purple Gypceros",g:25,sub:1,sl:0x4296,cp:0x407A,lg:0x412E,sm:0x41E2,sz:1,cap:1,b:1013.7,mi:93,kg:125,gmn:88,gmx:135},
+    {n:"Hypnocatrice",g:26,sub:0,sl:0x42EC,cp:0x40D0,lg:0x4184,sm:0x4238,sz:1,cap:1,b:834.9,mi:91,kg:121,gmn:88,gmx:141},
+    {n:"Remobra",g:27,sub:0,sl:0x42C6,cp:0x40AA,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Rathian",g:28,sub:0,sl:0x424A,cp:0x402E,lg:0x40E2,sm:0x4196,sz:1,cap:1,b:1645.6,mi:93,kg:129,gmn:88,gmx:140},
+    {n:"Pink Rathian",g:28,sub:1,sl:0x4292,cp:0x4076,lg:0x412A,sm:0x41DE,sz:1,cap:1,b:1645.6,mi:93,kg:129,gmn:88,gmx:140},
+    {n:"Gold Rathian",g:28,sub:1,sl:0x429C,cp:0x4080,lg:0x4134,sm:0x41E8,sz:1,cap:1,b:1645.6,mi:93,kg:129,gmn:88,gmx:140},
+    {n:"Rathalos",g:29,sub:0,sl:0x425E,cp:0x4042,lg:0x40F6,sm:0x41AA,sz:1,cap:1,b:1629.4,mi:90,kg:127,gmn:88,gmx:140},
+    {n:"Azure Rathalos",g:29,sub:1,sl:0x429A,cp:0x407E,lg:0x4132,sm:0x41E6,sz:1,cap:1,b:1629.4,mi:90,kg:127,gmn:88,gmx:140},
+    {n:"Silver Rathalos",g:29,sub:1,sl:0x42AA,cp:0x408E,lg:0x4142,sm:0x41F6,sz:1,cap:1,b:1629.4,mi:90,kg:127,gmn:88,gmx:140},
+    {n:"Khezu",g:30,sub:0,sl:0x4266,cp:0x404A,lg:0x40FE,sm:0x41B2,sz:1,cap:1,b:873.2,mi:93,kg:135,gmn:50,gmx:138},
+    {n:"Red Khezu",g:30,sub:1,sl:0x42A2,cp:0x4086,lg:0x413A,sm:0x41EE,sz:1,cap:1,b:873.2,mi:93,kg:135,gmn:50,gmx:138},
+    {n:"Basarios",g:31,sub:0,sl:0x4274,cp:0x4058,lg:0x410C,sm:0x41C0,sz:1,cap:1,b:1297.6,mi:93,kg:129,gmn:89,gmx:133},
+    {n:"Gravios",g:32,sub:0,sl:0x426A,cp:0x404E,lg:0x4102,sm:0x41B6,sz:1,cap:1,b:2099.9,mi:97,kg:135,gmn:93,gmx:143},
+    {n:"Black Gravios",g:32,sub:1,sl:0x42A6,cp:0x408A,lg:0x413E,sm:0x41F2,sz:1,cap:1,b:2099.9,mi:97,kg:135,gmn:93,gmx:143},
+    {n:"Monoblos",g:33,sub:0,sl:0x427C,cp:0x4060,lg:0x4114,sm:0x41C8,sz:1,cap:1,b:2004.2,mi:94,kg:127,gmn:93,gmx:140},
+    {n:"White Monoblos",g:33,sub:1,sl:0x42A0,cp:0x4084,lg:0x4138,sm:0x41EC,sz:1,cap:1,b:2004.2,mi:94,kg:127,gmn:93,gmx:140},
+    {n:"Diablos",g:34,sub:0,sl:0x4264,cp:0x4048,lg:0x40FC,sm:0x41B0,sz:1,cap:1,b:1993.4,mi:97,kg:139,gmn:95,gmx:154},
+    {n:"Black Diablos",g:34,sub:1,sl:0x429E,cp:0x4082,lg:0x4136,sm:0x41EA,sz:1,cap:1,b:1993.4,mi:97,kg:139,gmn:95,gmx:154},
+    {n:"Tigrex",g:35,sub:0,sl:0x42DE,cp:0x40C2,lg:0x4176,sm:0x422A,sz:1,cap:1,b:1735.3,mi:90,kg:123,gmn:88,gmx:138},
+    {n:"Nargacuga",g:36,sub:0,sl:0x42EA,cp:0x40CE,lg:0x4182,sm:0x4236,sz:1,cap:1,b:1602.2,mi:90,kg:123,gmn:86,gmx:131},
+    {n:"Akantor",g:37,sub:0,sl:0x42E0,cp:0x40C4,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Ukanlos",g:38,sub:0,sl:0x42F8,cp:0x40DC,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Cephalos",g:39,sub:0,sl:0x428C,cp:0x4070,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Cephadrome",g:40,sub:0,sl:0x4258,cp:0x403C,lg:0x40F0,sm:0x41A4,sz:1,cap:1,b:1538.3,mi:93,kg:122,gmn:89,gmx:131},
+    {n:"Plesioth",g:41,sub:0,sl:0x4272,cp:0x4056,lg:0x410A,sm:0x41BE,sz:1,cap:1,b:2315.2,mi:97,kg:134,gmn:93,gmx:140},
+    {n:"Green Plesioth",g:41,sub:1,sl:0x42A4,cp:0x4088,lg:0x413C,sm:0x41F0,sz:1,cap:1,b:2315.2,mi:97,kg:134,gmn:93,gmx:140},
+    {n:"Lavasioth",g:42,sub:0,sl:0x42EE,cp:0x40D2,lg:0x4186,sm:0x423A,sz:1,cap:1,b:2223.2,mi:85,kg:116,gmn:81,gmx:128},
+    {n:"Hermitaur",g:43,sub:0,sl:0x42CC,cp:0x40B0,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Daimyo Hermitaur",g:44,sub:0,sl:0x42A8,cp:0x408C,lg:0x4140,sm:0x41F4,sz:1,cap:1,b:1044,mi:88,kg:123,gmn:85,gmx:127},
+    {n:"Plum Daimyo Hermitaur",g:44,sub:1,sl:0x42F4,cp:0x40D8,lg:0x418C,sm:0x4240,sz:1,cap:1,b:1044,mi:88,kg:123,gmn:85,gmx:127},
+    {n:"Ceanataur",g:45,sub:0,sl:0x42DA,cp:0x40BE,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Shogun Ceanataur",g:46,sub:0,sl:0x42CE,cp:0x40B2,lg:0x4166,sm:0x421A,sz:1,cap:1,b:863,mi:94,kg:120,gmn:86,gmx:150},
+    {n:"Terra Shogun Ceanataur",g:46,sub:1,sl:0x42F6,cp:0x40DA,lg:0x418E,sm:0x4242,sz:1,cap:1,b:863,mi:94,kg:120,gmn:86,gmx:150},
+    {n:"Shen Gaoren",g:47,sub:0,sl:0x42B6,cp:0x409A,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Bullfango",g:48,sub:0,sl:0x4252,cp:0x4036,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Bulldrome",g:49,sub:0,sl:0x42D0,cp:0x40B4,lg:0x4168,sm:0x421C,sz:1,cap:1,b:566,mi:98,kg:130,gmn:89,gmx:210},
+    {n:"Conga",g:50,sub:0,sl:0x42C4,cp:0x40A8,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Congalala",g:51,sub:0,sl:0x42B0,cp:0x4094,lg:0x4148,sm:0x41FC,sz:1,cap:1,b:984,mi:97,kg:125,gmn:93,gmx:140},
+    {n:"Emerald Congalala",g:51,sub:1,sl:0x42F2,cp:0x40D6,lg:0x418A,sm:0x423E,sz:1,cap:1,b:984,mi:97,kg:125,gmn:93,gmx:140},
+    {n:"Blango",g:52,sub:0,sl:0x42C2,cp:0x40A6,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Blangonga",g:53,sub:0,sl:0x42AE,cp:0x4092,lg:0x4146,sm:0x41FA,sz:1,cap:1,b:860,mi:99,kg:138,gmn:93,gmx:145},
+    {n:"Copper Blangonga",g:53,sub:1,sl:0x42F0,cp:0x40D4,lg:0x4188,sm:0x423C,sz:1,cap:1,b:860,mi:99,kg:138,gmn:93,gmx:145},
+    {n:"Rajang",g:54,sub:0,sl:0x42B2,cp:0x4096,lg:0x414A,sm:0x41FE,sz:1,cap:1,b:960,mi:105,kg:140,gmn:95,gmx:162},
+    {n:"Golden Rajang",g:54,sub:1,sl:0x42FA,cp:0x40DE,lg:0x4192,sm:0x4246,sz:1,cap:1,b:960,mi:105,kg:140,gmn:95,gmx:162},
+    {n:"Kirin",g:55,sub:0,sl:0x428A,cp:0x406E,lg:0x4122,sm:0x41D6,sz:1,cap:0,b:464.3,mi:97,kg:177,gmn:95,gmx:200},
+    {n:"Kushala Daora",g:56,sub:0,sl:0x42B4,cp:0x4098,lg:0x414C,sm:0x4200,sz:1,cap:0,b:1577,mi:91,kg:120,gmn:88,gmx:138},
+    {n:"Rusted Kushala Daora",g:56,sub:1,sl:0x42C0,cp:0x40A4,lg:0x4158,sm:0x420C,sz:1,cap:0,b:1577,mi:91,kg:120,gmn:88,gmx:138},
+    {n:"Chameleos",g:57,sub:0,sl:0x42BE,cp:0x40A2,lg:0x4156,sm:0x420A,sz:1,cap:0,b:1744,mi:96,kg:141,gmn:95,gmx:151},
+    {n:"Lunastra",g:58,sub:0,sl:0x42C8,cp:0x40AC,lg:0x4160,sm:0x4214,sz:1,cap:0,b:1740,mi:91,kg:121,gmn:86,gmx:130},
+    {n:"Teostra",g:59,sub:0,sl:0x42CA,cp:0x40AE,lg:0x4162,sm:0x4216,sz:1,cap:0,b:1740,mi:88,kg:125,gmn:86,gmx:140},
+    {n:"Lao-Shan Lung (base)",g:60,sub:0,sl:0x4256,cp:0x403A,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Ashen Lao-Shan Lung",g:60,sub:1,sl:0x42AC,cp:0x4090,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Yama Tsukami",g:61,sub:0,sl:0x42BC,cp:0x40A0,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Black Fatalis",g:62,sub:0,sl:0x424C,cp:0x4030,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Crimson Fatalis",g:62,sub:1,sl:0x4290,cp:0x4074,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"White Fatalis",g:62,sub:1,sl:0x42D6,cp:0x40BA,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
   ];
 
   // All 90 internal array slots, for the Advanced (debug) panel.
@@ -196,14 +196,14 @@
   const FAMS = (function () {
     const fams = []; let cur = null;
     DATA.forEach(r => { if (!r.sub) { cur = { rows: [r] }; fams.push(cur); } else cur.rows.push(r); });
-    fams.forEach(f => { f.hasSize = f.rows.some(r => r.sz === 1); });
+    fams.forEach(f => { f.hasSize = f.rows.some(r => r.sz === 1); f.capturable = f.rows.some(r => r.cap === 1); });
     return fams;
   })();
 
   // ---- state -----------------------------------------------------------
   let view = null;                 // DataView over the loaded save (read only)
   const openFams = new Set();      // expanded family indices (into FAMS)
-  let filterMode = "all";          // "all" | "crown"
+  let filterMode = "all";          // "all" | "crown" | "captured"
   let showSizeCols = true;
   let showSlots = false;
   const $ = (id) => document.getElementById(id);
@@ -219,8 +219,7 @@
   function looksLikeText(dv) { const c0 = dv.getUint8(0), h0 = dv.getUint8(1); return c0 >= 0x20 && c0 <= 0x7e && h0 === 0x00; }
   function readName(dv) { let nm = ""; for (let o = 0; o < 32; o += 2) { const ch = dv.getUint16(o, true); if (ch === 0) break; nm += String.fromCharCode(ch); } return nm; }
 
-  // Read a whole family off the save: per-row counts + sizes, and family-level
-  // crown state (which record surfaces min/max, and whether a crown is earned).
+  // Read a whole family off the save: per-row counts + sizes + family Hunted total.
   function readFam(fam) {
     const rows = fam.rows.map(r => {
       const slain = u16(r.sl), cap = u16(r.cp), hasSize = r.sz === 1;
@@ -228,84 +227,84 @@
       const present = hasSize && !(S === 0 && L === 0);
       return { r, slain, cap, total: slain + cap, S, L, hasSize, present };
     });
-    let minIdx = -1, maxIdx = -1;
-    rows.forEach((x, i) => { if (!x.present) return; if (minIdx < 0 || x.S < rows[minIdx].S) minIdx = i; if (maxIdx < 0 || x.L > rows[maxIdx].L) maxIdx = i; });
-    const szRow = fam.rows.find(r => r.sz === 1);
-    const mi = szRow ? szRow.mi : 0, kg = szRow ? szRow.kg : 0;
-    const smallCrown = minIdx >= 0 && rows[minIdx].S <= mi;
-    const kingCrown  = maxIdx >= 0 && rows[maxIdx].L >= kg;
-    const hunted = rows.reduce((a, x) => a + x.total, 0);
-    return { rows, minIdx, maxIdx, smallCrown, kingCrown, mi, kg, hunted };
+    return { rows, hunted: rows.reduce((a, x) => a + x.total, 0) };
   }
 
   // ---- cell renderers --------------------------------------------------
-  function minSizeCell(fx, i, x) {
+  // CARD sizes = this record's own recorded smallest / largest (from the save).
+  // Card value lights up when it reaches this monster's crown threshold.
+  function cardSmallCell(x) {
     if (!x.hasSize) return dash();
     if (!x.present) return '<span class="muted">&mdash;</span>';
-    const crown = x.S <= fx.mi ? " sz-sc" : "";
-    return `<span class="szval${crown}">${x.S}% <span class="muted">${fmt(cm(x.r.b, x.S))}cm</span></span>`;
+    const d = x.r, crown = x.S <= d.mi ? " sz-sc" : "";
+    return `<span class="szval${crown}">${x.S}% <span class="muted">${fmt(cm(d.b, x.S))}cm</span></span>`;
   }
-  function maxSizeCell(fx, i, x) {
+  function cardBigCell(x) {
     if (!x.hasSize) return dash();
     if (!x.present) return '<span class="muted">&mdash;</span>';
-    const crown = x.L >= fx.kg ? " sz-bc" : "";
-    return `<span class="szval${crown}">${x.L}% <span class="muted">${fmt(cm(x.r.b, x.L))}cm</span></span>`;
+    const d = x.r, crown = x.L >= d.kg ? " sz-bc" : "";
+    return `<span class="szval${crown}">${x.L}% <span class="muted">${fmt(cm(d.b, x.L))}cm</span></span>`;
   }
-  function crownBadges(fam, fx, i, x) {
+  // GAME sizes = the family-wide smallest / largest the game can ever roll (Kenta guide).
+  // Reference values, same for every form of a family.
+  function gameMinCell(x) {
+    if (!x.hasSize) return dash();
+    const d = x.r;
+    return `<span class="szref">${d.gmn}% <span class="muted">${fmt(cm(d.b, d.gmn))}cm</span></span>`;
+  }
+  function gameMaxCell(x) {
+    if (!x.hasSize) return dash();
+    const d = x.r;
+    return `<span class="szref">${d.gmx}% <span class="muted">${fmt(cm(d.b, d.gmx))}cm</span></span>`;
+  }
+  // Tags: small/big crown (crossed the crown threshold) plus min/max size
+  // (reached the absolute game-wide extreme — sits on top of the crown).
+  function crownBadges(x) {
     if (!x.hasSize) return dash();
     if (!x.present) return '<span class="badge norec">no record</span>';
-    const multi = fam.rows.length > 1;
-    const isMin = i === fx.minIdx, isMax = i === fx.maxIdx;
-    const out = [];
-    if (isMin && fx.smallCrown) out.push('<span class="badge sc">small crown</span>');
-    if (isMax && fx.kingCrown)  out.push('<span class="badge bc">big crown</span>');
-    if (multi && isMin && !fx.smallCrown) out.push('<span class="badge oncard">on card</span>');
-    if (multi && isMax && !fx.kingCrown)  out.push('<span class="badge oncard">on card</span>');
-    if (!isMin && x.S <= fx.mi) out.push('<span class="badge sch">hidden small crown</span>');
-    if (!isMax && x.L >= fx.kg) out.push('<span class="badge bch">hidden big crown</span>');
+    const d = x.r, out = [];
+    if (x.S <= d.mi)  out.push('<span class="badge sc">small crown</span>');
+    if (x.L >= d.kg)  out.push('<span class="badge bc">big crown</span>');
+    if (x.S <= d.gmn) out.push('<span class="badge minsz">min size</span>');
+    if (x.L >= d.gmx) out.push('<span class="badge maxsz">max size</span>');
     return out.join(" ") || '<span class="dash">none</span>';
   }
 
   function recRow(fam, fx, i, fi, open) {
     const r = fam.rows[i], x = fx.rows[i];
     const capCell = r.cap ? String(x.cap) : dash();
-    const minC = minSizeCell(fx, i, x), maxC = maxSizeCell(fx, i, x), crownC = crownBadges(fam, fx, i, x);
+    const chk = r.cap ? `<input type="checkbox" disabled${x.cap > 0 ? " checked" : ""}>` : "";
+    const cells =
+      `<td class="num c-cnt">${x.slain}</td>` +
+      `<td class="num">${capCell}</td>` +
+      `<td class="num c-cnt">${x.total}</td>` +
+      `<td class="num szcol">${cardSmallCell(x)}</td>` +
+      `<td class="num szcol">${cardBigCell(x)}</td>` +
+      `<td class="num szcol">${gameMinCell(x)}</td>` +
+      `<td class="num szcol">${gameMaxCell(x)}</td>` +
+      `<td class="szcol crowncell">${crownBadges(x)}</td>` +
+      `<td class="num c-capchk">${chk}</td>`;
     if (i === 0) {
       const hasSub = fam.rows.length > 1;
       const caret  = hasSub ? '<span class="caret">&#9656;</span>' : "";
       const subc   = hasSub ? `<span class="subcount">+${fam.rows.length - 1} sub</span>` : "";
       const fh     = hasSub ? `<span class="fhunt" title="family total — what the guild card counts as Hunted">&#931; ${fx.hunted} hunted</span>` : "";
       return `<tr class="mrow base${open ? " open" : ""}${hasSub ? " hassub" : ""}" data-fam="${fi}">
-        <td>${caret}</td>
-        <td class="cardno">${r.g}</td>
-        <td class="mname">${r.n}${subc}${fh}</td>
-        <td class="num">${x.slain}</td>
-        <td class="num">${capCell}</td>
-        <td class="num">${x.total}</td>
-        <td class="num szcol">${minC}</td>
-        <td class="num szcol">${maxC}</td>
-        <td class="szcol crowncell">${crownC}</td>
+        <td>${caret}</td><td class="cardno">${r.g}</td><td class="mname">${r.n}${subc}${fh}</td>${cells}
       </tr>`;
     }
     return `<tr class="subrow${open ? "" : " hidden"}" data-fam="${fi}">
-      <td></td>
-      <td class="cardno"></td>
-      <td class="mname sub">${r.n}</td>
-      <td class="num">${x.slain}</td>
-      <td class="num">${capCell}</td>
-      <td class="num">${x.total}</td>
-      <td class="num szcol">${minC}</td>
-      <td class="num szcol">${maxC}</td>
-      <td class="szcol crowncell">${crownC}</td>
+      <td></td><td class="cardno"></td><td class="mname sub">${r.n}</td>${cells}
     </tr>`;
   }
 
   function renderTable() {
     if (!view) return;
-    $("montbl").classList.toggle("hide-size", !showSizeCols);
+    $("montbl").className = "montbl mode-" + filterMode + (showSizeCols ? "" : " hide-size");
     const rows = [];
     FAMS.forEach((fam, fi) => {
       if (filterMode === "crown" && !fam.hasSize) return;
+      if (filterMode === "captured" && !fam.capturable) return;
       const fx = readFam(fam);
       const open = openFams.has(fi);
       for (let i = 0; i < fam.rows.length; i++) rows.push(recRow(fam, fx, i, fi, open));

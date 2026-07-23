@@ -68,10 +68,17 @@ td.num, .num { font-variant-numeric: tabular-nums; }
   padding: 5px 7px; font: inherit; font-size: 12.5px; }
 .ctl input[type=checkbox] { accent-color: var(--accent); }
 
-/* column toggle + dashes */
+/* column visibility by mode / toggle */
 .montbl.hide-size .szcol { display: none; }
+.montbl.mode-captured .szcol,
+.montbl.mode-captured .c-cnt { display: none; }
+.montbl:not(.mode-captured) .c-capchk { display: none; }
+.montbl .c-capchk input { accent-color: var(--ok); transform: scale(1.2); pointer-events: none; }
 .dash { color: var(--muted); }
 .crowncell .dash { color: var(--edge); }
+
+/* game-size reference columns (dimmer than your own recorded sizes) */
+.szref { color: var(--muted); }
 
 /* family total chip on the parent row */
 .fhunt { color: var(--muted); font-weight: 400; font-size: 11px; margin-left: 8px;
@@ -123,6 +130,10 @@ td.num, .num { font-variant-numeric: tabular-nums; }
 .badge.bch { background: rgba(154,162,175,.10); color: #8f9bb2; }
 .badge.oncard { background: rgba(110,168,254,.14); color: var(--accent); }
 .badge.norec  { background: rgba(154,162,175,.12); color: var(--muted); }
+
+/* game-extreme tags — solid fills, "on top of" the crown tags */
+.badge.minsz { background: var(--bad); color: #14161a; }
+.badge.maxsz { background: #9cc4ff; color: #14161a; }
 
 /* a Min-size / Max-size value that reached this monster's crown */
 .szval.sz-sc { color: var(--bad); font-weight: 600; }

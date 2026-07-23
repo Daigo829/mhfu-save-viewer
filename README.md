@@ -26,9 +26,11 @@ everything (expanded by default).
 
 Two controls above the table:
 
-- **Show: Everything / Crown monsters only** — filter to just the 31 crown families (+ subspecies).
-- **Size & crown columns** — toggle the Min size / Max size / Crowns columns off (handy when you only
-  care about hunt counts, since most monsters have no size record).
+- **Show: Everything / Crown monsters only / Captured** — *Everything* is all 62 roster entries;
+  *Crown monsters only* keeps the 31 crown families (+ subspecies); *Captured* is a capture checklist —
+  just `#`, Monster, Captured, and a **Caught** checkbox (ticked when you've captured at least one),
+  limited to monsters that can actually be captured.
+- **Size & crown columns** — toggle all the size/crown columns off when you only care about hunt counts.
 
 Columns per row:
 
@@ -36,20 +38,19 @@ Columns per row:
   for monsters that **can't be captured** (small monsters, elder dragons, Fatalis, Lao-Shan, etc.). The
   parent row also carries a **Σ hunted** chip — the family total (base + all subspecies), which is the
   number the guild card shows as *Hunted*.
-- **Min size / Max size** — that record's own smallest and largest size (stored % and cm), `----` when
-  the monster has no size record. The value **lights up** when it reaches this monster's crown threshold:
-  **red** for a *small crown* (min size), **light blue** for a *big crown* (max size).
-- **Crowns** — the badges below.
+- **Card smallest / Card biggest** — the smallest and largest size *you've recorded* for that form
+  (stored % and cm). Each **lights up** on reaching this monster's crown threshold: **red** for a
+  *small crown*, **blue** for a *big crown*.
+- **Min game size / Max game size** — the smallest and largest that monster can *ever* be. These are
+  **family-wide** values from Kenta's crown guide, so subspecies inherit their family's range.
+- **Crowns** — the tags below. `----` in all size columns for monsters with no size record.
 
-Terminology: **min / max** always mean actual *sizes*; **small crown / big crown** mean the guild-card
-size achievements. Crown badges:
+Terminology: **min / max** always mean actual *sizes*; **small crown / big crown** are the guild-card
+crown thresholds. Tags:
 
-- **small crown / big crown** — the record your guild card surfaces is crown-worthy. The gold label
-  keeps the in-game crown colour; its text is red (small) or light blue (big).
-- **hidden small crown / hidden big crown** — a subspecies record that is *itself* crown-sized but the
-  card never surfaces it. Shown greyed-down so it's clearly secondary.
-- **on card** — for multi-record families, marks which record the card currently displays as the
-  smallest or largest (when no crown is involved).
+- **small crown / big crown** — a recorded size crossed the crown threshold (gold label, red/blue text).
+- **min size / max size** — the record reached the game's absolute smallest / largest possible size
+  (solid red / blue). This is the ultimate, and always sits *on top of* a crown.
 
 ### Why subspecies matter
 
@@ -61,9 +62,10 @@ is invisible in-game unless it happens to be the current record-holder. This vie
 
 Size percents live in two u16 little-endian arrays (`0x40E0`–`0x4246`); displayed cm = `base × percent / 100`.
 The guild-card cache at `0x67408` stores, per base species, `[u16 ?][u16 hunted][u16 max×10][u16 min×10]`
-(the first field varies per save — it is *not* a fixed `0x001D` tag; rely on hunted/max/min). Base sizes and
-game-wide size ranges are catalogued in `offset maps/` + `mhfu_crown_size_percentages_v2.txt`. Every offset and
-base size was confirmed by forced-ramp **edit-testing** on an untouched Daigo save, not inference.
+(the first field varies per save — it is *not* a fixed `0x001D` tag; rely on hunted/max/min). Offsets and
+base sizes were confirmed by forced-ramp **edit-testing** on an untouched Daigo save. Crown thresholds come
+from `mhfu_crown_size_percentages_v2.txt`; the **game min/max sizes come from Kenta's crown guide** (family
+level) and were validated — every recorded size on the Daigo save falls inside its family's stated range.
 
 ### Advanced (debug) panel
 
@@ -74,8 +76,9 @@ one unidentified counter (`0x4282`). More power-user tools will land here later.
 
 ## Status
 
-v0.3. **Monsters** lists every roster monster in in-game order with hunt counts, crown highlighting,
-filters, and the Advanced slot view. **Hunter** and **Quests** are placeholders for later passes.
+v0.4. **Monsters** lists every roster monster in in-game order with hunt counts, card + game sizes,
+crown / min-size / max-size tags, Everything / Crown-only / Captured views, and the Advanced slot view.
+**Hunter** and **Quests** are placeholders for later passes.
 
 Dataset is auto-generated from the `offset maps/` ground truth and verified against the untouched Daigo
 save (family Hunted sums reproduce the guild-card cache 31/31; `slain = captured + 0x21C` for all 90 slots).
