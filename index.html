@@ -9,9 +9,9 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>MHFU Save Viewer <span class="ver">v0.1</span></h1>
+    <h1>MHFU Save Viewer <span class="ver">v0.3</span></h1>
     <p class="sub">Read-only. Drop a <strong>decrypted</strong> MHP2G / MHFU character save and see what it holds &mdash;
-      including the monster size records the game stores but never shows you. Nothing is written; your save is never modified.</p>
+      every monster&rsquo;s hunt counts and the size records the game stores but never shows you. Nothing is written; your save is never modified.</p>
   </header>
 
   <div class="beta">
@@ -57,26 +57,62 @@
     <!-- MONSTERS -->
     <section class="tabpane hidden" id="pane-monsters">
       <div class="panel">
-        <h2>Monster sizes &amp; hunt counts <span class="muted">&middot; guild-card order</span></h2>
+        <h2>Monsters <span class="muted">&middot; in-game Monster List order</span></h2>
         <p class="note">
-          The guild card shows only three things per monster: how many you&rsquo;ve hunted, and the single
-          <em>smallest</em> and <em>largest</em> it has ever recorded. But the save stores a separate size record for
-          <strong>every subspecies too</strong> &mdash; those are hidden in-game. Expand a row to see the full breakdown,
-          and which record is the one currently surfaced on your card.
+          Every monster in the in-game Monster List (1&ndash;62), with its <strong>subspecies indented beneath it</strong>.
+          <strong>Slain</strong> / <strong>Captured</strong> / <strong>Total</strong> are per row; the family&rsquo;s
+          <em>&Sigma; hunted</em> chip is what the guild card totals. <strong>Min size</strong> / <strong>Max size</strong>
+          light up when a record reaches this monster&rsquo;s <em>small crown</em> (red) or <em>big crown</em> (blue).
+          Captured shows <code>----</code> for monsters that can&rsquo;t be captured.
         </p>
         <div class="legend">
-          <span class="badge shown">shown in-game</span>
-          <span class="badge hiddent">hidden record</span>
-          <span class="badge gold">min crown</span>
-          <span class="badge gold2">max crown</span>
+          <span class="badge sc">small crown</span>
+          <span class="badge bc">big crown</span>
+          <span class="badge sch">hidden small crown</span>
+          <span class="badge bch">hidden big crown</span>
+          <span class="badge oncard">on card</span>
         </div>
-        <table class="montbl">
+        <div class="controls">
+          <button class="btn" id="expandAll">Expand all</button>
+          <button class="btn" id="collapseAll">Collapse all</button>
+          <span class="ctlsep"></span>
+          <label class="ctl">Show
+            <select id="filterMode">
+              <option value="all">Everything</option>
+              <option value="crown">Crown monsters only</option>
+            </select>
+          </label>
+          <label class="ctl"><input type="checkbox" id="showSize" checked> Size &amp; crown columns</label>
+        </div>
+        <table class="montbl" id="montbl">
           <thead><tr>
-            <th></th><th>#</th><th>Monster</th><th class="num">Hunted</th>
-            <th class="num">Smallest</th><th class="num">Largest</th><th>Crowns</th>
+            <th></th><th>#</th><th>Monster</th>
+            <th class="num">Slain</th><th class="num">Captured</th><th class="num">Total</th>
+            <th class="num szcol">Min size</th><th class="num szcol">Max size</th><th class="szcol">Crowns</th>
           </tr></thead>
           <tbody id="tbody"></tbody>
         </table>
+
+        <details class="advanced" id="advanced">
+          <summary>Advanced &mdash; raw array slots</summary>
+          <p class="warn-note">
+            &#9888; These views are for <strong>debugging, hex editing and offset finding</strong> &mdash; not needed for
+            normal use. More power-user tools will live here later.
+          </p>
+          <label class="ctl"><input type="checkbox" id="showSlots"> Show all 90 internal array slots</label>
+          <div id="advWrap" class="hidden">
+            <div class="scrollx">
+              <table class="slottbl">
+                <thead><tr>
+                  <th class="num">ID</th><th>Monster / slot</th>
+                  <th class="num">Captured@</th><th class="num">Largest@</th>
+                  <th class="num">Smallest@</th><th class="num">Slain@</th>
+                </tr></thead>
+                <tbody id="advBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
   </main>
