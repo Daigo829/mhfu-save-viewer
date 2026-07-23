@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MHFU Save Viewer</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>MHFU Save Viewer <span class="ver">v0.1</span></h1>
+    <p class="sub">Read-only. Drop a <strong>decrypted</strong> MHP2G / MHFU character save and see what it holds &mdash;
+      including the monster size records the game stores but never shows you. Nothing is written; your save is never modified.</p>
+  </header>
+
+  <div class="beta">
+    <strong>Read-only tool.</strong> This viewer never edits or downloads your save &mdash; it only reads and displays.
+    It needs a <strong>decrypted</strong> save (438,528 bytes). Decrypt with PPSSPP &rarr; Savedata &rarr; SaveTools first.
+  </div>
+
+  <div class="panel">
+    <div class="drop" id="drop">
+      <p><strong>Drop character save here</strong> or click to choose</p>
+      <p class="hint">e.g. <code>character1.sav</code> &middot; stays in your browser</p>
+    </div>
+    <input type="file" id="file">
+    <div class="status" id="status"></div>
+  </div>
+
+  <main id="main" class="hidden">
+    <nav class="tabs" id="tabs">
+      <button class="tab" data-tab="hunter">Hunter</button>
+      <button class="tab" data-tab="quests">Quests</button>
+      <button class="tab active" data-tab="monsters">Monsters</button>
+    </nav>
+
+    <!-- HUNTER -->
+    <section class="tabpane" id="pane-hunter">
+      <div class="panel">
+        <h2>Hunter</h2>
+        <p class="note">Character: <strong id="charname">&mdash;</strong></p>
+        <p class="placeholder">Hunter details (rank, funds, playtime, equipment&hellip;) are not decoded yet.
+          This section is a placeholder for a later pass.</p>
+      </div>
+    </section>
+
+    <!-- QUESTS -->
+    <section class="tabpane hidden" id="pane-quests">
+      <div class="panel">
+        <h2>Quests</h2>
+        <p class="placeholder">Quest completion, key quests, and progress are not decoded yet.
+          Placeholder for a later pass.</p>
+      </div>
+    </section>
+
+    <!-- MONSTERS -->
+    <section class="tabpane hidden" id="pane-monsters">
+      <div class="panel">
+        <h2>Monster sizes &amp; hunt counts <span class="muted">&middot; guild-card order</span></h2>
+        <p class="note">
+          The guild card shows only three things per monster: how many you&rsquo;ve hunted, and the single
+          <em>smallest</em> and <em>largest</em> it has ever recorded. But the save stores a separate size record for
+          <strong>every subspecies too</strong> &mdash; those are hidden in-game. Expand a row to see the full breakdown,
+          and which record is the one currently surfaced on your card.
+        </p>
+        <div class="legend">
+          <span class="badge shown">shown in-game</span>
+          <span class="badge hiddent">hidden record</span>
+          <span class="badge gold">min crown</span>
+          <span class="badge gold2">max crown</span>
+        </div>
+        <table class="montbl">
+          <thead><tr>
+            <th></th><th>#</th><th>Monster</th><th class="num">Hunted</th>
+            <th class="num">Smallest</th><th class="num">Largest</th><th>Crowns</th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Read-only viewer &middot; runs entirely in your browser. Size offsets &amp; crown data mapped by edit-test on an
+      untouched Daigo save. Credits: SaveTools (vnctdj), ryin77 &amp; willthehunter size tables.</p>
+  </footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
