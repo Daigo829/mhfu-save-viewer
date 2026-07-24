@@ -45,6 +45,7 @@ a:hover { color: #f3d998; }
 }
 
 /* scrollbars */
+* { scrollbar-width: thin; scrollbar-color: rgba(202,161,83,.45) var(--bg); }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: rgba(202,161,83,.35); border-radius: 5px; }
