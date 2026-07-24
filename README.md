@@ -1,3 +1,4 @@
+<!-- MHFU Save Viewer — v0.4 -->
 # MHFU Save Viewer
 
 A **read-only** viewer for Monster Hunter Freedom Unite / Portable 2nd G character saves.
