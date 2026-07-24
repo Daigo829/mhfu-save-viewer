@@ -1,18 +1,12 @@
-/* MHFU Save Viewer — v0.4 */
+/* MHFU Save Viewer — v0.5  (READ ONLY — never writes or downloads) */
 (function () {
   "use strict";
 
-  // ============================================================
-  // MHFU Save Viewer — READ ONLY. Never writes or downloads.
-  // ============================================================
-
   const EXPECT = 438528;   // decrypted MHP2G save size
-  const PAIR   = 0xB4;     // smallest% slot = largest% slot + 0xB4
-  const CACHE  = 0x67408;  // guild-card size display cache (31 crown families)
 
-  // Auto-generated from offset maps 02/03 (in-game Monster List order) + crown thresholds.
   // n=name g=in-game# sub=is-subspecies sl=slain@ cp=captured@ lg=largest@ sm=smallest@
-  // sz=has-size cap=capturable b=base-cm mi=small-crown% kg=big-crown%
+  // sz=has-size cap=capturable b=base-cm mi=small-crown% kg=big-crown% gmn/gmx=game min/max%
+  // bold=1 forces the row to render like a main species (Fatalis variants, Ashen Lao-Shan).
   const DATA = [
     {n:"Felyne",g:1,sub:0,sl:0x425A,cp:0x403E,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
     {n:"Melynx",g:2,sub:0,sl:0x4276,cp:0x405A,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
@@ -92,14 +86,14 @@
     {n:"Lunastra",g:58,sub:0,sl:0x42C8,cp:0x40AC,lg:0x4160,sm:0x4214,sz:1,cap:0,b:1740,mi:91,kg:121,gmn:86,gmx:130},
     {n:"Teostra",g:59,sub:0,sl:0x42CA,cp:0x40AE,lg:0x4162,sm:0x4216,sz:1,cap:0,b:1740,mi:88,kg:125,gmn:86,gmx:140},
     {n:"Lao-Shan Lung (base)",g:60,sub:0,sl:0x4256,cp:0x403A,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
-    {n:"Ashen Lao-Shan Lung",g:60,sub:1,sl:0x42AC,cp:0x4090,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Ashen Lao-Shan Lung",g:60,sub:1,sl:0x42AC,cp:0x4090,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0,bold:1},
     {n:"Yama Tsukami",g:61,sub:0,sl:0x42BC,cp:0x40A0,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
     {n:"Black Fatalis",g:62,sub:0,sl:0x424C,cp:0x4030,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
-    {n:"Crimson Fatalis",g:62,sub:1,sl:0x4290,cp:0x4074,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
-    {n:"White Fatalis",g:62,sub:1,sl:0x42D6,cp:0x40BA,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
+    {n:"Crimson Fatalis",g:62,sub:1,sl:0x4290,cp:0x4074,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0,bold:1},
+    {n:"White Fatalis",g:62,sub:1,sl:0x42D6,cp:0x40BA,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0,bold:1},
   ];
 
-  // All 90 internal array slots, for the Advanced (debug) panel.
+  // All 90 internal array slots, for the Advanced (offset map) section.
   const SLOTS = [
     {id:1,label:"(unused)",cp:0x402C,lg:0x40E0,sm:0x4194,sl:0x4248},
     {id:2,label:"Rathian",cp:0x402E,lg:0x40E2,sm:0x4196,sl:0x424A},
@@ -201,21 +195,21 @@
     return fams;
   })();
 
-  // ---- state -----------------------------------------------------------
+  // ---- state ----------------------------------------------------------
   let view = null;                 // DataView over the loaded save (read only)
-  const openFams = new Set();      // expanded family indices (into FAMS)
-  let filterMode = "all";          // "all" | "crown" | "captured"
+  let filterMode = "crown";        // "all" | "crown" | "captured"
   let showSizeCols = true;
   let showSlots = false;
+  let searchQuery = "";
   const $ = (id) => document.getElementById(id);
 
-  // ---- helpers ---------------------------------------------------------
+  // ---- helpers --------------------------------------------------------
   function setStatus(msg, kind) { const el = $("status"); el.textContent = msg; el.className = "status" + (kind ? " " + kind : ""); }
-  const u16 = (o) => view.getUint16(o, true);
-  const cm  = (base, pct) => Math.round(base * pct / 100 * 10) / 10;
-  const fmt = (v) => v.toFixed(1);
-  const hex = (o) => "0x" + o.toString(16).toUpperCase();
-  const dash = () => '<span class="dash">----</span>';
+  const u16  = (o) => view.getUint16(o, true);
+  const cm   = (base, pct) => Math.round(base * pct / 100 * 10) / 10;
+  const fmt  = (v) => v.toFixed(1);
+  const hex  = (o) => "0x" + o.toString(16).toUpperCase();
+  const esc  = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
   function looksLikeText(dv) { const c0 = dv.getUint8(0), h0 = dv.getUint8(1); return c0 >= 0x20 && c0 <= 0x7e && h0 === 0x00; }
   function readName(dv) { let nm = ""; for (let o = 0; o < 32; o += 2) { const ch = dv.getUint16(o, true); if (ch === 0) break; nm += String.fromCharCode(ch); } return nm; }
@@ -231,37 +225,24 @@
     return { rows, hunted: rows.reduce((a, x) => a + x.total, 0) };
   }
 
-  // ---- cell renderers --------------------------------------------------
-  // CARD sizes = this record's own recorded smallest / largest (from the save).
-  // Card value lights up when it reaches this monster's crown threshold.
-  function cardSmallCell(x) {
-    if (!x.hasSize) return dash();
-    if (!x.present) return '<span class="muted">&mdash;</span>';
-    const d = x.r, crown = x.S <= d.mi ? " sz-sc" : "";
-    return `<span class="szval${crown}">${x.S}% <span class="muted">${fmt(cm(d.b, x.S))}cm</span></span>`;
+  // ---- cell renderers -------------------------------------------------
+  // Card sizes = this record's own recorded smallest / largest (plain, no glow).
+  function cardCell(x, val) {
+    if (!x.hasSize) return '<span class="dash">----</span>';
+    if (!x.present) return '<span class="szval na">&mdash;</span>';
+    return `<span class="szval">${val}% (${fmt(cm(x.r.b, val))}cm)</span>`;
   }
-  function cardBigCell(x) {
-    if (!x.hasSize) return dash();
-    if (!x.present) return '<span class="muted">&mdash;</span>';
-    const d = x.r, crown = x.L >= d.kg ? " sz-bc" : "";
-    return `<span class="szval${crown}">${x.L}% <span class="muted">${fmt(cm(d.b, x.L))}cm</span></span>`;
-  }
-  // GAME sizes = the family-wide smallest / largest the game can ever roll (Kenta guide).
-  // Reference values, same for every form of a family.
+  // Game min/max = family-wide extreme; always coloured (min red, max blue).
   function gameMinCell(x) {
-    if (!x.hasSize) return dash();
-    const d = x.r;
-    return `<span class="szref">${d.gmn}% <span class="muted">${fmt(cm(d.b, d.gmn))}cm</span></span>`;
+    if (!x.hasSize) return '<span class="dash">----</span>';
+    return `<span class="szmin">${x.r.gmn}% (${fmt(cm(x.r.b, x.r.gmn))}cm)</span>`;
   }
   function gameMaxCell(x) {
-    if (!x.hasSize) return dash();
-    const d = x.r;
-    return `<span class="szref">${d.gmx}% <span class="muted">${fmt(cm(d.b, d.gmx))}cm</span></span>`;
+    if (!x.hasSize) return '<span class="dash">----</span>';
+    return `<span class="szmax">${x.r.gmx}% (${fmt(cm(x.r.b, x.r.gmx))}cm)</span>`;
   }
-  // Tags: small/big crown (crossed the crown threshold) plus min/max size
-  // (reached the absolute game-wide extreme — sits on top of the crown).
   function crownBadges(x) {
-    if (!x.hasSize) return dash();
+    if (!x.hasSize) return '<span class="dash">----</span>';
     if (!x.present) return '<span class="badge norec">no record</span>';
     const d = x.r, out = [];
     if (x.S <= d.mi)  out.push('<span class="badge sc">small crown</span>');
@@ -270,128 +251,171 @@
     if (x.L >= d.gmx) out.push('<span class="badge maxsz">max size</span>');
     return out.join(" ") || '<span class="dash">none</span>';
   }
+  function caughtCell(x) {
+    if (!x.r.cap) return "";
+    return x.cap > 0 ? '<span class="caught-yes">&#10003;</span>' : '<span class="caught-no">&#10007;</span>';
+  }
 
-  function recRow(fam, fx, i, fi, open) {
+  // ---- row + table ----------------------------------------------------
+  function rowHTML(fam, fx, i) {
     const r = fam.rows[i], x = fx.rows[i];
-    const capCell = r.cap ? String(x.cap) : dash();
-    const chk = r.cap ? `<input type="checkbox" disabled${x.cap > 0 ? " checked" : ""}>` : "";
-    const cells =
-      `<td class="num c-cnt">${x.slain}</td>` +
-      `<td class="num">${capCell}</td>` +
-      `<td class="num c-cnt">${x.total}</td>` +
-      `<td class="num szcol">${cardSmallCell(x)}</td>` +
-      `<td class="num szcol">${cardBigCell(x)}</td>` +
-      `<td class="num szcol">${gameMinCell(x)}</td>` +
-      `<td class="num szcol">${gameMaxCell(x)}</td>` +
-      `<td class="szcol crowncell">${crownBadges(x)}</td>` +
-      `<td class="num c-capchk">${chk}</td>`;
-    if (i === 0) {
-      const hasSub = fam.rows.length > 1;
-      const caret  = hasSub ? '<span class="caret">&#9656;</span>' : "";
-      const subc   = hasSub ? `<span class="subcount">+${fam.rows.length - 1} sub</span>` : "";
-      const fh     = hasSub ? `<span class="fhunt" title="family total — what the guild card counts as Hunted">&#931; ${fx.hunted} hunted</span>` : "";
-      return `<tr class="mrow base${open ? " open" : ""}${hasSub ? " hassub" : ""}" data-fam="${fi}">
-        <td>${caret}</td><td class="cardno">${r.g}</td><td class="mname">${r.n}${subc}${fh}</td>${cells}
-      </tr>`;
+    const isBase = i === 0, hasSub = fam.rows.length > 1;
+    const bold = isBase || r.bold;
+    const capCell = r.cap ? String(x.cap) : '<span class="dash">----</span>';
+    const numCell = isBase ? r.g : "";
+    const nameCls = "mname" + (bold ? "" : " sub");
+    let nameExtra = "";
+    if (isBase && hasSub) {
+      nameExtra = `<span class="subcount">+${fam.rows.length - 1} sub</span>` +
+                  `<span class="fhunt">&#931; ${fx.hunted} hunted</span>`;
     }
-    return `<tr class="subrow${open ? "" : " hidden"}" data-fam="${fi}">
-      <td></td><td class="cardno"></td><td class="mname sub">${r.n}</td>${cells}
+    return `<tr class="mrow${isBase ? "" : " subrow"}">
+      <td class="cardno">${numCell}</td>
+      <td class="${nameCls}">${esc(r.n)}${nameExtra}</td>
+      <td class="num">${x.slain}</td>
+      <td class="num">${capCell}</td>
+      <td class="num c-total">${x.total}</td>
+      <td class="num szcol">${cardCell(x, x.S)}</td>
+      <td class="num szcol">${cardCell(x, x.L)}</td>
+      <td class="num szcol">${gameMinCell(x)}</td>
+      <td class="num szcol">${gameMaxCell(x)}</td>
+      <td class="szcol crowncell">${crownBadges(x)}</td>
+      <td class="c-capchk caughtcell">${caughtCell(x)}</td>
     </tr>`;
   }
 
   function renderTable() {
     if (!view) return;
     $("montbl").className = "montbl mode-" + filterMode + (showSizeCols ? "" : " hide-size");
+    const q = searchQuery.trim().toLowerCase();
     const rows = [];
-    FAMS.forEach((fam, fi) => {
+    let crownFamiliesTotal = 0, crownsEarned = 0;
+    FAMS.forEach(fam => {
+      if (fam.hasSize) crownFamiliesTotal++;
+      const fx = readFam(fam);
+      const earned = fam.rows.some((r, i) => { const x = fx.rows[i]; return x.hasSize && x.present && (x.S <= r.mi || x.L >= r.kg); });
+      if (earned) crownsEarned++;
       if (filterMode === "crown" && !fam.hasSize) return;
       if (filterMode === "captured" && !fam.capturable) return;
-      const fx = readFam(fam);
-      const open = openFams.has(fi);
-      for (let i = 0; i < fam.rows.length; i++) rows.push(recRow(fam, fx, i, fi, open));
+      if (q && !fam.rows.some(r => r.n.toLowerCase().includes(q))) return;
+      for (let i = 0; i < fam.rows.length; i++) rows.push(rowHTML(fam, fx, i));
     });
     $("tbody").innerHTML = rows.join("");
-    document.querySelectorAll(".montbl tr.mrow.hassub").forEach(tr =>
-      tr.addEventListener("click", () => {
-        const fi = +tr.dataset.fam;
-        if (openFams.has(fi)) openFams.delete(fi); else openFams.add(fi);
-        renderTable();
-      }));
+    $("crownStat").textContent = `${crownsEarned} / ${crownFamiliesTotal} crowns recorded`;
   }
 
-  // ---- advanced: raw 90-slot table -------------------------------------
+  // ---- advanced: raw 90-slot table ------------------------------------
   function renderSlots() {
-    const wrap = $("advWrap");
-    if (!wrap) return;
+    const wrap = $("advScroll");
     if (!showSlots || !view) { wrap.classList.add("hidden"); $("advBody").innerHTML = ""; return; }
     wrap.classList.remove("hidden");
     const cell = (o) => `${hex(o)} <span class="muted">${u16(o)}</span>`;
     $("advBody").innerHTML = SLOTS.map(s => {
       const dead = /unused|UNKNOWN/i.test(s.label);
       return `<tr class="${dead ? "slot-dead" : ""}">
-        <td class="num">${s.id}</td><td>${s.label}</td>
-        <td class="num mono">${cell(s.cp)}</td><td class="num mono">${cell(s.lg)}</td>
-        <td class="num mono">${cell(s.sm)}</td><td class="num mono">${cell(s.sl)}</td>
+        <td class="num">${s.id}</td><td>${esc(s.label)}</td>
+        <td class="num">${cell(s.cp)}</td><td class="num">${cell(s.lg)}</td>
+        <td class="num">${cell(s.sm)}</td><td class="num">${cell(s.sl)}</td>
       </tr>`;
     }).join("");
   }
 
-  // ---- collapse / expand + controls ------------------------------------
-  function famsWithSubs() { const a = []; FAMS.forEach((f, i) => { if (f.rows.length > 1) a.push(i); }); return a; }
-  function setDefaultOpen() { openFams.clear(); famsWithSubs().forEach(i => openFams.add(i)); }
-  function initControls() {
-    const on = (id, ev, fn) => { const el = $(id); if (el) el.addEventListener(ev, fn); };
-    on("expandAll", "click", () => { openFams.clear(); famsWithSubs().forEach(i => openFams.add(i)); renderTable(); });
-    on("collapseAll", "click", () => { openFams.clear(); renderTable(); });
-    on("filterMode", "change", e => { filterMode = e.target.value; renderTable(); });
-    on("showSize", "change", e => { showSizeCols = e.target.checked; renderTable(); });
-    on("showSlots", "change", e => { showSlots = e.target.checked; renderSlots(); });
+  // ---- sidebar sections ----------------------------------------------
+  const PLACEHOLDERS = {
+    hunter: "Hunter details (rank, funds, playtime, equipment…) are not decoded yet. Placeholder for a later pass.",
+    quests: "Quest completion, key quests, and progress are not decoded yet. Placeholder for a later pass.",
+    items: "Item box & pouch contents are not decoded yet. Placeholder for a later pass.",
+    equipment: "Equipped weapon, armor, and decorations are not decoded yet. Placeholder for a later pass.",
+    awards: "Guild card titles and awards are not decoded yet. Placeholder for a later pass.",
+  };
+  const LABELS = { hunter:"HUNTER", quests:"QUESTS", items:"ITEMS", equipment:"EQUIPMENT", awards:"AWARDS" };
+
+  function selectSection(id) {
+    document.querySelectorAll(".nav-item").forEach(b => b.classList.toggle("active", b.dataset.section === id));
+    const showMon = id === "monsters", showAdv = id === "advanced", showPh = !showMon && !showAdv;
+    $("sec-monsters").classList.toggle("hidden", !showMon);
+    $("sec-advanced").classList.toggle("hidden", !showAdv);
+    $("sec-placeholder").classList.toggle("hidden", !showPh);
+    if (showPh) { $("phTitle").textContent = LABELS[id] || ""; $("phText").textContent = PLACEHOLDERS[id] || ""; }
   }
 
-  // ---- load (read only) ------------------------------------------------
-  function loadBuffer(buf, name) {
+  // ---- drag-to-scroll (axis-locked; wheel still works) ----------------
+  let drag = null;
+  function initDragScroll(el) {
+    el.addEventListener("mousedown", (e) => {
+      if (e.button !== 0) return;
+      if (e.target.closest("input, select, textarea, button, a, label")) return;
+      e.preventDefault(); e.stopPropagation();
+      drag = { el, startX: e.clientX, startY: e.clientY, sl: el.scrollLeft, st: el.scrollTop, axis: null };
+      el.style.cursor = "grabbing";
+    });
+  }
+  window.addEventListener("mousemove", (e) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.startX, dy = e.clientY - drag.startY;
+    if (!drag.axis && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) drag.axis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+    if (drag.axis === "x") drag.el.scrollLeft = drag.sl - dx;
+    else if (drag.axis === "y") drag.el.scrollTop = drag.st - dy;
+  });
+  window.addEventListener("mouseup", () => {
+    if (drag) drag.el.style.cursor = "grab";
+    drag = null;
+  });
+
+  // ---- load (read only) -----------------------------------------------
+  function loadBuffer(buf) {
     if (buf.byteLength !== EXPECT) {
       setStatus(`Rejected: ${buf.byteLength.toLocaleString()} bytes, expected ${EXPECT.toLocaleString()}. Not a decrypted MHP2G save.`, "bad");
-      $("main").classList.add("hidden"); return;
+      return;
     }
     const dv = new DataView(buf);
     if (!looksLikeText(dv)) {
       setStatus("Rejected: file looks still-encrypted. Decrypt it first (PPSSPP / SaveTools).", "bad");
-      $("main").classList.add("hidden"); return;
+      return;
     }
     view = dv;
-    setDefaultOpen();
-    $("main").classList.remove("hidden");
-    $("charname").textContent = readName(dv) || "(unnamed)";
+    const nm = readName(dv) || "(unnamed)";
+    $("charname").textContent = nm;
+    selectSection("monsters");
     renderTable();
     renderSlots();
-    setStatus(`Loaded "${readName(dv)}" — read-only, your file is untouched.`, "ok");
+    $("dropScreen").classList.add("hidden");
+    $("app").classList.remove("hidden");
   }
 
-  // ---- tabs ------------------------------------------------------------
-  function initTabs() {
-    document.querySelectorAll(".tab").forEach(btn =>
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".tab").forEach(b => b.classList.toggle("active", b === btn));
-        const t = btn.dataset.tab;
-        document.querySelectorAll(".tabpane").forEach(p => p.classList.toggle("hidden", p.id !== "pane-" + t));
-      }));
-  }
-
-  // ---- file wiring -----------------------------------------------------
   function handleFile(file) {
     const r = new FileReader();
-    r.onload = () => loadBuffer(r.result, file.name);
+    r.onload = () => loadBuffer(r.result);
     r.onerror = () => setStatus("Could not read the file.", "bad");
     r.readAsArrayBuffer(file);
   }
-  const drop = $("drop"), fileInput = $("file");
-  drop.addEventListener("click", () => fileInput.click());
-  fileInput.addEventListener("change", () => { if (fileInput.files[0]) handleFile(fileInput.files[0]); });
-  ["dragenter", "dragover"].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.add("hover"); }));
-  ["dragleave", "drop"].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.remove("hover"); }));
-  drop.addEventListener("drop", ev => { const f = ev.dataTransfer.files[0]; if (f) handleFile(f); });
 
-  initTabs();
-  initControls();
+  // ---- wiring ---------------------------------------------------------
+  function init() {
+    const drop = $("drop"), fileInput = $("file");
+    drop.addEventListener("click", () => fileInput.click());
+    fileInput.addEventListener("change", () => { if (fileInput.files[0]) handleFile(fileInput.files[0]); });
+    ["dragenter", "dragover"].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.add("hover"); }));
+    ["dragleave", "drop"].forEach(e => drop.addEventListener(e, ev => { ev.preventDefault(); drop.classList.remove("hover"); }));
+    drop.addEventListener("drop", ev => { const f = ev.dataTransfer.files[0]; if (f) handleFile(f); });
+
+    document.querySelectorAll(".nav-item").forEach(b => b.addEventListener("click", () => selectSection(b.dataset.section)));
+    $("changeSave").addEventListener("click", () => {
+      view = null;
+      $("app").classList.add("hidden");
+      $("dropScreen").classList.remove("hidden");
+      setStatus("", "");
+    });
+
+    $("search").addEventListener("input", e => { searchQuery = e.target.value; renderTable(); });
+    $("filterMode").addEventListener("change", e => { filterMode = e.target.value; renderTable(); });
+    $("showSize").addEventListener("change", e => { showSizeCols = e.target.checked; renderTable(); });
+    $("showSlots").addEventListener("change", e => { showSlots = e.target.checked; renderSlots(); });
+
+    initDragScroll($("content"));
+    initDragScroll($("tableScroll"));
+    initDragScroll($("advScroll"));
+  }
+
+  init();
 })();
