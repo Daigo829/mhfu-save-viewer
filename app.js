@@ -1,3 +1,4 @@
+/* MHFU Save Viewer — v0.4 */
 (function () {
   "use strict";
 
