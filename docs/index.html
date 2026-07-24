@@ -1,0 +1,132 @@
+<!-- MHFU Save Viewer — v0.4 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MHFU Save Viewer</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>MHFU Save Viewer <span class="ver">v0.4</span></h1>
+    <p class="sub">Read-only. Drop a <strong>decrypted</strong> MHP2G / MHFU character save and see what it holds &mdash;
+      every monster&rsquo;s hunt counts and the size records the game stores but never shows you. Nothing is written; your save is never modified.</p>
+  </header>
+
+  <div class="beta">
+    <strong>Read-only tool.</strong> This viewer never edits or downloads your save &mdash; it only reads and displays.
+    It needs a <strong>decrypted</strong> save (438,528 bytes). Decrypt with PPSSPP &rarr; Savedata &rarr; SaveTools first.
+  </div>
+
+  <div class="panel">
+    <div class="drop" id="drop">
+      <p><strong>Drop character save here</strong> or click to choose</p>
+      <p class="hint">e.g. <code>character1.sav</code> &middot; stays in your browser</p>
+    </div>
+    <input type="file" id="file">
+    <div class="status" id="status"></div>
+  </div>
+
+  <main id="main" class="hidden">
+    <nav class="tabs" id="tabs">
+      <button class="tab" data-tab="hunter">Hunter</button>
+      <button class="tab" data-tab="quests">Quests</button>
+      <button class="tab active" data-tab="monsters">Monsters</button>
+    </nav>
+
+    <!-- HUNTER -->
+    <section class="tabpane" id="pane-hunter">
+      <div class="panel">
+        <h2>Hunter</h2>
+        <p class="note">Character: <strong id="charname">&mdash;</strong></p>
+        <p class="placeholder">Hunter details (rank, funds, playtime, equipment&hellip;) are not decoded yet.
+          This section is a placeholder for a later pass.</p>
+      </div>
+    </section>
+
+    <!-- QUESTS -->
+    <section class="tabpane hidden" id="pane-quests">
+      <div class="panel">
+        <h2>Quests</h2>
+        <p class="placeholder">Quest completion, key quests, and progress are not decoded yet.
+          Placeholder for a later pass.</p>
+      </div>
+    </section>
+
+    <!-- MONSTERS -->
+    <section class="tabpane hidden" id="pane-monsters">
+      <div class="panel">
+        <h2>Monsters <span class="muted">&middot; in-game Monster List order</span></h2>
+        <p class="note">
+          Every monster in the in-game Monster List (1&ndash;62), with its <strong>subspecies indented beneath it</strong>.
+          <strong>Slain</strong> / <strong>Captured</strong> / <strong>Total</strong> are per row; the family&rsquo;s
+          <em>&Sigma; hunted</em> chip is the guild-card total. <strong>Card smallest/biggest</strong> are your recorded
+          sizes (they glow when they hit a <em>small crown</em> in red or <em>big crown</em> in blue); <strong>Min/Max game
+          size</strong> are the smallest/largest that monster can ever be. Reach the absolute extreme and you also earn the
+          <em>min size</em> / <em>max size</em> tag. Captured shows <code>----</code> when a monster can&rsquo;t be captured.
+        </p>
+        <div class="legend">
+          <span class="badge sc">small crown</span>
+          <span class="badge bc">big crown</span>
+          <span class="badge minsz">min size</span>
+          <span class="badge maxsz">max size</span>
+        </div>
+        <div class="controls">
+          <button class="btn" id="expandAll">Expand all</button>
+          <button class="btn" id="collapseAll">Collapse all</button>
+          <span class="ctlsep"></span>
+          <label class="ctl">Show
+            <select id="filterMode">
+              <option value="all">Everything</option>
+              <option value="crown">Crown monsters only</option>
+              <option value="captured">Captured</option>
+            </select>
+          </label>
+          <label class="ctl"><input type="checkbox" id="showSize" checked> Size &amp; crown columns</label>
+        </div>
+        <table class="montbl mode-all" id="montbl">
+          <thead><tr>
+            <th></th><th>#</th><th>Monster</th>
+            <th class="num c-cnt">Slain</th><th class="num">Captured</th><th class="num c-cnt">Total</th>
+            <th class="num szcol">Card smallest</th><th class="num szcol">Card biggest</th>
+            <th class="num szcol">Min game size</th><th class="num szcol">Max game size</th>
+            <th class="szcol">Crowns</th>
+            <th class="num c-capchk">Caught</th>
+          </tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+
+        <details class="advanced" id="advanced">
+          <summary>Advanced &mdash; raw array slots</summary>
+          <p class="warn-note">
+            &#9888; These views are for <strong>debugging, hex editing and offset finding</strong> &mdash; not needed for
+            normal use. More power-user tools will live here later.
+          </p>
+          <label class="ctl"><input type="checkbox" id="showSlots"> Show all 90 internal array slots</label>
+          <div id="advWrap" class="hidden">
+            <div class="scrollx">
+              <table class="slottbl">
+                <thead><tr>
+                  <th class="num">ID</th><th>Monster / slot</th>
+                  <th class="num">Captured@</th><th class="num">Largest@</th>
+                  <th class="num">Smallest@</th><th class="num">Slain@</th>
+                </tr></thead>
+                <tbody id="advBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Read-only viewer &middot; runs entirely in your browser. Size offsets &amp; crown data mapped by edit-test on an
+      untouched Daigo save. Credits: SaveTools (vnctdj), ryin77 &amp; willthehunter size tables.</p>
+  </footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
