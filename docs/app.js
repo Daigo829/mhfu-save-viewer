@@ -1,4 +1,4 @@
-/* MHFU Save Viewer — v0.5  (READ ONLY — never writes or downloads) */
+/* MHFU Save Viewer — v0.6  (READ ONLY — never writes or downloads; in-browser decrypt via decryptor.js) */
 (function () {
   "use strict";
 
@@ -362,16 +362,25 @@
     drag = null;
   });
 
-  // ---- load (read only) -----------------------------------------------
+  // ---- screen switching ----------------------------------------------
+  // Four full-screen states: "drop" | "loading" | "picker" | "app".
+  function showScreen(name) {
+    $("dropScreen").classList.toggle("hidden", name !== "drop");
+    $("loadingScreen").classList.toggle("hidden", name !== "loading");
+    $("pickerScreen").classList.toggle("hidden", name !== "picker");
+    $("app").classList.toggle("hidden", name !== "app");
+  }
+
+  // ---- load a decrypted 438,528-byte slot (read only) -----------------
   function loadBuffer(buf) {
     if (buf.byteLength !== EXPECT) {
       setStatus(`Rejected: ${buf.byteLength.toLocaleString()} bytes, expected ${EXPECT.toLocaleString()}. Not a decrypted MHP2G save.`, "bad");
-      return;
+      return false;
     }
     const dv = new DataView(buf);
     if (!looksLikeText(dv)) {
       setStatus("Rejected: file looks still-encrypted. Decrypt it first (PPSSPP / SaveTools).", "bad");
-      return;
+      return false;
     }
     view = dv;
     const nm = readName(dv) || "(unnamed)";
@@ -379,16 +388,97 @@
     selectSection("monsters");
     renderTable();
     renderSlots();
-    $("dropScreen").classList.add("hidden");
-    $("app").classList.remove("hidden");
+    showScreen("app");
+    return true;
   }
 
+  /* ============================================================
+     >>> EMBEDDED SAVETOOLS DECRYPTOR — VIEWER GLUE (BEGIN) <<<
+     Everything between these fences is the bridge between the drop
+     screen and the decryptor module (decryptor.js). The viewer's
+     own read-only parsing above is untouched; this only routes a
+     raw MHP2NDG.BIN through MHFUDecryptor and then hands the chosen
+     438,528-byte slot to loadBuffer() exactly like a dropped .sav.
+     ============================================================ */
+  let decryptedSlots = null;    // [{name, bytes(Uint8Array 438528), empty}] x3
+  let decryptedRegion = null;   // "US/EU" | "JP"
+
+  // Decide what a dropped file is, purely by size, and route it.
   function handleFile(file) {
     const r = new FileReader();
-    r.onload = () => loadBuffer(r.result);
     r.onerror = () => setStatus("Could not read the file.", "bad");
+    r.onload = () => {
+      const buf = r.result, size = buf.byteLength;
+      if (size === EXPECT) {                 // already-decrypted characterX.sav -> unchanged path
+        loadBuffer(buf);
+      } else if (typeof MHFUDecryptor !== "undefined" &&
+                 (size === MHFUDecryptor.SIZE_PSP_ENC || size === MHFUDecryptor.SIZE_PSP_DEC)) {
+        startDecrypt(buf);                   // raw MHP2NDG.BIN -> decrypt in browser
+      } else {
+        setStatus(`Rejected: ${size.toLocaleString()} bytes. Drop a raw MHP2NDG.BIN ` +
+          `(1,483,024 or 1,483,008 bytes) or a decrypted characterX.sav (438,528 bytes).`, "bad");
+      }
+    };
     r.readAsArrayBuffer(file);
   }
+
+  // Show the loading screen for a ~3s minimum, decrypt, then show the picker.
+  // The decrypt itself is near-instant; the delay is a deliberate cosmetic floor.
+  const LOADING_FLOOR_MS = 3000;
+  function startDecrypt(buf) {
+    setStatus("", "");
+    showScreen("loading");
+    const t0 = Date.now();
+    // yield one frame so the loading screen paints before the (synchronous) decrypt blocks the thread
+    setTimeout(() => {
+      let res;
+      try { res = MHFUDecryptor.decryptBIN(new Uint8Array(buf)); }
+      catch (e) { res = { ok: false, error: "Decryption error: " + (e && e.message ? e.message : e) }; }
+      const wait = Math.max(0, LOADING_FLOOR_MS - (Date.now() - t0));
+      setTimeout(() => finishDecrypt(res), wait);
+    }, 60);
+  }
+
+  function finishDecrypt(res) {
+    if (!res || !res.ok) {
+      showScreen("drop");
+      setStatus((res && res.error) || "Decryption failed.", "bad");
+      return;
+    }
+    decryptedSlots = res.slots;
+    decryptedRegion = res.region;
+    buildPicker(res);
+    showScreen("picker");
+  }
+
+  // Render the 3 slot cards; empty slots are shown as [empty] and disabled.
+  function buildPicker(res) {
+    $("pickRegion").textContent = res.region;
+    $("pickStatus").textContent = "";
+    const wrap = $("slotCards");
+    wrap.innerHTML = "";
+    res.slots.forEach((slot, i) => {
+      const btn = document.createElement("button");
+      btn.className = "slot-card" + (slot.empty ? " empty" : "");
+      btn.disabled = slot.empty;
+      btn.innerHTML = `<span class="slot-num">${i + 1}</span>` +
+        `<span class="slot-name">${slot.empty ? "[empty]" : esc(slot.name || "(unnamed)")}</span>`;
+      if (!slot.empty) btn.addEventListener("click", () => pickSlot(i));
+      wrap.appendChild(btn);
+    });
+  }
+
+  // Hand the chosen slot's 438,528 bytes to the normal viewer path.
+  function pickSlot(i) {
+    const slot = decryptedSlots && decryptedSlots[i];
+    if (!slot || slot.empty) return;
+    const fresh = slot.bytes.slice();       // own ArrayBuffer, offset 0, length 438528
+    if (!loadBuffer(fresh.buffer)) {
+      $("pickStatus").textContent = "That slot could not be read.";
+      $("pickStatus").className = "status bad";
+    }
+  }
+  /* >>> EMBEDDED SAVETOOLS DECRYPTOR — VIEWER GLUE (END) <<< */
 
   // ---- wiring ---------------------------------------------------------
   function init() {
@@ -402,9 +492,16 @@
     document.querySelectorAll(".nav-item").forEach(b => b.addEventListener("click", () => selectSection(b.dataset.section)));
     $("changeSave").addEventListener("click", () => {
       view = null;
-      $("app").classList.add("hidden");
-      $("dropScreen").classList.remove("hidden");
+      decryptedSlots = null;
+      decryptedRegion = null;
       setStatus("", "");
+      showScreen("drop");
+    });
+    $("pickBack").addEventListener("click", () => {
+      decryptedSlots = null;
+      decryptedRegion = null;
+      setStatus("", "");
+      showScreen("drop");
     });
 
     $("search").addEventListener("input", e => { searchQuery = e.target.value; renderTable(); });
