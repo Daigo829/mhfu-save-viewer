@@ -1,4 +1,4 @@
-<!-- MHFU Save Viewer — v0.5 -->
+<!-- MHFU Save Viewer — v0.6 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,19 +14,48 @@
 <!-- ============ DROP SCREEN (no save loaded) ============ -->
 <div class="drop-screen" id="dropScreen">
   <div class="drop-panel">
-    <h1 class="brand-title">MHFU Save Viewer <span class="ver">v0.5</span></h1>
-    <p class="sub">Read-only. Drop a decrypted MHP2G / MHFU character save and see every monster&rsquo;s
+    <h1 class="brand-title">MHFU Save Viewer <span class="ver">v0.6</span></h1>
+    <p class="sub">Read-only. Drop your raw <strong>MHP2NDG.BIN</strong> and the viewer decrypts it in
+      your browser &mdash; or drop an already-decrypted character save. Then see every monster&rsquo;s
       hunt counts and the size records the game stores but never shows you.</p>
     <div class="drop" id="drop">
-      <p><strong>Drop character save here</strong> <span class="muted">or click to choose</span></p>
-      <p class="hint">character1.sav &middot; stays in your browser</p>
+      <p><strong>Drop MHP2NDG.BIN or character save here</strong> <span class="muted">or click to choose</span></p>
+      <p class="hint">MHP2NDG.BIN &middot; character1.sav &middot; everything stays in your browser</p>
     </div>
     <input type="file" id="file">
     <div class="status" id="status"></div>
     <div class="beta">
-      <strong>Read-only tool.</strong> Never edits or downloads your save. Needs a decrypted save
-      (438,528 bytes) &mdash; decrypt via PPSSPP &rarr; Savedata &rarr; SaveTools first.
+      <strong>Read-only tool.</strong> Never edits, re-encrypts, or downloads your save. Decryption
+      runs once, in memory. Accepts a raw MHP2NDG.BIN (1,483,024 or 1,483,008 bytes) or a decrypted
+      characterX.sav (438,528 bytes).
     </div>
+    <div class="wip">
+      <strong>Work in progress.</strong> This aims to be a detailed save viewer and progress tracker
+      for Monster Hunter Freedom Unite. Right now only <strong>monster information</strong> is mapped &mdash;
+      the other sections are placeholders for later passes.
+    </div>
+  </div>
+</div>
+
+<!-- ============ LOADING SCREEN (decrypting a dropped BIN) ============ -->
+<div class="drop-screen hidden" id="loadingScreen">
+  <div class="drop-panel">
+    <h1 class="brand-title">Decrypting save&hellip;</h1>
+    <div class="spinner" id="spinner"></div>
+    <p class="sub" id="loadingMsg">Peeling the PSP layer, then the game layer, then reading your characters.</p>
+    <div class="beta"><strong>In-memory only.</strong> Your file never leaves this page.</div>
+  </div>
+</div>
+
+<!-- ============ CHARACTER PICKER (after a successful decrypt) ============ -->
+<div class="drop-screen hidden" id="pickerScreen">
+  <div class="drop-panel">
+    <h1 class="brand-title">Choose a character</h1>
+    <p class="sub">Decrypted successfully <span class="muted">(region: <span id="pickRegion">&mdash;</span>)</span>.
+      Pick a save slot to view. Empty slots can&rsquo;t be opened.</p>
+    <div class="slot-cards" id="slotCards"></div>
+    <div class="status" id="pickStatus"></div>
+    <a class="change-save" id="pickBack">Choose a different file</a>
   </div>
 </div>
 
@@ -124,6 +153,8 @@
   </main>
 </div>
 
+<!-- embedded SaveTools decryptor: MUST load before app.js -->
+<script src="decryptor.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
