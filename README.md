@@ -1,12 +1,14 @@
-<!-- MHFU Save Viewer — v0.5 -->
+<!-- MHFU Save Viewer — v0.6 -->
 # MHFU Save Viewer
 
 A **read-only** viewer for Monster Hunter Freedom Unite / Portable 2nd G character saves.
-Drop a decrypted save and it shows what the file holds — every monster's hunt counts and the
-per-subspecies **size records** the game stores but never displays.
+Drop your raw **MHP2NDG.BIN** and the viewer decrypts it in your browser, or drop an
+already-decrypted character save. Either way it shows what the file holds — every monster's hunt
+counts and the per-subspecies **size records** the game stores but never displays.
 
-This tool **never writes, edits, or downloads** your save. It only reads and displays, and runs
-entirely in your browser; your save never leaves your machine.
+This tool **never writes, edits, re-encrypts, or downloads** your save. It only reads and displays,
+and runs entirely in your browser; your save never leaves your machine. Decryption happens once, in
+memory.
 
 > Companion to the *Illegal Monster Size Fixer*. Same offset ground-truth, opposite purpose:
 > the fixer changes the save, this one only looks.
@@ -14,20 +16,40 @@ entirely in your browser; your save never leaves your machine.
 ## Files
 
 ```
-index.html      markup / layout
+index.html      markup / layout (loads decryptor.js before app.js)
 styles.css      MHFU-styled theme (gold outline frames, translucent panels, game screenshot bg)
+decryptor.js    embedded "SaveTools" decryptor — raw MHP2NDG.BIN → character slots (self-contained)
 app.js          save parsing + all rendering (DATA / SLOTS offset tables live here)
-images/         static assets — bg-daigo.png is the background screenshot
+images/         static assets — mhfu-background.png is the background screenshot
 ```
 
 Open `index.html` directly in a browser — no build step, no server needed.
 
 ## Use it
 
-1. Decrypt your save first (it must be **438,528 bytes**):
-   PPSSPP → *Savedata* → **SaveTools** (by vnctdj) → decrypt.
-2. Open `index.html` (or the hosted page).
-3. Drop `character1.sav` (or click to choose). The viewer opens on the **Monsters** section.
+Drop your save on the start screen (or click to choose). The viewer accepts either:
+
+- **Raw `MHP2NDG.BIN`** (1,483,024 bytes off a memory stick, or 1,483,008 if PSP-decryption is
+  already off — PPSSPP's default). The viewer decrypts it in-browser, then shows a slot picker:
+  choose character 1/2/3 (empty slots are greyed out). No external tools needed.
+- **A decrypted `characterX.sav`** (438,528 bytes). Loads straight into the viewer.
+
+The viewer opens on the **Monsters** section.
+
+### How decryption works (decryptor.js)
+
+`MHP2NDG.BIN` has two encryption layers. The embedded decryptor peels both, then cuts the character
+slots at fixed offsets:
+
+1. **PSP layer** — AES-128-CBC (the same crypto SED-PC / the PSP hardware does), region key
+   auto-detected. `1,483,024 → 1,483,008`.
+2. **Game layer** — Capcom's substitution + rolling-XOR cipher (the QuickBMS `MHFU_SaveDecrypter.bms`
+   logic). Region is confirmed with the save's salted SHA-1.
+3. **Slot extraction** — `character1/2/3.sav` at `0x1000 / 0x6C100 / 0xD7200`, 438,528 bytes each.
+
+Region is detected automatically by trying US/EU then JP keys and validating the SHA-1. The US/EU
+path is verified byte-for-byte against known-good decrypted saves; the JP path is attempted the same
+way but is not yet confirmed against a JP-region BIN.
 
 ## Interface
 
@@ -80,14 +102,23 @@ Kenta's crown guide (family level) and were validated against the Daigo save.
 
 ## Status
 
-**v0.5.** MHFU-styled interface with a sidebar, static screenshot background, and outlined frames.
-**Monsters** lists every roster monster in in-game order with hunt counts, card + game sizes, and
-crown / min-size / max-size tags, across All / Crown-only / Captured views. **Advanced** holds the
-90-slot offset map. Other sidebar sections are placeholders for later passes.
+**v0.6.** Adds **in-browser decryption**: drop a raw `MHP2NDG.BIN` and the embedded decryptor
+(`decryptor.js`) peels the PSP + game layers and offers a 1/2/3 character-slot picker — no external
+SaveTools/QuickBMS needed. Decrypted `characterX.sav` files still load directly.
+
+Viewer itself is unchanged from v0.5: MHFU-styled interface with a sidebar, static screenshot
+background, and outlined frames. **Monsters** lists every roster monster in in-game order with hunt
+counts, card + game sizes, and crown / min-size / max-size tags, across All / Crown-only / Captured
+views. **Advanced** holds the 90-slot offset map. **Hunter, Quests, Items, Equipment,** and
+**Awards** are placeholders for later passes — only monster information is mapped so far.
 
 ## Credits
 
-- **SaveTools** — vnctdj (PPSSPP forums), decrypt/encrypt.
+- **SaveTools** / `MHFU_SaveDecrypter.bms` — HenryEx (QuickBMS game-layer decryption).
+- **SED-PC** — hgoel0974 (PC port of the PSP save encrypter/decrypter).
+- **mhef** — Seth VanHeulen (PSP AES-layer keys + algorithm the embedded decryptor is ported from).
+- **QuickBMS** — Luigi Auriemma (original script engine).
+- **vnctdj** — PPSSPP-forums SaveTools packaging / quest list.
 - **ryin77** — GameFAQs crown-size % guide (legal ranges).
 - **willthehunter** — MH-Freedom Quest Editor size tables.
 - Offset & crown mapping done by edit-test on an untouched JP (Daigo) save.
