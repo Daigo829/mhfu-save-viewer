@@ -1,4 +1,4 @@
-<!-- MHFU Save Viewer — v0.6 -->
+<!-- MHFU Save Viewer — v0.7 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +14,7 @@
 <!-- ============ DROP SCREEN (no save loaded) ============ -->
 <div class="drop-screen" id="dropScreen">
   <div class="drop-panel">
-    <h1 class="brand-title">MHFU Save Viewer <span class="ver">v0.6</span></h1>
+    <h1 class="brand-title">MHFU Save Viewer <span class="ver">v0.7</span></h1>
     <p class="sub">Read-only. Drop your raw <strong>MHP2NDG.BIN</strong> and the viewer decrypts it in
       your browser &mdash; or drop an already-decrypted character save. Then see every monster&rsquo;s
       hunt counts and the size records the game stores but never shows you.</p>
@@ -62,7 +62,7 @@
 <!-- ============ APP (save loaded) ============ -->
 <div class="app hidden" id="app">
   <aside class="sidebar">
-    <div class="brand">MHFU<br>SAVE VIEWER</div>
+    <div class="brand" id="brandHome" title="Return to start screen">MHFU<br>SAVE VIEWER</div>
     <nav class="nav" id="nav">
       <button class="nav-item" data-section="hunter"><span class="nav-code">HU</span><span class="nav-label">HUNTER</span></button>
       <button class="nav-item active" data-section="monsters"><span class="nav-code">MON</span><span class="nav-label">MONSTERS</span></button>
@@ -79,6 +79,22 @@
   </aside>
 
   <main class="content" id="content">
+    <!-- HUNTER -->
+    <section class="section hidden" id="sec-hunter">
+      <div class="sec-head"><h2 class="sec-title">Hunter</h2></div>
+      <p class="sec-desc">Your hunter profile as stored in the save &mdash; identity, funds, playtime, guild-card greeting,
+        weapon usage and Felyne comrades. Read straight from the save; only fully-decoded fields are shown.</p>
+      <div class="hunter-grid" id="hunterGrid"></div>
+    </section>
+
+    <!-- QUESTS -->
+    <section class="section hidden" id="sec-quests">
+      <div class="sec-head"><h2 class="sec-title">Quests</h2></div>
+      <p class="sec-desc">Quest counts as stored in the save, split by hall and rank. Read straight from the save;
+        only fully-decoded fields are shown.</p>
+      <div class="hunter-grid" id="questGrid"></div>
+    </section>
+
     <!-- MONSTERS -->
     <section class="section" id="sec-monsters">
       <div class="sec-head">
@@ -138,6 +154,38 @@
               <th class="num">Smallest@</th><th class="num">Slain@</th>
             </tr></thead>
             <tbody id="advBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="frame frame-pad" style="margin-top:14px;">
+        <h3 class="adv-h3">Quest counts &mdash; internal byte order</h3>
+        <p class="sec-desc" style="margin-bottom:12px;">The quest counters are stored at consecutive offsets starting at 0x672D8,
+          in save order (which differs from the on-screen order). This maps each array slot to its raw offset, byte width,
+          the category it holds, and its live value (quests cleared in that category).</p>
+        <label class="ctl"><input type="checkbox" id="showQstAdv"> Show quest counts internal byte order</label>
+        <div class="adv-scroll hidden" id="advQstScroll" style="max-height:none;">
+          <table class="slottbl">
+            <thead><tr>
+              <th class="num">Array idx</th><th class="num">Offset</th><th class="num">Width</th><th>Category</th><th class="num">Quests</th>
+            </tr></thead>
+            <tbody id="advQstBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="frame frame-pad" style="margin-top:14px;">
+        <h3 class="adv-h3">Weapon usage &mdash; internal byte order</h3>
+        <p class="sec-desc" style="margin-bottom:12px;">The weapon-usage array at 0x678E0 (11 &times; u16) is stored in an
+          internal weapon order that differs from the on-screen bar order. This maps each array slot to its raw offset,
+          the weapon it holds, and its live value (quests cleared with that weapon).</p>
+        <label class="ctl"><input type="checkbox" id="showWpnAdv"> Show weapon usage internal byte order</label>
+        <div class="adv-scroll hidden" id="advWpnScroll" style="max-height:none;">
+          <table class="slottbl">
+            <thead><tr>
+              <th class="num">Array idx</th><th class="num">Offset</th><th>Weapon</th><th class="num">Quests</th>
+            </tr></thead>
+            <tbody id="advWpnBody"></tbody>
           </table>
         </div>
       </div>
