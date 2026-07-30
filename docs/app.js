@@ -1,4 +1,4 @@
-/* MHFU Save Viewer — v0.6  (READ ONLY — never writes or downloads; in-browser decrypt via decryptor.js) */
+/* MHFU Save Viewer — v0.7  (READ ONLY — never writes or downloads; in-browser decrypt via decryptor.js) */
 (function () {
   "use strict";
 
@@ -30,29 +30,29 @@
     {n:"Gendrome",g:20,sub:0,sl:0x4280,cp:0x4064,lg:0x4118,sm:0x41CC,sz:1,cap:1,b:732.1,mi:90,kg:123,gmn:89,gmx:131},
     {n:"Ioprey",g:21,sub:0,sl:0x4284,cp:0x4068,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
     {n:"Iodrome",g:22,sub:0,sl:0x4286,cp:0x406A,lg:0x411E,sm:0x41D2,sz:1,cap:1,b:774.6,mi:90,kg:136,gmn:89,gmx:145},
-    {n:"Yian Kut-Ku",g:23,sub:0,sl:0x4254,cp:0x4038,lg:0x40EC,sm:0x41A0,sz:1,cap:1,b:919.8,mi:90,kg:122,gmn:50,gmx:131},
-    {n:"Blue Yian Kut-Ku",g:23,sub:1,sl:0x4294,cp:0x4078,lg:0x412C,sm:0x41E0,sz:1,cap:1,b:919.8,mi:90,kg:122,gmn:50,gmx:131},
+    {n:"Yian Kut-Ku",g:23,sub:0,sl:0x4254,cp:0x4038,lg:0x40EC,sm:0x41A0,sz:1,cap:1,b:919.8,mi:90,kg:122,gmn:50,gmx:130},
+    {n:"Blue Yian Kut-Ku",g:23,sub:1,sl:0x4294,cp:0x4078,lg:0x412C,sm:0x41E0,sz:1,cap:1,b:919.8,mi:90,kg:122,gmn:86,gmx:131,vs:'diff'},
     {n:"Yian Garuga",g:24,sub:0,sl:0x4298,cp:0x407C,lg:0x4130,sm:0x41E4,sz:1,cap:1,b:1031.7,mi:91,kg:121,gmn:86,gmx:130},
-    {n:"Yian Garuga (One-Eyed)",g:24,sub:1,sl:0x42E4,cp:0x40C8,lg:0x417C,sm:0x4230,sz:1,cap:1,b:1031.7,mi:91,kg:121,gmn:86,gmx:130},
-    {n:"Gypceros",g:25,sub:0,sl:0x4270,cp:0x4054,lg:0x4108,sm:0x41BC,sz:1,cap:1,b:1013.7,mi:93,kg:125,gmn:88,gmx:135},
-    {n:"Purple Gypceros",g:25,sub:1,sl:0x4296,cp:0x407A,lg:0x412E,sm:0x41E2,sz:1,cap:1,b:1013.7,mi:93,kg:125,gmn:88,gmx:135},
+    {n:"Yian Garuga (One-Eyed)",g:24,sub:1,sl:0x42E4,cp:0x40C8,lg:0x417C,sm:0x4230,sz:1,cap:1,b:1031.7,mi:91,kg:121,gmn:86,gmx:130,vs:'same'},
+    {n:"Gypceros",g:25,sub:0,sl:0x4270,cp:0x4054,lg:0x4108,sm:0x41BC,sz:1,cap:1,b:1013.7,mi:93,kg:125,gmn:88,gmx:133},
+    {n:"Purple Gypceros",g:25,sub:1,sl:0x4296,cp:0x407A,lg:0x412E,sm:0x41E2,sz:1,cap:1,b:1013.7,mi:93,kg:125,gmn:89,gmx:135,vs:'diff'},
     {n:"Hypnocatrice",g:26,sub:0,sl:0x42EC,cp:0x40D0,lg:0x4184,sm:0x4238,sz:1,cap:1,b:834.9,mi:91,kg:121,gmn:88,gmx:141},
     {n:"Remobra",g:27,sub:0,sl:0x42C6,cp:0x40AA,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
-    {n:"Rathian",g:28,sub:0,sl:0x424A,cp:0x402E,lg:0x40E2,sm:0x4196,sz:1,cap:1,b:1645.6,mi:93,kg:129,gmn:88,gmx:140},
-    {n:"Pink Rathian",g:28,sub:1,sl:0x4292,cp:0x4076,lg:0x412A,sm:0x41DE,sz:1,cap:1,b:1645.6,mi:93,kg:129,gmn:88,gmx:140},
-    {n:"Gold Rathian",g:28,sub:1,sl:0x429C,cp:0x4080,lg:0x4134,sm:0x41E8,sz:1,cap:1,b:1645.6,mi:93,kg:129,gmn:88,gmx:140},
-    {n:"Rathalos",g:29,sub:0,sl:0x425E,cp:0x4042,lg:0x40F6,sm:0x41AA,sz:1,cap:1,b:1629.4,mi:90,kg:127,gmn:88,gmx:140},
-    {n:"Azure Rathalos",g:29,sub:1,sl:0x429A,cp:0x407E,lg:0x4132,sm:0x41E6,sz:1,cap:1,b:1629.4,mi:90,kg:127,gmn:88,gmx:140},
-    {n:"Silver Rathalos",g:29,sub:1,sl:0x42AA,cp:0x408E,lg:0x4142,sm:0x41F6,sz:1,cap:1,b:1629.4,mi:90,kg:127,gmn:88,gmx:140},
+    {n:"Rathian",g:28,sub:0,sl:0x424A,cp:0x402E,lg:0x40E2,sm:0x4196,sz:1,cap:1,b:1645.6,mi:93,kg:129,gmn:88,gmx:131},
+    {n:"Pink Rathian",g:28,sub:1,sl:0x4292,cp:0x4076,lg:0x412A,sm:0x41DE,sz:1,cap:1,b:1645.6,mi:93,kg:129,gmn:89,gmx:140,vs:'diff'},
+    {n:"Gold Rathian",g:28,sub:1,sl:0x429C,cp:0x4080,lg:0x4134,sm:0x41E8,sz:1,cap:1,b:1645.6,mi:93,kg:129,gmn:91,gmx:140,vs:'diff'},
+    {n:"Rathalos",g:29,sub:0,sl:0x425E,cp:0x4042,lg:0x40F6,sm:0x41AA,sz:1,cap:1,b:1629.4,mi:90,kg:127,gmn:88,gmx:135},
+    {n:"Azure Rathalos",g:29,sub:1,sl:0x429A,cp:0x407E,lg:0x4132,sm:0x41E6,sz:1,cap:1,b:1629.4,mi:90,kg:127,gmn:88,gmx:140,vs:'diff'},
+    {n:"Silver Rathalos",g:29,sub:1,sl:0x42AA,cp:0x408E,lg:0x4142,sm:0x41F6,sz:1,cap:1,b:1629.4,mi:90,kg:127,gmn:91,gmx:140,vs:'diff'},
     {n:"Khezu",g:30,sub:0,sl:0x4266,cp:0x404A,lg:0x40FE,sm:0x41B2,sz:1,cap:1,b:873.2,mi:93,kg:135,gmn:50,gmx:138},
-    {n:"Red Khezu",g:30,sub:1,sl:0x42A2,cp:0x4086,lg:0x413A,sm:0x41EE,sz:1,cap:1,b:873.2,mi:93,kg:135,gmn:50,gmx:138},
+    {n:"Red Khezu",g:30,sub:1,sl:0x42A2,cp:0x4086,lg:0x413A,sm:0x41EE,sz:1,cap:1,b:873.2,mi:93,kg:135,gmn:91,gmx:138,vs:'diff'},
     {n:"Basarios",g:31,sub:0,sl:0x4274,cp:0x4058,lg:0x410C,sm:0x41C0,sz:1,cap:1,b:1297.6,mi:93,kg:129,gmn:89,gmx:133},
-    {n:"Gravios",g:32,sub:0,sl:0x426A,cp:0x404E,lg:0x4102,sm:0x41B6,sz:1,cap:1,b:2099.9,mi:97,kg:135,gmn:93,gmx:143},
-    {n:"Black Gravios",g:32,sub:1,sl:0x42A6,cp:0x408A,lg:0x413E,sm:0x41F2,sz:1,cap:1,b:2099.9,mi:97,kg:135,gmn:93,gmx:143},
+    {n:"Gravios",g:32,sub:0,sl:0x426A,cp:0x404E,lg:0x4102,sm:0x41B6,sz:1,cap:1,b:2099.9,mi:97,kg:135,gmn:94,gmx:141},
+    {n:"Black Gravios",g:32,sub:1,sl:0x42A6,cp:0x408A,lg:0x413E,sm:0x41F2,sz:1,cap:1,b:2099.9,mi:97,kg:135,gmn:93,gmx:143,vs:'diff'},
     {n:"Monoblos",g:33,sub:0,sl:0x427C,cp:0x4060,lg:0x4114,sm:0x41C8,sz:1,cap:1,b:2004.2,mi:94,kg:127,gmn:93,gmx:140},
-    {n:"White Monoblos",g:33,sub:1,sl:0x42A0,cp:0x4084,lg:0x4138,sm:0x41EC,sz:1,cap:1,b:2004.2,mi:94,kg:127,gmn:93,gmx:140},
-    {n:"Diablos",g:34,sub:0,sl:0x4264,cp:0x4048,lg:0x40FC,sm:0x41B0,sz:1,cap:1,b:1993.4,mi:97,kg:139,gmn:95,gmx:154},
-    {n:"Black Diablos",g:34,sub:1,sl:0x429E,cp:0x4082,lg:0x4136,sm:0x41EA,sz:1,cap:1,b:1993.4,mi:97,kg:139,gmn:95,gmx:154},
+    {n:"White Monoblos",g:33,sub:1,sl:0x42A0,cp:0x4084,lg:0x4138,sm:0x41EC,sz:1,cap:1,b:2004.2,mi:94,kg:127,gmn:93,gmx:140,vs:'same'},
+    {n:"Diablos",g:34,sub:0,sl:0x4264,cp:0x4048,lg:0x40FC,sm:0x41B0,sz:1,cap:1,b:1993.4,mi:97,kg:139,gmn:96,gmx:154},
+    {n:"Black Diablos",g:34,sub:1,sl:0x429E,cp:0x4082,lg:0x4136,sm:0x41EA,sz:1,cap:1,b:1993.4,mi:97,kg:139,gmn:95,gmx:141,vs:'diff'},
     {n:"Tigrex",g:35,sub:0,sl:0x42DE,cp:0x40C2,lg:0x4176,sm:0x422A,sz:1,cap:1,b:1735.3,mi:90,kg:123,gmn:88,gmx:138},
     {n:"Nargacuga",g:36,sub:0,sl:0x42EA,cp:0x40CE,lg:0x4182,sm:0x4236,sz:1,cap:1,b:1602.2,mi:90,kg:123,gmn:86,gmx:131},
     {n:"Akantor",g:37,sub:0,sl:0x42E0,cp:0x40C4,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
@@ -60,28 +60,28 @@
     {n:"Cephalos",g:39,sub:0,sl:0x428C,cp:0x4070,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
     {n:"Cephadrome",g:40,sub:0,sl:0x4258,cp:0x403C,lg:0x40F0,sm:0x41A4,sz:1,cap:1,b:1538.3,mi:93,kg:122,gmn:89,gmx:131},
     {n:"Plesioth",g:41,sub:0,sl:0x4272,cp:0x4056,lg:0x410A,sm:0x41BE,sz:1,cap:1,b:2315.2,mi:97,kg:134,gmn:93,gmx:140},
-    {n:"Green Plesioth",g:41,sub:1,sl:0x42A4,cp:0x4088,lg:0x413C,sm:0x41F0,sz:1,cap:1,b:2315.2,mi:97,kg:134,gmn:93,gmx:140},
+    {n:"Green Plesioth",g:41,sub:1,sl:0x42A4,cp:0x4088,lg:0x413C,sm:0x41F0,sz:1,cap:1,b:2315.2,mi:97,kg:134,gmn:93,gmx:140,vs:'same'},
     {n:"Lavasioth",g:42,sub:0,sl:0x42EE,cp:0x40D2,lg:0x4186,sm:0x423A,sz:1,cap:1,b:2223.2,mi:85,kg:116,gmn:81,gmx:128},
     {n:"Hermitaur",g:43,sub:0,sl:0x42CC,cp:0x40B0,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
     {n:"Daimyo Hermitaur",g:44,sub:0,sl:0x42A8,cp:0x408C,lg:0x4140,sm:0x41F4,sz:1,cap:1,b:1044,mi:88,kg:123,gmn:85,gmx:127},
-    {n:"Plum Daimyo Hermitaur",g:44,sub:1,sl:0x42F4,cp:0x40D8,lg:0x418C,sm:0x4240,sz:1,cap:1,b:1044,mi:88,kg:123,gmn:85,gmx:127},
+    {n:"Plum Daimyo Hermitaur",g:44,sub:1,sl:0x42F4,cp:0x40D8,lg:0x418C,sm:0x4240,sz:1,cap:1,b:1044,mi:88,kg:123,gmn:85,gmx:127,vs:'same'},
     {n:"Ceanataur",g:45,sub:0,sl:0x42DA,cp:0x40BE,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
     {n:"Shogun Ceanataur",g:46,sub:0,sl:0x42CE,cp:0x40B2,lg:0x4166,sm:0x421A,sz:1,cap:1,b:863,mi:94,kg:120,gmn:86,gmx:150},
-    {n:"Terra Shogun Ceanataur",g:46,sub:1,sl:0x42F6,cp:0x40DA,lg:0x418E,sm:0x4242,sz:1,cap:1,b:863,mi:94,kg:120,gmn:86,gmx:150},
+    {n:"Terra Shogun Ceanataur",g:46,sub:1,sl:0x42F6,cp:0x40DA,lg:0x418E,sm:0x4242,sz:1,cap:1,b:863,mi:94,kg:120,gmn:86,gmx:130,vs:'diff'},
     {n:"Shen Gaoren",g:47,sub:0,sl:0x42B6,cp:0x409A,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
     {n:"Bullfango",g:48,sub:0,sl:0x4252,cp:0x4036,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
     {n:"Bulldrome",g:49,sub:0,sl:0x42D0,cp:0x40B4,lg:0x4168,sm:0x421C,sz:1,cap:1,b:566,mi:98,kg:130,gmn:89,gmx:210},
     {n:"Conga",g:50,sub:0,sl:0x42C4,cp:0x40A8,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
     {n:"Congalala",g:51,sub:0,sl:0x42B0,cp:0x4094,lg:0x4148,sm:0x41FC,sz:1,cap:1,b:984,mi:97,kg:125,gmn:93,gmx:140},
-    {n:"Emerald Congalala",g:51,sub:1,sl:0x42F2,cp:0x40D6,lg:0x418A,sm:0x423E,sz:1,cap:1,b:984,mi:97,kg:125,gmn:93,gmx:140},
+    {n:"Emerald Congalala",g:51,sub:1,sl:0x42F2,cp:0x40D6,lg:0x418A,sm:0x423E,sz:1,cap:1,b:984,mi:97,kg:125,gmn:95,gmx:140,vs:'diff'},
     {n:"Blango",g:52,sub:0,sl:0x42C2,cp:0x40A6,lg:0,sm:0,sz:0,cap:0,b:0,mi:0,kg:0,gmn:0,gmx:0},
-    {n:"Blangonga",g:53,sub:0,sl:0x42AE,cp:0x4092,lg:0x4146,sm:0x41FA,sz:1,cap:1,b:860,mi:99,kg:138,gmn:93,gmx:145},
-    {n:"Copper Blangonga",g:53,sub:1,sl:0x42F0,cp:0x40D4,lg:0x4188,sm:0x423C,sz:1,cap:1,b:860,mi:99,kg:138,gmn:93,gmx:145},
-    {n:"Rajang",g:54,sub:0,sl:0x42B2,cp:0x4096,lg:0x414A,sm:0x41FE,sz:1,cap:1,b:960,mi:105,kg:140,gmn:95,gmx:162},
-    {n:"Golden Rajang",g:54,sub:1,sl:0x42FA,cp:0x40DE,lg:0x4192,sm:0x4246,sz:1,cap:1,b:960,mi:105,kg:140,gmn:95,gmx:162},
+    {n:"Blangonga",g:53,sub:0,sl:0x42AE,cp:0x4092,lg:0x4146,sm:0x41FA,sz:1,cap:1,b:860,mi:99,kg:138,gmn:96,gmx:143},
+    {n:"Copper Blangonga",g:53,sub:1,sl:0x42F0,cp:0x40D4,lg:0x4188,sm:0x423C,sz:1,cap:1,b:860,mi:99,kg:138,gmn:93,gmx:145,vs:'diff'},
+    {n:"Rajang",g:54,sub:0,sl:0x42B2,cp:0x4096,lg:0x414A,sm:0x41FE,sz:1,cap:1,b:960,mi:105,kg:140,gmn:100,gmx:162},
+    {n:"Golden Rajang",g:54,sub:1,sl:0x42FA,cp:0x40DE,lg:0x4192,sm:0x4246,sz:1,cap:1,b:960,mi:105,kg:140,gmn:100,gmx:150,vs:'diff'},
     {n:"Kirin",g:55,sub:0,sl:0x428A,cp:0x406E,lg:0x4122,sm:0x41D6,sz:1,cap:0,b:464.3,mi:97,kg:177,gmn:95,gmx:200},
-    {n:"Kushala Daora",g:56,sub:0,sl:0x42B4,cp:0x4098,lg:0x414C,sm:0x4200,sz:1,cap:0,b:1577,mi:91,kg:120,gmn:88,gmx:138},
-    {n:"Rusted Kushala Daora",g:56,sub:1,sl:0x42C0,cp:0x40A4,lg:0x4158,sm:0x420C,sz:1,cap:0,b:1577,mi:91,kg:120,gmn:88,gmx:138},
+    {n:"Kushala Daora",g:56,sub:0,sl:0x42B4,cp:0x4098,lg:0x414C,sm:0x4200,sz:1,cap:0,b:1577,mi:91,kg:120,gmn:90,gmx:138},
+    {n:"Rusted Kushala Daora",g:56,sub:1,sl:0x42C0,cp:0x40A4,lg:0x4158,sm:0x420C,sz:1,cap:0,b:1577,mi:91,kg:120,gmn:88,gmx:131,vs:'diff'},
     {n:"Chameleos",g:57,sub:0,sl:0x42BE,cp:0x40A2,lg:0x4156,sm:0x420A,sz:1,cap:0,b:1744,mi:96,kg:141,gmn:95,gmx:151},
     {n:"Lunastra",g:58,sub:0,sl:0x42C8,cp:0x40AC,lg:0x4160,sm:0x4214,sz:1,cap:0,b:1740,mi:91,kg:121,gmn:86,gmx:130},
     {n:"Teostra",g:59,sub:0,sl:0x42CA,cp:0x40AE,lg:0x4162,sm:0x4216,sz:1,cap:0,b:1740,mi:88,kg:125,gmn:86,gmx:140},
@@ -187,6 +187,30 @@
     {id:90,label:"Golden Rajang",cp:0x40DE,lg:0x4192,sm:0x4246,sl:0x42FA},
   ];
 
+  // ---- Hunter tab config ---------------------------------------------
+  // Weapon usage: on-screen bar order (left->right). The save array is in a
+  // different internal order; SCREEN[i] = ARRAY[WPN_PERM[i]].
+  const WPN_SCREEN = ["Great Sword","Long Sword","Sword & Shield","Dual Blades","Hammer",
+                      "Hunting Horn","Lance","Gunlance","Light Bowgun","Heavy Bowgun","Bow"];
+  const WPN_PERM = [0,7,4,6,2,8,3,9,5,1,10];
+  const WPN_BASE = 0x678E0;               // 11 x u16, quests-per-weapon
+  // Which weapon lives at each internal array index (inverse of WPN_PERM).
+  const WPN_INTERNAL = (function () { const a = new Array(11); WPN_PERM.forEach((idx, i) => { a[idx] = WPN_SCREEN[i]; }); return a; })();
+
+  const FUND = { pokke: 0x69248, guild: 0x6924C, money: 0x69250 };   // three u32
+  const PLAYTIME_OFF = 0x03FC8;           // u32, total seconds
+  const GREETING_OFF = 0x672EC;           // UTF-16LE, NUL-terminated (may be fullwidth)
+  const QUESTS = [                         // save order (w = byte width)
+    { k: "Chief's Quests",         o: 0x672D8, w: 2 },
+    { k: "Guild Hall \u2014 Low Rank",  o: 0x672DA, w: 2 },
+    { k: "Guild Hall \u2014 High Rank", o: 0x672DC, w: 2 },
+    { k: "Treasure Quests",        o: 0x672DE, w: 2 },
+    { k: "Training School",        o: 0x672E0, w: 2 },
+    { k: "Nekoht's Quests",        o: 0x672E2, w: 2 },
+    { k: "Guild Hall \u2014 G Rank",    o: 0x672E4, w: 4 },
+  ];
+  const FELYNE_BASE = 0x67E48, FELYNE_STRIDE = 0x40, FELYNE_SLOTS = 9;
+
   // Group DATA into families: each parent row + its subspecies rows.
   const FAMS = (function () {
     const fams = []; let cur = null;
@@ -200,12 +224,17 @@
   let filterMode = "crown";        // "all" | "crown" | "captured"
   let showSizeCols = true;
   let showSlots = false;
+  let showQstAdv = false;
+  let showWpnAdv = false;
   let searchQuery = "";
   const $ = (id) => document.getElementById(id);
 
   // ---- helpers --------------------------------------------------------
   function setStatus(msg, kind) { const el = $("status"); el.textContent = msg; el.className = "status" + (kind ? " " + kind : ""); }
   const u16  = (o) => view.getUint16(o, true);
+  const u32  = (o) => view.getUint32(o, true);
+  const u8   = (o) => view.getUint8(o);
+  const num  = (v) => v.toLocaleString();
   const cm   = (base, pct) => Math.round(base * pct / 100 * 10) / 10;
   const fmt  = (v) => v.toFixed(1);
   const hex  = (o) => "0x" + o.toString(16).toUpperCase();
@@ -247,9 +276,20 @@
     const d = x.r, out = [];
     if (x.S <= d.mi)  out.push('<span class="badge sc">small crown</span>');
     if (x.L >= d.kg)  out.push('<span class="badge bc">big crown</span>');
-    if (x.S <= d.gmn) out.push('<span class="badge minsz">min size</span>');
-    if (x.L >= d.gmx) out.push('<span class="badge maxsz">max size</span>');
+    if (x.S <= d.gmn) out.push(sizeBadge("minsz", "min size", d));
+    if (x.L >= d.gmx) out.push(sizeBadge("maxsz", "max size", d));
     return out.join(" ") || '<span class="dash">none</span>';
+  }
+  // min-size / max-size tag. Subspecies (d.vs set) carry a corner info
+  // bubble that expands on click/tap to say whether this form's game
+  // range differs from, or matches, its base species.
+  function sizeBadge(cls, label, d) {
+    if (!d.vs) return `<span class="badge ${cls}">${label}</span>`;
+    const note = d.vs === "diff"
+      ? "This subspecies' min/max game size differs from the base species."
+      : "This subspecies' min/max game size is the same as the base species.";
+    return `<span class="badge ${cls} has-tip">${label}` +
+      `<button type="button" class="sub-tip vs-${d.vs}" data-note="${esc(note)}" aria-label="${esc(note)}">i</button></span>`;
   }
   function caughtCell(x) {
     if (!x.r.cap) return "";
@@ -320,10 +360,127 @@
     }).join("");
   }
 
+  // ---- hunter tab -----------------------------------------------------
+  // UTF-16LE string, fixed max byte length, NUL-terminated.
+  function readStr(o, maxBytes) { let s = ""; for (let i = 0; i < maxBytes; i += 2) { const c = view.getUint16(o + i, true); if (c === 0) break; s += String.fromCharCode(c); } return s; }
+  // Greeting: may be stored as fullwidth glyphs; fold them back to ASCII.
+  function readGreeting(o) {
+    let s = "";
+    for (let i = 0; i < 512; i += 2) {
+      const c = view.getUint16(o + i, true); if (c === 0) break;
+      let a = c;
+      if (c >= 0xFF01 && c <= 0xFF5E) a = c - 0xFEE0;
+      else if (c === 0x3000) a = 0x20;
+      s += String.fromCharCode(a);
+    }
+    return s;
+  }
+  function fmtPlaytime(secs) { const h = Math.floor(secs / 3600), m = Math.floor((secs % 3600) / 60); return h.toLocaleString() + "h " + String(m).padStart(2, "0") + "m"; }
+
+  function renderHunter() {
+    if (!view) return;
+    const name = readName(view) || "(unnamed)";
+    const secs = u32(PLAYTIME_OFF);
+    const greet = readGreeting(GREETING_OFF);
+
+    // weapon usage in on-screen order
+    const wvals = WPN_SCREEN.map((nm, i) => u16(WPN_BASE + WPN_PERM[i] * 2));
+    const wmax = Math.max(1, ...wvals);
+    const wmin = Math.min(...wvals);
+    const wrange = wmax - wmin;
+    const totalQ = wvals.reduce((a, b) => a + b, 0);
+    const wbars = WPN_SCREEN.map((nm, i) => {
+      const v = wvals[i], pct = Math.round(v / wmax * 100), top = v === wmax && v > 0;
+      // fade intensity scales min->max: lowest = current .5 alpha, highest = full accent.
+      const alpha = wrange > 0 ? 0.5 + 0.5 * (v - wmin) / wrange : 0.5;
+      const bg = top ? "" : `background:rgba(202,161,83,${alpha.toFixed(3)});`;
+      return `<div class="wbar-row">
+        <div class="wbar-name">${esc(nm)}</div>
+        <div class="wbar-track"><div class="wbar-fill${top ? " top" : ""}" style="width:${v > 0 ? Math.max(pct, 2) : 0}%;${bg}"></div></div>
+        <div class="wbar-val num">${num(v)}</div></div>`;
+    }).join("");
+
+    let felyneRows = "";
+    for (let i = 0; i < FELYNE_SLOTS; i++) {
+      const rec = FELYNE_BASE + i * FELYNE_STRIDE;
+      let empty = true;
+      for (let b = 0; b < FELYNE_STRIDE; b++) { if (u8(rec + b) !== 0) { empty = false; break; } }
+      if (empty) continue;
+      const lvl = u8(rec + 0x03) + 1, atk = u16(rec + 0x04), def = u16(rec + 0x06);
+      const leader = readStr(rec + 0x18, 16) || "\u2014";
+      felyneRows += `<tr><td class="num">${i + 1}</td><td class="num">${lvl}</td><td class="num">${num(atk)}</td><td class="num">${num(def)}</td><td>${esc(leader)}</td></tr>`;
+    }
+    const felyneTbl = felyneRows
+      ? `<table class="slottbl htbl"><thead><tr><th class="num">Slot</th><th class="num">Lv</th><th class="num">Attack</th><th class="num">Defense</th><th>First Leader</th></tr></thead><tbody>${felyneRows}</tbody></table>`
+      : `<p class="ph-text">No Felyne comrades on this save.</p>`;
+
+    $("hunterGrid").innerHTML = `
+      <div class="hcard">
+        <h3>Hunter</h3>
+        <div class="hunter-name">${esc(name)}</div>
+        <div class="stat" style="margin-top:14px;"><span class="k">Playtime</span><span class="v">${fmtPlaytime(secs)}</span></div>
+      </div>
+      <div class="hcard">
+        <h3>Funds</h3>
+        <div class="stat"><span class="k">Pokke Points</span><span class="v">${num(u32(FUND.pokke))}</span></div>
+        <div class="stat"><span class="k">Guild Points</span><span class="v">${num(u32(FUND.guild))}</span></div>
+        <div class="stat"><span class="k">Zenny</span><span class="v">${num(u32(FUND.money))}</span></div>
+      </div>
+      <div class="hcard span2">
+        <h3>Weapon Usage</h3>
+        <div class="wbars">${wbars}</div>
+      </div>
+      <div class="hcard span2">
+        <h3>Guild Card Greeting</h3>
+        ${greet ? `<p class="greeting">\u201C${esc(greet)}\u201D</p>` : `<p class="ph-text">No greeting set.</p>`}
+      </div>
+      <div class="hcard span2">
+        <h3>Felyne Fighter Comrades</h3>
+        <div class="htbl-wrap">${felyneTbl}</div>
+      </div>`;
+  }
+
+  // in-game display order (Chief, Nekoht, GH Low, GH High, GH G, Treasure, Training)
+  const QUEST_GAME_ORDER = [0, 5, 1, 2, 6, 3, 4];
+
+  function renderQuests() {
+    if (!view) return;
+    const qrows = QUEST_GAME_ORDER.map(i => {
+      const q = QUESTS[i];
+      const v = q.w === 4 ? u32(q.o) : u16(q.o);
+      return `<div class="stat"><span class="k">${esc(q.k)}</span><span class="v">${num(v)}</span></div>`;
+    }).join("");
+    const totalQ = WPN_SCREEN.reduce((a, nm, i) => a + u16(WPN_BASE + WPN_PERM[i] * 2), 0);
+    $("questGrid").innerHTML = `
+      <div class="hcard span2">
+        <h3>Quest Records</h3>
+        ${qrows}
+        <div class="stat total"><span class="k">Total Quests</span><span class="v">${num(totalQ)}</span></div>
+      </div>`;
+  }
+
+  function renderQuestsAdv() {
+    const wrap = $("advQstScroll");
+    if (!showQstAdv || !view) { wrap.classList.add("hidden"); $("advQstBody").innerHTML = ""; return; }
+    wrap.classList.remove("hidden");
+    $("advQstBody").innerHTML = QUESTS.map((q, j) => {
+      const v = q.w === 4 ? u32(q.o) : u16(q.o);
+      return `<tr><td class="num">${j}</td><td class="num">${hex(q.o)}</td><td class="num">u${q.w * 8}</td><td>${esc(q.k)}</td><td class="num">${num(v)}</td></tr>`;
+    }).join("");
+  }
+
+  function renderWeaponsAdv() {
+    const wrap = $("advWpnScroll");
+    if (!showWpnAdv || !view) { wrap.classList.add("hidden"); $("advWpnBody").innerHTML = ""; return; }
+    wrap.classList.remove("hidden");
+    $("advWpnBody").innerHTML = WPN_INTERNAL.map((nm, j) => {
+      const o = WPN_BASE + j * 2;
+      return `<tr><td class="num">${j}</td><td class="num">${hex(o)}</td><td>${esc(nm)}</td><td class="num">${num(u16(o))}</td></tr>`;
+    }).join("");
+  }
+
   // ---- sidebar sections ----------------------------------------------
   const PLACEHOLDERS = {
-    hunter: "Hunter details (rank, funds, playtime, equipment…) are not decoded yet. Placeholder for a later pass.",
-    quests: "Quest completion, key quests, and progress are not decoded yet. Placeholder for a later pass.",
     items: "Item box & pouch contents are not decoded yet. Placeholder for a later pass.",
     equipment: "Equipped weapon, armor, and decorations are not decoded yet. Placeholder for a later pass.",
     awards: "Guild card titles and awards are not decoded yet. Placeholder for a later pass.",
@@ -332,10 +489,15 @@
 
   function selectSection(id) {
     document.querySelectorAll(".nav-item").forEach(b => b.classList.toggle("active", b.dataset.section === id));
-    const showMon = id === "monsters", showAdv = id === "advanced", showPh = !showMon && !showAdv;
+    const showHun = id === "hunter", showMon = id === "monsters", showAdv = id === "advanced", showQst = id === "quests";
+    const showPh = !showHun && !showMon && !showAdv && !showQst;
+    $("sec-hunter").classList.toggle("hidden", !showHun);
+    $("sec-quests").classList.toggle("hidden", !showQst);
     $("sec-monsters").classList.toggle("hidden", !showMon);
     $("sec-advanced").classList.toggle("hidden", !showAdv);
     $("sec-placeholder").classList.toggle("hidden", !showPh);
+    if (showHun) renderHunter();
+    if (showQst) renderQuests();
     if (showPh) { $("phTitle").textContent = LABELS[id] || ""; $("phText").textContent = PLACEHOLDERS[id] || ""; }
   }
 
@@ -388,6 +550,8 @@
     selectSection("monsters");
     renderTable();
     renderSlots();
+    renderWeaponsAdv();
+    renderQuestsAdv();
     showScreen("app");
     return true;
   }
@@ -490,13 +654,47 @@
     drop.addEventListener("drop", ev => { const f = ev.dataTransfer.files[0]; if (f) handleFile(f); });
 
     document.querySelectorAll(".nav-item").forEach(b => b.addEventListener("click", () => selectSection(b.dataset.section)));
-    $("changeSave").addEventListener("click", () => {
+    // Subspecies size-tag info bubbles: a body-level floating popup so it
+    // escapes the table's scroll clipping and never reflows the row.
+    const tipPop = document.createElement("div");
+    tipPop.className = "sub-tip-pop hidden";
+    document.body.appendChild(tipPop);
+    let tipOpenEl = null;
+    function closeTip() { tipPop.classList.add("hidden"); if (tipOpenEl) { tipOpenEl.classList.remove("open"); tipOpenEl = null; } }
+    function openTip(btn) {
+      tipPop.textContent = btn.dataset.note || "";
+      tipPop.className = "sub-tip-pop " + (btn.classList.contains("vs-same") ? "is-same" : "is-diff");
+      const r = btn.getBoundingClientRect(), pw = tipPop.offsetWidth, ph = tipPop.offsetHeight;
+      let left = r.right - pw;
+      if (left + pw > window.innerWidth - 8) left = window.innerWidth - 8 - pw;
+      if (left < 8) left = 8;
+      let top = r.bottom + 6;
+      if (top + ph > window.innerHeight - 8) top = r.top - ph - 6;
+      tipPop.style.left = left + "px"; tipPop.style.top = top + "px";
+      btn.classList.add("open"); tipOpenEl = btn;
+    }
+    $("montbl").addEventListener("click", (e) => {
+      const btn = e.target.closest(".sub-tip");
+      if (!btn) return;
+      e.stopPropagation();
+      if (tipOpenEl === btn) { closeTip(); return; }
+      closeTip(); openTip(btn);
+    });
+    document.addEventListener("click", (e) => { if (!e.target.closest(".sub-tip")) closeTip(); });
+    $("tableScroll").addEventListener("scroll", closeTip);
+    $("content").addEventListener("scroll", closeTip);
+    window.addEventListener("scroll", closeTip, true);
+    window.addEventListener("resize", closeTip);
+    function unloadToStart() {
+      if (!window.confirm("Return to the start screen? The current character will be unloaded.")) return;
       view = null;
       decryptedSlots = null;
       decryptedRegion = null;
       setStatus("", "");
       showScreen("drop");
-    });
+    }
+    $("brandHome").addEventListener("click", unloadToStart);
+    $("changeSave").addEventListener("click", unloadToStart);
     $("pickBack").addEventListener("click", () => {
       decryptedSlots = null;
       decryptedRegion = null;
@@ -508,6 +706,8 @@
     $("filterMode").addEventListener("change", e => { filterMode = e.target.value; renderTable(); });
     $("showSize").addEventListener("change", e => { showSizeCols = e.target.checked; renderTable(); });
     $("showSlots").addEventListener("change", e => { showSlots = e.target.checked; renderSlots(); });
+    $("showQstAdv").addEventListener("change", e => { showQstAdv = e.target.checked; renderQuestsAdv(); });
+    $("showWpnAdv").addEventListener("change", e => { showWpnAdv = e.target.checked; renderWeaponsAdv(); });
 
     initDragScroll($("content"));
     initDragScroll($("tableScroll"));
