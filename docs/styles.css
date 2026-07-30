@@ -1,4 +1,4 @@
-/*MHFU Save Viewer — v0.6*/
+/*MHFU Save Viewer — v0.7*/
 :root {
   --bg: #140d0a;
   --accent: #c9963c;
@@ -120,7 +120,8 @@ input[type=file] { display: none; }
   width: 210px; flex-shrink: 0; background: var(--panel); border: 2px solid var(--accent);
   padding: 26px 14px; display: flex; flex-direction: column;
 }
-.brand { font-size: 14px; letter-spacing: .05em; line-height: 1.4; margin-bottom: 24px; padding: 0 8px; }
+.brand { font-size: 14px; letter-spacing: .05em; line-height: 1.4; margin-bottom: 24px; padding: 0 8px; cursor: pointer; }
+.brand:hover { color: #f3d998; }
 
 .nav { display: flex; flex-direction: column; }
 .nav-item {
@@ -177,11 +178,18 @@ input[type=file] { display: none; }
   padding: 9px 1ch; border-bottom: 1px solid var(--border-line); white-space: nowrap;
 }
 .montbl th {
-  text-align: right; color: var(--muted); font-size: 10px; text-transform: uppercase;
+  text-align: center; color: var(--muted); font-size: 10px; text-transform: uppercase;
   letter-spacing: .04em; background: rgba(202,161,83,.08); font-weight: 600;
+  position: sticky; top: 0; z-index: 3;
 }
-.montbl th:nth-child(1), .montbl th:nth-child(2) { text-align: left; }
-.montbl th.szcol:last-of-type { text-align: left; }
+/* opaque backing so rows don't show through the sticky header */
+.montbl thead th::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--bg); box-shadow: inset 0 0 0 100px rgba(202,161,83,.08);
+  border-bottom: 1px solid var(--accent-soft);
+}
+.montbl th:nth-child(1), .montbl th:nth-child(2) { text-align: center; }
+.montbl th.szcol:last-of-type { text-align: center; }
 .montbl th.c-capchk { text-align: center; }
 .montbl td { text-align: right; font-variant-numeric: tabular-nums; }
 .montbl td.cardno { text-align: left; color: var(--muted); }
@@ -223,6 +231,25 @@ input[type=file] { display: none; }
 .badge.norec { background: rgba(168,150,122,.15); color: var(--muted); }
 .crowncell .dash { color: var(--dead); }
 
+/* subspecies size-tag info bubble */
+.badge.has-tip { position: relative; overflow: visible; }
+.sub-tip {
+  position: relative; display: inline-block; margin-left: 4px; padding: 0; cursor: pointer;
+  width: 13px; height: 13px; line-height: 12px; vertical-align: top;
+  transform: translateY(-5px); border: 1px solid rgba(0,0,0,.4); border-radius: 50%;
+  background: rgba(0,0,0,.28); color: inherit; font: 700 9px/12px Verdana, sans-serif;
+  text-align: center;
+}
+/* the note is a body-level fixed popup (see .sub-tip-pop); the dot only toggles it */
+.sub-tip.open { background: var(--accent); color: #140d0a; }
+.sub-tip-pop {
+  position: fixed; z-index: 999; max-width: 210px; white-space: normal; text-align: left;
+  background: var(--bg); color: var(--txt); border: 1px solid var(--accent); border-radius: 8px;
+  padding: 7px 10px; box-shadow: 0 4px 14px rgba(0,0,0,.6);
+  font: 600 10px/1.4 'Trebuchet MS', 'Segoe UI', sans-serif; letter-spacing: 0;
+}
+.sub-tip-pop.hidden { display: none; }
+
 /* ============ ADVANCED SLOT TABLE ============ */
 .adv-scroll { overflow: auto; max-height: 60vh; margin-top: 12px; cursor: grab; }
 .slottbl { min-width: 640px; width: 100%; border-collapse: collapse; font-size: 11.5px; }
@@ -234,3 +261,51 @@ input[type=file] { display: none; }
 /* ============ PLACEHOLDER ============ */
 .ph-panel { max-width: 600px; }
 .ph-text { color: var(--muted); font-size: 13px; font-style: italic; line-height: 1.6; margin: 0; }
+
+/* ============ HUNTER DASHBOARD ============ */
+.hunter-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px; align-items: stretch;
+}
+.hcard { border: 2px solid var(--accent); background: rgba(20,13,10,.35); padding: 16px 18px; }
+.hcard.span2 { grid-column: span 2; }
+@media (max-width: 720px) {
+  .hunter-grid { grid-template-columns: 1fr; }
+  .hcard.span2 { grid-column: span 1; }
+}
+.hcard h3 {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+  font-family: Verdana, sans-serif; font-weight: 700; color: #e8c876;
+  font-size: 12px; letter-spacing: .07em; text-transform: uppercase;
+  margin: 0 0 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(202,161,83,.2);
+}
+.hcard-note { font-family: 'Trebuchet MS', sans-serif; font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--muted); font-size: 11px; }
+
+.hunter-name { font-family: Verdana, sans-serif; font-weight: 700; color: #e8c876; font-size: 22px; letter-spacing: .02em; }
+
+.stat { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--border-line); }
+.stat:last-child { border-bottom: none; }
+.stat .k { color: var(--muted); font-size: 12px; }
+.stat .v { color: var(--txt); font-weight: 700; font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stat.total { border-top: 2px solid rgba(202,161,83,.3); margin-top: 4px; padding-top: 10px; }
+.stat.total .k { color: var(--txt); font-weight: 700; }
+.stat.total .v { color: var(--accent); font-size: 15px; }
+
+.greeting { color: var(--txt); font-size: 15px; font-style: italic; line-height: 1.7; margin: 0; text-wrap: pretty; }
+
+/* weapon usage bars */
+.wbars { display: flex; flex-direction: column; gap: 8px; }
+.wbar-row { display: grid; grid-template-columns: 118px 1fr 58px; align-items: center; gap: 12px; }
+.wbar-name { font-size: 12px; color: var(--txt); white-space: nowrap; }
+.wbar-track { height: 14px; background: rgba(202,161,83,.08); border: 1px solid var(--border-line); }
+.wbar-fill { height: 100%; background: rgba(202,161,83,.5); transition: width .3s; }
+.wbar-fill.top { background: var(--accent); }
+.wbar-val { text-align: right; font-size: 12px; color: var(--txt); font-variant-numeric: tabular-nums; }
+
+/* felyne table reuses .slottbl; wrapper allows horizontal scroll if narrow */
+.htbl-wrap { overflow-x: auto; }
+.htbl { min-width: 0; }
+.htbl td, .htbl th { white-space: nowrap; }
+
+/* advanced sub-heading */
+.adv-h3 { font-family: Verdana, sans-serif; font-weight: 700; color: #e8c876; font-size: 14px; margin: 0 0 6px; }
