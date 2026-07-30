@@ -1,4 +1,4 @@
-<!-- MHFU Save Viewer — v0.6 -->
+<!-- MHFU Save Viewer — v0.7 -->
 # MHFU Save Viewer
 
 A **read-only** viewer for Monster Hunter Freedom Unite / Portable 2nd G character saves.
@@ -53,10 +53,28 @@ way but is not yet confirmed against a JP-region BIN.
 
 ## Interface
 
-A left sidebar switches sections. **Monsters** and **Advanced** are functional; **Hunter, Quests,
+A left sidebar switches sections. **Hunter**, **Monsters** and **Advanced** are functional; **Quests,
 Items, Equipment,** and **Awards** are placeholders for later passes. The background is a static
 in-game screenshot; the sidebar and content sit in outlined frames over it. Any scrollable list can
 be dragged (click-drag, axis-locked to up/down or left/right) as well as scrolled with the wheel.
+
+### Hunter
+
+A dashboard of bordered cards showing the hunter profile, read straight from the save (only
+fully-decoded fields are shown):
+
+- **Hunter** — character name and **playtime** (stored as total seconds, shown H:MM).
+- **Funds** — **Pokke Points**, **Guild Points**, and **Zenny** (each caps at 9,999,999 in-game).
+- **Quest Records** — the 7 quest tallies: Chief's, Guild Hall Low/High/G Rank, Treasure Quests,
+  Training School, Nekoht's.
+- **Weapon Usage** — a horizontal bar chart of quests cleared per weapon, all 11 types in the
+  game's on-screen bar order, most-used highlighted, with a total.
+- **Guild Card Greeting** — the player message, folded from the save's fullwidth glyphs back to ASCII.
+- **Felyne Comrades** — a compact table of each non-empty comrade slot: Level, Attack, Defense,
+  First Leader name.
+
+Deferred (not stored as plain values / needs lookup tables — omitted for now): HR, Friendship
+points, currently-held weapon type, treasures-collected grid.
 
 ### Monsters
 
@@ -76,10 +94,12 @@ Columns:
   `----` for monsters that can't be captured (small monsters, elder dragons, Fatalis, Lao-Shan).
 - **Card smallest / Card biggest** — the smallest/largest size you've recorded for that form
   (stored % and cm), shown plain.
-- **Min game / Max game** — the family-wide absolute smallest/largest that monster can ever be,
-  always coloured (**min in red**, **max in blue**).
+- **Min game / Max game** — the smallest/largest that form can ever be, **per subspecies** (each
+  base and subspecies has its own range), always coloured (**min in red**, **max in blue**).
 - **Crowns** — tags earned: *small crown / big crown* (crossed the crown threshold) and
-  *min size / max size* (reached the game's absolute extreme, which sits on top of a crown).
+  *min size / max size* (reached the game's absolute extreme, which sits on top of a crown). On a
+  **subspecies**, the min-size / max-size tag carries a small corner **info bubble** — click or tap it
+  to see whether that form's range *differs from* or is the *same as* its base species.
 - **Caught** — only in the *Captured* view: a green ✓ when captured ≥ 1, a red ✗ when 0.
 
 **Size & crown columns** off collapses the view to just **# → Monster → Slain → Captured**.
@@ -89,28 +109,37 @@ The **Captured** filter shows **# → Monster → Slain → Captured → Caught*
 
 A full list of the **offset map** used for the Monster List — all **90 internal save array slots**
 with their raw offsets and live values (captured / largest / smallest / slain), including the 6
-unused slots and the one unidentified counter (`0x4282`). For debugging, hex editing and offset
-finding; not needed for normal use.
+unused slots and the one unidentified counter (`0x4282`). Below it, a **weapon-usage internal byte
+order** table maps each slot of the `0x678E0` array to its offset, the weapon it holds, and its live
+value (the array's internal order differs from the on-screen bar order). For debugging, hex editing
+and offset finding; not needed for normal use.
 
 ## How the data was mapped
 
 Size percents live in two u16 little-endian arrays (`0x40E0`–`0x4246`); displayed cm = `base × percent / 100`.
 The guild-card cache at `0x67408` stores, per base species, `[u16 ?][u16 hunted][u16 max×10][u16 min×10]`.
 Offsets and base sizes were confirmed by forced-ramp **edit-testing** on an untouched JP (Daigo) save.
-Crown thresholds come from `mhfu_crown_size_percentages_v2.txt`; the game min/max sizes come from
-Kenta's crown guide (family level) and were validated against the Daigo save.
+Crown thresholds come from `mhfu_crown_size_percentages_v2.txt`; the game min/max sizes are
+**per-form** ryin77 ground-truth ranges (base and each subspecies separately, from that guide's
+per-quest size tables). Five ranges were then **widened to match a verified 3,600 h save** whose real
+records exceeded ryin77: Tigrex max 138%, Teostra max 140%, Kushala Daora max 138%, Diablos max
+154%, and Yian Garuga (One-Eyed) min 86% (which makes it identical to base Garuga).
 
 ## Status
 
-**v0.6.** Adds **in-browser decryption**: drop a raw `MHP2NDG.BIN` and the embedded decryptor
+**v0.7.** Adds **in-browser decryption**: drop a raw `MHP2NDG.BIN` and the embedded decryptor
 (`decryptor.js`) peels the PSP + game layers and offers a 1/2/3 character-slot picker — no external
 SaveTools/QuickBMS needed. Decrypted `characterX.sav` files still load directly.
 
-Viewer itself is unchanged from v0.5: MHFU-styled interface with a sidebar, static screenshot
-background, and outlined frames. **Monsters** lists every roster monster in in-game order with hunt
-counts, card + game sizes, and crown / min-size / max-size tags, across All / Crown-only / Captured
-views. **Advanced** holds the 90-slot offset map. **Hunter, Quests, Items, Equipment,** and
-**Awards** are placeholders for later passes — only monster information is mapped so far.
+Adds the **Hunter** tab: a card dashboard with name, playtime, funds, the 7 quest tallies, a
+weapon-usage bar chart, the guild-card greeting, and the Felyne-comrade table. **Advanced** gains a
+weapon-usage internal-byte-order table.
+
+MHFU-styled interface with a sidebar, static screenshot background, and outlined frames. **Monsters**
+lists every roster monster in in-game order with hunt counts, card + game sizes, and crown /
+min-size / max-size tags, across All / Crown-only / Captured views. **Advanced** holds the 90-slot
+offset map plus the weapon-order table. **Quests, Items, Equipment,** and **Awards** are placeholders
+for later passes.
 
 ## Credits
 
