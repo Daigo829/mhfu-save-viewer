@@ -1,4 +1,4 @@
-<!-- MHFU Save Viewer — v0.7 -->
+<!-- MHFU Save Viewer — v0.8 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,25 +14,23 @@
 <!-- ============ DROP SCREEN (no save loaded) ============ -->
 <div class="drop-screen" id="dropScreen">
   <div class="drop-panel">
-    <h1 class="brand-title">MHFU Save Viewer <span class="ver">v0.7</span></h1>
-    <p class="sub">Read-only. Drop your raw <strong>MHP2NDG.BIN</strong> and the viewer decrypts it in
-      your browser &mdash; or drop an already-decrypted character save. Then see every monster&rsquo;s
-      hunt counts and the size records the game stores but never shows you.</p>
+    <h1 class="brand-title">MHFU Save Viewer <span class="ver">v0.8</span></h1>
+    <p class="sub">Drop your raw <strong>MHP2NDG.BIN</strong> and the viewer decrypts it in
+      your browser &mdash; or drop an already-decrypted character save. This is a detailed save viewer built to
+      surface all sorts of information from MHFU &mdash; even data the game hides &mdash; and also track your progress.</p>
     <div class="drop" id="drop">
       <p><strong>Drop MHP2NDG.BIN or character save here</strong> <span class="muted">or click to choose</span></p>
       <p class="hint">MHP2NDG.BIN &middot; character1.sav &middot; everything stays in your browser</p>
     </div>
     <input type="file" id="file">
     <div class="status" id="status"></div>
-    <div class="beta">
+    <div class="beta" style="position: static; text-align: center">
       <strong>Read-only tool.</strong> Never edits, re-encrypts, or downloads your save. Decryption
       runs once, in memory. Accepts a raw MHP2NDG.BIN (1,483,024 or 1,483,008 bytes) or a decrypted
       characterX.sav (438,528 bytes).
     </div>
-    <div class="wip">
-      <strong>Work in progress.</strong> This aims to be a detailed save viewer and progress tracker
-      for Monster Hunter Freedom Unite. Right now only <strong>monster information</strong> is mapped &mdash;
-      the other sections are placeholders for later passes.
+    <div class="wip" style="text-align: center">
+      <strong>Work in progress.</strong> This is not a full release, some sections are still placeholders.
     </div>
   </div>
 </div>
@@ -69,7 +67,7 @@
       <button class="nav-item" data-section="quests"><span class="nav-code">QST</span><span class="nav-label">QUESTS</span></button>
       <button class="nav-item" data-section="items"><span class="nav-code">ITM</span><span class="nav-label">ITEMS</span></button>
       <button class="nav-item" data-section="equipment"><span class="nav-code">EQP</span><span class="nav-label">EQUIPMENT</span></button>
-      <button class="nav-item" data-section="awards"><span class="nav-code">AWD</span><span class="nav-label">AWARDS</span></button>
+      <button class="nav-item" data-section="awards"><span class="nav-code">AWD</span><span class="nav-label">AWARDS-COMPLETION</span></button>
       <button class="nav-item" data-section="advanced"><span class="nav-code">ADV</span><span class="nav-label">ADVANCED</span></button>
     </nav>
     <div class="side-foot">
@@ -93,6 +91,16 @@
       <p class="sec-desc">Quest counts as stored in the save, split by hall and rank. Read straight from the save;
         only fully-decoded fields are shown.</p>
       <div class="hunter-grid" id="questGrid"></div>
+    </section>
+
+    <!-- AWARDS-COMPLETION -->
+    <section class="section hidden" id="sec-awards">
+      <div class="sec-head"><h2 class="sec-title">Awards &mdash; Completion</h2></div>
+      <p class="sec-desc">Progress toward the Guild-Card Awards. This first pass tracks the awards whose save data is fully
+        mapped; a couple are shown as <em>not yet mapped</em> until their data is decoded. Note: awards are one-way switches
+        in-game &mdash; once earned they stay earned even if you later sell the items, so these bars reflect your
+        <strong>current</strong> save contents, not the earned flag.</p>
+      <div class="award-list" id="awardList"></div>
     </section>
 
     <!-- MONSTERS -->
