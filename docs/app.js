@@ -1,4 +1,4 @@
-/* MHFU Save Viewer — v0.7  (READ ONLY — never writes or downloads; in-browser decrypt via decryptor.js) */
+/* MHFU Save Viewer — v0.8  (READ ONLY — never writes or downloads; in-browser decrypt via decryptor.js) */
 (function () {
   "use strict";
 
@@ -479,25 +479,207 @@
     }).join("");
   }
 
+  // ---- awards / completion tab ---------------------------------------
+  // Equipment master table, loaded from 12_equipment_full_table.csv on init.
+  // Map "cat:id" -> {isG, r9}. null until the CSV loads; scanBox falls back to
+  // the embedded lookup below when the fetch fails (e.g. opened from file://).
+  let equipTable = null;
+
+  // Compact fallback lookup (generated from equipment_full_table.csv). Used ONLY when the
+  // CSV fetch fails — e.g. opening index.html directly from disk (file://), where browsers
+  // block same-directory fetches. Lists only the qualifying items per award.
+  //   EMBED_G  : G-weapon ids by category (5 blademaster, 6 gunner)  — award 2V
+  //   EMBED_R9 : rarity 9/10 armor ids by category (0 legs,1 head,2 body,3 arms,4 waist) — award 2W
+  const EMBED_G = {
+    5: [679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,724,725,726,727,728,729,731,732,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832,833,834,835,836,837,838,839,840,841,842,843,844,845,846,847,848,849,850,851,852,853,854,855,856,857,859,860,861,946,947,948,949,950,951,952,953,954,955,956,957,958,959,960,961,962,963,964,965,966,967,968,969,970,971,972,973,974,975,976,977,978,979,980,981,982,983,984,985,986,987,988,989,990,991,992,993,994,995,996,997,999,1000,1001,1002,1003,1055,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1144,1145],
+    6: [208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,225,226,227,228,229,230,231,268,269,270,271,272,273,274,276,277,278,279,280,281,282,283,284,285,286,287,288,292,294,295,298,306,308,309,323,327,340]
+  };
+  const EMBED_R9 = {
+    0: [301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415],
+    1: [316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,433,435],
+    2: [300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415],
+    3: [294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406],
+    4: [292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404]
+  };
+  // Build the fallback Map once, on first use.
+  let embedTableCache = null;
+  function embedTable() {
+    if (embedTableCache) return embedTableCache;
+    const m = new Map();
+    for (const cat in EMBED_G) EMBED_G[cat].forEach(id => m.set(cat + ":" + id, { isG: true, r9: false }));
+    for (const cat in EMBED_R9) EMBED_R9[cat].forEach(id => {
+      const k = cat + ":" + id, e = m.get(k);
+      if (e) e.r9 = true; else m.set(k, { isG: false, r9: true });
+    });
+    embedTableCache = m;
+    return m;
+  }
+
+  function parseCSV(text) {
+    const rows = []; let f = [], cur = "", q = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (q) { if (c === '"') { if (text[i + 1] === '"') { cur += '"'; i++; } else q = false; } else cur += c; }
+      else if (c === '"') q = true;
+      else if (c === ',') { f.push(cur); cur = ""; }
+      else if (c === '\n') { f.push(cur); rows.push(f); f = []; cur = ""; }
+      else if (c === '\r') { /* skip */ }
+      else cur += c;
+    }
+    if (cur !== "" || f.length) { f.push(cur); rows.push(f); }
+    return rows;
+  }
+  function loadEquipTable() {
+    fetch("equipment_full_table.csv")
+      .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+      .then(txt => {
+        const rows = parseCSV(txt), map = new Map();
+        // header cols: 0 cat_code, 2 id, 10 G_weapon, 11 rarity_9or10
+        for (let i = 1; i < rows.length; i++) {
+          const r = rows[i]; if (r.length < 12) continue;
+          const cat = parseInt(r[0], 10), id = parseInt(r[2], 10);
+          if (isNaN(cat) || isNaN(id)) continue;
+          map.set(cat + ":" + id, { isG: r[10] === "Y", r9: r[11] === "Y" });
+        }
+        equipTable = map;
+        if (!$("sec-awards").classList.contains("hidden")) renderAwards();
+      })
+      .catch(() => { equipTable = null; if (!$("sec-awards").classList.contains("hidden")) renderAwards(); });
+  }
+
+  // Scan the 1000-slot equipment box (BOX_BASE 0x00A8, 12-byte records).
+  // Returns G-weapon count + per-armor-slot rarity-9/10 counts, or null.
+  function scanBox() {
+    const tbl = equipTable || embedTable();     // fall back to embedded lookup if CSV didn't load
+    if (!view || !tbl) return null;
+    const bytes = new Uint8Array(view.buffer);
+    let g = 0; const arm = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 };
+    for (let i = 0; i < 1000; i++) {
+      const o = 0xA8 + i * 12;
+      if (!bytes[o]) continue;                 // empty slot
+      const cat = bytes[o + 1];
+      if (cat > 6) continue;                   // corrupt/cheated
+      const rec = tbl.get(cat + ":" + u16(o + 2));
+      if (!rec) continue;
+      if ((cat === 5 || cat === 6) && rec.isG) g++;          // blademaster/gunner G weapon
+      else if (cat <= 4 && rec.r9) arm[cat]++;               // legs/head/body/arms/waist rarity 9-10
+    }
+    return { g, arm };
+  }
+
+  const huntTotal = (sl, cp) => u16(sl) + u16(cp);
+
+  function renderAwards() {
+    if (!view) return;
+    const box = scanBox();
+    const R = [];
+    const barRow = (name, req, cur, need) => {
+      const full = cur >= need, pct = need > 0 ? Math.min(cur / need, 1) * 100 : 0;
+      R.push(`<div class="award-row${full ? " done" : ""}">
+        <div class="award-info"><div class="award-name">${esc(name)}</div><div class="award-req">${esc(req)}</div></div>
+        <div class="award-prog"><div class="pbar${full ? " full" : ""}"><div class="pbar-fill" style="width:${pct.toFixed(1)}%"></div><span class="pbar-label">${num(cur)} / ${num(need)}</span></div></div>
+      </div>`);
+    };
+    const pendRow = (name, req, msg) => {
+      R.push(`<div class="award-row pending">
+        <div class="award-info"><div class="award-name">${esc(name)}</div><div class="award-req">${esc(req)}</div></div>
+        <div class="award-prog"><span class="award-pending">${esc(msg)}</span></div>
+      </div>`);
+    };
+
+    // 2W is special (per-slot chips); render it in place when its data is ready.
+    const render2W = () => {
+      if (!box) { pendRow("Wyvernian Forger's Mitten", "Possess 5 each of rarity 9/10 Helmets, Plates, Gauntlets, Waists & Leggings", "Equipment table not loaded"); return; }
+      const need = [1, 2, 3, 4, 0], slotNames = ["Helmets", "Plates", "Gauntlets", "Waists", "Leggings"];
+      const total = need.reduce((a, c) => a + Math.min(box.arm[c], 5), 0);
+      const full = total >= 25, pct = Math.min(total / 25, 1) * 100;
+      const chips = need.map((c, i) => {
+        const v = box.arm[c], ok = v >= 5;
+        return `<span class="slot-chip${ok ? " ok" : ""}">${slotNames[i]} <b>${v}/5</b></span>`;
+      }).join("");
+      R.push(`<div class="award-row${full ? " done" : ""}">
+        <div class="award-info"><div class="award-name">Wyvernian Forger's Mitten</div><div class="award-req">Possess 5 each of rarity 9/10 Helmets, Plates, Gauntlets, Waists &amp; Leggings</div></div>
+        <div class="award-prog"><div class="pbar${full ? " full" : ""}"><div class="pbar-fill" style="width:${pct.toFixed(1)}%"></div><span class="pbar-label">${total} / 25</span></div><div class="slot-chips">${chips}</div></div>
+      </div>`);
+    };
+
+    // All 48 awards in guild-card order (1A -> 1X, 2A -> 2X).
+    // Mapped awards render a live bar; everything else shows "Not yet mapped".
+    const P = "Not yet mapped";
+    pendRow("Village Chief's Glove", "Clear all 1-2 Star Village (Elder) Quests", P);            // 1A
+    pendRow("Village Chief's Hat", "Clear all 3-4 Star Village (Elder) Quests", P);              // 1B
+    pendRow("Village Chief's Scarf", "Clear all 5 Star Village (Elder) Quests", P);              // 1C
+    pendRow("Village Chief's Coat", "Clear all 6 Star (Urgent) Village Elder Quests", P);        // 1D
+    barRow("Mane Necklace", "Hunt a Kirin (slay or capture, any rank)", huntTotal(0x428A, 0x406E) > 0 ? 1 : 0, 1); // 1E
+    barRow("Blood Onyx", "Hunt an Akantor", huntTotal(0x42E0, 0x40C4) > 0 ? 1 : 0, 1);           // 1F
+    pendRow("King's Crown", "Earn a Gold Crown for each monster's maximum length", P);           // 1G
+    pendRow("Miniature Crown", "Earn a Gold Crown for each monster's minimum length", P);        // 1H
+    pendRow("Bronze Medal", "Clear all 1-2 Star Guild Hall Quests", P);                          // 1I
+    pendRow("Silver Medal", "Clear all 3-5 Star Guild Hall Quests", P);                          // 1J
+    pendRow("Gold Medal", "Clear all 6-8 Star Guild Hall Quests", P);                            // 1K
+    pendRow("Black Belt Badge", "Clear all Battle Training for every monster with every weapon", P); // 1L
+    pendRow("Expert Badge", "Clear all Special Training for every monster and weapon", P);        // 1M
+    pendRow("Legend Badge", "Clear all Group Training for every monster and weapon", P);          // 1N
+    pendRow("Rare Species Report", "Hunt every subspecies at least once", P);                    // 1O
+    pendRow("Ecology Research Report", "Capture every capturable monster", P);                   // 1P
+    pendRow("Azure Stone", "Complete the Mining Point +4 Renovation", P);                        // 1Q
+    pendRow("Great Hornfly", "Complete the Insect Thicket +4 Renovation", P);                    // 1R
+    pendRow("Springnight Carp", "Complete the Fishing Pier +2 Renovation", P);                   // 1S
+    pendRow("Dosbiscus", "Complete the Field Row +2 Renovation", P);                             // 1T
+    pendRow("Grateful Letter", "Have any 5 hired Felyne Chefs at Level 9", P);                   // 1U
+    pendRow("Sage's Bracelet", "Complete every combination in the Combo List", P);               // 1V
+    pendRow("Wyverian Artisan's Hammer", "Attain the \u201CWeapon\u201D title", P);              // 1W
+    pendRow("Hunter's Progress", "Clear 20+ quests in each: Snowy Mountains, Jungle, Desert, Swamp, Forest & Hills, Volcano, Tower", P); // 1X
+    pendRow("Felyne Elder's Whiskers", "Clear all 7 Star Elder (Nekoht) Quests", P);            // 2A
+    pendRow("Felyne Elder's Bell", "Clear all 8 Star Elder (Nekoht) Quests", P);                // 2B
+    pendRow("Felyne Elder's Coat", "Clear all 9 Star Elder (Nekoht) Quests", P);                // 2C
+    pendRow("Pokke Liquor Bottle", "Clear the Felyne Elder Akantor urgent \u201CRise to the Summit\u201D", P); // 2D
+    pendRow("Bronze Shield", "Clear all 1 Star G-rank Guild Hall Quests", P);                    // 2E
+    pendRow("Silver Shield", "Clear all 2 Star G-rank Guild Hall Quests", P);                    // 2F
+    pendRow("Gold Shield", "Clear all 3 Star G-rank Guild Hall Quests", P);                      // 2G
+    pendRow("Heaven & Earth Emblem", "Complete all Elder Quests and all Guild Hall Quests (incl. urgents)", P); // 2H
+    pendRow("Ring of Darkness", "Hunt a G-rank Black Fatalis", P);                               // 2I
+    pendRow("Bracelet of Prominence", "Hunt a G-rank Crimson Fatalis", P);                       // 2J
+    pendRow("Heavenly Crown", "Hunt a G-rank White Fatalis", P);                                 // 2K
+    pendRow("Golden Fur Boots", "Hunt a G-rank Gold Rajang", P);                                 // 2L
+    barRow("North Star Diamond", "Hunt an Ukanlos", huntTotal(0x42F8, 0x40DC) > 0 ? 1 : 0, 1);   // 2M
+    pendRow("Monster Hunter's Bracelet", "Clear all Epic Quests in Elder and the Guild Hall", P); // 2N
+    pendRow("Fighter's Badge", "Clear all G-rank Training for every monster and weapon", P);      // 2O
+    pendRow("Guild Knight's Citation", "Clear 20+ quests in both the Fort and Town maps", P);     // 2P
+    barRow("Guild Bouquet", "Attain 1,000,000 Guild Points", Math.min(u32(FUND.guild), 1000000), 1000000); // 2Q
+    pendRow("Adventurer's Helmet", "Attain all Rare Treasure Items and a Gold Crown for each Treasure Hunt map", P); // 2R
+    pendRow("Trenya's Flag", "Send Trenya on 100 expeditions at 1500 Pokke Points", P);          // 2S
+    pendRow("Grand Felvine", "Possess a Felyne Comrade with all skills unlocked", P);            // 2T
+    pendRow("Letter of Appreciation", "Possess 5 Felyne Comrades all with 5 Fondness Hearts", P); // 2U
+    barRow("Wyvernian Artisan Card", "Possess 50 G-rank weapons of any type",                    // 2V
+      box ? Math.min(box.g, 50) : 0, 50);
+    if (!box) R.pop(), pendRow("Wyvernian Artisan Card", "Possess 50 G-rank weapons of any type", "Equipment table not loaded");
+    render2W();                                                                                   // 2W
+    pendRow("Hunter's Advancement", "Clear 20+ quests in every map except Castle Schrade, Battleground, Snow Battleground, Small Arena, Water Arena", P); // 2X
+
+    $("awardList").innerHTML = R.join("");
+  }
+
   // ---- sidebar sections ----------------------------------------------
   const PLACEHOLDERS = {
     items: "Item box & pouch contents are not decoded yet. Placeholder for a later pass.",
     equipment: "Equipped weapon, armor, and decorations are not decoded yet. Placeholder for a later pass.",
-    awards: "Guild card titles and awards are not decoded yet. Placeholder for a later pass.",
   };
   const LABELS = { hunter:"HUNTER", quests:"QUESTS", items:"ITEMS", equipment:"EQUIPMENT", awards:"AWARDS" };
 
   function selectSection(id) {
     document.querySelectorAll(".nav-item").forEach(b => b.classList.toggle("active", b.dataset.section === id));
-    const showHun = id === "hunter", showMon = id === "monsters", showAdv = id === "advanced", showQst = id === "quests";
-    const showPh = !showHun && !showMon && !showAdv && !showQst;
+    const showHun = id === "hunter", showMon = id === "monsters", showAdv = id === "advanced", showQst = id === "quests", showAwd = id === "awards";
+    const showPh = !showHun && !showMon && !showAdv && !showQst && !showAwd;
     $("sec-hunter").classList.toggle("hidden", !showHun);
     $("sec-quests").classList.toggle("hidden", !showQst);
+    $("sec-awards").classList.toggle("hidden", !showAwd);
     $("sec-monsters").classList.toggle("hidden", !showMon);
     $("sec-advanced").classList.toggle("hidden", !showAdv);
     $("sec-placeholder").classList.toggle("hidden", !showPh);
     if (showHun) renderHunter();
     if (showQst) renderQuests();
+    if (showAwd) renderAwards();
     if (showPh) { $("phTitle").textContent = LABELS[id] || ""; $("phText").textContent = PLACEHOLDERS[id] || ""; }
   }
 
@@ -712,6 +894,8 @@
     initDragScroll($("content"));
     initDragScroll($("tableScroll"));
     initDragScroll($("advScroll"));
+
+    loadEquipTable();
   }
 
   init();
