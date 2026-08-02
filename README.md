@@ -1,4 +1,4 @@
-<!-- MHFU Save Viewer — v0.7 -->
+<!-- MHFU Save Viewer — v0.8 -->
 # MHFU Save Viewer
 
 A **read-only** viewer for Monster Hunter Freedom Unite / Portable 2nd G character saves.
@@ -127,6 +127,12 @@ records exceeded ryin77: Tigrex max 138%, Teostra max 140%, Kushala Daora max 13
 
 ## Status
 
+**v0.8.** Adds the **Awards — Completion** tab: all 48 Guild-Card Awards in card order. Six mapped
+awards show live progress bars (1E Kirin, 1F Akantor, 2M Ukanlos, 2Q Guild Points, 2V 50 G-weapons,
+2W rarity-9/10 armour with per-slot counts); the rest read "Not yet mapped." 2V/2W scan the
+1000-slot equipment box (`0x00A8`) against `equipment_full_table.csv`. The **Quests** tab moves to its
+own sidebar section, and **Advanced** gains a quest-count internal-byte-order table.
+
 **v0.7.** Adds **in-browser decryption**: drop a raw `MHP2NDG.BIN` and the embedded decryptor
 (`decryptor.js`) peels the PSP + game layers and offers a 1/2/3 character-slot picker — no external
 SaveTools/QuickBMS needed. Decrypted `characterX.sav` files still load directly.
@@ -135,11 +141,22 @@ Adds the **Hunter** tab: a card dashboard with name, playtime, funds, the 7 ques
 weapon-usage bar chart, the guild-card greeting, and the Felyne-comrade table. **Advanced** gains a
 weapon-usage internal-byte-order table.
 
-MHFU-styled interface with a sidebar, static screenshot background, and outlined frames. **Monsters**
-lists every roster monster in in-game order with hunt counts, card + game sizes, and crown /
-min-size / max-size tags, across All / Crown-only / Captured views. **Advanced** holds the 90-slot
-offset map plus the weapon-order table. **Quests, Items, Equipment,** and **Awards** are placeholders
-for later passes.
+MHFU-styled interface with a sidebar, static screenshot background, and outlined frames.
+
+**What works** (reads live from the save):
+- **Monsters** — every roster monster in in-game order with hunt counts, card + game sizes, and
+  crown / min-size / max-size tags, across All / Crown-only / Captured views.
+- **Hunter** — card dashboard: name, playtime, funds, weapon-usage chart, guild-card greeting,
+  Felyne-comrade table.
+- **Quests** — the 7 quest tallies (Chief, Nekoht, Guild Hall low/high/G, Treasure, Training).
+- **Awards — Completion** — all 48 Guild-Card Awards in order; the 6 mapped ones (1E, 1F, 2M, 2Q,
+  2V, 2W) show live progress bars.
+- **Advanced** — the 90-slot monster offset map plus the weapon- and quest-count internal-byte-order
+  tables.
+
+**What's still placeholder** (needs byte-address mapping before it can be shown):
+- **Items** and **Equipment** tabs.
+- The other 42 awards, which read "Not yet mapped."
 
 ## Credits
 
