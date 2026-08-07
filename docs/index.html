@@ -1,4 +1,4 @@
-<!-- MHFU Save Viewer — v0.8 -->
+<!-- MHFU Save Viewer — v0.9 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +14,7 @@
 <!-- ============ DROP SCREEN (no save loaded) ============ -->
 <div class="drop-screen" id="dropScreen">
   <div class="drop-panel">
-    <h1 class="brand-title">MHFU Save Viewer <span class="ver">v0.8</span></h1>
+    <h1 class="brand-title">MHFU Save Viewer <span class="ver">v0.9</span></h1>
     <p class="sub">Drop your raw <strong>MHP2NDG.BIN</strong> and the viewer decrypts it in
       your browser &mdash; or drop an already-decrypted character save. This is a detailed save viewer built to
       surface all sorts of information from MHFU &mdash; even data the game hides &mdash; and also track your progress.</p>
@@ -95,11 +95,21 @@
 
     <!-- AWARDS-COMPLETION -->
     <section class="section hidden" id="sec-awards">
-      <div class="sec-head"><h2 class="sec-title">Awards &mdash; Completion</h2></div>
-      <p class="sec-desc">Progress toward the Guild-Card Awards. This first pass tracks the awards whose save data is fully
-        mapped; a couple are shown as <em>not yet mapped</em> until their data is decoded. Note: awards are one-way switches
-        in-game &mdash; once earned they stay earned even if you later sell the items, so these bars reflect your
-        <strong>current</strong> save contents, not the earned flag.</p>
+      <div class="sec-head">
+        <h2 class="sec-title">Awards &mdash; Completion</h2>
+        <div class="sec-stat" id="awardStat">0 / 48 complete</div>
+      </div>
+      <p class="sec-desc">All 48 Guild-Card Awards in card order. Every row reads the game&rsquo;s own earned flag from the
+        save, so each award shows whether the game considers it earned. Ten of them also reconstruct live progress from the
+        underlying data; an award counts as complete when its requirement is met or its earned flag is set.</p>
+
+      <div class="controls">
+        <select id="awardFilter" class="select">
+          <option value="all">All awards</option>
+          <option value="incomplete">Incomplete only</option>
+        </select>
+      </div>
+
       <div class="award-list" id="awardList"></div>
     </section>
 
@@ -107,10 +117,12 @@
     <section class="section" id="sec-monsters">
       <div class="sec-head">
         <h2 class="sec-title">Monster List</h2>
-        <div class="sec-stat" id="crownStat">0 / 0 crowns recorded</div>
+        <div class="sec-stat" id="crownStat"><div>0 / 0 crowns recorded</div></div>
       </div>
       <p class="sec-desc">Every monster in in-game Monster List order, subspecies listed beneath their family.
         Card values are your recorded sizes. Min/Max game are the family&rsquo;s absolute range (min in red, max in blue).</p>
+
+      <button type="button" class="from-award hidden" id="fromAward"></button>
 
       <div class="controls">
         <input type="text" id="search" class="search" placeholder="Search monster name...">
@@ -118,6 +130,8 @@
           <option value="all">All Monsters</option>
           <option value="crown" selected>Crown monsters only</option>
           <option value="captured">Captured</option>
+          <option value="sub">Subspecies only</option>
+          <option value="rsr">Rare Species Report</option>
         </select>
         <label class="ctl"><input type="checkbox" id="showSize" checked> Size &amp; crown columns</label>
       </div>
@@ -139,6 +153,7 @@
               <th class="num szcol">Min game</th><th class="num szcol">Max game</th>
               <th class="szcol">Crowns</th>
               <th class="c-capchk">Caught</th>
+              <th class="c-huntchk"></th>
             </tr></thead>
             <tbody id="tbody"></tbody>
           </table>
