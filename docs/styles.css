@@ -1,4 +1,4 @@
-/*MHFU Save Viewer — v0.8*/
+/*MHFU Save Viewer — v0.9*/
 :root {
   --bg: #140d0a;
   --accent: #c9963c;
@@ -345,3 +345,22 @@ input[type=file] { display: none; }
 
 /* advanced sub-heading */
 .adv-h3 { font-family: Verdana, sans-serif; font-weight: 700; color: #e8c876; font-size: 14px; margin: 0 0 6px; }
+/* ---- v0.9: awards links, earned-vs-reconstructed note, new monster views ---- */
+.award-info { display: flex; flex-direction: column; align-items: flex-start; }
+.award-link {
+  margin-top: 9px; background: none; border: 0; padding: 0; font: inherit;
+  font-size: 11.5px; letter-spacing: .02em; color: var(--accent); cursor: pointer;
+}
+.award-link:hover { color: #f0d79a; text-decoration: underline; }
+.award-link.off { color: rgba(202,161,83,.45); cursor: default; }
+.award-note { color: var(--muted); font-size: 11px; font-style: italic; line-height: 1.5; }
+.award-row.done.pending { border-color: rgba(127,191,106,.55); opacity: 1; }
+.sec-stat div + div { margin-top: 3px; }
+.from-award {
+  display: inline-block; margin-bottom: 12px; cursor: pointer;
+  background: rgba(20,13,10,.5); border: 1px solid var(--accent-soft);
+  color: var(--accent); font: inherit; font-size: 11.5px; letter-spacing: .02em; padding: 5px 10px;
+}
+.from-award:hover { border-color: var(--accent); color: #f0d79a; }
+.montbl.mode-rsr .szcol { display: none; }
+.montbl:not(.mode-rsr) .c-huntchk { display: none; }
