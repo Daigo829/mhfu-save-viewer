@@ -1,10 +1,11 @@
-<!-- MHFU Save Viewer — v0.8 -->
+<!-- MHFU Save Viewer — v0.9 -->
 # MHFU Save Viewer
 
 A **read-only** viewer for Monster Hunter Freedom Unite / Portable 2nd G character saves.
 Drop your raw **MHP2NDG.BIN** and the viewer decrypts it in your browser, or drop an
-already-decrypted character save. Either way it shows what the file holds — every monster's hunt
-counts and the per-subspecies **size records** the game stores but never displays.
+already-decrypted character save. Either way it shows what the file holds — hunt counts, the
+per-subspecies **size records** the game stores but never displays, and your progress toward
+the 48 Guild-Card Awards.
 
 This tool **never writes, edits, re-encrypts, or downloads** your save. It only reads and displays,
 and runs entirely in your browser; your save never leaves your machine. Decryption happens once, in
@@ -24,6 +25,7 @@ images/         static assets — mhfu-background.png is the background screensh
 ```
 
 Open `index.html` directly in a browser — no build step, no server needed.
+Technical detail (offsets, proofs, open items) lives in `INTERNAL_NOTES.md` at the project root.
 
 ## Use it
 
@@ -53,10 +55,10 @@ way but is not yet confirmed against a JP-region BIN.
 
 ## Interface
 
-A left sidebar switches sections. **Hunter**, **Monsters** and **Advanced** are functional; **Quests,
-Items, Equipment,** and **Awards** are placeholders for later passes. The background is a static
-in-game screenshot; the sidebar and content sit in outlined frames over it. Any scrollable list can
-be dragged (click-drag, axis-locked to up/down or left/right) as well as scrolled with the wheel.
+A left sidebar switches sections. **Hunter, Quests, Monsters, Awards** and **Advanced** are
+functional; **Items** and **Equipment** are placeholders for later passes. The background is a
+static in-game screenshot; the sidebar and content sit in outlined frames over it. Any scrollable
+list can be dragged (click-drag, axis-locked) as well as scrolled with the wheel.
 
 ### Hunter
 
@@ -65,16 +67,19 @@ fully-decoded fields are shown):
 
 - **Hunter** — character name and **playtime** (stored as total seconds, shown H:MM).
 - **Funds** — **Pokke Points**, **Guild Points**, and **Zenny** (each caps at 9,999,999 in-game).
-- **Quest Records** — the 7 quest tallies: Chief's, Guild Hall Low/High/G Rank, Treasure Quests,
-  Training School, Nekoht's.
 - **Weapon Usage** — a horizontal bar chart of quests cleared per weapon, all 11 types in the
   game's on-screen bar order, most-used highlighted, with a total.
 - **Guild Card Greeting** — the player message, folded from the save's fullwidth glyphs back to ASCII.
 - **Felyne Comrades** — a compact table of each non-empty comrade slot: Level, Attack, Defense,
   First Leader name.
 
-Deferred (not stored as plain values / needs lookup tables — omitted for now): HR, Friendship
-points, currently-held weapon type, treasures-collected grid.
+Deferred (not stored as plain values / needs lookup tables): HR, Friendship points,
+currently-held weapon type, treasures-collected grid.
+
+### Quests
+
+The 7 quest tallies in in-game display order: Chief's, Nekoht's, Guild Hall Low / High / G Rank,
+Treasure Quests, Training School.
 
 ### Monsters
 
@@ -82,8 +87,17 @@ Monsters are in **in-game Monster List order**. Each family's base species is **
 subspecies are listed beneath it with **no number** (Fatalis variants and Ashen Lao-Shan Lung are
 shown bold like main species). Defaults to **Crown monsters only**.
 
-Controls: a **search** box, a **filter** dropdown (*All Monsters / Crown monsters only / Captured*),
-and a **Size & crown columns** toggle.
+Controls: a **search** box, a **filter** dropdown, and a **Size & crown columns** toggle.
+
+**Five views**, each with its own stat line above the table:
+
+| View | Shows | Stat line |
+|---|---|---|
+| All Monsters | everything | `X / N monsters hunted` |
+| Crown monsters only | families that record sizes | `X / N total crowns`, `X / N big crowns`, `X / N small crowns` |
+| Captured | capturable families | `X / N monsters captured`, `X / 43 for the Ecology Research Report` |
+| Subspecies only | all 21 subspecies rows, no base rows | `X / 21 hunted`, `X / 16 for the Rare Species Report` |
+| Rare Species Report | exactly the 16 variants award 1O requires | `X / 16 hunted` |
 
 Columns:
 
@@ -91,28 +105,62 @@ Columns:
   **Σ hunted** chip (family total: base + all subspecies, i.e. the guild-card *Hunted* number) and a
   **+N sub** count.
 - **Slain / Captured / Total** — this row's own kills, captures, and their sum. Captured shows
-  `----` for monsters that can't be captured (small monsters, elder dragons, Fatalis, Lao-Shan).
+  `----` for monsters that can't be captured.
 - **Card smallest / Card biggest** — the smallest/largest size you've recorded for that form
-  (stored % and cm), shown plain.
-- **Min game / Max game** — the smallest/largest that form can ever be, **per subspecies** (each
-  base and subspecies has its own range), always coloured (**min in red**, **max in blue**).
+  (stored % and cm).
+- **Min game / Max game** — the smallest/largest that form can ever be, **per subspecies**,
+  always coloured (**min in red**, **max in blue**).
 - **Crowns** — tags earned: *small crown / big crown* (crossed the crown threshold) and
-  *min size / max size* (reached the game's absolute extreme, which sits on top of a crown). On a
-  **subspecies**, the min-size / max-size tag carries a small corner **info bubble** — click or tap it
-  to see whether that form's range *differs from* or is the *same as* its base species.
-- **Caught** — only in the *Captured* view: a green ✓ when captured ≥ 1, a red ✗ when 0.
+  *min size / max size* (reached the game's absolute extreme). On a **subspecies**, the
+  min-size / max-size tag carries a corner **info bubble** — click it to see whether that form's
+  range *differs from* or is the *same as* its base species.
+- **Caught** — *Captured* view only: green ✓ when captured ≥ 1, red ✗ when 0.
+- An unlabelled ✓/✗ column — *Rare Species Report* view only: whether that variant has been
+  hunted (slain or captured ≥ 1).
 
-**Size & crown columns** off collapses the view to just **# → Monster → Slain → Captured**.
-The **Captured** filter shows **# → Monster → Slain → Captured → Caught**.
+**Size & crown columns** off collapses the view to **# → Monster → Slain → Captured**.
+The Rare Species Report view shows **# → Monster → Slain → Captured → Total → ✓/✗**.
+
+### Awards — Completion
+
+All 48 Guild-Card Awards in card order, with `X / 48 complete` in the header and an
+**All / Incomplete only** filter.
+
+Every row reads the game's own **earned flag** from the save, so all 48 are at least
+binary-correct — including the 38 whose progress isn't reconstructed yet (those show
+*Not yet mapped* in the progress column, but a completed row still reads as complete).
+
+An award is **complete when its requirement is met or its earned flag is set.** Awards are
+permanent in-game and there is no way to lose one, so a set flag can legitimately sit above your
+current save state: 2V earned years ago still shows complete even if you have since sold down to
+43 of 50 G-weapons. Those rows carry a short note saying so, with the live count below it.
+
+**Ten awards show live reconstructed progress:** 1E Kirin, 1F Akantor, 1G King's Crown
+(big crowns per monster), 1H Miniature Crown (small crowns), 1O Rare Species Report (16 variants
+hunted), 1P Ecology Research Report (43 monsters captured), 2M Ukanlos, 2Q Guild Points,
+2V 50 G-weapons, 2W rarity-9/10 armour with per-slot counts.
+
+Each row has a **See details →** link to the tab holding the underlying data, with the matching
+view already selected — 1G/1H to Crown monsters, 1O to Rare Species Report, 1P to Captured, and
+2V/2W to Equipment. The link leaves a **← Back to Awards** chip above the table, which stays until
+you click it. The other 42 rows show the link greyed out until their data is mapped.
+
+Two caveats worth knowing:
+
+- **1G / 1H are accepted, not proven.** They use the viewer's existing crown thresholds and count
+  every size-recording monster. Unlike 1O/1P they were never confirmed against the game itself, so
+  the X/N could be slightly off; the earned flag still governs whether the award reads complete.
+- **1O's requirement set is deliberately asymmetric.** Golden Rajang, Rusted Kushala Daora and Yian
+  Garuga (One-Eyed) are proven *not* required and are left out, while Ashen Lao-Shan Lung is proven
+  required. It looks inconsistent; it is correct. **1P counts Diablos once** — One-Horned Diablos
+  shares the same save slot, so either one satisfies it, and there is no separate row for it.
 
 ### Advanced
 
-A full list of the **offset map** used for the Monster List — all **90 internal save array slots**
-with their raw offsets and live values (captured / largest / smallest / slain), including the 6
-unused slots and the one unidentified counter (`0x4282`). Below it, a **weapon-usage internal byte
-order** table maps each slot of the `0x678E0` array to its offset, the weapon it holds, and its live
-value (the array's internal order differs from the on-screen bar order). For debugging, hex editing
-and offset finding; not needed for normal use.
+The **offset map** used for the Monster List — all **90 internal save array slots** with their raw
+offsets and live values (captured / largest / smallest / slain), including the 6 unused slots and
+the one unidentified counter (`0x4282`). Below it, weapon-usage and quest-count internal-byte-order
+tables, each behind its own checkbox. For debugging, hex editing and offset finding.
 
 ## How the data was mapped
 
@@ -120,43 +168,45 @@ Size percents live in two u16 little-endian arrays (`0x40E0`–`0x4246`); displa
 The guild-card cache at `0x67408` stores, per base species, `[u16 ?][u16 hunted][u16 max×10][u16 min×10]`.
 Offsets and base sizes were confirmed by forced-ramp **edit-testing** on an untouched JP (Daigo) save.
 Crown thresholds come from `mhfu_crown_size_percentages_v2.txt`; the game min/max sizes are
-**per-form** ryin77 ground-truth ranges (base and each subspecies separately, from that guide's
-per-quest size tables). Five ranges were then **widened to match a verified 3,600 h save** whose real
-records exceeded ryin77: Tigrex max 138%, Teostra max 140%, Kushala Daora max 138%, Diablos max
-154%, and Yian Garuga (One-Eyed) min 86% (which makes it identical to base Garuga).
+**per-form** ryin77 ground-truth ranges. Five ranges were **widened to match a verified 3,600 h save**
+whose real records exceeded ryin77: Tigrex 138%, Teostra 140%, Kushala Daora 138%, Diablos 154%, and
+Yian Garuga (One-Eyed) min 86%.
+
+The award earned-flag bitset at `0x67400` (6 bytes, 48 bits, `1A` = bit 0) was verified cell-for-cell
+against five saves with known award grids. It is a **regenerated cache**: the game recomputes awards
+from the underlying save data and rewrites it on quest completion, which makes it authoritative for
+reading and useless for editing. 1O and 1P were then proven with that recompute as an oracle —
+set the data, clear one quest, read the game's own verdict.
 
 ## Status
 
-**v0.8.** Adds the **Awards — Completion** tab: all 48 Guild-Card Awards in card order. Six mapped
-awards show live progress bars (1E Kirin, 1F Akantor, 2M Ukanlos, 2Q Guild Points, 2V 50 G-weapons,
-2W rarity-9/10 armour with per-slot counts); the rest read "Not yet mapped." 2V/2W scan the
-1000-slot equipment box (`0x00A8`) against `equipment_full_table.csv`. The **Quests** tab moves to its
-own sidebar section, and **Advanced** gains a quest-count internal-byte-order table.
+**v0.9.** Adds the **earned-flag backstop for all 48 awards** — every row now reads the game's own
+verdict from `0x67400`, so awards whose progress isn't reconstructed are still correct. Adds live
+progress for four more: **1G King's Crown**, **1H Miniature Crown**, **1O Rare Species Report** and
+**1P Ecology Research Report**. Completion is now *requirement met OR earned flag*, with a note on
+rows earned before the save regressed. The Awards tab gains an All / Incomplete-only filter and
+**See details →** links into the tab holding the data; the Monsters tab gains **Subspecies only**
+and **Rare Species Report** views, a per-view stat line, and a hunted ✓/✗ column.
 
-**v0.7.** Adds **in-browser decryption**: drop a raw `MHP2NDG.BIN` and the embedded decryptor
-(`decryptor.js`) peels the PSP + game layers and offers a 1/2/3 character-slot picker — no external
-SaveTools/QuickBMS needed. Decrypted `characterX.sav` files still load directly.
+**v0.8.** Added the **Awards — Completion** tab: all 48 awards in card order, six with live bars
+(1E, 1F, 2M, 2Q, 2V, 2W). 2V/2W scan the 1000-slot equipment box (`0x00A8`) against
+`equipment_full_table.csv`. **Quests** moved to its own sidebar section; **Advanced** gained a
+quest-count internal-byte-order table.
 
-Adds the **Hunter** tab: a card dashboard with name, playtime, funds, the 7 quest tallies, a
-weapon-usage bar chart, the guild-card greeting, and the Felyne-comrade table. **Advanced** gains a
-weapon-usage internal-byte-order table.
-
-MHFU-styled interface with a sidebar, static screenshot background, and outlined frames.
+**v0.7.** Added **in-browser decryption** (drop a raw `MHP2NDG.BIN`, pick a character slot) and the
+**Hunter** tab: name, playtime, funds, weapon-usage chart, guild-card greeting, Felyne comrades.
 
 **What works** (reads live from the save):
 - **Monsters** — every roster monster in in-game order with hunt counts, card + game sizes, and
-  crown / min-size / max-size tags, across All / Crown-only / Captured views.
-- **Hunter** — card dashboard: name, playtime, funds, weapon-usage chart, guild-card greeting,
-  Felyne-comrade table.
-- **Quests** — the 7 quest tallies (Chief, Nekoht, Guild Hall low/high/G, Treasure, Training).
-- **Awards — Completion** — all 48 Guild-Card Awards in order; the 6 mapped ones (1E, 1F, 2M, 2Q,
-  2V, 2W) show live progress bars.
-- **Advanced** — the 90-slot monster offset map plus the weapon- and quest-count internal-byte-order
-  tables.
+  crown / min-size / max-size tags, across five views.
+- **Hunter** — name, playtime, funds, weapon-usage chart, guild-card greeting, Felyne comrades.
+- **Quests** — the 7 quest tallies.
+- **Awards — Completion** — all 48, earned/not for every one, live progress for 10.
+- **Advanced** — the 90-slot offset map plus the weapon- and quest-count byte-order tables.
 
-**What's still placeholder** (needs byte-address mapping before it can be shown):
+**What's still placeholder** (needs byte-address mapping):
 - **Items** and **Equipment** tabs.
-- The other 42 awards, which read "Not yet mapped."
+- The other 38 awards, which show earned/not but no reconstructed progress.
 
 ## Credits
 
@@ -167,6 +217,7 @@ MHFU-styled interface with a sidebar, static screenshot background, and outlined
 - **vnctdj** — PPSSPP-forums SaveTools packaging / quest list.
 - **ryin77** — GameFAQs crown-size % guide (legal ranges).
 - **willthehunter** — MH-Freedom Quest Editor size tables.
+- **Guild Card Guide** (GameFAQs FAQ 55732) — award names and requirement text.
 - Offset & crown mapping done by edit-test on an untouched JP (Daigo) save.
 
 Not affiliated with Capcom. For personal, offline use.
