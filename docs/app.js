@@ -1,4 +1,4 @@
-/* MHFU Save Viewer — v0.8  (READ ONLY — never writes or downloads; in-browser decrypt via decryptor.js) */
+/* MHFU Save Viewer — v0.9  (READ ONLY — never writes or downloads; in-browser decrypt via decryptor.js) */
 (function () {
   "use strict";
 
@@ -219,9 +219,37 @@
     return fams;
   })();
 
+  // ---- award ground truth (v0.9) --------------------------------------
+  // Earned-flag bitset: 6 bytes @0x67400 = 48 bits, LSB-first, award order
+  // 1A..1X then 2A..2X (bit i = award i). READ ONLY — the game regenerates
+  // this cache on quest completion, so writing it grants nothing.
+  const AWARDS_BASE = 0x67400;
+
+  // 1O Rare Species Report — the 16-variant set proven sufficient in-game.
+  // Golden Rajang, Rusted Kushala Daora and Yian Garuga (One-Eyed) are
+  // proven NOT required and are deliberately absent. Ashen Lao-Shan Lung
+  // IS required (proven) even though Rusted Kushala is not — not a slip.
+  const RSR_NAMES = ["Pink Rathian", "Gold Rathian", "Azure Rathalos", "Silver Rathalos",
+    "Blue Yian Kut-Ku", "Purple Gypceros", "Red Khezu", "Black Gravios", "White Monoblos",
+    "Black Diablos", "Green Plesioth", "Plum Daimyo Hermitaur", "Terra Shogun Ceanataur",
+    "Emerald Congalala", "Copper Blangonga", "Ashen Lao-Shan Lung"];
+  const RSR_ROWS = DATA.filter(r => RSR_NAMES.indexOf(r.n) >= 0);
+
+  // 1P Ecology Research Report — the 43 capturable monsters, captured@ only.
+  // Diablos (0x4048) is one entry: base or One-Horned both land in that slot.
+  const CAP43 = [
+    0x402E, 0x4038, 0x403C, 0x4042, 0x4048, 0x404A, 0x404E, 0x4054, 0x4056, 0x4058,
+    0x4060, 0x4062, 0x4064, 0x406A, 0x4076, 0x4078, 0x407A, 0x407C, 0x407E, 0x4080,
+    0x4082, 0x4084, 0x4086, 0x4088, 0x408A, 0x408C, 0x408E, 0x4092, 0x4094, 0x4096,
+    0x40B2, 0x40B4, 0x40C2, 0x40C6, 0x40C8, 0x40CE, 0x40D0, 0x40D2, 0x40D4, 0x40D6,
+    0x40D8, 0x40DA, 0x40DE,
+  ];
+
   // ---- state ----------------------------------------------------------
   let view = null;                 // DataView over the loaded save (read only)
-  let filterMode = "crown";        // "all" | "crown" | "captured"
+  let filterMode = "crown";        // "all" | "crown" | "captured" | "sub" | "rsr"
+  let awardFilter = "all";         // "all" | "incomplete"
+  let fromAward = null;            // award name that sent us to the Monsters tab
   let showSizeCols = true;
   let showSlots = false;
   let showQstAdv = false;
@@ -321,6 +349,7 @@
       <td class="num szcol">${gameMaxCell(x)}</td>
       <td class="szcol crowncell">${crownBadges(x)}</td>
       <td class="c-capchk caughtcell">${caughtCell(x)}</td>
+      <td class="c-huntchk caughtcell">${x.total > 0 ? '<span class="caught-yes">&#10003;</span>' : '<span class="caught-no">&#10007;</span>'}</td>
     </tr>`;
   }
 
@@ -329,19 +358,65 @@
     $("montbl").className = "montbl mode-" + filterMode + (showSizeCols ? "" : " hide-size");
     const q = searchQuery.trim().toLowerCase();
     const rows = [];
-    let crownFamiliesTotal = 0, crownsEarned = 0;
+    let crownDen = 0, bigC = 0, smallC = 0;
+    let huntedRows = 0, capRows = 0, capDone = 0, subRows = 0, subHunted = 0;
+    const rowMode = filterMode === "sub" || filterMode === "rsr";
+
     FAMS.forEach(fam => {
-      if (fam.hasSize) crownFamiliesTotal++;
       const fx = readFam(fam);
-      const earned = fam.rows.some((r, i) => { const x = fx.rows[i]; return x.hasSize && x.present && (x.S <= r.mi || x.L >= r.kg); });
-      if (earned) crownsEarned++;
+      if (fam.hasSize) {
+        crownDen++;
+        let b = false, s = false;
+        fam.rows.forEach((r, i) => {
+          const x = fx.rows[i];
+          if (!x.hasSize || !x.present) return;
+          if (x.L >= r.kg) b = true;
+          if (x.S <= r.mi) s = true;
+        });
+        if (b) bigC++;
+        if (s) smallC++;
+      }
+      fam.rows.forEach((r, i) => {
+        const x = fx.rows[i];
+        if (x.total > 0) huntedRows++;
+        if (r.cap === 1) { capRows++; if (x.cap > 0) capDone++; }
+        if (r.sub === 1) { subRows++; if (x.total > 0) subHunted++; }
+      });
+
+      if (rowMode) {   // subspecies views list rows, not families — no base rows
+        fam.rows.forEach((r, i) => {
+          if (r.sub !== 1) return;
+          if (filterMode === "rsr" && RSR_ROWS.indexOf(r) < 0) return;
+          if (q && !r.n.toLowerCase().includes(q)) return;
+          rows.push(rowHTML(fam, fx, i));
+        });
+        return;
+      }
       if (filterMode === "crown" && !fam.hasSize) return;
       if (filterMode === "captured" && !fam.capturable) return;
       if (q && !fam.rows.some(r => r.n.toLowerCase().includes(q))) return;
       for (let i = 0; i < fam.rows.length; i++) rows.push(rowHTML(fam, fx, i));
     });
     $("tbody").innerHTML = rows.join("");
-    $("crownStat").textContent = `${crownsEarned} / ${crownFamiliesTotal} crowns recorded`;
+
+    // Stat lines: one per view, plus the award line where a view maps to one.
+    const L = [];
+    if (filterMode === "crown") {
+      L.push(`${bigC + smallC} / ${crownDen * 2} total crowns`);
+      L.push(`${bigC} / ${crownDen} big crowns`);
+      L.push(`${smallC} / ${crownDen} small crowns`);
+    } else if (filterMode === "captured") {
+      L.push(`${capDone} / ${capRows} monsters captured`);
+      L.push(`${count43()} / 43 for the Ecology Research Report`);
+    } else if (filterMode === "sub") {
+      L.push(`${subHunted} / ${subRows} hunted`);
+      L.push(`${countRSR()} / 16 for the Rare Species Report`);
+    } else if (filterMode === "rsr") {
+      L.push(`${countRSR()} / 16 hunted`);
+    } else {
+      L.push(`${huntedRows} / ${DATA.length} monsters hunted`);
+    }
+    $("crownStat").innerHTML = L.map(t => `<div>${esc(t)}</div>`).join("");
   }
 
   // ---- advanced: raw 90-slot table ------------------------------------
@@ -569,95 +644,139 @@
 
   const huntTotal = (sl, cp) => u16(sl) + u16(cp);
 
+  // Layer A: the game's own earned flag for award i (0 = 1A .. 47 = 2X).
+  const earnedBit = (i) => (u8(AWARDS_BASE + (i >> 3)) >> (i & 7)) & 1;
+  // Layer B reconstructions.
+  const countRSR = () => RSR_ROWS.reduce((a, r) => a + (u16(r.sl) + u16(r.cp) > 0 ? 1 : 0), 0);
+  const count43  = () => CAP43.reduce((a, o) => a + (u16(o) > 0 ? 1 : 0), 0);
+  // Crowns per MONSTER, any form counts, split big (1G) / small (1H).
+  function crownAward() {
+    let denom = 0, big = 0, small = 0;
+    FAMS.forEach(fam => {
+      if (!fam.hasSize) return;
+      denom++;
+      const fx = readFam(fam);
+      let b = false, s = false;
+      fam.rows.forEach((r, i) => {
+        const x = fx.rows[i];
+        if (!x.hasSize || !x.present) return;
+        if (x.L >= r.kg) b = true;
+        if (x.S <= r.mi) s = true;
+      });
+      if (b) big++;
+      if (s) small++;
+    });
+    return { denom, big, small };
+  }
+
+  // All 48 awards in guild-card order (1A -> 1X, 2A -> 2X).
+  // complete = requirement met OR earned bit set (awards are permanent).
+  function buildAwards() {
+    const box = scanBox(), cc = crownAward(), A = [];
+    const add = (name, req, opt) => A.push(Object.assign({ name, req, idx: A.length }, opt || {}));
+
+    add("Village Chief's Glove", "Clear all 1-2 Star Village (Elder) Quests");
+    add("Village Chief's Hat", "Clear all 3-4 Star Village (Elder) Quests");
+    add("Village Chief's Scarf", "Clear all 5 Star Village (Elder) Quests");
+    add("Village Chief's Coat", "Clear all 6 Star (Urgent) Village Elder Quests");
+    add("Mane Necklace", "Hunt a Kirin (slay or capture, any rank)", { bar: [huntTotal(0x428A, 0x406E) > 0 ? 1 : 0, 1] });
+    add("Blood Onyx", "Hunt an Akantor", { bar: [huntTotal(0x42E0, 0x40C4) > 0 ? 1 : 0, 1] });
+    add("King's Crown", "Earn a Gold Crown for each monster's big size", { bar: [cc.big, cc.denom], link: "crown" });
+    add("Miniature Crown", "Earn a Gold Crown for each monster's small size", { bar: [cc.small, cc.denom], link: "crown" });
+    add("Bronze Medal", "Clear all 1-2 Star Guild Hall Quests");
+    add("Silver Medal", "Clear all 3-5 Star Guild Hall Quests");
+    add("Gold Medal", "Clear all 6-8 Star Guild Hall Quests");
+    add("Black Belt Badge", "Clear all Battle Training for every monster with every weapon");
+    add("Expert Badge", "Clear all Special Training for every monster and weapon");
+    add("Legend Badge", "Clear all Group Training for every monster and weapon");
+    add("Rare Species Report", "Hunt all 16 rare species", { bar: [countRSR(), 16], link: "rsr" });
+    add("Ecology Research Report", "Capture all 43 capturable monsters", { bar: [count43(), 43], link: "captured" });
+    add("Azure Stone", "Complete the Mining Point +4 Renovation");
+    add("Great Hornfly", "Complete the Insect Thicket +4 Renovation");
+    add("Springnight Carp", "Complete the Fishing Pier +2 Renovation");
+    add("Dosbiscus", "Complete the Field Row +2 Renovation");
+    add("Grateful Letter", "Have any 5 hired Felyne Chefs at Level 9");
+    add("Sage's Bracelet", "Complete every combination in the Combo List");
+    add("Wyverian Artisan's Hammer", "Attain the \u201CWeapon\u201D title");
+    add("Hunter's Progress", "Clear 20+ quests in each: Snowy Mountains, Jungle, Desert, Swamp, Forest & Hills, Volcano, Tower");
+    add("Felyne Elder's Whiskers", "Clear all 7 Star Elder (Nekoht) Quests");
+    add("Felyne Elder's Bell", "Clear all 8 Star Elder (Nekoht) Quests");
+    add("Felyne Elder's Coat", "Clear all 9 Star Elder (Nekoht) Quests");
+    add("Pokke Liquor Bottle", "Clear the Felyne Elder Akantor urgent \u201CRise to the Summit\u201D");
+    add("Bronze Shield", "Clear all 1 Star G-rank Guild Hall Quests");
+    add("Silver Shield", "Clear all 2 Star G-rank Guild Hall Quests");
+    add("Gold Shield", "Clear all 3 Star G-rank Guild Hall Quests");
+    add("Heaven & Earth Emblem", "Complete all Elder Quests and all Guild Hall Quests (incl. urgents)");
+    add("Ring of Darkness", "Hunt a G-rank Black Fatalis");
+    add("Bracelet of Prominence", "Hunt a G-rank Crimson Fatalis");
+    add("Heavenly Crown", "Hunt a G-rank White Fatalis");
+    add("Golden Fur Boots", "Hunt a G-rank Gold Rajang");
+    add("North Star Diamond", "Hunt an Ukanlos", { bar: [huntTotal(0x42F8, 0x40DC) > 0 ? 1 : 0, 1] });
+    add("Monster Hunter's Bracelet", "Clear all Epic Quests in Elder and the Guild Hall");
+    add("Fighter's Badge", "Clear all G-rank Training for every monster and weapon");
+    add("Guild Knight's Citation", "Clear 20+ quests in both the Fort and Town maps");
+    add("Guild Bouquet", "Attain 1,000,000 Guild Points", { bar: [Math.min(u32(FUND.guild), 1000000), 1000000] });
+    add("Adventurer's Helmet", "Attain all Rare Treasure Items and a Gold Crown for each Treasure Hunt map");
+    add("Trenya's Flag", "Send Trenya on 100 expeditions at 1500 Pokke Points");
+    add("Grand Felvine", "Possess a Felyne Comrade with all skills unlocked");
+    add("Letter of Appreciation", "Possess 5 Felyne Comrades all with 5 Fondness Hearts");
+    add("Wyvernian Artisan Card", "Possess 50 G-rank weapons of any type",
+      box ? { bar: [Math.min(box.g, 50), 50], link: "equip" } : { pend: "Equipment table not loaded", link: "equip" });
+
+    // 2W carries per-slot chips alongside its bar.
+    const req2W = "Possess 5 each of rarity 9/10 Helmets, Plates, Gauntlets, Waists & Leggings";
+    if (box) {
+      const slots = [1, 2, 3, 4, 0], slotNames = ["Helmets", "Plates", "Gauntlets", "Waists", "Leggings"];
+      const total = slots.reduce((a, c) => a + Math.min(box.arm[c], 5), 0);
+      const chips = slots.map((c, i) => {
+        const v = box.arm[c];
+        return `<span class="slot-chip${v >= 5 ? " ok" : ""}">${slotNames[i]} <b>${v}/5</b></span>`;
+      }).join("");
+      add("Wyvernian Forger's Mitten", req2W, { bar: [total, 25], chips, link: "equip" });
+    } else {
+      add("Wyvernian Forger's Mitten", req2W, { pend: "Equipment table not loaded", link: "equip" });
+    }
+    add("Hunter's Advancement", "Clear 20+ quests in every map except Castle Schrade, Battleground, Snow Battleground, Small Arena, Water Arena");
+
+    A.forEach(a => {
+      a.earned = !!earnedBit(a.idx);
+      a.met = !!a.bar && a.bar[0] >= a.bar[1];
+      a.complete = a.met || a.earned;
+      a.note = a.earned && !!a.bar && !a.met;   // earned once, save has since regressed
+    });
+    return A;
+  }
+
+  function awardHTML(a) {
+    const cls = "award-row" + (a.complete ? " done" : "") + (a.bar ? "" : " pending");
+    let prog;
+    if (a.bar) {
+      const cur = a.bar[0], need = a.bar[1], pct = need > 0 ? Math.min(cur / need, 1) * 100 : 0;
+      prog =
+        (a.note ? `<div class="award-note">Earned. Awards are permanent; the count below is just your save right now</div>` : "") +
+        `<div class="pbar${a.met ? " full" : ""}"><div class="pbar-fill" style="width:${pct.toFixed(1)}%"></div>` +
+        `<span class="pbar-label">${num(cur)} / ${num(need)}</span></div>` +
+        (a.chips ? `<div class="slot-chips">${a.chips}</div>` : "");
+    } else {
+      prog = `<span class="award-pending">${esc(a.pend || "Not yet mapped")}</span>`;
+    }
+    const link = a.link
+      ? `<button type="button" class="award-link" data-link="${a.link}" data-award="${esc(a.name)}">See details &rarr;</button>`
+      : `<span class="award-link off">See details &rarr;</span>`;
+    return `<div class="${cls}">
+      <div class="award-info"><div class="award-name">${esc(a.name)}</div><div class="award-req">${esc(a.req)}</div>${link}</div>
+      <div class="award-prog">${prog}</div>
+    </div>`;
+  }
+
   function renderAwards() {
     if (!view) return;
-    const box = scanBox();
-    const R = [];
-    const barRow = (name, req, cur, need) => {
-      const full = cur >= need, pct = need > 0 ? Math.min(cur / need, 1) * 100 : 0;
-      R.push(`<div class="award-row${full ? " done" : ""}">
-        <div class="award-info"><div class="award-name">${esc(name)}</div><div class="award-req">${esc(req)}</div></div>
-        <div class="award-prog"><div class="pbar${full ? " full" : ""}"><div class="pbar-fill" style="width:${pct.toFixed(1)}%"></div><span class="pbar-label">${num(cur)} / ${num(need)}</span></div></div>
-      </div>`);
-    };
-    const pendRow = (name, req, msg) => {
-      R.push(`<div class="award-row pending">
-        <div class="award-info"><div class="award-name">${esc(name)}</div><div class="award-req">${esc(req)}</div></div>
-        <div class="award-prog"><span class="award-pending">${esc(msg)}</span></div>
-      </div>`);
-    };
-
-    // 2W is special (per-slot chips); render it in place when its data is ready.
-    const render2W = () => {
-      if (!box) { pendRow("Wyvernian Forger's Mitten", "Possess 5 each of rarity 9/10 Helmets, Plates, Gauntlets, Waists & Leggings", "Equipment table not loaded"); return; }
-      const need = [1, 2, 3, 4, 0], slotNames = ["Helmets", "Plates", "Gauntlets", "Waists", "Leggings"];
-      const total = need.reduce((a, c) => a + Math.min(box.arm[c], 5), 0);
-      const full = total >= 25, pct = Math.min(total / 25, 1) * 100;
-      const chips = need.map((c, i) => {
-        const v = box.arm[c], ok = v >= 5;
-        return `<span class="slot-chip${ok ? " ok" : ""}">${slotNames[i]} <b>${v}/5</b></span>`;
-      }).join("");
-      R.push(`<div class="award-row${full ? " done" : ""}">
-        <div class="award-info"><div class="award-name">Wyvernian Forger's Mitten</div><div class="award-req">Possess 5 each of rarity 9/10 Helmets, Plates, Gauntlets, Waists &amp; Leggings</div></div>
-        <div class="award-prog"><div class="pbar${full ? " full" : ""}"><div class="pbar-fill" style="width:${pct.toFixed(1)}%"></div><span class="pbar-label">${total} / 25</span></div><div class="slot-chips">${chips}</div></div>
-      </div>`);
-    };
-
-    // All 48 awards in guild-card order (1A -> 1X, 2A -> 2X).
-    // Mapped awards render a live bar; everything else shows "Not yet mapped".
-    const P = "Not yet mapped";
-    pendRow("Village Chief's Glove", "Clear all 1-2 Star Village (Elder) Quests", P);            // 1A
-    pendRow("Village Chief's Hat", "Clear all 3-4 Star Village (Elder) Quests", P);              // 1B
-    pendRow("Village Chief's Scarf", "Clear all 5 Star Village (Elder) Quests", P);              // 1C
-    pendRow("Village Chief's Coat", "Clear all 6 Star (Urgent) Village Elder Quests", P);        // 1D
-    barRow("Mane Necklace", "Hunt a Kirin (slay or capture, any rank)", huntTotal(0x428A, 0x406E) > 0 ? 1 : 0, 1); // 1E
-    barRow("Blood Onyx", "Hunt an Akantor", huntTotal(0x42E0, 0x40C4) > 0 ? 1 : 0, 1);           // 1F
-    pendRow("King's Crown", "Earn a Gold Crown for each monster's maximum length", P);           // 1G
-    pendRow("Miniature Crown", "Earn a Gold Crown for each monster's minimum length", P);        // 1H
-    pendRow("Bronze Medal", "Clear all 1-2 Star Guild Hall Quests", P);                          // 1I
-    pendRow("Silver Medal", "Clear all 3-5 Star Guild Hall Quests", P);                          // 1J
-    pendRow("Gold Medal", "Clear all 6-8 Star Guild Hall Quests", P);                            // 1K
-    pendRow("Black Belt Badge", "Clear all Battle Training for every monster with every weapon", P); // 1L
-    pendRow("Expert Badge", "Clear all Special Training for every monster and weapon", P);        // 1M
-    pendRow("Legend Badge", "Clear all Group Training for every monster and weapon", P);          // 1N
-    pendRow("Rare Species Report", "Hunt every subspecies at least once", P);                    // 1O
-    pendRow("Ecology Research Report", "Capture every capturable monster", P);                   // 1P
-    pendRow("Azure Stone", "Complete the Mining Point +4 Renovation", P);                        // 1Q
-    pendRow("Great Hornfly", "Complete the Insect Thicket +4 Renovation", P);                    // 1R
-    pendRow("Springnight Carp", "Complete the Fishing Pier +2 Renovation", P);                   // 1S
-    pendRow("Dosbiscus", "Complete the Field Row +2 Renovation", P);                             // 1T
-    pendRow("Grateful Letter", "Have any 5 hired Felyne Chefs at Level 9", P);                   // 1U
-    pendRow("Sage's Bracelet", "Complete every combination in the Combo List", P);               // 1V
-    pendRow("Wyverian Artisan's Hammer", "Attain the \u201CWeapon\u201D title", P);              // 1W
-    pendRow("Hunter's Progress", "Clear 20+ quests in each: Snowy Mountains, Jungle, Desert, Swamp, Forest & Hills, Volcano, Tower", P); // 1X
-    pendRow("Felyne Elder's Whiskers", "Clear all 7 Star Elder (Nekoht) Quests", P);            // 2A
-    pendRow("Felyne Elder's Bell", "Clear all 8 Star Elder (Nekoht) Quests", P);                // 2B
-    pendRow("Felyne Elder's Coat", "Clear all 9 Star Elder (Nekoht) Quests", P);                // 2C
-    pendRow("Pokke Liquor Bottle", "Clear the Felyne Elder Akantor urgent \u201CRise to the Summit\u201D", P); // 2D
-    pendRow("Bronze Shield", "Clear all 1 Star G-rank Guild Hall Quests", P);                    // 2E
-    pendRow("Silver Shield", "Clear all 2 Star G-rank Guild Hall Quests", P);                    // 2F
-    pendRow("Gold Shield", "Clear all 3 Star G-rank Guild Hall Quests", P);                      // 2G
-    pendRow("Heaven & Earth Emblem", "Complete all Elder Quests and all Guild Hall Quests (incl. urgents)", P); // 2H
-    pendRow("Ring of Darkness", "Hunt a G-rank Black Fatalis", P);                               // 2I
-    pendRow("Bracelet of Prominence", "Hunt a G-rank Crimson Fatalis", P);                       // 2J
-    pendRow("Heavenly Crown", "Hunt a G-rank White Fatalis", P);                                 // 2K
-    pendRow("Golden Fur Boots", "Hunt a G-rank Gold Rajang", P);                                 // 2L
-    barRow("North Star Diamond", "Hunt an Ukanlos", huntTotal(0x42F8, 0x40DC) > 0 ? 1 : 0, 1);   // 2M
-    pendRow("Monster Hunter's Bracelet", "Clear all Epic Quests in Elder and the Guild Hall", P); // 2N
-    pendRow("Fighter's Badge", "Clear all G-rank Training for every monster and weapon", P);      // 2O
-    pendRow("Guild Knight's Citation", "Clear 20+ quests in both the Fort and Town maps", P);     // 2P
-    barRow("Guild Bouquet", "Attain 1,000,000 Guild Points", Math.min(u32(FUND.guild), 1000000), 1000000); // 2Q
-    pendRow("Adventurer's Helmet", "Attain all Rare Treasure Items and a Gold Crown for each Treasure Hunt map", P); // 2R
-    pendRow("Trenya's Flag", "Send Trenya on 100 expeditions at 1500 Pokke Points", P);          // 2S
-    pendRow("Grand Felvine", "Possess a Felyne Comrade with all skills unlocked", P);            // 2T
-    pendRow("Letter of Appreciation", "Possess 5 Felyne Comrades all with 5 Fondness Hearts", P); // 2U
-    barRow("Wyvernian Artisan Card", "Possess 50 G-rank weapons of any type",                    // 2V
-      box ? Math.min(box.g, 50) : 0, 50);
-    if (!box) R.pop(), pendRow("Wyvernian Artisan Card", "Possess 50 G-rank weapons of any type", "Equipment table not loaded");
-    render2W();                                                                                   // 2W
-    pendRow("Hunter's Advancement", "Clear 20+ quests in every map except Castle Schrade, Battleground, Snow Battleground, Small Arena, Water Arena", P); // 2X
-
-    $("awardList").innerHTML = R.join("");
+    const all = buildAwards();
+    $("awardStat").textContent = `${all.filter(a => a.complete).length} / 48 complete`;
+    const shown = awardFilter === "incomplete" ? all.filter(a => !a.complete) : all;
+    $("awardList").innerHTML = shown.length
+      ? shown.map(awardHTML).join("")
+      : `<p class="ph-text">No incomplete awards &mdash; all 48 complete.</p>`;
   }
 
   // ---- sidebar sections ----------------------------------------------
@@ -684,6 +803,8 @@
   }
 
   // ---- drag-to-scroll (axis-locked; wheel still works) ----------------
+  // The "from award" chip only clears on click or on unloading the save.
+  function clearFromAward() { fromAward = null; $("fromAward").classList.add("hidden"); }
   let drag = null;
   function initDragScroll(el) {
     el.addEventListener("mousedown", (e) => {
@@ -870,6 +991,7 @@
     function unloadToStart() {
       if (!window.confirm("Return to the start screen? The current character will be unloaded.")) return;
       view = null;
+      clearFromAward();
       decryptedSlots = null;
       decryptedRegion = null;
       setStatus("", "");
@@ -886,6 +1008,24 @@
 
     $("search").addEventListener("input", e => { searchQuery = e.target.value; renderTable(); });
     $("filterMode").addEventListener("change", e => { filterMode = e.target.value; renderTable(); });
+    $("awardFilter").addEventListener("change", e => { awardFilter = e.target.value; renderAwards(); });
+
+    // "See details" — jump to the tab that holds the underlying data, with
+    // the matching view selected, and leave a chip to get back.
+    $("awardList").addEventListener("click", e => {
+      const b = e.target.closest("button.award-link");
+      if (!b) return;
+      const kind = b.dataset.link;
+      if (kind === "equip") { selectSection("equipment"); return; }
+      filterMode = kind === "crown" ? "crown" : kind === "rsr" ? "rsr" : "captured";
+      $("filterMode").value = filterMode;
+      fromAward = b.dataset.award || "";
+      $("fromAward").textContent = "\u2190 Back to Awards \u00B7 " + fromAward;
+      $("fromAward").classList.remove("hidden");
+      selectSection("monsters");
+      renderTable();
+    });
+    $("fromAward").addEventListener("click", () => { clearFromAward(); selectSection("awards"); });
     $("showSize").addEventListener("change", e => { showSizeCols = e.target.checked; renderTable(); });
     $("showSlots").addEventListener("change", e => { showSlots = e.target.checked; renderSlots(); });
     $("showQstAdv").addEventListener("change", e => { showQstAdv = e.target.checked; renderQuestsAdv(); });
