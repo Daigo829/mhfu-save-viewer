@@ -1,4 +1,4 @@
-<!-- MHFU Save Viewer — v0.9 -->
+<!-- MHFU Save Viewer — v1.0 beta -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +14,7 @@
 <!-- ============ DROP SCREEN (no save loaded) ============ -->
 <div class="drop-screen" id="dropScreen">
   <div class="drop-panel">
-    <h1 class="brand-title">MHFU Save Viewer <span class="ver">v0.9</span></h1>
+    <h1 class="brand-title">MHFU Save Viewer <span class="ver">v1.0 beta</span></h1>
     <p class="sub">Drop your raw <strong>MHP2NDG.BIN</strong> and the viewer decrypts it in
       your browser &mdash; or drop an already-decrypted character save. This is a detailed save viewer built to
       surface all sorts of information from MHFU &mdash; even data the game hides &mdash; and also track your progress.</p>
@@ -30,7 +30,8 @@
       characterX.sav (438,528 bytes).
     </div>
     <div class="wip" style="text-align: center">
-      <strong>Work in progress.</strong> This is not a full release, some sections are still placeholders.
+      <strong>Beta.</strong> Every section reads live from the save, but this is not a finished release &mdash;
+      38 of the 48 awards show earned/not without reconstructed progress, and per-piece equipment detail is still to come.
     </div>
   </div>
 </div>
@@ -62,8 +63,8 @@
   <aside class="sidebar">
     <div class="brand" id="brandHome" title="Return to start screen">MHFU<br>SAVE VIEWER</div>
     <nav class="nav" id="nav">
-      <button class="nav-item" data-section="hunter"><span class="nav-code">HU</span><span class="nav-label">HUNTER</span></button>
-      <button class="nav-item active" data-section="monsters"><span class="nav-code">MON</span><span class="nav-label">MONSTERS</span></button>
+      <button class="nav-item active" data-section="hunter"><span class="nav-code">HU</span><span class="nav-label">HUNTER</span></button>
+      <button class="nav-item" data-section="monsters"><span class="nav-code">MON</span><span class="nav-label">MONSTERS</span></button>
       <button class="nav-item" data-section="quests"><span class="nav-code">QST</span><span class="nav-label">QUESTS</span></button>
       <button class="nav-item" data-section="items"><span class="nav-code">ITM</span><span class="nav-label">ITEMS</span></button>
       <button class="nav-item" data-section="equipment"><span class="nav-code">EQP</span><span class="nav-label">EQUIPMENT</span></button>
@@ -78,7 +79,7 @@
 
   <main class="content" id="content">
     <!-- HUNTER -->
-    <section class="section hidden" id="sec-hunter">
+    <section class="section" id="sec-hunter">
       <div class="sec-head"><h2 class="sec-title">Hunter</h2></div>
       <p class="sec-desc">Your hunter profile as stored in the save &mdash; identity, funds, playtime, guild-card greeting,
         weapon usage and Felyne comrades. Read straight from the save; only fully-decoded fields are shown.</p>
@@ -114,7 +115,7 @@
     </section>
 
     <!-- MONSTERS -->
-    <section class="section" id="sec-monsters">
+    <section class="section hidden" id="sec-monsters">
       <div class="sec-head">
         <h2 class="sec-title">Monster List</h2>
         <div class="sec-stat" id="crownStat"><div>0 / 0 crowns recorded</div></div>
@@ -157,6 +158,89 @@
             </tr></thead>
             <tbody id="tbody"></tbody>
           </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ITEMS -->
+    <section class="section hidden" id="sec-items">
+      <div class="sec-head">
+        <h2 class="sec-title">Items</h2>
+        <div class="sec-stat" id="itemStat"></div>
+      </div>
+      <p class="sec-desc">Every item slot as stored in the save, in on-screen order &mdash; the 1000-slot item box
+        (10 pages of 100) and the 24-slot pouch (3 pages of 8), plus a tracker for holding every obtainable item at 99. Slots are not packed, so occupied slots can sit after
+        empty ones; both lists walk every slot. More than 99 of an item means more than one slot, so counts are shown
+        per slot rather than totalled.</p>
+
+      <div class="controls">
+        <input type="text" id="itemSearch" class="search" placeholder="Search item name or id...">
+        <select id="itemNameSet" class="select"></select>
+      </div>
+
+      <div class="item-block">
+        <button type="button" class="item-toggle" id="boxToggle" aria-expanded="false">
+          <span class="tw">&#9656;</span> Item Box &mdash; 1000 slots <span class="item-sub" id="boxSub"></span>
+        </button>
+        <div class="frame hidden" id="boxFrame">
+          <div class="table-scroll" id="boxScroll">
+            <table class="montbl itemtbl">
+              <thead><tr><th class="num">Slot</th><th class="num">ID</th><th>Item</th><th class="num">Count</th><th class="chkcol">99+</th></tr></thead>
+              <tbody id="boxBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-block">
+        <button type="button" class="item-toggle" id="pouchToggle" aria-expanded="false">
+          <span class="tw">&#9656;</span> Item Pouch &mdash; 24 slots <span class="item-sub" id="pouchSub"></span>
+        </button>
+        <div class="frame hidden" id="pouchFrame">
+          <div class="table-scroll" id="pouchScroll">
+            <table class="montbl itemtbl">
+              <thead><tr><th class="num">Slot</th><th class="num">ID</th><th>Item</th><th class="num">Count</th></tr></thead>
+              <tbody id="pouchBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="item-block">
+        <button type="button" class="item-toggle" id="trackToggle" aria-expanded="false">
+          <span class="tw">&#9656;</span> Every item at 99 &mdash; tracker <span class="item-sub" id="trackSub"></span>
+        </button>
+        <div class="frame hidden" id="trackFrame">
+          <div class="track-controls">
+            <select id="trackFilter" class="select">
+              <option value="all">All obtainable items</option>
+              <option value="missing">Missing only (under 99)</option>
+              <option value="grind">Grindable items</option>
+              <option value="grindMissing" selected>Grindable &mdash; missing only</option>
+            </select>
+            <label class="ctl"><input type="checkbox" id="trackHideDeco" checked> Hide decorations</label>
+            <label class="ctl"><input type="checkbox" id="trackHideLowRar" checked> Hide buyable / tradeable</label>
+          </div>
+          <div class="track-help">
+            <details class="help-item">
+              <summary><span class="tw">&#9656;</span> What is this tracker for?</summary>
+              <p>This tracker is designed for players that want to get every x99-able item to 99, which means 1020
+                of the game's 1025 storable items.</p>
+            </details>
+            <details class="help-item">
+              <summary><span class="tw">&#9656;</span> What is a Grindable Item?</summary>
+              <p>A Grindable item is one you must personally work to acquire. It excludes items that can be mass
+                purchased with Zenny or Pokke Points and anything you can craft from purchasable parts, instead they
+                have to come from quest rewards, gathering, carving, part breaks, monster drops, Pokke Farm, Trenya,
+                Veggie Elder, cookable or craftable, but from farmed ingredients.</p>
+            </details>
+          </div>
+          <div class="table-scroll" id="trackScroll">
+            <table class="montbl itemtbl">
+              <thead><tr><th class="num">ID</th><th class="num">Rar</th><th>Item</th><th class="num">Amount held</th><th class="chkcol">99+</th></tr></thead>
+              <tbody id="trackBody"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
@@ -214,11 +298,42 @@
       </div>
     </section>
 
-    <!-- PLACEHOLDER (hunter / quests / items / equipment / awards) -->
-    <section class="section hidden" id="sec-placeholder">
-      <div class="frame frame-pad ph-panel">
-        <h2 class="sec-title" id="phTitle">&mdash;</h2>
-        <p class="ph-text" id="phText"></p>
+    <!-- EQUIPMENT -->
+    <section class="section hidden" id="sec-equip">
+      <div class="sec-head">
+        <h2 class="sec-title">Equipment</h2>
+        <div class="sec-stat" id="equipStat"></div>
+      </div>
+      <p class="sec-desc">Every slot of the 1000-slot equipment box, in slot order. Each record stores its category
+        and item id; name, class, rarity, attack and the G-weapon / rarity-9&ndash;10 flags come from the equipment
+        table. Attack is a weapon value &mdash; the table carries no defence figures for armour, so those rows show a
+        dash. Per-piece detail &mdash; decorations, sharpness, skills, upgrade path &mdash; is coming in a later pass.</p>
+
+      <div class="controls">
+        <input type="text" id="equipSearch" class="search" placeholder="Search equipment name or id...">
+        <select id="equipCat" class="select">
+          <option value="all">All categories</option>
+          <option value="5">Blademaster weapons</option>
+          <option value="6">Gunner weapons</option>
+          <option value="1">Helmets</option>
+          <option value="2">Plates</option>
+          <option value="3">Gauntlets</option>
+          <option value="4">Waists</option>
+          <option value="0">Leggings</option>
+        </select>
+      </div>
+      <div class="slot-chips" id="equipChips"></div>
+
+      <div class="frame">
+        <div class="table-scroll" id="equipScroll">
+          <table class="montbl itemtbl eqtbl">
+            <thead><tr>
+              <th class="num">Slot</th><th>Category</th><th class="num">ID</th><th>Name</th><th>Class</th>
+              <th class="num">Rar</th><th class="num">Attack</th><th class="chkcol">G</th>
+            </tr></thead>
+            <tbody id="equipBody"></tbody>
+          </table>
+        </div>
       </div>
     </section>
   </main>
@@ -226,6 +341,8 @@
 
 <!-- embedded SaveTools decryptor: MUST load before app.js -->
 <script src="decryptor.js"></script>
+<script src="item_data_fallback.js"></script>
+<script src="equipment_data_fallback.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
