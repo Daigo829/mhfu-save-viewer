@@ -1,4 +1,4 @@
-/* MHFU Save Viewer — v0.9  (READ ONLY — never writes or downloads; in-browser decrypt via decryptor.js) */
+/* MHFU Save Viewer — v1.0 beta  (READ ONLY — never writes or downloads; in-browser decrypt via decryptor.js) */
 (function () {
   "use strict";
 
@@ -211,41 +211,58 @@
   ];
   const FELYNE_BASE = 0x67E48, FELYNE_STRIDE = 0x40, FELYNE_SLOTS = 9;
 
-  // Group DATA into families: each parent row + its subspecies rows.
+  // ---- item box + pouch (14_item_box_and_pouch_GROUND_TRUTH, proven in game) ----
+  // Both structures share one record: +0 u16 item_id (0 = empty), +2 u16 count.
+  // Slots are NOT packed — occupied slots follow empty ones, so walk all of them.
+  // Slot order IS on-screen order: box 10 pages x 100, pouch 3 pages x 8.
+  const ITEM_BOX = { base: 0x2F88, slots: 1000, page: 100, label: "Item Box" };
+  const ITEM_POUCH = { base: 0x3F28, slots: 24, page: 8, label: "Item Pouch" };
+  const ITEM_INFINITE = 255;               // 255 = infinite (id 96 Normal S Lv1), never a quantity
+  // The table carries five name columns (name_<key>); ids are region-independent.
+  const ITEM_NAME_SETS = [
+    { k: "ULES", label: "EU (ULES)" },
+    { k: "ULUS", label: "US (ULUS)" },
+    { k: "ENGPATCH", label: "JP + English patch" },
+    { k: "JP", label: "Japanese (ULJM)" },
+    { k: "COMPLETE", label: "MHFU Complete 1.4.1" },
+  ];
+  const ITEM_STACK = 99;                   // per-slot cap; more than 99 held = more than one slot
+  const ITEM_STORABLE_TOTAL = 1025;        // the x99 denominator: every storable item, capped ones included
+  // The five hard-capped items can never reach 99 (cap assumed 2, unproven), so
+  // holding at least one of them satisfies the goal. User's rule, 2026-08-18.
+  const ITEM_HARD_CAP = [816, 912, 913, 914, 915];
+
+  // ---- derived tables -------------------------------------------------
+  // One family per base species: consecutive DATA rows sharing the in-game card
+  // number g. Row 0 is the base form, any rows after it are its subspecies.
   const FAMS = (function () {
     const fams = []; let cur = null;
-    DATA.forEach(r => { if (!r.sub) { cur = { rows: [r] }; fams.push(cur); } else cur.rows.push(r); });
-    fams.forEach(f => { f.hasSize = f.rows.some(r => r.sz === 1); f.capturable = f.rows.some(r => r.cap === 1); });
+    DATA.forEach(r => {
+      if (!cur || cur.g !== r.g) { cur = { g: r.g, rows: [] }; fams.push(cur); }
+      cur.rows.push(r);
+    });
+    fams.forEach(f => {
+      f.hasSize = f.rows.some(r => r.sz === 1);      // 1G/1H denominator
+      f.capturable = f.rows.some(r => r.cap === 1);
+    });
     return fams;
   })();
 
-  // ---- award ground truth (v0.9) --------------------------------------
-  // Earned-flag bitset: 6 bytes @0x67400 = 48 bits, LSB-first, award order
-  // 1A..1X then 2A..2X (bit i = award i). READ ONLY — the game regenerates
-  // this cache on quest completion, so writing it grants nothing.
-  const AWARDS_BASE = 0x67400;
+  const AWARDS_BASE = 0x67400;     // 6-byte earned-flag bitset, LSB-first (INTERNAL_NOTES 4.1)
 
-  // 1O Rare Species Report — the 16-variant set proven sufficient in-game.
-  // Golden Rajang, Rusted Kushala Daora and Yian Garuga (One-Eyed) are
-  // proven NOT required and are deliberately absent. Ashen Lao-Shan Lung
-  // IS required (proven) even though Rusted Kushala is not — not a slip.
+  // 1O Rare Species Report: these 16 variants, hunted (slain or captured) at least once.
+  // The set is proven sufficient; the asymmetry is deliberate — Golden Rajang, Rusted
+  // Kushala Daora and One-Eyed Garuga are proven NOT required. Do not "fix" it.
   const RSR_NAMES = ["Pink Rathian", "Gold Rathian", "Azure Rathalos", "Silver Rathalos",
     "Blue Yian Kut-Ku", "Purple Gypceros", "Red Khezu", "Black Gravios", "White Monoblos",
     "Black Diablos", "Green Plesioth", "Plum Daimyo Hermitaur", "Terra Shogun Ceanataur",
     "Emerald Congalala", "Copper Blangonga", "Ashen Lao-Shan Lung"];
   const RSR_ROWS = DATA.filter(r => RSR_NAMES.indexOf(r.n) >= 0);
 
-  // 1P Ecology Research Report — the 43 capturable monsters, captured@ only.
-  // Diablos (0x4048) is one entry: base or One-Horned both land in that slot.
-  const CAP43 = [
-    0x402E, 0x4038, 0x403C, 0x4042, 0x4048, 0x404A, 0x404E, 0x4054, 0x4056, 0x4058,
-    0x4060, 0x4062, 0x4064, 0x406A, 0x4076, 0x4078, 0x407A, 0x407C, 0x407E, 0x4080,
-    0x4082, 0x4084, 0x4086, 0x4088, 0x408A, 0x408C, 0x408E, 0x4092, 0x4094, 0x4096,
-    0x40B2, 0x40B4, 0x40C2, 0x40C6, 0x40C8, 0x40CE, 0x40D0, 0x40D2, 0x40D4, 0x40D6,
-    0x40D8, 0x40DA, 0x40DE,
-  ];
+  // 1P Ecology Research Report: capture offsets of the 43 capturable monsters.
+  // One-Horned Diablos has no slot of its own and shares base Diablos, so 43, not 44.
+  const CAP43 = DATA.filter(r => r.cap === 1).map(r => r.cp);
 
-  // ---- state ----------------------------------------------------------
   let view = null;                 // DataView over the loaded save (read only)
   let filterMode = "crown";        // "all" | "crown" | "captured" | "sub" | "rsr"
   let awardFilter = "all";         // "all" | "incomplete"
@@ -255,6 +272,16 @@
   let showQstAdv = false;
   let showWpnAdv = false;
   let searchQuery = "";
+  let itemSearch = "";
+  let itemNameSet = null;          // null = auto from the decrypted region
+  let itemOpen = { box: false, pouch: false, track: false };
+  // Tracker opens on the farming view: what you still have to grind for, with the
+  // decorations and the buyable / tradeable shortcuts filtered out.
+  let trackFilter = "grindMissing"; // all | missing | grind | grindMissing
+  let trackHideDeco = true;
+  let trackHideLowRar = true;      // rarity 1-3 OR flagged tradeable
+  let equipSearch = "";
+  let equipCat = "all";            // "all" | "0".."6"
   const $ = (id) => document.getElementById(id);
 
   // ---- helpers --------------------------------------------------------
@@ -555,40 +582,60 @@
   }
 
   // ---- awards / completion tab ---------------------------------------
-  // Equipment master table, loaded from 12_equipment_full_table.csv on init.
-  // Map "cat:id" -> {isG, r9}. null until the CSV loads; scanBox falls back to
-  // the embedded lookup below when the fetch fails (e.g. opened from file://).
-  let equipTable = null;
+  // ---- equipment box --------------------------------------------------
+  // equipment_full_table.csv is the single source of equipment facts: name, class,
+  // rarity, the G-weapon flag (award 2V), the rarity-9/10 flag (award 2W) and the
+  // displayed attack. Loaded exactly like the item table — fetch the CSV, fall back
+  // to the generated equipment_data_fallback.js when the fetch is blocked (opened
+  // from disk over file://).
+  //
+  // Box layout: 0x00A8, 1000 records x 12 bytes. +0 non-zero = occupied,
+  // +1 category, +2 u16 id. Bytes +4..+11 are still undecoded.
+  const EQUIP_BOX = { base: 0x00A8, slots: 1000, stride: 12, page: 100 };
+  const EQUIP_CATS = ["Leggings", "Helmet", "Plate", "Gauntlets", "Waist", "Blademaster weapon", "Gunner weapon"];
 
-  // Compact fallback lookup (generated from equipment_full_table.csv). Used ONLY when the
-  // CSV fetch fails — e.g. opening index.html directly from disk (file://), where browsers
-  // block same-directory fetches. Lists only the qualifying items per award.
-  //   EMBED_G  : G-weapon ids by category (5 blademaster, 6 gunner)  — award 2V
-  //   EMBED_R9 : rarity 9/10 armor ids by category (0 legs,1 head,2 body,3 arms,4 waist) — award 2W
-  const EMBED_G = {
-    5: [679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,724,725,726,727,728,729,731,732,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832,833,834,835,836,837,838,839,840,841,842,843,844,845,846,847,848,849,850,851,852,853,854,855,856,857,859,860,861,946,947,948,949,950,951,952,953,954,955,956,957,958,959,960,961,962,963,964,965,966,967,968,969,970,971,972,973,974,975,976,977,978,979,980,981,982,983,984,985,986,987,988,989,990,991,992,993,994,995,996,997,999,1000,1001,1002,1003,1055,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1144,1145],
-    6: [208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,225,226,227,228,229,230,231,268,269,270,271,272,273,274,276,277,278,279,280,281,282,283,284,285,286,287,288,292,294,295,298,306,308,309,323,327,340]
-  };
-  const EMBED_R9 = {
-    0: [301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415],
-    1: [316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,433,435],
-    2: [300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415],
-    3: [294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406],
-    4: [292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404]
-  };
-  // Build the fallback Map once, on first use.
-  let embedTableCache = null;
-  function embedTable() {
-    if (embedTableCache) return embedTableCache;
-    const m = new Map();
-    for (const cat in EMBED_G) EMBED_G[cat].forEach(id => m.set(cat + ":" + id, { isG: true, r9: false }));
-    for (const cat in EMBED_R9) EMBED_R9[cat].forEach(id => {
-      const k = cat + ":" + id, e = m.get(k);
-      if (e) e.r9 = true; else m.set(k, { isG: false, r9: true });
-    });
-    embedTableCache = m;
-    return m;
+  let equipTable = null;      // Map "cat:id" -> { name, cls, rarity, isG, r9, atk }
+  let equipReady = false;
+
+  function buildEquipTable(rows) {
+    const col = {}; rows[0].forEach((n, i) => { col[n.trim()] = i; });
+    const cell = (r, n) => (r[col[n]] || "").trim();
+    const map = new Map();
+    for (let i = 1; i < rows.length; i++) {
+      const r = rows[i];
+      const cat = parseInt(r[col.cat_code], 10), id = parseInt(r[col.id], 10);
+      if (isNaN(cat) || isNaN(id)) continue;
+      map.set(cat + ":" + id, {
+        name: cell(r, "ingame_name"), cls: cell(r, "class"), rarity: cell(r, "rarity"),
+        isG: cell(r, "G_weapon") === "Y", r9: cell(r, "rarity_9or10") === "Y",
+        atk: cell(r, "attack_display"),
+      });
+    }
+    equipTable = map; equipReady = true;
   }
+
+  function buildEquipTableOffline() {
+    if (!window.MHFU_EQUIP_DATA) return;
+    const map = new Map();
+    window.MHFU_EQUIP_DATA.split("\n").forEach(line => {
+      const f = line.split("|"); if (f.length < 8) return;
+      map.set(f[0] + ":" + f[1], { name: f[2], cls: f[3], rarity: f[4], isG: f[5] === "1", r9: f[6] === "1", atk: f[7] });
+    });
+    equipTable = map; equipReady = true;
+  }
+
+  function loadEquipTable() {
+    const done = () => {
+      if (!$("sec-awards").classList.contains("hidden")) renderAwards();
+      if (!$("sec-equip").classList.contains("hidden")) renderEquip();
+    };
+    fetch("equipment_full_table.csv")
+      .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+      .then(txt => { buildEquipTable(parseCSV(txt)); done(); })
+      .catch(() => { buildEquipTableOffline(); done(); });
+  }
+
+  const equipRow = (cat, id) => equipTable ? (equipTable.get(cat + ":" + id) || null) : null;
 
   function parseCSV(text) {
     const rows = []; let f = [], cur = "", q = false;
@@ -604,29 +651,12 @@
     if (cur !== "" || f.length) { f.push(cur); rows.push(f); }
     return rows;
   }
-  function loadEquipTable() {
-    fetch("equipment_full_table.csv")
-      .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
-      .then(txt => {
-        const rows = parseCSV(txt), map = new Map();
-        // header cols: 0 cat_code, 2 id, 10 G_weapon, 11 rarity_9or10
-        for (let i = 1; i < rows.length; i++) {
-          const r = rows[i]; if (r.length < 12) continue;
-          const cat = parseInt(r[0], 10), id = parseInt(r[2], 10);
-          if (isNaN(cat) || isNaN(id)) continue;
-          map.set(cat + ":" + id, { isG: r[10] === "Y", r9: r[11] === "Y" });
-        }
-        equipTable = map;
-        if (!$("sec-awards").classList.contains("hidden")) renderAwards();
-      })
-      .catch(() => { equipTable = null; if (!$("sec-awards").classList.contains("hidden")) renderAwards(); });
-  }
 
   // Scan the 1000-slot equipment box (BOX_BASE 0x00A8, 12-byte records).
   // Returns G-weapon count + per-armor-slot rarity-9/10 counts, or null.
   function scanBox() {
-    const tbl = equipTable || embedTable();     // fall back to embedded lookup if CSV didn't load
-    if (!view || !tbl) return null;
+    if (!view || !equipTable) return null;
+    const tbl = equipTable;
     const bytes = new Uint8Array(view.buffer);
     let g = 0; const arm = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0 };
     for (let i = 0; i < 1000; i++) {
@@ -779,27 +809,354 @@
       : `<p class="ph-text">No incomplete awards &mdash; all 48 complete.</p>`;
   }
 
-  // ---- sidebar sections ----------------------------------------------
-  const PLACEHOLDERS = {
-    items: "Item box & pouch contents are not decoded yet. Placeholder for a later pass.",
-    equipment: "Equipped weapon, armor, and decorations are not decoded yet. Placeholder for a later pass.",
-  };
-  const LABELS = { hunter:"HUNTER", quests:"QUESTS", items:"ITEMS", equipment:"EQUIPMENT", awards:"AWARDS" };
+  // ---- items tab: box + pouch --------------------------------------
+  // item_master_table.csv is the single source of item facts: the five name sets,
+  // tag, storable / decoration flags, rarity, and the grindable list. Loaded the
+  // same way as the equipment table — fetch the CSV, and fall back to the
+  // generated item_data_fallback.js when the fetch is blocked (index.html opened
+  // straight from disk over file://). Nothing item-specific is hardcoded below:
+  // to correct a name, a rarity or a grindable flag, edit the CSV and regenerate
+  // the fallback from it.
+  let itemTable = null;        // Map id -> { names{}, tag, storable, deco, rarity, grind }
+  let itemGrindTotal = 0;      // rows with grindable = yes; the tracker's denominator
+  let itemMaxId = 0;
 
+  function buildItemTable(rows) {
+    const col = {}; rows[0].forEach((name, i) => { col[name.trim()] = i; });
+    const map = new Map(); let grind = 0;
+    const cell = (r, name) => (r[col[name]] || "").trim();
+    for (let i = 1; i < rows.length; i++) {
+      const r = rows[i];
+      const id = parseInt(r[col.item_id], 10); if (isNaN(id)) continue;
+      const names = {};
+      ITEM_NAME_SETS.forEach(s => { names[s.k] = cell(r, "name_" + s.k); });
+      const g = cell(r, "grindable") === "yes";
+      if (g) grind++;
+      map.set(id, { names: names, tag: cell(r, "item_tag"), storable: cell(r, "storable") === "yes",
+        deco: cell(r, "is_decoration") === "yes", rarity: cell(r, "rarity"), grind: g,
+        trade: cell(r, "tradeable") === "yes" });
+    }
+    setItemTable(map, grind);
+  }
+
+  // Offline copy: one pipe-separated line per item, "=" meaning "same as name_ULES".
+  function buildItemTableOffline() {
+    if (!window.MHFU_ITEM_DATA) return;
+    const map = new Map(); let grind = 0;
+    window.MHFU_ITEM_DATA.split("\n").forEach(line => {
+      const f = line.split("|"); if (f.length < 12) return;
+      const id = parseInt(f[0], 10); if (isNaN(id)) return;
+      const base = f[1], pick = (v) => v === "=" ? base : v;
+      if (f[10] === "1") grind++;
+      map.set(id, {
+        names: { ULES: base, ULUS: pick(f[2]), ENGPATCH: pick(f[3]), JP: pick(f[4]), COMPLETE: pick(f[5]) },
+        tag: f[6], storable: f[7] === "1", deco: f[8] === "1", rarity: f[9], grind: f[10] === "1",
+        trade: f[11] === "1",
+      });
+    });
+    setItemTable(map, grind);
+  }
+
+  function setItemTable(map, grind) {
+    itemTable = map; itemGrindTotal = grind; itemMaxId = 0;
+    map.forEach((_, id) => { if (id > itemMaxId) itemMaxId = id; });
+  }
+
+  function loadItemTable() {
+    const done = () => {
+      fillNameSetSelect();
+      if (!$("sec-items").classList.contains("hidden")) renderItems();
+    };
+    fetch("item_master_table.csv")
+      .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+      .then(txt => { buildItemTable(parseCSV(txt)); done(); })
+      .catch(() => { buildItemTableOffline(); done(); });
+  }
+
+  // Auto-pick the name set unless the user overrode it. NA and EU are byte-identical to
+  // the decryptor, so US/EU resolves to ULES. JP saves also default to English (ULUS) —
+  // ids are region-independent and very few players read Japanese; name_JP stays
+  // available in the dropdown.
+  const itemSetAuto = () => (decryptedRegion === "JP" ? "ULUS" : "ULES");
+  const itemSetKey = () => itemNameSet || itemSetAuto();
+
+  function fillNameSetSelect() {
+    const sel = $("itemNameSet"); if (!sel) return;
+    if (!itemTable) {
+      sel.innerHTML = '<option value="">Item table not loaded</option>';
+      sel.disabled = true; return;
+    }
+    sel.disabled = false;
+    const auto = itemSetAuto();
+    const autoLabel = (ITEM_NAME_SETS.find(s => s.k === auto) || {}).label || auto;
+    sel.innerHTML = '<option value="">Names: auto (' + esc(autoLabel) + ')</option>' +
+      ITEM_NAME_SETS.map(s => '<option value="' + s.k + '">Names: ' + esc(s.label) + '</option>').join("");
+    sel.value = itemNameSet || "";
+  }
+
+  const itemRow = (id) => itemTable ? (itemTable.get(id) || null) : null;
+
+  // null when the id names no item — Daigo-JP box slot 981 holds 65535.
+  function itemNameFor(id) {
+    const row = itemRow(id);
+    if (!row) return null;
+    return row.names[itemSetKey()] || row.names.ULES || "";
+  }
+  const itemTagFor = (id) => { const r = itemRow(id); return r ? r.tag : ""; };
+  const itemStorable = (id) => { const r = itemRow(id); return !!(r && r.storable); };
+  const itemIsDeco = (id) => { const r = itemRow(id); return !!(r && r.deco); };
+  // Rarity comes straight from the table: "1".."5", or "4-5" where the source
+  // publishes none (all such items are 4 or 5, so they never count as low rarity).
+  const itemRarity = (id) => { const r = itemRow(id); return r ? r.rarity : ""; };
+  const itemIsLowRar = (id) => { const v = itemRarity(id); return v.length === 1 && "123".indexOf(v) >= 0; };
+  // "Buyable / tradeable": an item you can shortcut rather than farm — bought with Zenny or
+  // Pokke Points, or handed over in bulk by another player. Every rarity 1-3 item qualifies
+  // (they trade freely), plus the ids flagged tradeable in the table: rarity 4-5 items that
+  // are craftable purely from buyable and tradeable inputs.
+  const itemIsShortcut = (id) => { const r = itemRow(id); return itemIsLowRar(id) || !!(r && r.trade); };
+  const itemIsGrindable = (id) => { const r = itemRow(id); return !!(r && r.grind); };
+
+  function readItemSlots(struct) {
+    const out = [];
+    for (let i = 0; i < struct.slots; i++) {
+      const o = struct.base + i * 4;
+      out.push({ slot: i, id: u16(o), count: u16(o + 2) });
+    }
+    return out;
+  }
+
+  // Holdings per item id across box AND pouch: an item in the pouch is held.
+  function itemHoldings(box, pouch) {
+    const m = new Map();
+    const add = (recs, key) => recs.forEach(r => {
+      if (!r.id) return;
+      const e = m.get(r.id) || { box: 0, pouch: 0, inf: false, slots: 0 };
+      if (r.count === ITEM_INFINITE) e.inf = true; else e[key] += r.count;
+      e.slots++; m.set(r.id, e);
+    });
+    add(box, "box"); add(pouch, "pouch");
+    return m;
+  }
+  const holdTotal = (h) => h ? h.box + h.pouch : 0;
+  const holdAt99 = (id, h) => !!h && (h.inf ||
+    holdTotal(h) >= (ITEM_HARD_CAP.indexOf(id) >= 0 ? 1 : ITEM_STACK));
+
+  // "99x2 + 52" — full stacks first, then the remainder.
+  function stackText(h) {
+    if (!h) return "0";
+    if (h.inf) return "infinite";
+    const t = holdTotal(h);
+    if (t < ITEM_STACK) return num(t);
+    const full = Math.floor(t / ITEM_STACK), rem = t % ITEM_STACK;
+    return ITEM_STACK + "x" + full + (rem ? " + " + num(rem) : "");
+  }
+  const chkCell = (ok) => ok ? '<span class="caught-yes">&#10003;</span>' : '<span class="caught-no">&#10007;</span>';
+
+  function itemCountCell(rec) {
+    if (rec.count === ITEM_INFINITE) return '<span class="item-inf">infinite</span>';
+    return num(rec.count);
+  }
+
+  function itemRowHTML(rec, opts) {
+    const chk = opts && opts.chk;
+    if (!rec.id) {
+      return '<tr class="item-empty"><td class="num">' + (rec.slot + 1) + '</td>' +
+        '<td class="num">&mdash;</td><td class="iname">&mdash; empty &mdash;</td><td class="num">&mdash;</td>' +
+        (chk ? '<td class="chkcell"></td>' : "") + '</tr>';
+    }
+    const nm = itemNameFor(rec.id), tag = itemTagFor(rec.id);
+    const cell = nm === null
+      ? '<span class="item-bad">Unknown (id ' + rec.id + ')</span>'
+      : esc(nm) + (tag ? ' <span class="badge tag">' + esc(tag) + '</span>' : "");
+    return '<tr><td class="num">' + (rec.slot + 1) + '</td><td class="num idcol">' + rec.id +
+      '</td><td class="iname">' + cell + '</td><td class="num">' + itemCountCell(rec) + '</td>' +
+      (chk ? '<td class="chkcell">' + chkCell(holdAt99(rec.id, opts.hold.get(rec.id))) + '</td>' : "") + '</tr>';
+  }
+
+  function itemMatches(rec, q) {
+    if (!rec.id) return false;
+    if (String(rec.id).indexOf(q) === 0) return true;
+    const nm = itemNameFor(rec.id);
+    return nm !== null && nm.toLowerCase().indexOf(q) >= 0;
+  }
+
+  // One continuous table with a page header row every page-worth of slots.
+  // While searching, empty slots drop out and only pages with hits are headed.
+  function itemBodyHTML(struct, recs, q, opts) {
+    const cols = (opts && opts.chk) ? 5 : 4;
+    const out = [];
+    for (let p = 0; p * struct.page < struct.slots; p++) {
+      const chunk = recs.slice(p * struct.page, (p + 1) * struct.page);
+      const shown = q ? chunk.filter(r => itemMatches(r, q)) : chunk;
+      if (!shown.length) continue;
+      out.push('<tr class="item-page"><td colspan="' + cols + '">Page ' + (p + 1) +
+        '<span class="item-page-range">slots ' + (p * struct.page + 1) + '&ndash;' +
+        Math.min((p + 1) * struct.page, struct.slots) + '</span></td></tr>');
+      shown.forEach(r => out.push(itemRowHTML(r, opts)));
+    }
+    if (!out.length) out.push('<tr class="item-empty"><td colspan="' + cols + '">No matching items in this section.</td></tr>');
+    return out.join("");
+  }
+
+  // ---- x99 tracker: every storable item, at 99 or not ----------------
+  // Denominator is all 1025 storable items, the 5 hard-capped ones included,
+  // so the goal is deliberately unreachable until their cap rule is settled.
+  function renderTracker(hold, q) {
+    const grindMode = trackFilter === "grind" || trackFilter === "grindMissing";
+    const missingOnly = trackFilter === "missing" || trackFilter === "grindMissing";
+    const inSet = (id) => grindMode ? itemIsGrindable(id) : itemStorable(id);
+    const out = [];
+    let at99 = 0, held = 0;
+    for (let id = 1; id <= itemMaxId; id++) {
+      if (!inSet(id)) continue;
+      const h = hold.get(id), ok = holdAt99(id, h);
+      if (ok) at99++;
+      if (h) held++;
+      if (trackHideDeco && itemIsDeco(id)) continue;
+      if (trackHideLowRar && itemIsShortcut(id)) continue;
+      if (missingOnly && ok) continue;
+      const nm = itemNameFor(id);
+      if (q) {
+        const idHit = String(id).indexOf(q) === 0;
+        if (!idHit && !(nm !== null && nm.toLowerCase().indexOf(q) >= 0)) continue;
+      }
+      const note = h && h.pouch > 0 && h.box > 0
+        ? ' <span class="item-note">incl. ' + num(h.pouch) + ' in pouch</span>'
+        : (h && h.pouch > 0 && !h.box ? ' <span class="item-note">in pouch</span>' : "");
+      const rar = itemRarity(id);
+      out.push('<tr' + (h ? "" : ' class="track-none"') + '><td class="num idcol">' + id +
+        '</td><td class="num rarcol">' + (rar || "&mdash;") + '</td><td class="iname">' +
+        (nm === null ? '<span class="item-bad">Unknown</span>' : esc(nm)) +
+        '</td><td class="num">' + stackText(h) + note + '</td>' +
+        '<td class="chkcell">' + chkCell(ok) + '</td></tr>');
+    }
+    if (!out.length) out.push('<tr class="item-empty"><td colspan="5">No items match.</td></tr>');
+    $("trackBody").innerHTML = out.join("");
+    const denom = grindMode ? itemGrindTotal : ITEM_STORABLE_TOTAL;
+    $("trackSub").textContent = num(at99) + " / " + num(denom) +
+      (grindMode ? " grindable" : "") + " items at 99 \u00B7 " + num(held) + " of them held at all";
+  }
+
+  function renderItems() {
+    if (!view) return;
+    const q = itemSearch.trim().toLowerCase();
+    const box = readItemSlots(ITEM_BOX), pouch = readItemSlots(ITEM_POUCH);
+    const hold = itemHoldings(box, pouch);
+    $("boxBody").innerHTML = itemBodyHTML(ITEM_BOX, box, q, { chk: true, hold: hold });
+    $("pouchBody").innerHTML = itemBodyHTML(ITEM_POUCH, pouch, q);
+    renderTracker(hold, q);
+
+    const stat = (recs, struct) => {
+      const used = recs.filter(r => r.id).length;
+      const distinct = new Set(recs.filter(r => r.id).map(r => r.id)).size;
+      return num(used) + " / " + num(struct.slots) + " slots used \u00B7 " + num(distinct) + " distinct items";
+    };
+    $("boxSub").textContent = stat(box, ITEM_BOX);
+    $("pouchSub").textContent = stat(pouch, ITEM_POUCH);
+
+    const all = box.concat(pouch).filter(r => r.id);
+    $("itemStat").innerHTML = '<div>' + num(all.length) + ' / 1,024 slots used</div>' +
+      '<div>' + num(new Set(all.map(r => r.id)).size) + ' distinct items held</div>';
+
+    ["box", "pouch", "track"].forEach(k => {
+      const open = itemOpen[k];
+      $(k + "Frame").classList.toggle("hidden", !open);
+      const btn = $(k + "Toggle");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.querySelector(".tw").innerHTML = open ? "&#9662;" : "&#9656;";
+    });
+  }
+
+  // ---- equipment box listing ------------------------------------------
+  function readEquipSlots() {
+    const bytes = new Uint8Array(view.buffer), out = [];
+    for (let i = 0; i < EQUIP_BOX.slots; i++) {
+      const o = EQUIP_BOX.base + i * EQUIP_BOX.stride;
+      out.push({ slot: i, occupied: bytes[o] !== 0, cat: bytes[o + 1], id: u16(o + 2) });
+    }
+    return out;
+  }
+
+  function equipRowHTML(rec) {
+    const cell = (v) => '<td class="num">' + v + '</td>';
+    if (!rec.occupied) {
+      return '<tr class="item-empty"><td class="num">' + (rec.slot + 1) + '</td>' +
+        '<td>&mdash;</td><td class="num">&mdash;</td><td class="iname">&mdash; empty &mdash;</td>' +
+        '<td>&mdash;</td>' + cell("&mdash;") + cell("&mdash;") +
+        '<td class="chkcell"></td></tr>';
+    }
+    const badCat = rec.cat > 6;
+    const row = badCat ? null : equipRow(rec.cat, rec.id);
+    const catCell = badCat
+      ? '<span class="item-bad">Unknown category ' + rec.cat + '</span>'
+      : esc(EQUIP_CATS[rec.cat]);
+    const nameCell = row ? esc(row.name) : '<span class="item-bad">Unknown (id ' + rec.id + ')</span>';
+    return '<tr><td class="num">' + (rec.slot + 1) + '</td><td class="ecat">' + catCell +
+      '</td><td class="num idcol">' + rec.id + '</td><td class="iname">' + nameCell +
+      '</td><td class="ecls">' + (row && row.cls ? esc(row.cls) : '<span class="dash">&mdash;</span>') +
+      '</td>' + cell(row && row.rarity ? esc(row.rarity) : '<span class="dash">&mdash;</span>') +
+      cell(row && row.atk ? esc(row.atk) : '<span class="dash">&mdash;</span>') +
+      '<td class="chkcell">' + (row && row.isG ? chkCell(true) : "") + '</td></tr>';
+  }
+
+  function equipMatches(rec, q) {
+    if (!rec.occupied) return false;
+    if (String(rec.id).indexOf(q) === 0) return true;
+    const row = rec.cat > 6 ? null : equipRow(rec.cat, rec.id);
+    return !!row && String(row.name || "").toLowerCase().indexOf(q) >= 0;
+  }
+
+  function renderEquip() {
+    if (!view) return;
+    const q = equipSearch.trim().toLowerCase();
+    const recs = readEquipSlots();
+    const pass = (r) => {
+      if (!r.occupied) return equipCat === "all" && !q;
+      if (equipCat !== "all" && String(r.cat) !== equipCat) return false;
+      return q ? equipMatches(r, q) : true;
+    };
+    const out = [];
+    for (let p = 0; p * EQUIP_BOX.page < EQUIP_BOX.slots; p++) {
+      const shown = recs.slice(p * EQUIP_BOX.page, (p + 1) * EQUIP_BOX.page).filter(pass);
+      if (!shown.length) continue;
+      out.push('<tr class="item-page"><td colspan="8">Page ' + (p + 1) +
+        '<span class="item-page-range">slots ' + (p * EQUIP_BOX.page + 1) + '&ndash;' +
+        Math.min((p + 1) * EQUIP_BOX.page, EQUIP_BOX.slots) + '</span></td></tr>');
+      shown.forEach(r => out.push(equipRowHTML(r)));
+    }
+    if (!out.length) out.push('<tr class="item-empty"><td colspan="8">No equipment matches.</td></tr>');
+    $("equipBody").innerHTML = out.join("");
+
+    const held = recs.filter(r => r.occupied);
+    const per = EQUIP_CATS.map((label, c) => {
+      const n = held.filter(r => r.cat === c).length;
+      return '<span class="slot-chip">' + esc(label) + ' <b>' + num(n) + '</b></span>';
+    }).join("");
+    const box = scanBox();
+    $("equipStat").innerHTML = '<div>' + num(held.length) + ' / ' + num(EQUIP_BOX.slots) + ' slots used</div>' +
+      (box ? '<div>' + num(box.g) + (box.g === 1 ? ' G-weapon \u00B7 ' : ' G-weapons \u00B7 ') +
+        num([0, 1, 2, 3, 4].reduce((a, c) => a + box.arm[c], 0)) + ' rarity 9\u201310 armour</div>' : "");
+    $("equipChips").innerHTML = per;
+  }
+
+  // ---- sidebar sections ----------------------------------------------
   function selectSection(id) {
     document.querySelectorAll(".nav-item").forEach(b => b.classList.toggle("active", b.dataset.section === id));
-    const showHun = id === "hunter", showMon = id === "monsters", showAdv = id === "advanced", showQst = id === "quests", showAwd = id === "awards";
-    const showPh = !showHun && !showMon && !showAdv && !showQst && !showAwd;
+    const showHun = id === "hunter", showMon = id === "monsters", showAdv = id === "advanced",
+          showQst = id === "quests", showAwd = id === "awards", showItm = id === "items",
+          showEqp = id === "equipment";
     $("sec-hunter").classList.toggle("hidden", !showHun);
     $("sec-quests").classList.toggle("hidden", !showQst);
     $("sec-awards").classList.toggle("hidden", !showAwd);
     $("sec-monsters").classList.toggle("hidden", !showMon);
     $("sec-advanced").classList.toggle("hidden", !showAdv);
-    $("sec-placeholder").classList.toggle("hidden", !showPh);
+    $("sec-items").classList.toggle("hidden", !showItm);
+    $("sec-equip").classList.toggle("hidden", !showEqp);
     if (showHun) renderHunter();
     if (showQst) renderQuests();
     if (showAwd) renderAwards();
-    if (showPh) { $("phTitle").textContent = LABELS[id] || ""; $("phText").textContent = PLACEHOLDERS[id] || ""; }
+    if (showItm) renderItems();
+    if (showEqp) renderEquip();
   }
 
   // ---- drag-to-scroll (axis-locked; wheel still works) ----------------
@@ -850,7 +1207,8 @@
     view = dv;
     const nm = readName(dv) || "(unnamed)";
     $("charname").textContent = nm;
-    selectSection("monsters");
+    fillNameSetSelect();
+    selectSection("hunter");
     renderTable();
     renderSlots();
     renderWeaponsAdv();
@@ -1031,11 +1389,26 @@
     $("showQstAdv").addEventListener("change", e => { showQstAdv = e.target.checked; renderQuestsAdv(); });
     $("showWpnAdv").addEventListener("change", e => { showWpnAdv = e.target.checked; renderWeaponsAdv(); });
 
+    $("itemSearch").addEventListener("input", e => { itemSearch = e.target.value; renderItems(); });
+    $("itemNameSet").addEventListener("change", e => { itemNameSet = e.target.value || null; renderItems(); });
+    ["box", "pouch", "track"].forEach(k => $(k + "Toggle").addEventListener("click", () => { itemOpen[k] = !itemOpen[k]; renderItems(); }));
+    $("trackFilter").addEventListener("change", e => { trackFilter = e.target.value; renderItems(); });
+    $("trackHideDeco").addEventListener("change", e => { trackHideDeco = e.target.checked; renderItems(); });
+    $("trackHideLowRar").addEventListener("change", e => { trackHideLowRar = e.target.checked; renderItems(); });
+    $("equipSearch").addEventListener("input", e => { equipSearch = e.target.value; renderEquip(); });
+    $("equipCat").addEventListener("change", e => { equipCat = e.target.value; renderEquip(); });
+    fillNameSetSelect();
+
     initDragScroll($("content"));
     initDragScroll($("tableScroll"));
     initDragScroll($("advScroll"));
+    initDragScroll($("boxScroll"));
+    initDragScroll($("pouchScroll"));
+    initDragScroll($("trackScroll"));
+    initDragScroll($("equipScroll"));
 
     loadEquipTable();
+    loadItemTable();
   }
 
   init();
