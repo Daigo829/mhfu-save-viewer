@@ -1,0 +1,1261 @@
+item_id,name_ULES,name_ULUS,name_ENGPATCH,name_JP,name_COMPLETE,item_tag,item_tag_JP,storable,not_storable_reason,is_decoration,x99_able,max_stack,special,rarity,grindable,tradeable
+1,Book of Combos 1,Book of Combos 1,Book of Combos 1,調合書①入門編,Book of Combos 1,,,yes,,no,yes,99,,4,no,no
+2,Book of Combos 2,Book of Combos 2,Book of Combos 2,調合書②初級編,Book of Combos 2,,,yes,,no,yes,99,,4,no,no
+3,Book of Combos 3,Book of Combos 3,Book of Combos 3,調合書③中級編,Book of Combos 3,,,yes,,no,yes,99,,4,no,no
+4,Book of Combos 4,Book of Combos 4,Book of Combos 4,調合書④上級編,Book of Combos 4,,,yes,,no,yes,99,,5,no,no
+5,Book of Combos 5,Book of Combos 5,Book of Combos 5,調合書⑤達人編,Book of Combos 5,,,yes,,no,yes,99,,5,no,no
+6,Alchemy Guide,Alchemy Guide,Alchemy Guide,調合書Ｇ・錬金編,Alchemy Guide,,,yes,,no,yes,99,,5,no,no
+7,Potion,Potion,Potion,回復薬,Potion,,,yes,,no,yes,99,,1,no,no
+8,Mega Potion,Mega Potion,Mega Potion,回復薬グレート,Mega Potion,,,yes,,no,yes,99,,2,yes,yes
+9,Nutrients,Nutrients,Nutrients,栄養剤,Nutrients,,,yes,,no,yes,99,,2,no,no
+10,Mega Nutrients,Mega Nutrients,Mega Nutrients,栄養剤グレート,Mega Nutrients,,,yes,,no,yes,99,,3,yes,yes
+11,Antidote,Antidote,Antidote,解毒薬,Antidote,,,yes,,no,yes,99,,1,no,no
+12,Immunizer,Immunizer,Immunizer,活力剤,Immunizer,,,yes,,no,yes,99,,3,no,no
+13,Power Juice,Power Juice,Power Juice,強走薬,Power Juice,,,yes,,no,yes,99,,2,yes,yes
+14,Mega Juice,Mega Juice,Mega Juice,強走薬グレート,Mega Juice,,,yes,,no,yes,99,,3,yes,yes
+15,Demondrug,Demondrug,Demondrug,鬼人薬,Demondrug,,,yes,,no,yes,99,,4,no,no
+16,Mega Demondrug,Mega Demondrug,Mega Demondrug,鬼人薬グレート,Mega Demondrug,,,yes,,no,yes,99,,5,yes,yes
+17,Power Pill,Power Pill,Power Pill,怪力の丸薬,Power Pill,,,yes,,no,yes,99,,1,no,no
+18,Armorskin,Armorskin,Armorskin,硬化薬,Armorskin,,,yes,,no,yes,99,,4,no,no
+19,Mega Armorskin,Mega Armorskin,Mega Armorskin,硬化薬グレート,Mega Armorskin,,,yes,,no,yes,99,,5,yes,yes
+20,Armor Pill,Armor Pill,Armor Pill,忍耐の丸薬,Armor Pill,,,yes,,no,yes,99,,1,no,no
+21,Cool Drink,Cool Drink,Cool Drink,クーラードリンク,Cool Drink,,,yes,,no,yes,99,,1,no,yes
+22,Hot Drink,Hot Drink,Hot Drink,ホットドリンク,Hot Drink,,,yes,,no,yes,99,,1,no,yes
+23,Thawing Agent,Thawing Agent,Thawing Agent,解氷剤,Thawing Agent,,,yes,,no,yes,99,,1,no,no
+24,Psychoserum,Psychoserum,Psychoserum,千里眼の薬,Psychoserum,,,yes,,no,yes,99,,3,no,no
+25,Monster Fluid,Monster Fluid,Monster Fluid,モンスターの体液,Monster Fluid,,,yes,,no,yes,99,,4,no,no
+26,Monster Broth,Monster Broth,Monster Broth,モンスターの濃汁,Monster Broth,,,yes,,no,yes,99,,5,yes,no
+27,Monster Essence,Monster Essence,Monster Broth+,モンスターの特濃,Monster Essence,,,yes,,no,yes,99,,5,yes,no
+28,Thunderbug Juice,Thunderbug Juice,Thunderbug Juice,雷光エキス,Thunderbug Juice,,,yes,,no,yes,99,,5,yes,no
+29,Thunderbug Jelly,Thunderbug Jelly,Thunderbug Jelly,雷光ゼリー,Thunderbug Jelly,,,yes,,no,yes,99,,5,yes,no
+30,Herbal Medicine,Herbal Medicine,Herbal Medicine,漢方薬,Herbal Medicine,,,yes,,no,yes,99,,2,no,yes
+31,Max Potion,Max Potion,Max Potion,秘薬,Max Potion,,,yes,,no,yes,99,,3,yes,yes
+32,Ancient Potion,Ancient Potion,Ancient Potion,いにしえの秘薬,Ancient Potion,,,yes,,no,yes,99,,5,no,no
+33,Catalyst,Catalyst,Catalyst,増強剤,Catalyst,,,yes,,no,yes,99,,2,no,yes
+34,Energy Drink,Energy Drink,Energy Drink,元気ドリンコ,Energy Drink,,,yes,,no,yes,99,,2,yes,yes
+35,Gunpowder,Gunpowder,Gunpowder,爆薬,Gunpowder,,,yes,,no,yes,99,,2,no,no
+36,Lifecrystals,Lifecrystals,Lifecrystals,生命の粉,Lifecrystals,,,yes,,no,yes,99,,3,no,no
+37,Lifepowder,Lifepowder,Lifepowder,生命の粉塵,Lifepowder,,,yes,,no,yes,99,,4,no,no
+38,Powercharm,Powercharm,Powercharm,力の護符,Powercharm,,,yes,,no,yes,99,,5,no,no
+39,Powertalon,Powertalon,Powertalon,力の爪,Powertalon,,,yes,,no,yes,99,,5,no,no
+40,Armorcharm,Armorcharm,Armorcharm,守りの護符,Armorcharm,,,yes,,no,yes,99,,5,no,no
+41,Armortalon,Armortalon,Armortalon,守りの爪,Armortalon,,,yes,,no,yes,99,,5,no,no
+42,Tranquilizer,Tranquilizer,Tranquilizer,捕獲用麻酔薬,Tranquilizer,,,yes,,no,yes,99,,4,no,no
+43,Raw Meat,Raw Meat,Raw Meat,生肉,Raw Meat,,,yes,,no,yes,99,,1,no,yes
+44,Poisoned Meat,Poisoned Meat,Poisoned Meat,毒生肉,Poisoned Meat,,,yes,,no,yes,99,,1,no,no
+45,Tainted Meat,Tainted Meat,Tainted Meat,シビレ生肉,Tainted Meat,,,yes,,no,yes,99,,2,no,no
+46,Drugged Meat,Drugged Meat,Drugged Meat,眠り生肉,Drugged Meat,,,yes,,no,yes,99,,1,no,no
+47,Rare Steak,Rare Steak,Rare Steak,生焼け肉,Rare Steak,,,yes,,no,yes,99,,1,yes,yes
+48,Well-Done Steak,Well-Done Steak,Well-Done Steak,こんがり肉,Well-Done Steak,,,yes,,no,yes,99,,2,yes,yes
+49,Gourmet Steak,Gourmet Steak,Gourmet Steak,こんがり肉Ｇ,Gourmet Steak,,,yes,,no,yes,99,,3,yes,yes
+50,Burnt Meat,Burnt Meat,Burnt Meat,コゲ肉,Burnt Meat,,,yes,,no,yes,99,,1,yes,yes
+51,Hot Meat,Hot Meat,Hot Meat,ホットミート,Hot Meat,,,yes,,no,yes,99,,1,yes,yes
+52,Cold Meat,Cold Meat,Cold Meat,クーラーミート,Cold Meat,,,yes,,no,yes,99,,1,yes,yes
+53,Rare Fish,Rare Fish,Rare Fish,生焼け魚,Rare Fish,,,yes,,no,yes,99,,1,yes,yes
+54,Gourmet Fish,Gourmet Fish,Gourmet Fish,こんがり魚,Gourmet Fish,,,yes,,no,yes,99,,2,yes,yes
+55,Gourmet Fish+,Gourmet Fish+,Gourmet Fish+,こんがり魚Ｇ,Gourmet Fish+,,,yes,,no,yes,99,,3,yes,yes
+56,Burnt Fish,Burnt Fish,Burnt Fish,コゲ魚,Burnt Fish,,,yes,,no,yes,99,,1,yes,yes
+57,Boomerang,Boomerang,Boomerang,ブーメラン,Boomerang,,,yes,,no,yes,99,,4,no,no
+58,Throwing Knife,Throwing Knife,Throwing Knife,投げナイフ,Throwing Knife,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+59,Poison Thrw Knf,Poison Thrw Knf,Poison Thrw Knf,毒投げナイフ,Poison Thrw Knf,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+60,Sleeping Thr Knf,Sleeping Thr Knf,Sleeping Thrw Knf,眠り投げナイフ,Sleeping Thr Knf,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+61,Paralyze Thr Knf,Paralyze Thr Knf,Paralyze Thrw Knf,麻痺投げナイフ,Paralyze Thr Knf,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+62,Tranq Thrwng Knf,Tranq Thrwng Knf,Tranq Thrw Knf,捕獲用麻酔ナイフ,Tranq Thrwng Knf,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+63,Bomb Material,Bomb Material,Bomb Material,素材玉,Bomb Material,,,yes,,no,yes,99,,1,no,yes
+64,Paintball,Paintball,Paintball,ペイントボール,Paintball,,,yes,,no,yes,99,,1,no,no
+65,Flash Bomb,Flash Bomb,Flash Bomb,閃光玉,Flash Bomb,,,yes,,no,yes,99,,2,no,no
+66,Sonic Bomb,Sonic Bomb,Sonic Bomb,音爆弾,Sonic Bomb,,,yes,,no,yes,99,,2,yes,yes
+67,Dung,Dung,Dung,モンスターのフン,Dung,,,yes,,no,yes,99,,1,yes,yes
+68,Wyvern Droppings,Wyvern Droppings,Wyvern Droppings,飛竜のフン,Wyvern Droppings,,,yes,,no,yes,99,,4,yes,no
+69,Dung Bomb,Dung Bomb,Dung Bomb,こやし玉,Dung Bomb,,,yes,,no,yes,99,,2,yes,yes
+70,Smoke Bomb,Smoke Bomb,Smoke Bomb,けむり玉,Smoke Bomb,,,yes,,no,yes,99,,2,no,no
+71,Poison Smoke Bmb,Poison Smoke Bmb,Poison Smoke Bomb,毒けむり玉,Poison Smoke Bmb,,,yes,,no,yes,99,,2,no,no
+72,Farcaster,Farcaster,Farcaster,モドリ玉,Farcaster,,,yes,,no,yes,99,,3,no,yes
+73,Deodorant,Deodorant,Deodorant,消臭玉,Deodorant,,,yes,,no,yes,99,,2,no,no
+74,Tranq Bomb,Tranq Bomb,Tranq Bomb,捕獲用麻酔玉,Tranq Bomb,,,yes,,no,yes,99,,4,no,no
+75,Spiderweb,Spiderweb,Spiderweb,クモの巣,Spiderweb,,,yes,,no,yes,99,,1,yes,yes
+76,Net,Net,Net,ネット,Net,,,yes,,no,yes,99,,2,yes,yes
+77,Trap Tool,Trap Tool,Trap Tool,トラップツール,Trap Tool,,,yes,,no,yes,99,,3,no,no
+78,Pitfall Trap,Pitfall Trap,Pitfall Trap,落とし穴,Pitfall Trap,,,yes,,no,yes,99,,3,yes,yes
+79,Shock Trap,Shock Trap,Shock Trap,シビレ罠,Shock Trap,,,yes,,no,yes,99,,3,no,no
+80,Lightning Rod,Lightning Rod,Lightning Rod,爆雷針,Lightning Rod,,,yes,,no,yes,99,,3,no,no
+81,Barrel Lid,Barrel Lid,Barrel Lid,タルの蓋,Barrel Lid,,,yes,,no,yes,99,,5,yes,no
+82,Small Barrel,Small Barrel,Small Barrel,小タル,Small Barrel,,,yes,,no,yes,99,,1,no,no
+83,Large Barrel,Large Barrel,Large Barrel,大タル,Large Barrel,,,yes,,no,yes,99,,2,no,no
+84,Sm Barrel-Bomb,Sm Barrel-Bomb,Sm Barrel-Bomb,小タル爆弾,Sm Barrel-Bomb,,,yes,,no,yes,99,,2,no,no
+85,Sm Barrel-Bomb+,Sm Barrel-Bomb+,Sm Barrel-Bomb+,小タル爆弾Ｇ,Sm Barrel-Bomb+,,,yes,,no,yes,99,,4,no,no
+86,Lg Barrel-Bomb,Lg Barrel-Bomb,Lg Barrel-Bomb,大タル爆弾,Lg Barrel-Bomb,,,yes,,no,yes,99,,3,no,no
+87,Lg Barrel-Bomb+,Lg Barrel-Bomb+,Lg Barrel-Bomb+,大タル爆弾Ｇ,Lg Barrel-Bomb+,,,yes,,no,yes,99,,4,no,no
+88,Bounce Bomb,Bounce Bomb,Bounce Bomb,打上げタル爆弾,Bounce Bomb,,,yes,,no,yes,99,,2,no,no
+89,Bounce Bomb+,Bounce Bomb+,Bounce Bomb+,打上げタル爆弾Ｇ,Bounce Bomb+,,,yes,,no,yes,99,,4,no,no
+90,Anti-Dragon Bomb,Anti-Dragon Bomb,Anti-Dragon Bomb,対巨龍爆弾,Anti-Dragon Bomb,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+91,dummy,Polytan Bomb,Polytan Bomb,ポリタン爆弾,Polytan Bomb,,,yes,,no,yes,99,,5,yes,no
+92,dummy,JUMP Barrel-Bomb,Jump Barrel Bmb,ＪＵＭＰタル爆弾,JUMP Barrel Bomb,,,yes,,no,yes,99,,5,yes,no
+93,Huskberry,Huskberry,Huskberry,カラの実,Huskberry,,,yes,,no,yes,99,,1,no,no
+94,Sm Bone Husk,Sm Bone Husk,Sm Bone Husk,カラ骨【小】,Sm Bone Husk,,,yes,,no,yes,99,,2,no,no
+95,Lg Bone Husk,Lg Bone Husk,Lg Bone Husk,カラ骨【大】,Lg Bone Husk,,,yes,,no,yes,99,,3,yes,yes
+96,Normal S Lv1,Normal S Lv1,Normal S Lv1,LV1 通常弾,Normal S Lv1,,,yes,,no,yes,255,infinite (255),1,no,no
+97,Normal S Lv2,Normal S Lv2,Normal S Lv2,LV2 通常弾,Normal S Lv2,,,yes,,no,yes,99,,1,no,no
+98,Normal S Lv3,Normal S Lv3,Normal S Lv3,LV3 通常弾,Normal S Lv3,,,yes,,no,yes,99,,2,no,no
+99,Pierce S Lv1,Pierce S Lv1,Pierce S Lv1,LV1 貫通弾,Pierce S Lv1,,,yes,,no,yes,99,,2,no,no
+100,Pierce S Lv2,Pierce S Lv2,Pierce S Lv2,LV2 貫通弾,Pierce S Lv2,,,yes,,no,yes,99,,2,no,no
+101,Pierce S Lv3,Pierce S Lv3,Pierce S Lv3,LV3 貫通弾,Pierce S Lv3,,,yes,,no,yes,99,,3,no,no
+102,Pellet S Lv1,Pellet S Lv1,Pellet S Lv1,LV1 散弾,Pellet S Lv1,,,yes,,no,yes,99,,2,no,no
+103,Pellet S Lv2,Pellet S Lv2,Pellet S Lv2,LV2 散弾,Pellet S Lv2,,,yes,,no,yes,99,,2,no,no
+104,Pellet S Lv3,Pellet S Lv3,Pellet S Lv3,LV3 散弾,Pellet S Lv3,,,yes,,no,yes,99,,3,no,no
+105,Crag S Lv1,Crag S Lv1,Crag S Lv1,LV1 徹甲榴弾,Crag S Lv1,,,yes,,no,yes,99,,3,no,no
+106,Crag S Lv2,Crag S Lv2,Crag S Lv2,LV2 徹甲榴弾,Crag S Lv2,,,yes,,no,yes,99,,3,no,no
+107,Crag S Lv3,Crag S Lv3,Crag S Lv3,LV3 徹甲榴弾,Crag S Lv3,,,yes,,no,yes,99,,3,yes,yes
+108,Clust S Lv1,Clust S Lv1,Clust S Lv1,LV1 拡散弾,Clust S Lv1,,,yes,,no,yes,99,,2,no,no
+109,Clust S Lv2,Clust S Lv2,Clust S Lv2,LV2 拡散弾,Clust S Lv2,,,yes,,no,yes,99,,3,no,no
+110,Clust S Lv3,Clust S Lv3,Clust S Lv3,LV3 拡散弾,Clust S Lv3,,,yes,,no,yes,99,,3,yes,yes
+111,Flaming S,Flaming S,Flaming S,火炎弾,Flaming S,,,yes,,no,yes,99,,3,no,no
+112,Water S,Water S,Water S,水冷弾,Water S,,,yes,,no,yes,99,,3,no,no
+113,Thunder S,Thunder S,Thunder S,電撃弾,Thunder S,,,yes,,no,yes,99,,3,no,no
+114,Freeze S,Freeze S,Freeze S,氷結弾,Freeze S,,,yes,,no,yes,99,,3,no,yes
+115,Dragon S,Dragon S,Dragon S,滅龍弾,Dragon S,,,yes,,no,yes,99,,5,no,yes
+116,Recov S Lv1,Recov S Lv1,Recov S Lv1,LV1 回復弾,Recov S Lv1,,,yes,,no,yes,99,,1,no,no
+117,Recov S Lv2,Recov S Lv2,Recov S Lv2,LV2 回復弾,Recov S Lv2,,,yes,,no,yes,99,,2,no,no
+118,Poison S Lv1,Poison S Lv1,Poison S Lv1,LV1 毒弾,Poison S Lv1,,,yes,,no,yes,99,,2,no,no
+119,Poison S Lv2,Poison S Lv2,Poison S Lv2,LV2 毒弾,Poison S Lv2,,,yes,,no,yes,99,,3,no,no
+120,Para S Lv1,Para S Lv1,Para S Lv1,LV1 麻痺弾,Para S Lv1,,,yes,,no,yes,99,,3,no,no
+121,Para S Lv2,Para S Lv2,Para S Lv2,LV2 麻痺弾,Para S Lv2,,,yes,,no,yes,99,,4,no,no
+122,Sleep S Lv1,Sleep S Lv1,Sleep S Lv1,LV1 睡眠弾,Sleep S Lv1,,,yes,,no,yes,99,,3,no,no
+123,Sleep S Lv2,Sleep S Lv2,Sleep S Lv2,LV2 睡眠弾,Sleep S Lv2,,,yes,,no,yes,99,,4,no,no
+124,Tranq S,Tranq S,Tranq S,捕獲用麻酔弾,Tranq S,,,yes,,no,yes,99,,4,no,no
+125,Paint S,Paint S,Paint S,ペイント弾,Paint S,,,yes,,no,yes,99,,1,no,no
+126,Demon S,Demon S,Demon S,鬼人弾,Demon S,,,yes,,no,yes,99,,3,no,no
+127,Armor S,Armor S,Armor S,硬化弾,Armor S,,,yes,,no,yes,99,,3,no,no
+128,No Coating,No Coating,No Coating,ビン無し,No Coating,,,no,not a real item - bow coating UI placeholder,no,no,0,,,no,no
+129,Empty Bottle,Empty Bottle,Empty Bottle,空きビン,Empty Bottle,,,yes,,no,yes,99,,1,no,no
+130,Power Coating,Power Coating,PowerCoating,強撃ビン,Power Coating,,,yes,,no,yes,99,,2,no,no
+131,Poison Coating,Poison Coating,PoisonCoatng,毒ビン,Poison Coating,,,yes,,no,yes,99,,3,no,no
+132,ParalysisCoating,ParalysisCoating,Para Coating,麻痺ビン,ParalysisCoating,,,yes,,no,yes,99,,3,no,no
+133,Sleep Coating,Sleep Coating,SleepCoating,睡眠ビン,Sleep Coating,,,yes,,no,yes,99,,3,no,no
+134,CloseRngCoating,CloseRngCoating,RazorCoating,接撃ビン,CloseRngCoating,,,yes,,no,yes,99,,3,no,no
+135,Paint Coating,Paint Coating,PaintCoating,ペイントビン,Paint Coating,,,yes,,no,yes,99,,1,no,no
+136,Cricket,Cricket,Cricket,釣りバッタ,Cricket,,,yes,,no,yes,99,,1,no,no
+137,Worm,Worm,Worm,釣りミミズ,Worm,,,yes,,no,yes,99,,1,no,no
+138,Firefly,Firefly,Firefly,釣りホタル,Firefly,,,yes,,no,yes,99,,2,no,no
+139,Frog,Frog,Frog,釣りカエル,Frog,,,yes,,no,yes,99,,2,yes,yes
+140,Tuna Bait,Tuna Bait,Tuna Bait,マグダンゴ,Tuna Bait,,,yes,,no,yes,99,,2,no,no
+141,Arrowana Bait,Arrowana Bait,Arrowana Bait,アロダンゴ,Arrowana Bait,,,yes,,no,yes,99,,2,no,no
+142,Goldenfish Bait,Goldenfish Bait,Goldenfish Bait,黄金ダンゴ,Goldenfish Bait,,,yes,,no,yes,99,,4,no,no
+143,Mega Fishing Fly,Mega Fishing Fly,Mega Fishing Fly,釣りフィーバエ,Mega Fishing Fly,,,yes,,no,yes,99,,3,no,no
+144,Old Pickaxe,Old Pickaxe,Old Pickaxe,ボロピッケル,Old Pickaxe,,,yes,,no,yes,99,,1,no,yes
+145,Iron Pickaxe,Iron Pickaxe,Iron Pickaxe,ピッケル,Iron Pickaxe,,,yes,,no,yes,99,,1,no,no
+146,Mega Pickaxe,Mega Pickaxe,Mega Pickaxe,ピッケルグレート,Mega Pickaxe,,,yes,,no,yes,99,,3,no,no
+147,Expand Pickaxe,Expand Pickaxe,Expand Pickaxe,フエールピッケル,Expand Pickaxe,,,yes,,no,yes,99,,5,yes,no
+148,Old Bugnet,Old Bugnet,Old Bugnet,ボロ虫あみ,Old Bugnet,,,yes,,no,yes,99,,1,no,yes
+149,Bugnet,Bugnet,Bugnet,虫あみ,Bugnet,,,yes,,no,yes,99,,1,no,yes
+150,Mega Bugnet,Mega Bugnet,Mega Bugnet,虫あみグレート,Mega Bugnet,,,yes,,no,yes,99,,3,no,no
+151,BBQ Spit,BBQ Spit,BBQ Spit,肉焼きセット,BBQ Spit,,,yes,,no,yes,99,,4,no,no
+152,Gourmet BBQ Spit,Gourmet BBQ Spit,Gourmet BBQ Spit,高級肉焼きセット,Gourmet BBQ Spit,,,yes,,no,yes,99,,4,no,no
+153,Whetstone,Whetstone,Whetstone,砥石,Whetstone,,,yes,,no,yes,99,,1,no,no
+154,Binoculars,Binoculars,Binoculars,双眼鏡,Binoculars,,,yes,,no,yes,99,,1,no,no
+155,Garbage,Garbage,Garbage,もえないゴミ,Garbage,,,yes,,no,yes,99,,1,yes,yes
+156,Flute,Flute,Flute,角笛,Flute,,,yes,,no,yes,99,,2,no,no
+157,Health Flute,Health Flute,Health Flute,回復笛,Health Flute,,,yes,,no,yes,99,,4,no,no
+158,Antidote Flute,Antidote Flute,Antidote Flute,解毒笛,Antidote Flute,,,yes,,no,yes,99,,4,no,yes
+159,Demon Flute,Demon Flute,Demon Flute,鬼人笛,Demon Flute,,,yes,,no,yes,99,,5,no,no
+160,Armor Flute,Armor Flute,Armor Flute,硬化笛,Armor Flute,,,yes,,no,yes,99,,5,no,no
+161,Honey,Honey,Honey,ハチミツ,Honey,,,yes,,no,yes,99,,2,yes,yes
+162,Sunset Herb,Sunset Herb,Sunset Herb,落陽草,Sunset Herb,,,yes,,no,yes,99,,2,no,no
+163,Herb,Herb,Herb,薬草,Herb,,,yes,,no,yes,99,,1,no,yes
+164,Antidote Herb,Antidote Herb,Antidote Herb,げどく草,Antidote Herb,,,yes,,no,yes,99,,1,no,no
+165,Fire Herb,Fire Herb,Fire Herb,火薬草,Fire Herb,,,yes,,no,yes,99,,2,no,yes
+166,Ivy,Ivy,Ivy,ツタの葉,Ivy,,,yes,,no,yes,99,,1,no,no
+167,Sleep Herb,Sleep Herb,Sleep Herb,ネムリ草,Sleep Herb,,,yes,,no,yes,99,,1,no,no
+168,Sap Plant,Sap Plant,Sap Plant,ネンチャク草,Sap Plant,,,yes,,no,yes,99,,1,no,no
+169,Felvine,Felvine,Felvine,マタタビ,Felvine,,,yes,,no,yes,99,,1,no,no
+170,Cactus Flower,Cactus Flower,Cactus Flower,サボテンの花,Cactus Flower,,,yes,,no,yes,99,,2,no,no
+171,Hot Pepper,Hot Pepper,Hot Pepper,トウガラシ,Hot Pepper,,,yes,,no,yes,99,,2,yes,yes
+172,Dosbiscus,Dosbiscus,Dosbiscus,ドスビスカス,Dosbiscus,,,yes,,no,yes,99,,4,yes,no
+173,Mountain Herbs,Mountain Herbs,Mountain Herb,雪山草,Mountain Herbs,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+174,Giant Corn,Giant Corn,Great Corn,オオモロコシ,Giant Corn,,,yes,,no,yes,99,,5,yes,no
+175,Special Mushroom,Special Mushroom,Special Mushroom,特産キノコ,Special Mushroom,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+176,Select Mushroom,Select Mushroom,Select Mushroom,厳選キノコ,Select Mushroom,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+177,Blue Mushroom,Blue Mushroom,Blue Mushroom,アオキノコ,Blue Mushroom,,,yes,,no,yes,99,,2,no,no
+178,Nitroshroom,Nitroshroom,Nitroshroom,ニトロダケ,Nitroshroom,,,yes,,no,yes,99,,2,no,no
+179,Parashroom,Parashroom,Parashroom,マヒダケ,Parashroom,,,yes,,no,yes,99,,3,no,no
+180,Toadstool,Toadstool,Toadstool,毒テングダケ,Toadstool,,,yes,,no,yes,99,,2,no,no
+181,Exciteshroom,Exciteshroom,Exciteshroom,ドキドキノコ,Exciteshroom,,,yes,,no,yes,99,,3,yes,yes
+182,Dragon Toadstool,Dragon Toadstool,Dragon Toadstool,マンドラゴラ,Dragon Toadstool,,,yes,,no,yes,99,,3,no,no
+183,Spicy Mushroom,Spicy Mushroom,Spicy Mushroom,特産キノコキムチ,Spicy Mushroom,,,yes,,no,yes,99,,3,yes,yes
+184,Chaos Mushroom,Chaos Mushroom,Chaoshroom,混沌茸,Chaos Mushroom,,,yes,,no,yes,99,,4,yes,no
+185,Paintberry,Paintberry,Paintberry,ペイントの実,Paintberry,,,yes,,no,yes,99,,1,no,no
+186,Power Seed,Power Seed,Power Seed,怪力の種,Power Seed,,,yes,,no,yes,99,,2,no,yes
+187,Armor Seed,Armor Seed,Armor Seed,忍耐の種,Armor Seed,,,yes,,no,yes,99,,2,no,yes
+188,Dragon Seed,Dragon Seed,Dragon Seed,龍殺しの実,Dragon Seed,,,yes,,no,yes,99,,2,yes,yes
+189,Scatternut,Scatternut,Scatternut,はじけクルミ,Scatternut,,,yes,,no,yes,99,,2,no,no
+190,Needleberry,Needleberry,Needleberry,ハリの実,Needleberry,,,yes,,no,yes,99,,1,no,no
+191,Bomberry,Bomberry,Bomberry,カクサンの実,Bomberry,,,yes,,no,yes,99,,2,no,no
+192,Tropical Berry,Tropical Berry,Tropical Berry,熱帯イチゴ,Tropical Berry,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+193,Frozen Berry,Frozen Berry,Frozen Berry,氷結晶イチゴ,Frozen Berry,,,yes,,no,yes,99,,3,yes,yes
+194,Red Seed,Red Seed,Red Seed,赤の種,Red Seed,,,yes,,no,yes,99,,2,no,no
+195,Green Seed,Green Seed,Green Seed,緑の種,Green Seed,,,yes,,no,yes,99,,2,no,no
+196,Yellow Seed,Yellow Seed,Yellow Seed,黄の種,Yellow Seed,,,yes,,no,yes,99,,4,no,no
+197,Beautiful Shell,Beautiful Shell,Beautiful Shell,きれいな貝殻,Beautiful Shell,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+198,Black Pearl,Black Pearl,Black Pearl,黒真珠,Black Pearl,,,yes,,no,yes,99,,4,yes,no
+199,Giant Blk Pearl,Giant Blk Pearl,Black Pearl+,極上黒真珠,Giant Blk Pearl,,,yes,,no,yes,99,,5,yes,no
+200,Stone,Stone,Stone,石ころ,Stone,,,yes,,no,yes,99,,1,yes,yes
+201,Disk Stone,Disk Stone,Disk Stone,円盤石,Disk Stone,,,yes,,no,yes,99,,4,yes,no
+202,Iron Ore,Iron Ore,Iron Ore,鉄鉱石,Iron Ore,,,yes,,no,yes,99,,4,yes,no
+203,Earth Crystal,Earth Crystal,Earth Crystal,大地の結晶,Earth Crystal,,,yes,,no,yes,99,,4,yes,no
+204,Machalite Ore,Machalite Ore,Machalite Ore,マカライト鉱石,Machalite Ore,,,yes,,no,yes,99,,5,yes,no
+205,Dragonite Ore,Dragonite Ore,Dragonite Ore,ドラグライト鉱石,Dragonite Ore,,,yes,,no,yes,99,,5,yes,no
+206,Carbalite Ore,Carbalite Ore,Carbalite Ore,カブレライト鉱石,Carbalite Ore,,,yes,,no,yes,99,,5,yes,no
+207,Eltalite Ore,Eltalite Ore,Etherlite Ore,エルトライト鉱石,Eltalite Ore,,,yes,,no,yes,99,,5,yes,no
+208,Union Ore,Union Ore,Union Ore,ユニオン鉱石,Union Ore,,,yes,,no,yes,99,,5,yes,no
+209,Mellanje Ore,Mellanje Ore,Melange Ore,メランジェ鉱石,Mellanje Ore,,,yes,,no,yes,99,,5,yes,no
+210,Firestone,Firestone,Fire Stone,紅蓮石,Firestone,,,yes,,no,yes,99,,5,yes,no
+211,Firecell Stone,Firecell Stone,Firecell Stone,獄炎石,Firecell Stone,,,yes,,no,yes,99,,5,yes,no
+212,Coal,Coal,Coal,燃石炭,Coal,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+213,Goldstone Piece,Goldstone Piece,Goldstone Piece,黄金石のかけら,Goldstone Piece,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+214,Goldstone Hunk,Goldstone Hunk,Goldstone Hunk,黄金石の塊,Goldstone Hunk,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+215,Lightcrystal,Lightcrystal,Lightcrystal,ライトクリスタル,Lightcrystal,,,yes,,no,yes,99,,5,yes,no
+216,Novacrystal,Novacrystal,Nova Crystal,ノヴァクリスタル,Novacrystal,,,yes,,no,yes,99,,5,yes,no
+217,Purecrystal,Purecrystal,Pure Crystal,ピュアクリスタル,Purecrystal,,,yes,,no,yes,99,,5,yes,no
+218,Antiseptic Stone,Antiseptic Stone,Antiseptic Stone,抗菌石,Antiseptic Stone,,,yes,,no,yes,99,,3,yes,yes
+219,Ice Crystal,Ice Crystal,Ice Crystal,氷結晶,Ice Crystal,,,yes,,no,yes,99,,2,yes,yes
+220,Rainbow Ore,Rainbow Ore,Rainbow Ore,虹色鉱石,Rainbow Ore,,,yes,,no,yes,99,,5,yes,no
+221,Great Stone,Great Stone,Great Stone,グレートストーン,Great Stone,,,yes,,no,yes,99,,5,yes,no
+222,Armor Stone,Armor Stone,Armor Stone,鎧石,Armor Stone,,,yes,,no,yes,99,,4,no,no
+223,Armor Sphere,Armor Sphere,Armor Sphere,鎧玉,Armor Sphere,,,yes,,no,yes,99,,5,yes,no
+224,Armor Sphere+,Armor Sphere+,Armor Sphere+,上鎧玉,Armor Sphere+,,,yes,,no,yes,99,,5,yes,no
+225,Hrd Armor Sphere,Hrd Armor Sphere,Hrd Armor Sphere,堅鎧玉,Hrd Armor Sphere,,,yes,,no,yes,99,,5,yes,no
+226,Hvy Armor Sphere,Hvy Armor Sphere,Hvy Armor Sphere,重鎧玉,Hvy Armor Sphere,,,yes,,no,yes,99,,5,yes,no
+227,Ryl Armor Sphere,Ryl Armor Sphere,King Armor Sphre,王鎧玉,Ryl Armor Sphere,,,yes,,no,yes,99,,5,yes,no
+228,Tru Armor Sphere,Tru Armor Sphere,True Armor Sphre,真鎧玉,Tru Armor Sphere,,,yes,,no,yes,99,,5,yes,no
+229,Knife Mackerel,Knife Mackerel,Knife Mackerel,キレアジ,Knife Mackerel,,,yes,,no,yes,99,,1,no,no
+230,Sushifish,Sushifish,Sushifish,サシミウオ,Sushifish,,,yes,,no,yes,99,,1,no,no
+231,Sleepyfish,Sleepyfish,Sleepyfish,眠魚,Sleepyfish,,,yes,,no,yes,99,,2,no,no
+232,Pin Tuna,Pin Tuna,Pin Tuna,ハリマグロ,Pin Tuna,,,yes,,no,yes,99,,1,no,no
+233,Rumblefish,Rumblefish,Rumblefish,はじけイワシ,Rumblefish,,,yes,,no,yes,99,,2,no,no
+234,Scatterfish,Scatterfish,Scatterfish,カクサンデメキン,Scatterfish,,,yes,,no,yes,99,,4,no,no
+235,Burst Arrowana,Burst Arrowana,Burst Arrowana,ハレツアロワナ,Burst Arrowana,,,yes,,no,yes,99,,4,no,no
+236,Bomb Arrowana,Bomb Arrowana,Bomb Arrowana,バクレツアロワナ,Bomb Arrowana,,,yes,,no,yes,99,,4,no,no
+237,Glutton Tuna,Glutton Tuna,Glutton Tuna,大食いマグロ,Glutton Tuna,,,yes,,no,yes,99,,4,yes,no
+238,Gastronome Tuna,Gastronome Tuna,Gastronome Tuna,ドス大食いマグロ,Gastronome Tuna,,,yes,,no,yes,99,,5,yes,no
+239,Speartuna,Speartuna,Speartuna,カジキマグロ,Speartuna,,,yes,,no,yes,99,,5,yes,no
+240,Small Goldenfish,Small Goldenfish,Small Goldenfish,小金魚,Small Goldenfish,,,yes,,no,yes,99,,4,yes,no
+241,Goldenfish,Goldenfish,Goldenfish,黄金魚,Goldenfish,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+242,Silverfish,Silverfish,Silver Fish,白金魚,Silverfish,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+243,Ancient Fish,Ancient Fish,Ancient Fish,古代魚,Ancient Fish,,,yes,,no,yes,99,,5,yes,no
+244,Springnight Carp,Springnight Carp,Springnight Carp,春夜鯉,Springnight Carp,,,yes,,no,yes,99,,4,yes,no
+245,Tailed Frog,Tailed Frog,Big-Tailed Frog,オオシッポガエル,Tailed Frog,,,yes,,no,yes,99,,5,yes,no
+246,Insect Husk,Insect Husk,Insect Husk,虫の死骸,Insect Husk,,,yes,,no,yes,99,,1,yes,yes
+247,Yambug,Yambug,Yambug,ヤマイモムシ,Yambug,,,yes,,no,yes,99,,1,no,no
+248,Bughopper,Bughopper,Bughopper,カクバッタ,Bughopper,,,yes,,no,yes,99,,1,no,no
+249,Snakebee Larva,Snakebee Larva,Snakebee Larva,ツチハチノコ,Snakebee Larva,,,yes,,no,yes,99,,1,no,no
+250,Godbug,Godbug,Godbug,不死虫,Godbug,,,yes,,no,yes,99,,4,no,no
+251,Bitterbug,Bitterbug,Bitterbug,にが虫,Bitterbug,,,yes,,no,yes,99,,1,yes,yes
+252,Flashbug,Flashbug,Flashbug,光蟲,Flashbug,,,yes,,no,yes,99,,2,no,no
+253,Thunderbug,Thunderbug,Thunderbug,雷光虫,Thunderbug,,,yes,,no,yes,99,,4,yes,no
+254,Carpenterbug,Carpenterbug,Carpenterbug,セッチャクロアリ,Carpenterbug,,,yes,,no,yes,99,,4,yes,no
+255,King Scarab,King Scarab,King Scarab,王族カナブン,King Scarab,,,yes,,no,yes,99,,5,yes,no
+256,Emperor Cricket,Emperor Cricket,Emperor Locust,皇帝バッタ,Emperor Cricket,,,yes,,no,yes,99,,5,yes,no
+257,Killer Beetle,Killer Beetle,Killer Beetle,キラビートル,Killer Beetle,,,yes,,no,yes,99,,4,yes,no
+258,Hercudrome,Hercudrome,Hercudrome,ドスヘラクレス,Hercudrome,,,yes,,no,yes,99,,5,yes,no
+259,Rare Scarab,Rare Scarab,Rare Scarab,マレコガネ,Rare Scarab,,,yes,,no,yes,99,,5,yes,no
+260,PhantomButterfly,PhantomButterfly,PhantomButterfly,マボロシチョウ,PhantomButterfly,,,yes,,no,yes,99,,5,yes,no
+261,Royal Rhino,Royal Rhino,Royal Rhino,ロイヤルカブト,Royal Rhino,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+262,Divine Rhino,Divine Rhino,Divine Rhino,ゴッドカブト,Divine Rhino,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+263,Rainbow Insect,Rainbow Insect,Rainbow Insect,虹色コガネ,Rainbow Insect,,,yes,,no,yes,99,,5,yes,no
+264,Great Hornfly,Great Hornfly,Great Hornfly,オオツノアゲハ,Great Hornfly,,,yes,,no,yes,99,,5,yes,no
+265,Great Ladybug,Great Ladybug,Great Ladybug,オオナナホシ,Great Ladybug,,,yes,,no,yes,99,,5,yes,no
+266,Screamer,Screamer,Screamer,鳴き袋,Screamer,,,yes,,no,yes,99,,4,yes,yes
+267,Poison Sac,Poison Sac,Poison Sac,毒袋,Poison Sac,,,yes,,no,yes,99,,4,yes,no
+268,Toxin Sac,Toxin Sac,Toxin Sac,猛毒袋,Toxin Sac,,,yes,,no,yes,99,,5,yes,no
+269,DeadlyPoisonSac,DeadlyPoisonSac,Venom Sac,劇烈毒袋,DeadlyPoisonSac,,,yes,,no,yes,99,,5,yes,no
+270,Paralysis Sac,Paralysis Sac,Paralysis Sac,麻痺袋,Paralysis Sac,,,yes,,no,yes,99,,4,yes,no
+271,Sleep Sac,Sleep Sac,Sleep Sac,睡眠袋,Sleep Sac,,,yes,,no,yes,99,,4,yes,no
+272,Coma Sac,Coma Sac,Coma Sac,昏睡袋,Coma Sac,,,yes,,no,yes,99,,5,yes,no
+273,Flame Sac,Flame Sac,Flame Sac,火炎袋,Flame Sac,,,yes,,no,yes,99,,4,yes,no
+274,Inferno Sac,Inferno Sac,Inferno Sac,爆炎袋,Inferno Sac,,,yes,,no,yes,99,,5,yes,no
+275,Blazing Fire Sac,Blazing Fire Sac,Blaze Sac,業炎袋,Blazing Fire Sac,,,yes,,no,yes,99,,5,yes,no
+276,Electro Sac,Electro Sac,Electro Sac,電気袋,Electro Sac,,,yes,,no,yes,99,,4,yes,no
+277,Thunder Sac,Thunder Sac,Thunder Sac,電撃袋,Thunder Sac,,,yes,,no,yes,99,,5,yes,no
+278,Lightning Sac,Lightning Sac,Lightning Sac,雷電袋,Lightning Sac,,,yes,,no,yes,99,,5,yes,no
+279,Power Extract,Power Extract,Power Extract,狂走エキス,Power Extract,,,yes,,no,yes,99,,3,yes,yes
+280,Pale Extract,Pale Extract,Pale Extract,アルビノエキス,Pale Extract,,,yes,,no,yes,99,,3,yes,yes
+281,Sm Monster Bone,Sm Monster Bone,Sm Monster Bone,竜骨【小】,Sm Monster Bone,,,yes,,no,yes,99,,3,no,no
+282,Med Monster Bone,Med Monster Bone,Med Monster Bone,竜骨【中】,Med Monster Bone,,,yes,,no,yes,99,,4,yes,no
+283,Lg Monster Bone,Lg Monster Bone,Lg Monster Bone,竜骨【大】,Lg Monster Bone,,,yes,,no,yes,99,,5,yes,no
+284,Monster Bone+,Monster Bone+,Monster Bone+,上竜骨,Monster Bone+,,,yes,,no,yes,99,,5,yes,no
+285,Hrd Monster Bone,Hrd Monster Bone,Hrd Monster Bone,堅竜骨,Hrd Monster Bone,,,yes,,no,yes,99,,5,yes,no
+286,Hvy Monster Bone,Hvy Monster Bone,Hvy Monster Bone,重竜骨,Hvy Monster Bone,,,yes,,no,yes,99,,5,no,no
+287,Eldr Dragon Bone,Eldr Dragon Bone,Elder Drgn Bone,古龍骨,Eldr Dragon Bone,,,yes,,no,yes,99,,5,yes,no
+288,BigEDragonBone,BigEDragonBone,Ancient DrgnBone,太古龍骨,BigEDragonBone,,,yes,,no,yes,99,,5,yes,no
+289,Mystery Bone,Mystery Bone,Mystery Bone,なぞの骨,Mystery Bone,,,yes,,no,yes,99,,1,yes,yes
+290,Unknown Skull,Unknown Skull,Unknown Skull,なぞの頭骨,Unknown Skull,,,yes,,no,yes,99,,4,yes,no
+291,Master's Skull,Master's Skull,Master's Skull,達人のドクロ,Master's Skull,,,yes,,no,yes,99,,5,yes,no
+292,Bone,Bone,Bone,棒状の骨,Bone,,,yes,,no,yes,99,,1,yes,yes
+293,RobustWyvernBone,RobustWyvernBone,BirdWyvnStoutBne,堅牢な鳥竜骨,RobustWyvernBone,,,yes,,no,yes,99,,5,yes,no
+294,Brute Bone,Brute Bone,Brute Bone,獣骨,Brute Bone,,,yes,,no,yes,99,,3,yes,yes
+295,Giant Bone,Giant Bone,Giant Bone,大きな骨,Giant Bone,,,yes,,no,yes,99,,4,yes,no
+296,Stout Bone,Stout Bone,Stout Bone,堅牢な骨,Stout Bone,,,yes,,no,yes,99,,5,yes,no
+297,Massive Bone,Massive Bone,Colossal Bone,重厚な骨,Massive Bone,,,yes,,no,yes,99,,5,yes,no
+298,Wyvern Fang,Wyvern Fang,Wyvern Fang,竜の牙,Wyvern Fang,,,yes,,no,yes,99,,3,no,no
+299,Wyvern Claw ,Wyvern Claw ,Wyvern Claw,竜の爪,Wyvern Claw ,,,yes,,no,yes,99,,3,no,no
+300,Wyvern Stone,Wyvern Stone,Wyvern Stone,竜玉,Wyvern Stone,,,yes,,no,yes,99,,5,yes,no
+301,Big Wyvern Stone,Big Wyvern Stone,Lg Wyvern Stone,大竜玉,Big Wyvern Stone,,,yes,,no,yes,99,,5,no,no
+302,BigEDragonJewel,BigEDragonJewel,Elder Dragon Jwl,古龍の大宝玉,BigEDragonJewel,,,yes,,no,yes,99,,5,yes,no
+303,White Liver,White Liver,White Liver,ホワイトレバー,White Liver,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+304,Popo Tongue,Popo Tongue,Popo Tongue,ポポノタン,Popo Tongue,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+305,Secret Pouch,Secret Pouch,Secret Pouch,秘密のポーチ,Secret Pouch,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+306,CarapaceonBrains,CarapaceonBrains,CarpcnBrains,ザザミソ,CarapaceonBrains,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+307,CarapaceonBrain+,CarapaceonBrain+,CarpcnBrains+,極上ザザミソ,CarapaceonBrain+,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+308,Piscine Liver,Piscine Liver,Piscine Liver,魚竜のキモ,Piscine Liver,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+309,Wyvern Tears,Wyvern Tears,Wyvern Tears,竜のナミダ,Wyvern Tears,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+310,Wyvern Sobs,Wyvern Sobs,Wyvern Sobs,竜の大粒のナミダ,Wyvern Sobs,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+311,Territorial Dung,Territorial Dung,Territorial Dung,なわばりのフン,Territorial Dung,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+312,TerritorialDung+,TerritorialDung+,TerritorialDung+,なわばりの大フン,TerritorialDung+,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+313,Crab Pearl,Crab Pearl,Crab Pearl,ヤド真珠,Crab Pearl,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+314,Crab Pearl+,Crab Pearl+,Crab Pearl+,極上ヤド真珠,Crab Pearl+,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+315,Dragon Treasure,Dragon Treasure,Dragon Treasure,龍秘宝,Dragon Treasure,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+316,Anc Drgn Treasre,Anc Drgn Treasre,Anc Drgn Treasre,いにしえの龍秘宝,Anc Drgn Treasre,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+317,Decayed Drgn Scl,Decayed Drgn Scl,Decayed Drgn Scl,朽ちた龍鱗,Decayed Drgn Scl,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+318,Dragon Herb,Dragon Herb,Dragon Herb,龍薬石,Dragon Herb,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+319,Felyne Fur Ruby,Felyne Fur Ruby,Felyne Fur Ruby,ネコ毛の紅玉,Felyne Fur Ruby,,,yes,,no,yes,99,,5,yes,no
+320,Mosswine Hide,Mosswine Hide,Mosswine Hide,モスの苔皮,Mosswine Hide,,,yes,,no,yes,99,,4,yes,no
+321,Bullfango Pelt,Bullfango Pelt,Bullfango Pelt,ファンゴの毛皮,Bullfango Pelt,,,yes,,no,yes,99,,1,yes,yes
+322,ThkBullfangoPelt,ThkBullfangoPelt,Bullfango Pelt+,ファンゴの厚毛皮,ThkBullfangoPelt,,,yes,,no,yes,99,,5,yes,no
+323,Bullfango Head,Bullfango Head,Bullfango Head,ファンゴの頭,Bullfango Head,,,yes,,no,yes,99,,4,yes,no
+324,Bulldrome Tusk,Bulldrome Tusk,Bulldrome Tusk,大猪の牙,Bulldrome Tusk,,,yes,,no,yes,99,,4,yes,no
+325,Bulldrome Hide,Bulldrome Hide,Bulldrome Hide,大猪の皮,Bulldrome Hide,,,yes,,no,yes,99,,4,yes,no
+326,Bulldrome Hide+,Bulldrome Hide+,Bulldrome Hide+,大猪の硬い皮,Bulldrome Hide+,,,yes,,no,yes,99,,4,yes,no
+327,Kelbi Horn,Kelbi Horn,Kelbi Horn,ケルビの角,Kelbi Horn,,,yes,,no,yes,99,,4,no,no
+328,Kelbi Hide,Kelbi Hide,Kelbi Hide,ケルビの皮,Kelbi Hide,,,yes,,no,yes,99,,1,yes,yes
+329,Anteka Antlers,Anteka Antlers,Anteka Antlers,ガウシカの角,Anteka Antlers,,,yes,,no,yes,99,,4,yes,no
+330,Anteka Pelt,Anteka Pelt,Anteka Pelt,ガウシカの毛皮,Anteka Pelt,,,yes,,no,yes,99,,3,yes,yes
+331,High Qualty Pelt,High Qualty Pelt,High Quality Pelt,上質な毛皮,High Qualty Pelt,,,yes,,no,yes,99,,4,yes,no
+332,Remobra Skin,Remobra Skin,Remobra Skin,蛇竜の皮,Remobra Skin,,,yes,,no,yes,99,,4,yes,no
+333,Remobra Skin+,Remobra Skin+,Remobra Skin+,蛇竜の上皮,Remobra Skin+,,,yes,,no,yes,99,,4,yes,no
+334,SpecRemobraSkin+,SpecRemobraSkin+,Remobra Skin G,蛇竜の特上皮,SpecRemobraSkin+,,,yes,,no,yes,99,,4,yes,no
+335,Striped Skin,Striped Skin,Striped Skin,縞模様の皮,Striped Skin,,,yes,,no,yes,99,,4,yes,no
+336,Remobra Skull,Remobra Skull,Remobra Skull,蛇竜の頭,Remobra Skull,,,yes,,no,yes,99,,4,yes,no
+337,ShakalakaTreasre,ShakalakaTreasre,ShakalakaTreasre,奇面族のお宝,ShakalakaTreasre,,,yes,,no,yes,99,,4,yes,no
+338,ShakalakaTreasr+,ShakalakaTreasr+,ShakalakaTrsure+,奇面族の秘宝,ShakalakaTreasr+,,,yes,,no,yes,99,,5,yes,no
+339,ShakaInheritance,ShakaInheritance,ShakaInheritance,奇面王の遺産,ShakaInheritance,,,yes,,no,yes,99,,5,yes,no
+340,Giaprey Scale,Giaprey Scale,Giaprey Scale,ギアノスの鱗,Giaprey Scale,,,yes,,no,yes,99,,3,yes,yes
+341,Giaprey Scale+,Giaprey Scale+,Giaprey Scale+,ギアノスの上鱗,Giaprey Scale+,,,yes,,no,yes,99,,5,yes,no
+342,Giaprey Hide,Giaprey Hide,Giaprey Hide,ギアノスの皮,Giaprey Hide,,,yes,,no,yes,99,,3,yes,yes
+343,Giaprey Hide+,Giaprey Hide+,Giaprey Hide+,ギアノスの上皮,Giaprey Hide+,,,yes,,no,yes,99,,5,yes,no
+344,Giadrome Hide,Giadrome Hide,Giadrome Hide,ドスギアノスの皮,Giadrome Hide,,,yes,,no,yes,99,,4,yes,no
+345,Giadrome Claw,Giadrome Claw,Giadrome Claw,ドスギアノスの爪,Giadrome Claw,,,yes,,no,yes,99,,4,yes,no
+346,Giadrome Claw+,Giadrome Claw+,Giadrome Claw+,ギアノスの尖爪,Giadrome Claw+,,,yes,,no,yes,99,,5,yes,no
+347,Giadrome Skull,Giadrome Skull,Giadrome Skull,ドスギアノスの頭,Giadrome Skull,,,yes,,no,yes,99,,4,yes,no
+348,Velociprey Fang,Velociprey Fang,Velociprey Fang,ランポスの牙,Velociprey Fang,,,yes,,no,yes,99,,2,no,no
+349,Velociprey Scale,Velociprey Scale,Velociprey Scale,ランポスの鱗,Velociprey Scale,,,yes,,no,yes,99,,3,yes,yes
+350,Velociprey Scle+,Velociprey Scle+,Velociprey Scl+,ランポスの上鱗,Velociprey Scle+,,,yes,,no,yes,99,,5,yes,no
+351,Velociprey Hide,Velociprey Hide,Velociprey Hide,ランポスの皮,Velociprey Hide,,,yes,,no,yes,99,,3,yes,yes
+352,Velociprey Hide+,Velociprey Hide+,Velociprey Hide+,ランポスの上皮,Velociprey Hide+,,,yes,,no,yes,99,,5,yes,no
+353,Velocidrome Hide,Velocidrome Hide,Velocidrome Hide,ドスランポスの皮,Velocidrome Hide,,,yes,,no,yes,99,,4,yes,no
+354,Velocidrome Claw,Velocidrome Claw,Velocidrome Claw,ドスランポスの爪,Velocidrome Claw,,,yes,,no,yes,99,,4,yes,no
+355,Velocidrome Clw+,Velocidrome Clw+,Velocidrome Clw+,ランポスの尖爪,Velocidrome Clw+,,,yes,,no,yes,99,,5,yes,no
+356,Velocidrome Head,Velocidrome Head,Velocidrome Head,ドスランポスの頭,Velocidrome Head,,,yes,,no,yes,99,,4,yes,no
+357,Genprey Fang,Genprey Fang,Genprey Fang,ゲネポスの麻痺牙,Genprey Fang,,,yes,,no,yes,99,,2,no,no
+358,Genprey Scale,Genprey Scale,Genprey Scale,ゲネポスの鱗,Genprey Scale,,,yes,,no,yes,99,,3,yes,yes
+359,Genprey Scale+,Genprey Scale+,Genprey Scale+,ゲネポスの上鱗,Genprey Scale+,,,yes,,no,yes,99,,5,yes,no
+360,Genprey Hide,Genprey Hide,Genprey Hide,ゲネポスの皮,Genprey Hide,,,yes,,no,yes,99,,3,yes,yes
+361,Genprey Hide+,Genprey Hide+,Genprey Hide+,ゲネポスの上皮,Genprey Hide+,,,yes,,no,yes,99,,5,yes,no
+362,Gendrome Hide,Gendrome Hide,Gendrome Hide,ドスゲネポスの皮,Gendrome Hide,,,yes,,no,yes,99,,4,yes,no
+363,Gendrome Tail,Gendrome Tail,Gendrome Tail,ドスゲネポスの尾,Gendrome Tail,,,yes,,no,yes,99,,5,yes,no
+364,Gendrome Skull,Gendrome Skull,Gendrome Skull,ドスゲネポスの頭,Gendrome Skull,,,yes,,no,yes,99,,4,yes,no
+365,Ioprey Fang,Ioprey Fang,Ioprey Fang,イーオスの毒牙,Ioprey Fang,,,yes,,no,yes,99,,2,no,no
+366,Ioprey Scale,Ioprey Scale,Ioprey Scale,イーオスの鱗,Ioprey Scale,,,yes,,no,yes,99,,3,yes,yes
+367,Ioprey Scale+,Ioprey Scale+,Ioprey Scale+,イーオスの上鱗,Ioprey Scale+,,,yes,,no,yes,99,,5,yes,no
+368,Ioprey Hide,Ioprey Hide,Ioprey Hide,イーオスの皮,Ioprey Hide,,,yes,,no,yes,99,,3,yes,yes
+369,Ioprey Hide+,Ioprey Hide+,Ioprey Hide+,イーオスの上皮,Ioprey Hide+,,,yes,,no,yes,99,,5,yes,no
+370,Iodrome Hide,Iodrome Hide,Iodrome Hide,ドスイーオスの皮,Iodrome Hide,,,yes,,no,yes,99,,4,yes,no
+371,Iodrome Skull,Iodrome Skull,Iodrome Skull,ドスイーオスの頭,Iodrome Skull,,,yes,,no,yes,99,,4,yes,no
+372,OrangeHypnoPelt,OrangeHypnoPelt,Hypnoc Feather,眠鳥の橙毛,OrangeHypnoPelt,,,yes,,no,yes,99,,5,yes,no
+373,OrangeHypnoPelt+,OrangeHypnoPelt+,Hypnoc Feather+,眠鳥の豪橙毛,OrangeHypnoPelt+,,,yes,,no,yes,99,,5,yes,no
+374,Top-GrdHypnoClaw,Top-GrdHypnoClaw,Hypnoc Claw+,眠鳥の尖爪,Top-GrdHypnoClaw,,,yes,,no,yes,99,,5,yes,no
+375,Hypno Claw+,Hypno Claw+,Hypnoc StrngClaw,眠鳥の剛爪,Hypno Claw+,,,yes,,no,yes,99,,5,yes,no
+376,Hypno Bezoar,Hypno Bezoar,HypncGizzardStne,眠鳥の胃石,Hypno Bezoar,,,yes,,no,yes,99,,5,yes,no
+377,Hypno Bezoar+,Hypno Bezoar+,HypncGizzardStn+,眠鳥の稀胃石,Hypno Bezoar+,,,yes,,no,yes,99,,5,yes,no
+378,Hypno Beak,Hypno Beak,Hypnoc Beak,眠鳥のクチバシ,Hypno Beak,,,yes,,no,yes,99,,5,yes,no
+379,Hypno Fang,Hypno Fang,HypncFangedBeak,眠鳥の牙ハシ,Hypno Fang,,,yes,,no,yes,99,,5,yes,no
+380,RainbowTailFeath,RainbowTailFeath,Rainbow Down,七色尾羽根,RainbowTailFeath,,,yes,,no,yes,99,,5,yes,no
+381,Hypno Ticket,Hypno Ticket,Hypnoc Ticket,ヒプノチケット,Hypno Ticket,,,yes,,no,yes,99,,5,yes,no
+382,Kut-Ku Scale,Kut-Ku Scale,Kut-Ku Scale,怪鳥の鱗,Kut-Ku Scale,,,yes,,no,yes,99,,4,yes,no
+383,Kut-Ku Scale+,Kut-Ku Scale+,Kut-Ku Scale+,怪鳥の上鱗,Kut-Ku Scale+,,,yes,,no,yes,99,,5,yes,no
+384,Thick Kut-Ku Scl,Thick Kut-Ku Scl,Kut-Ku Thck Scl,怪鳥の厚鱗,Thick Kut-Ku Scl,,,yes,,no,yes,99,,5,yes,no
+385,Kut-Ku Shell,Kut-Ku Shell,Kut-Ku Shell,怪鳥の甲殻,Kut-Ku Shell,,,yes,,no,yes,99,,4,yes,no
+386,Kut-Ku Carapace,Kut-Ku Carapace,Kut-Ku Carapace,怪鳥の堅殻,Kut-Ku Carapace,,,yes,,no,yes,99,,5,yes,no
+387,Hvy Kut-Ku Shell,Hvy Kut-Ku Shell,Kut-Ku Hvy Cpc ,怪鳥の重殻,Hvy Kut-Ku Shell,,,yes,,no,yes,99,,5,yes,no
+388,Kut-Ku Ear,Kut-Ku Ear,Kut-Ku Ear,怪鳥の耳,Kut-Ku Ear,,,yes,,no,yes,99,,5,yes,no
+389,Long Kut-Ku Ear,Long Kut-Ku Ear,Long Kut-Ku Ear,怪鳥の地獄耳,Long Kut-Ku Ear,,,yes,,no,yes,99,,5,yes,no
+390,Lucky Kut-Ku Ear,Lucky Kut-Ku Ear,Lucky Kut-KuEar,怪鳥の福耳,Lucky Kut-Ku Ear,,,yes,,no,yes,99,,5,yes,no
+391,Giant Beak,Giant Beak,Giant Beak,巨大なクチバシ,Giant Beak,,,yes,,no,yes,99,,5,yes,no
+392,Splendid Beak,Splendid Beak,Splendid Beak,立派なクチバシ,Splendid Beak,,,yes,,no,yes,99,,5,yes,no
+393,Kut-Ku Webbing,Kut-Ku Webbing,Kut-Ku Webbing,怪鳥の翼膜,Kut-Ku Webbing,,,yes,,no,yes,99,,4,yes,no
+394,Str Kut-Ku Wing,Str Kut-Ku Wing,Kut-Ku Hrd Wbbng,怪鳥の剛翼,Str Kut-Ku Wing,,,yes,,no,yes,99,,4,yes,no
+395,Blue Kut-Ku Scl,Blue Kut-Ku Scl,Blue Kut-Ku Scl,青怪鳥の鱗,Blue Kut-Ku Scl,,,yes,,no,yes,99,,5,yes,no
+396,Blue Kut-Ku Scl+,Blue Kut-Ku Scl+,Blue Kut-Ku Scl+,青怪鳥の上鱗,Blue Kut-Ku Scl+,,,yes,,no,yes,99,,5,yes,no
+397,ThkBlueKut-KuScl,ThkBlueKut-KuScl,BlueKut-KuThkScl,青怪鳥の厚鱗,ThkBlueKut-KuScl,,,yes,,no,yes,99,,5,yes,no
+398,Blue Kut-Ku Shl,Blue Kut-Ku Shl,Blue Kut-Ku Shl,青怪鳥の甲殻,Blue Kut-Ku Shl,,,yes,,no,yes,99,,5,yes,no
+399,Blue Kut-Ku Cpc,Blue Kut-Ku Cpc,Blue Kut-Ku Cpc,青怪鳥の堅殻,Blue Kut-Ku Cpc,,,yes,,no,yes,99,,5,yes,no
+400,HvyBlueKut-KuShl,HvyBlueKut-KuShl,BlueKut-KuHvyCpc,青怪鳥の重殻,HvyBlueKut-KuShl,,,yes,,no,yes,99,,5,yes,no
+401,Rubbery Hide,Rubbery Hide,Rubbery Hide,ゴム質の皮,Rubbery Hide,,,yes,,no,yes,99,,4,yes,no
+402,Rubbery Hide+,Rubbery Hide+,Rubbery Hide+,ゴム質の上皮,Rubbery Hide+,,,yes,,no,yes,99,,5,yes,no
+403,SpecRubberyHide+,SpecRubberyHide+,Rubbery Hide G,ゴム質の特上皮,SpecRubberyHide+,,,yes,,no,yes,99,,5,yes,no
+404,Gypceros Head,Gypceros Head,Gypceros Head,毒怪鳥の頭,Gypceros Head,,,yes,,no,yes,99,,5,yes,no
+405,HardGypcerosHead,HardGypcerosHead,Gypceros HrdHead,毒怪鳥の石頭,HardGypcerosHead,,,yes,,no,yes,99,,5,yes,no
+406,Pur Rubbery Hide,Pur Rubbery Hide,Pur Rubbery Hide,ゴム質の紫皮,Pur Rubbery Hide,,,yes,,no,yes,99,,5,yes,no
+407,Pur Gypceros Wng,Pur Gypceros Wng,Pur GypcerosWng,毒怪鳥の紫翼,Pur Gypceros Wng,,,yes,,no,yes,99,,5,yes,no
+408,HrdPuGypcerosWng,HrdPuGypcerosWng,Pur Gyp StrngWng,毒怪鳥の紫剛翼,HrdPuGypcerosWng,,,yes,,no,yes,99,,5,yes,no
+409,Garuga Scale,Garuga Scale,Garuga Scale,黒狼鳥の鱗,Garuga Scale,,,yes,,no,yes,99,,4,yes,no
+410,Garuga Scale+,Garuga Scale+,Garuga Scale+,黒狼鳥の上鱗,Garuga Scale+,,,yes,,no,yes,99,,5,yes,no
+411,ThickGarugaScale,ThickGarugaScale,Garuga Scale G,黒狼鳥の厚鱗,ThickGarugaScale,,,yes,,no,yes,99,,5,yes,no
+412,Garuga Shell,Garuga Shell,Garuga Shell,黒狼鳥の甲殻,Garuga Shell,,,yes,,no,yes,99,,4,yes,no
+413,Garuga Carapace,Garuga Carapace,Garuga Carapace,黒狼鳥の堅殻,Garuga Carapace,,,yes,,no,yes,99,,5,yes,no
+414,Hvy Garuga Shell,Hvy Garuga Shell,Garuga Hvy Cpc,黒狼鳥の重殻,Hvy Garuga Shell,,,yes,,no,yes,99,,5,yes,no
+415,Garuga Ear,Garuga Ear,Garuga Ear,黒狼鳥の耳,Garuga Ear,,,yes,,no,yes,99,,5,yes,no
+416,Long Garuga Ear,Long Garuga Ear,Garuga Devil Ear,黒狼鳥の地獄耳,Long Garuga Ear,,,yes,,no,yes,99,,5,yes,no
+417,Sharpened Beak,Sharpened Beak,Sharpened Beak,尖ったクチバシ,Sharpened Beak,,,yes,,no,yes,99,,5,yes,no
+418,Rejuvenated Beak,Rejuvenated Beak,Sharpened Beak+,イカしたクチバシ,Rejuvenated Beak,,,yes,,no,yes,99,,5,yes,no
+419,Garuga Wing,Garuga Wing,Garuga Wing,黒狼鳥の翼,Garuga Wing,,,yes,,no,yes,99,,5,yes,no
+420,Str Garuga Wing,Str Garuga Wing,Garuga StrngWng,黒狼鳥の剛翼,Str Garuga Wing,,,yes,,no,yes,99,,5,yes,no
+421,Garuga Tail,Garuga Tail,Garuga Tail,黒狼鳥の尻尾,Garuga Tail,,,yes,,no,yes,99,,5,yes,no
+422,LethrGarugaTail,LethrGarugaTail,Garuga Tail+,黒狼鳥の靭尾,LethrGarugaTail,,,yes,,no,yes,99,,5,yes,no
+423,Garuga Mane,Garuga Mane,Garuga Mane,黒狼鳥のたてがみ,Garuga Mane,,,yes,,no,yes,99,,5,yes,no
+424,SilverGarugaPelt,SilverGarugaPelt,Garuga Slvr Mane,黒狼鳥の銀狼毛,SilverGarugaPelt,,,yes,,no,yes,99,,5,yes,no
+425,Blango Pelt,Blango Pelt,Blango Pelt,ブランゴの毛,Blango Pelt,,,yes,,no,yes,99,,4,yes,no
+426,Blango Pelt+,Blango Pelt+,Blango Pelt+,ブランゴの剛毛,Blango Pelt+,,,yes,,no,yes,99,,4,yes,no
+427,Sharp Claw,Sharp Claw,Sharp Claw,とがった爪,Sharp Claw,,,yes,,no,yes,99,,4,yes,no
+428,Piercing Claw,Piercing Claw,Razor Claw,鋭利な爪,Piercing Claw,,,yes,,no,yes,99,,5,yes,no
+429,Blangonga Fang,Blangonga Fang,Blangonga Fang,雪獅子の牙,Blangonga Fang,,,yes,,no,yes,99,,5,yes,no
+430,Blangonga Fang+,Blangonga Fang+,Blangonga Fang+,雪獅子の鋭牙,Blangonga Fang+,,,yes,,no,yes,99,,5,yes,no
+431,HvyBlangongaFang,HvyBlangongaFang,Blangnga HvyFang,雪獅子の重牙,HvyBlangongaFang,,,yes,,no,yes,99,,5,yes,no
+432,Blangonga Pelt,Blangonga Pelt,Blangonga Pelt,雪獅子の毛,Blangonga Pelt,,,yes,,no,yes,99,,4,yes,no
+433,Blangonga Pelt+,Blangonga Pelt+,Blangonga Pelt+,雪獅子の剛毛,Blangonga Pelt+,,,yes,,no,yes,99,,5,yes,no
+434,HrdBlangongaPlt+,HrdBlangongaPlt+,Blangonga Pelt G,雪獅子の豪剛毛,HrdBlangongaPlt+,,,yes,,no,yes,99,,5,yes,no
+435,Blangonga Whiskr,Blangonga Whiskr,Blangonga Whiskr,雪獅子の髭,Blangonga Whiskr,,,yes,,no,yes,99,,5,yes,no
+436,Lthr Pelagus Plt,Lthr Pelagus Plt,Blngnga HrdWhskr,強靭な牙獣髭,Lthr Pelagus Plt,,,yes,,no,yes,99,,5,yes,no
+437,Blangonga Tail,Blangonga Tail,Blangonga Tail,雪獅子の尻尾,Blangonga Tail,,,yes,,no,yes,99,,5,yes,no
+438,LeathrBlangoTail,LeathrBlangoTail,Blangonga Tail G,雪獅子の靭尾,LeathrBlangoTail,,,yes,,no,yes,99,,5,yes,no
+439,C.BlangongaPelt+,C.BlangongaPelt+,Brwn BlngngaPelt,砂獅子の豪剛毛,C.BlangongaPelt+,,,yes,,no,yes,99,,5,yes,no
+440,HvyC.BlangoFang,HvyC.BlangoFang,Brwn BlngngaFang,砂獅子の重牙,HvyC.BlangoFang,,,yes,,no,yes,99,,5,yes,no
+441,LthrC.BlangoTail,LthrC.BlangoTail,Brwn BlngngaTail,砂獅子の靭尾,LthrC.BlangoTail,,,yes,,no,yes,99,,5,yes,no
+442,Conga Pelt,Conga Pelt,Conga Pelt,コンガの毛,Conga Pelt,,,yes,,no,yes,99,,4,yes,no
+443,Conga Pelt+,Conga Pelt+,Conga Pelt+,コンガの剛毛,Conga Pelt+,,,yes,,no,yes,99,,4,yes,no
+444,Congalala Pelt,Congalala Pelt,Congalala Pelt,桃毛獣の毛,Congalala Pelt,,,yes,,no,yes,99,,4,yes,no
+445,Congalala Pelt+,Congalala Pelt+,Congalala Pelt+,桃毛獣の剛毛,Congalala Pelt+,,,yes,,no,yes,99,,5,yes,no
+446,HrdCongalalaPlt+,HrdCongalalaPlt+,Congalala Pelt G,桃毛獣の豪剛毛,HrdCongalalaPlt+,,,yes,,no,yes,99,,5,yes,no
+447,Vibrant Pelt,Vibrant Pelt,Vibrant Pelt,極彩色の毛,Vibrant Pelt,,,yes,,no,yes,99,,5,yes,no
+448,Congalala Claw,Congalala Claw,Congalala Claw,桃毛獣の爪,Congalala Claw,,,yes,,no,yes,99,,4,yes,no
+449,Congalala Claw+,Congalala Claw+,Congalala Claw+,桃毛獣の尖爪,Congalala Claw+,,,yes,,no,yes,99,,5,yes,no
+450,HrdCongalalaClw+,HrdCongalalaClw+,Congalala Claw G,桃毛獣の剛爪,HrdCongalalaClw+,,,yes,,no,yes,99,,5,yes,no
+451,Congalala Fang,Congalala Fang,Congalala Fang,桃毛獣の牙,Congalala Fang,,,yes,,no,yes,99,,5,yes,no
+452,Lg Pelagus Fang,Lg Pelagus Fang,ConglalaStrngFng,堅牢な牙獣牙,Lg Pelagus Fang,,,yes,,no,yes,99,,5,yes,no
+453,E.CongalalaPelt+,E.CongalalaPelt+,GrnCongalalaPelt,緑毛獣の豪剛毛,E.CongalalaPelt+,,,yes,,no,yes,99,,5,yes,no
+454,HrdE.CongaClaw,HrdE.CongaClaw,GrnCongalalaClaw,緑毛獣の剛爪,HrdE.CongaClaw,,,yes,,no,yes,99,,5,yes,no
+455,Vibrant Comb,Vibrant Comb,Vibrant Crown,極彩色のトサカ,Vibrant Comb,,,yes,,no,yes,99,,5,yes,no
+456,Rajang Horn,Rajang Horn,Rajang Horn,金獅子の尖角,Rajang Horn,,,yes,,no,yes,99,,5,yes,no
+457,Hard Rajang Horn,Hard Rajang Horn,Rajang Hard Horn,金獅子の剛角,Hard Rajang Horn,,,yes,,no,yes,99,,5,yes,no
+458,Rajang Fang,Rajang Fang,Rajang Fang,金獅子の鋭牙,Rajang Fang,,,yes,,no,yes,99,,5,yes,no
+459,Hvy Rajang Fang,Hvy Rajang Fang,Rajang Hvy Fang,金獅子の重牙,Hvy Rajang Fang,,,yes,,no,yes,99,,5,yes,no
+460,Blk Rajang Pelt,Blk Rajang Pelt,Blk Rajang Pelt,金獅子の黒毛,Blk Rajang Pelt,,,yes,,no,yes,99,,5,yes,no
+461,Blk Rajang Pelt+,Blk Rajang Pelt+,BlkRajangThkPelt,金獅子の黒荒毛,Blk Rajang Pelt+,,,yes,,no,yes,99,,5,yes,no
+462,Rajang Claw,Rajang Claw,Rajang Claw,金獅子の尖爪,Rajang Claw,,,yes,,no,yes,99,,5,yes,no
+463,Hard Rajang Claw,Hard Rajang Claw,Rajang StrngClaw,金獅子の剛爪,Hard Rajang Claw,,,yes,,no,yes,99,,5,yes,no
+464,Rajang Tail,Rajang Tail,Rajang Tail,金獅子の尻尾,Rajang Tail,,,yes,,no,yes,99,,5,yes,no
+465,dummy,dummy,Dummy item,ダミーアイテム,Dummy,,,no,not a real item - developer padding,no,no,0,,,no,no
+466,Gold Rajang Pelt,Gold Rajang Pelt,Gold Rajang Pelt,黄金の毛,Gold Rajang Pelt,,,yes,,no,yes,99,,5,yes,no
+467,GoldRajangPelt+,GoldRajangPelt+,ShiningRajangPlt,黄金の煌毛,GoldRajangPelt+,,,yes,,no,yes,99,,5,yes,no
+468,Piscine Fang,Piscine Fang,Piscine Fang,魚竜の牙,Piscine Fang,,,yes,,no,yes,99,,4,yes,no
+469,HvyPiscineFang,HvyPiscineFang,Piscine Fang+,魚竜の重牙,HvyPiscineFang,,,yes,,no,yes,99,,5,yes,no
+470,Plesioth Scale,Plesioth Scale,Plesioth Scale,水竜の鱗,Plesioth Scale,,,yes,,no,yes,99,,4,yes,no
+471,Plesioth Scale+,Plesioth Scale+,Plesioth Scale+,水竜の上鱗,Plesioth Scale+,,,yes,,no,yes,99,,5,yes,no
+472,ThckPlesiothScl,ThckPlesiothScl,Plsioth Thck Scl,水竜の厚鱗,ThckPlesiothScl,,,yes,,no,yes,99,,5,yes,no
+473,Plesioth Fin,Plesioth Fin,Plesioth Fin,水竜のヒレ,Plesioth Fin,,,yes,,no,yes,99,,5,yes,no
+474,Plesioth Fin+,Plesioth Fin+,Plesioth Fin+,水竜の上ビレ,Plesioth Fin+,,,yes,,no,yes,99,,5,yes,no
+475,SpecPlesiothFin+,SpecPlesiothFin+,Plesioth Fin G,水竜の特上ビレ,SpecPlesiothFin+,,,yes,,no,yes,99,,5,yes,no
+476,Grn Plesioth Scl,Grn Plesioth Scl,Grn Plesioth Scl,翠水竜の鱗,Grn Plesioth Scl,,,yes,,no,yes,99,,5,yes,no
+477,Grn Plsioth Scl+,Grn Plsioth Scl+,Grn Plsioth Scl+,翠水竜の上鱗,Grn Plsioth Scl+,,,yes,,no,yes,99,,5,yes,no
+478,ThckGrnPlesioScl,ThckGrnPlesioScl,GrnPlsiothThkScl,翠水竜の厚鱗,ThckGrnPlesioScl,,,yes,,no,yes,99,,5,yes,no
+479,Grn Plesioth Fin,Grn Plesioth Fin,Grn Plesioth Fin,翠水竜のヒレ,Grn Plesioth Fin,,,yes,,no,yes,99,,5,yes,no
+480,Grn Plsioth Fin+,Grn Plsioth Fin+,Grn Plsioth Fin+,翠水竜の上ビレ,Grn Plsioth Fin+,,,yes,,no,yes,99,,5,yes,no
+481,SpecGrnPlesioFn+,SpecGrnPlesioFn+,GrnPlsioth Fin G,翠水竜の特上ビレ,SpecGrnPlesioFn+,,,yes,,no,yes,99,,5,yes,no
+482,Cephalos Scale,Cephalos Scale,Cephalos Scale,砂竜の鱗,Cephalos Scale,,,yes,,no,yes,99,,4,yes,no
+483,Cephalos Scale+,Cephalos Scale+,Cephalos Scale+,砂竜の上鱗,Cephalos Scale+,,,yes,,no,yes,99,,5,yes,no
+484,Cephalos Fin,Cephalos Fin,Cephalos Fin,砂竜のヒレ,Cephalos Fin,,,yes,,no,yes,99,,5,yes,no
+485,Cephalos Fin+,Cephalos Fin+,Cephalos Fin+,砂竜の上ビレ,Cephalos Fin+,,,yes,,no,yes,99,,5,yes,no
+486,Coral Cphlos Scl,Coral Cphlos Scl,Coral Cphlos Scl,砂竜の紫鱗,Coral Cphlos Scl,,,yes,,no,yes,99,,5,yes,no
+487,Coral Cphlos Fin,Coral Cphlos Fin,Coral Cphlos Fin,砂竜の桃ヒレ,Coral Cphlos Fin,,,yes,,no,yes,99,,5,yes,no
+488,ThckLavasiothScl,ThckLavasiothScl,Volganos Thk Scl,溶岩竜の厚鱗,ThckLavasiothScl,,,yes,,no,yes,99,,5,yes,no
+489,HvyLavasiothShl,HvyLavasiothShl,Volganos Hvy Cpc,溶岩竜の重殻,HvyLavasiothShl,,,yes,,no,yes,99,,5,yes,no
+490,HvyLavasiothFang,HvyLavasiothFang,Volganos HvyFang,溶岩竜の重牙,HvyLavasiothFang,,,yes,,no,yes,99,,5,yes,no
+491,SpecLavasioFin+,SpecLavasioFin+,Volganos Fin+,溶岩竜の特上ビレ,SpecLavasioFin+,,,yes,,no,yes,99,,5,yes,no
+492,Lavasioth Ticket,Lavasioth Ticket,Lava ticket,ラヴァチケット,Lavasioth Ticket,,,yes,,no,yes,99,,5,yes,no
+493,Wyvern Skull Shl,Wyvern Skull Shl,Wyvern Skull Shl,竜頭殻,Wyvern Skull Shl,,,yes,,no,yes,99,,4,yes,no
+494,Sm Hermitaur Shl,Sm Hermitaur Shl,Sm Hermitaur Shl,盾蟹の小殻,Sm Hermitaur Shl,,,yes,,no,yes,99,,2,yes,yes
+495,Hermitaur Shell,Hermitaur Shell,Hermitaur Shell,盾蟹の甲殻,Hermitaur Shell,,,yes,,no,yes,99,,4,yes,no
+496,Hermitaur Carpce,Hermitaur Carpce,Hermitaur Carpce,盾蟹の堅殻,Hermitaur Carpce,,,yes,,no,yes,99,,5,yes,no
+497,HvyHermitaurShl,HvyHermitaurShl,Hermitaur HvyCpc,盾蟹の重殻,HvyHermitaurShl,,,yes,,no,yes,99,,5,yes,no
+498,Hermitaur Claw,Hermitaur Claw,Hermitaur Claw,盾蟹の爪,Hermitaur Claw,,,yes,,no,yes,99,,5,yes,no
+499,Hermitaur Claw+,Hermitaur Claw+,Hermitaur Claw+,盾蟹の尖爪,Hermitaur Claw+,,,yes,,no,yes,99,,5,yes,no
+500,HrdHermitaurClaw,HrdHermitaurClaw,HermitaurClaw G,盾蟹の剛爪,HrdHermitaurClaw,,,yes,,no,yes,99,,5,yes,no
+501,PlumD.HermitrShl,PlumD.HermitrShl,Pur HermitaurShl,盾蟹の紫殻,PlumD.HermitrShl,,,yes,,no,yes,99,,5,yes,no
+502,PlumD.HermitrClw,PlumD.HermitrClw,Pur HermitaurClw,盾蟹の紫爪,PlumD.HermitrClw,,,yes,,no,yes,99,,4,yes,no
+503,Sm Ceanataur Shl,Sm Ceanataur Shl,Sm Ceanataur Shl,鎌蟹の小殻,Sm Ceanataur Shl,,,yes,,no,yes,99,,2,yes,yes
+504,Ceanataur Shell,Ceanataur Shell,Ceanataur Shell,鎌蟹の甲殻,Ceanataur Shell,,,yes,,no,yes,99,,4,yes,no
+505,Ceanataur Carpce,Ceanataur Carpce,Ceanataur Carpce,鎌蟹の堅殻,Ceanataur Carpce,,,yes,,no,yes,99,,5,yes,no
+506,HvyCeanataurShl,HvyCeanataurShl,CeanataurHvyCpc,鎌蟹の重殻,HvyCeanataurShl,,,yes,,no,yes,99,,5,yes,no
+507,Ceanataur Leg,Ceanataur Leg,Ceanataur Leg,鎌蟹の脚,Ceanataur Leg,,,yes,,no,yes,99,,5,yes,no
+508,HvyCeanataurLeg,HvyCeanataurLeg,CeanataurHvyLeg,鎌蟹の重脚,HvyCeanataurLeg,,,yes,,no,yes,99,,5,yes,no
+509,Ceanataur Pincer,Ceanataur Pincer,Ceanataur Pincer,鎌蟹の鋏,Ceanataur Pincer,,,yes,,no,yes,99,,5,yes,no
+510,Ceanataur Claw,Ceanataur Claw,Ceanataur Claw,鎌蟹の爪,Ceanataur Claw,,,yes,,no,yes,99,,5,yes,no
+511,Ceanataur Claw+,Ceanataur Claw+,Ceanataur Claw+,鎌蟹の尖爪,Ceanataur Claw+,,,yes,,no,yes,99,,5,yes,no
+512,HrdCeanataurClaw,HrdCeanataurClaw,CeanataurClaw G,鎌蟹の剛爪,HrdCeanataurClaw,,,yes,,no,yes,99,,5,yes,no
+513,TerraCeanatrShl,TerraCeanatrShl,RedCeanataurShl,鎌蟹の朱殻,TerraCeanatrShl,,,yes,,no,yes,99,,5,yes,no
+514,TerraCeanatrClaw,TerraCeanatrClaw,RedCeanataurClaw,鎌蟹の朱爪,TerraCeanatrClaw,,,yes,,no,yes,99,,5,yes,no
+515,Sm Lobstershell,Sm Lobstershell,Sm Lobstershell,エビの小殻,Sm Lobstershell,,,yes,,no,yes,99,,5,yes,no
+516,Lg Lobstershell,Lg Lobstershell,Lg Lobstershell,エビの大殻,Lg Lobstershell,,,yes,,no,yes,99,,5,yes,no
+517,Gt Lobstershell,Gt Lobstershell,Hg Lobstershell,エビの巨大殻,Gt Lobstershell,,,yes,,no,yes,99,,5,yes,no
+518,dummy,Amezari Shell,King Lobster Shl,アメザリの甲殻,Amezari Shell,,,yes,,no,yes,99,,5,yes,no
+519,dummy,Gt Amezari Shell,King Lobster Cpc,アメザリの巨大殻,Amezari Carapace,,,yes,,no,yes,99,,5,yes,no
+520,Rathian Scale,Rathian Scale,Rathian Scale,雌火竜の鱗,Rathian Scale,,,yes,,no,yes,99,,4,yes,no
+521,Rathian Scale+,Rathian Scale+,Rathian Scale+,雌火竜の上鱗,Rathian Scale+,,,yes,,no,yes,99,,5,yes,no
+522,ThckRathianScl,ThckRathianScl,Rathian Thck Scl,雌火竜の厚鱗,ThckRathianScl,,,yes,,no,yes,99,,5,yes,no
+523,Rathian Plate,Rathian Plate,Rathian Plate,雌火竜の逆鱗,Rathian Plate,,,yes,,no,yes,99,,5,yes,no
+524,Rathian Ruby,Rathian Ruby,Rathian Ruby,雌火竜の紅玉,Rathian Ruby,,,yes,,no,yes,99,,5,yes,no
+525,HvnlyRathianScl,HvnlyRathianScl,RathianDvnePlate,雌火竜の天鱗,HvnlyRathianScl,,,yes,,no,yes,99,,5,yes,no
+526,Rathian Shell,Rathian Shell,Rathian Shell,雌火竜の甲殻,Rathian Shell,,,yes,,no,yes,99,,4,yes,no
+527,Rathian Carapace,Rathian Carapace,Rathian Carapace,雌火竜の堅殻,Rathian Carapace,,,yes,,no,yes,99,,5,yes,no
+528,HvyRathianShell,HvyRathianShell,Rathian Hvy Cpc,雌火竜の重殻,HvyRathianShell,,,yes,,no,yes,99,,5,yes,no
+529,Rathian Spike,Rathian Spike,Rathian Spike,雌火竜の棘,Rathian Spike,,,yes,,no,yes,99,,5,yes,no
+530,Rathian Spike+,Rathian Spike+,Rathian Spike+,雌火竜の上棘,Rathian Spike+,,,yes,,no,yes,99,,5,yes,no
+531,Rathian Thorn,Rathian Thorn,Rathian Spike G,雌火竜の秘棘,Rathian Thorn,,,yes,,no,yes,99,,5,yes,no
+532,Pnk Rathian Scl,Pnk Rathian Scl,Pnk Rathian Scl,桜火竜の鱗,Pnk Rathian Scl,,,yes,,no,yes,99,,5,yes,no
+533,Pnk Rathian Scl+,Pnk Rathian Scl+,PnkRathian Scl+,桜火竜の上鱗,Pnk Rathian Scl+,,,yes,,no,yes,99,,5,yes,no
+534,ThckPnkRathnScl,ThckPnkRathnScl,PnkRathianThkScl,桜火竜の厚鱗,ThckPnkRathnScl,,,yes,,no,yes,99,,5,yes,no
+535,Pnk Rathian Shl,Pnk Rathian Shl,Pnk Rathian Shl,桜火竜の甲殻,Pnk Rathian Shl,,,yes,,no,yes,99,,5,yes,no
+536,Pnk Rathian Cpc,Pnk Rathian Cpc,Pnk Rathian Cpc,桜火竜の堅殻,Pnk Rathian Cpc,,,yes,,no,yes,99,,5,yes,no
+537,HvyPnkRathianShl,HvyPnkRathianShl,PnkRathianHvyCpc,桜火竜の重殻,HvyPnkRathianShl,,,yes,,no,yes,99,,5,yes,no
+538,Gld Rathian Scl+,Gld Rathian Scl+,Gld Rathian Scl+,金火竜の上鱗,Gld Rathian Scl+,,,yes,,no,yes,99,,5,yes,no
+539,ThckGldRathnScl,ThckGldRathnScl,GldRathianThkScl,金火竜の厚鱗,ThckGldRathnScl,,,yes,,no,yes,99,,5,yes,no
+540,Gld Rathian Cpc,Gld Rathian Cpc,Gld Rathian Cpc,金火竜の堅殻,Gld Rathian Cpc,,,yes,,no,yes,99,,5,yes,no
+541,HvyGldRathianShl,HvyGldRathianShl,GldRathianHvyCpc,金火竜の重殻,HvyGldRathianShl,,,yes,,no,yes,99,,5,yes,no
+542,GoldRathianThorn,GoldRathianThorn,GldRathianSpike,金火竜の秘棘,GoldRathianThorn,,,yes,,no,yes,99,,5,yes,no
+543,Fire Wyvern Claw,Fire Wyvern Claw,FireWyvern Claw,火竜の翼爪,Fire Wyvern Claw,,,yes,,no,yes,99,,4,yes,no
+544,HrdFireWyvernClw,HrdFireWyvernClw,FireWyvrnHrdClaw,火竜の剛翼爪,HrdFireWyvernClw,,,yes,,no,yes,99,,5,yes,no
+545,FireWyvern Fluid,FireWyvern Fluid,FireWyvern Fluid,火竜の体液,FireWyvern Fluid,,,yes,,no,yes,99,,4,yes,no
+546,FireWyvrn Marrow,FireWyvrn Marrow,FireWyvrn Marrow,火竜の骨髄,FireWyvrn Marrow,,,yes,,no,yes,99,,5,yes,no
+547,FireWyvrn BrnStm,FireWyvrn BrnStm,FireWyvrn BrnStm,火竜の延髄,FireWyvrn BrnStm,,,yes,,no,yes,99,,5,yes,no
+548,Rathalos Scale,Rathalos Scale,Rathalos Scale,火竜の鱗,Rathalos Scale,,,yes,,no,yes,99,,4,yes,no
+549,Rathalos Scale+,Rathalos Scale+,Rathalos Scale+,火竜の上鱗,Rathalos Scale+,,,yes,,no,yes,99,,5,yes,no
+550,Hrd Rathalos Scl,Hrd Rathalos Scl,Rathalos ThckScl,火竜の厚鱗,Hrd Rathalos Scl,,,yes,,no,yes,99,,5,yes,no
+551,Rathalos Plate,Rathalos Plate,Rathalos Plate,火竜の逆鱗,Rathalos Plate,,,yes,,no,yes,99,,5,yes,no
+552,Rathalos Ruby,Rathalos Ruby,Rathalos Ruby,火竜の紅玉,Rathalos Ruby,,,yes,,no,yes,99,,5,yes,no
+553,HvnlyRathalosScl,HvnlyRathalosScl,RathlosDvnePlate,火竜の天鱗,HvnlyRathalosScl,,,yes,,no,yes,99,,5,yes,no
+554,Rathalos Shell,Rathalos Shell,Rathalos Shell,火竜の甲殻,Rathalos Shell,,,yes,,no,yes,99,,4,yes,no
+555,Rathalos Carpace,Rathalos Carpace,Rathalos Carpace,火竜の堅殻,Rathalos Carpace,,,yes,,no,yes,99,,5,yes,no
+556,HvyRathalosShl,HvyRathalosShl,Rathalos Hvy Cpc,火竜の重殻,HvyRathalosShl,,,yes,,no,yes,99,,5,yes,no
+557,Rathalos Tail,Rathalos Tail,Rathalos Tail,火竜の尻尾,Rathalos Tail,,,yes,,no,yes,99,,5,yes,no
+558,LthrRathalosTail,LthrRathalosTail,Rathalos HrdTail,火竜の靭尾,LthrRathalosTail,,,yes,,no,yes,99,,5,yes,no
+559,Rathalos Webbing,Rathalos Webbing,Rathalos Webbing,火竜の翼膜,Rathalos Webbing,,,yes,,no,yes,99,,4,yes,no
+560,Rathalos Wing,Rathalos Wing,Rathalos Wing,火竜の翼,Rathalos Wing,,,yes,,no,yes,99,,5,yes,no
+561,StrRathalosWing,StrRathalosWing,RathlosStrngWng,火竜の剛翼,StrRathalosWing,,,yes,,no,yes,99,,5,yes,no
+562,Azure Rthlos Scl,Azure Rthlos Scl,Azr Rathlos Scl,蒼火竜の鱗,Azure Rthlos Scl,,,yes,,no,yes,99,,5,yes,no
+563,Azre Rthlos Scl+,Azre Rthlos Scl+,Azr Rathlos Scl+,蒼火竜の上鱗,Azre Rthlos Scl+,,,yes,,no,yes,99,,5,yes,no
+564,ThckAzurRthlsScl,ThckAzurRthlsScl,AzrRathlosThkScl,蒼火竜の厚鱗,ThckAzurRthlsScl,,,yes,,no,yes,99,,5,yes,no
+565,Azure Rthlos Shl,Azure Rthlos Shl,Azre Rathlos Shl,蒼火竜の甲殻,Azure Rthlos Shl,,,yes,,no,yes,99,,5,yes,no
+566,Azure Rthlos Cpc,Azure Rthlos Cpc,Azre Rathlos Cpc,蒼火竜の堅殻,Azure Rthlos Cpc,,,yes,,no,yes,99,,5,yes,no
+567,HvyAzurRthlsShl,HvyAzurRthlsShl,AzrRathlosHvyCpc,蒼火竜の重殻,HvyAzurRthlsShl,,,yes,,no,yes,99,,5,yes,no
+568,Azur Rthlos Tail,Azur Rthlos Tail,Azr Rathlos Tail,蒼火竜の尻尾,Azur Rthlos Tail,,,yes,,no,yes,99,,5,yes,no
+569,LthrAzrRthlsTail,LthrAzrRthlsTail,AzrRthlosHrdTail,蒼火竜の靭尾,LthrAzrRthlsTail,,,yes,,no,yes,99,,5,yes,no
+570,Azur Rthlos Wing,Azur Rthlos Wing,Azur Rathlos Wng,蒼火竜の翼,Azur Rthlos Wing,,,yes,,no,yes,99,,5,yes,no
+571,Slvr Rthlos Scl+,Slvr Rthlos Scl+,Slvr Ratlos Scl+,銀火竜の上鱗,Slvr Rthlos Scl+,,,yes,,no,yes,99,,5,yes,no
+572,ThckSlvrRthlsScl,ThckSlvrRthlsScl,SlvrRthlosThkScl,銀火竜の厚鱗,ThckSlvrRthlsScl,,,yes,,no,yes,99,,5,yes,no
+573,Slvr Rthlos Cpc,Slvr Rthlos Cpc,Slvr Rathlos Cpc,銀火竜の堅殻,Slvr Rthlos Cpc,,,yes,,no,yes,99,,5,yes,no
+574,HvySlvrRthlsShl,HvySlvrRthlsShl,SlvrRthlosHvyCpc,銀火竜の重殻,HvySlvrRthlsShl,,,yes,,no,yes,99,,5,yes,no
+575,Slvr Rthlos Tail,Slvr Rthlos Tail,Slvr Ratlos Tail,銀火竜の尻尾,Slvr Rthlos Tail,,,yes,,no,yes,99,,5,yes,no
+576,LthrSlvrRthlsTal,LthrSlvrRthlsTal,SlvRthlosHrdTail,銀火竜の靭尾,LthrSlvrRthlsTal,,,yes,,no,yes,99,,5,yes,no
+577,Slvr Rthlos Wing,Slvr Rthlos Wing,Slvr Rathlos Wng,銀火竜の翼,Slvr Rthlos Wing,,,yes,,no,yes,99,,5,yes,no
+578,Flabby Hide,Flabby Hide,Flabby Hide,ブヨブヨした皮,Flabby Hide,,,yes,,no,yes,99,,4,yes,no
+579,Khezu Hide - Tan,Khezu Hide - Tan,Khezu Hide - Tan,真珠色の柔皮,Khezu Hide - Tan,,,yes,,no,yes,99,,5,yes,no
+580,KhezuHide-Cream,KhezuHide-Cream,Khezu Hide-Gloss,真珠色の艶皮,KhezuHide-Cream,,,yes,,no,yes,99,,5,yes,no
+581,Pale Bone,Pale Bone,Pale Bone,アルビノの中落ち,Pale Bone,,,yes,,no,yes,99,,5,yes,no
+582,Pale Khezu Steak,Pale Khezu Steak,Pale Khezu Steak,アルビノの霜降り,Pale Khezu Steak,,,yes,,no,yes,99,,5,yes,no
+583,KhezuSpecialCut,KhezuSpecialCut,ChoiceKhezuSteak,特撰アルビノ,KhezuSpecialCut,,,yes,,no,yes,99,,5,yes,no
+584,Alluring Hide,Alluring Hide,Alluring Hide,魅惑色の柔皮,Alluring Hide,,,yes,,no,yes,99,,5,yes,no
+585,Alluring Webbing,Alluring Webbing,Alluring Webbing,魅惑色の翼膜,Alluring Webbing,,,yes,,no,yes,99,,5,yes,no
+586,StrAlluringWing,StrAlluringWing,Alluring Wing ,魅惑色の剛翼,StrAlluringWing,,,yes,,no,yes,99,,5,yes,no
+587,Basarios Shell,Basarios Shell,Basarios Shell,岩竜の甲殻,Basarios Shell,,,yes,,no,yes,99,,4,yes,no
+588,Basarios Carpace,Basarios Carpace,Basarios Carpace,岩竜の堅殻,Basarios Carpace,,,yes,,no,yes,99,,5,yes,no
+589,HvyBasariosShell,HvyBasariosShell,Basarios Hvy Cpc,岩竜の重殻,HvyBasariosShell,,,yes,,no,yes,99,,5,yes,no
+590,Basarios Wing,Basarios Wing,Basarios Wing,岩竜の翼,Basarios Wing,,,yes,,no,yes,99,,5,yes,no
+591,StrBasariosWing,StrBasariosWing,BasariosStrngWng,岩竜の剛翼,StrBasariosWing,,,yes,,no,yes,99,,5,yes,no
+592,Basarios Tears,Basarios Tears,Basarios Tears,岩竜の涙,Basarios Tears,,,yes,,no,yes,99,,5,yes,no
+593,Tigrex Scale,Tigrex Scale,Tigrex Scale,轟竜の鱗,Tigrex Scale,,,yes,,no,yes,99,,4,yes,no
+594,Tigrex Scale+,Tigrex Scale+,Tigrex Scale+,轟竜の上鱗,Tigrex Scale+,,,yes,,no,yes,99,,5,yes,no
+595,ThickTigrexScale,ThickTigrexScale,Tigrex Thck Scl,轟竜の厚鱗,ThickTigrexScale,,,yes,,no,yes,99,,5,yes,no
+596,HvnlyTigrexScale,HvnlyTigrexScale,TigrexDvinePlate,轟竜の天鱗,HvnlyTigrexScale,,,yes,,no,yes,99,,5,yes,no
+597,Tigrex Shell,Tigrex Shell,Tigrex Shell,轟竜の甲殻,Tigrex Shell,,,yes,,no,yes,99,,4,yes,no
+598,Tigrex Carapace,Tigrex Carapace,Tigrex Carapace,轟竜の堅殻,Tigrex Carapace,,,yes,,no,yes,99,,5,yes,no
+599,Hvy Tigrex Shell,Hvy Tigrex Shell,Tigrex Hvy Cpc,轟竜の重殻,Hvy Tigrex Shell,,,yes,,no,yes,99,,5,yes,no
+600,Tigrex Tail,Tigrex Tail,Tigrex Tail,轟竜の尻尾,Tigrex Tail,,,yes,,no,yes,99,,5,yes,no
+601,LeathrTigrexTail,LeathrTigrexTail,Tigrex Hrd Tail,轟竜の靭尾,LeathrTigrexTail,,,yes,,no,yes,99,,5,yes,no
+602,Tigrex Claw,Tigrex Claw,Tigrex Claw,轟竜の爪,Tigrex Claw,,,yes,,no,yes,99,,5,yes,no
+603,Tigrex Claw+,Tigrex Claw+,Tigrex Claw+,轟竜の尖爪,Tigrex Claw+,,,yes,,no,yes,99,,5,yes,no
+604,Hard Tigrex Claw,Hard Tigrex Claw,Tigrex StrngClaw,轟竜の剛爪,Hard Tigrex Claw,,,yes,,no,yes,99,,5,yes,no
+605,Tigrex Fang,Tigrex Fang,Tigrex Fang,轟竜の牙,Tigrex Fang,,,yes,,no,yes,99,,5,yes,no
+606,Tigrex Fang+,Tigrex Fang+,Tigrex Fang+,轟竜の鋭牙,Tigrex Fang+,,,yes,,no,yes,99,,5,yes,no
+607,Hvy Tigrex Fang,Hvy Tigrex Fang,Tigrex Hvy Fang,轟竜の重牙,Hvy Tigrex Fang,,,yes,,no,yes,99,,5,yes,no
+608,Tigrex Skull Shl,Tigrex Skull Shl,Tigrex Skull Shl,轟竜の頭殻,Tigrex Skull Shl,,,yes,,no,yes,99,,5,yes,no
+609,Narga Scale+,Narga Scale+,Naruga Scale+,迅竜の上鱗,Narga Scale+,,,yes,,no,yes,99,,5,yes,no
+610,ThickNargaScale,ThickNargaScale,Naruga Thck Scl,迅竜の厚鱗,ThickNargaScale,,,yes,,no,yes,99,,5,yes,no
+611,HvnlyNargaScale,HvnlyNargaScale,NarugaDvinePlate,迅竜の天鱗,HvnlyNargaScale,,,yes,,no,yes,99,,5,yes,no
+612,Black Narga Pelt,Black Narga Pelt,Naruga Pelt,迅竜の黒毛,Black Narga Pelt,,,yes,,no,yes,99,,5,yes,no
+613,BlackNargaPelt+,BlackNargaPelt+,Naruga Blk Pelt,迅竜の豪黒毛,BlackNargaPelt+,,,yes,,no,yes,99,,5,yes,no
+614,Nargacuga Tail,Nargacuga Tail,NarugaTail,迅竜の尻尾,Nargacuga Tail,,,yes,,no,yes,99,,5,yes,no
+615,LeatherNargaTail,LeatherNargaTail,Naruga Hrd Tail,迅竜の靭尾,LeatherNargaTail,,,yes,,no,yes,99,,5,yes,no
+616,Narga Tail Spike,Narga Tail Spike,Naruga Spike,迅竜の尾棘,Narga Tail Spike,,,yes,,no,yes,99,,5,yes,no
+617,HvyNargaTailSpik,HvyNargaTailSpik,Naruga Hvy Spike,迅竜の重尾棘,HvyNargaTailSpik,,,yes,,no,yes,99,,5,yes,no
+618,NargaCuttingWing,NargaCuttingWing,Naruga Wing,迅竜の刃翼,NargaCuttingWing,,,yes,,no,yes,99,,5,yes,no
+619,StrNargaCttngWng,StrNargaCttngWng,Naruga Strng Wng,迅竜の剛刃翼,StrNargaCttngWng,,,yes,,no,yes,99,,5,yes,no
+620,Nargacuga Fang+,Nargacuga Fang+,Naruga Fang+,迅竜の鋭牙,Nargacuga Fang+,,,yes,,no,yes,99,,5,yes,no
+621,HvyNargacugaFang,HvyNargacugaFang,Naruga Hvy Fang,迅竜の重牙,HvyNargacugaFang,,,yes,,no,yes,99,,5,yes,no
+622,Narga Brain Stem,Narga Brain Stem,Naruga Marrow,迅竜の延髄,Narga Brain Stem,,,yes,,no,yes,99,,5,yes,no
+623,Gravios Shell,Gravios Shell,Gravios Shell,鎧竜の甲殻,Gravios Shell,,,yes,,no,yes,99,,4,yes,no
+624,Gravios Carapace,Gravios Carapace,Gravios Carapace,鎧竜の堅殻,Gravios Carapace,,,yes,,no,yes,99,,5,yes,no
+625,HvyGraviosShell,HvyGraviosShell,Gravios Hvy Cpc,鎧竜の重殻,HvyGraviosShell,,,yes,,no,yes,99,,5,yes,no
+626,HvnlyGraviosShl,HvnlyGraviosShl,GraviosDvnePlate,鎧竜の天殻,HvnlyGraviosShl,,,yes,,no,yes,99,,5,yes,no
+627,Gravios Skl Shl,Gravios Skl Shl,Gravios Skl Shl,鎧竜の頭殻,Gravios Skl Shl,,,yes,,no,yes,99,,5,yes,no
+628,Gravios BrainStm,Gravios BrainStm,Gravios BrainStm,鎧竜の延髄,Gravios BrainStm,,,yes,,no,yes,99,,5,yes,no
+629,Blk Gravios Shl,Blk Gravios Shl,Blk Gravios Shl,黒鎧竜の甲殻,Blk Gravios Shl,,,yes,,no,yes,99,,5,yes,no
+630,Blk Gravios Cpc,Blk Gravios Cpc,Blk Gravios Cpc,黒鎧竜の堅殻,Blk Gravios Cpc,,,yes,,no,yes,99,,5,yes,no
+631,HvyBlkGraviosShl,HvyBlkGraviosShl,BlkGraviosHvyShl,黒鎧竜の重殻,HvyBlkGraviosShl,,,yes,,no,yes,99,,5,yes,no
+632,HvnlyBlkGraviShl,HvnlyBlkGraviShl,BlkGravDvnePlate,黒鎧竜の天殻,HvnlyBlkGraviShl,,,yes,,no,yes,99,,5,yes,no
+633,Blk Gravios Skl,Blk Gravios Skl,Blk Gravios Skl,黒鎧竜の頭殻,Blk Gravios Skl,,,yes,,no,yes,99,,5,yes,no
+634,Twisted Horn,Twisted Horn,Twisted Horn,ねじれた角,Twisted Horn,,,yes,,no,yes,99,,5,yes,no
+635,Majestic Horn,Majestic Horn,Majestic Horn,上質なねじれた角,Majestic Horn,,,yes,,no,yes,99,,5,yes,no
+636,StoutWarpedHorn,StoutWarpedHorn,Glorious Horn,堅牢なねじれた角,StoutWarpedHorn,,,yes,,no,yes,99,,5,yes,no
+637,Diablos Shell,Diablos Shell,Diablos Shell,角竜の甲殻,Diablos Shell,,,yes,,no,yes,99,,4,yes,no
+638,Diablos Carapace,Diablos Carapace,Diablos Carapace,角竜の堅殻,Diablos Carapace,,,yes,,no,yes,99,,5,yes,no
+639,HvyDiablosShell,HvyDiablosShell,Diablos Hvy Cpc,角竜の重殻,HvyDiablosShell,,,yes,,no,yes,99,,5,yes,no
+640,Diablos Spine,Diablos Spine,Diablos Spine,角竜の背甲,Diablos Spine,,,yes,,no,yes,99,,5,yes,no
+641,Diablos Thoracic,Diablos Thoracic,Diablos Thoracic,角竜の堅甲,Diablos Thoracic,,,yes,,no,yes,99,,5,yes,no
+642,HvyDiablosSpine,HvyDiablosSpine,Diablos HvySpne,角竜の重甲,HvyDiablosSpine,,,yes,,no,yes,99,,5,yes,no
+643,Diablos Tail,Diablos Tail,Diablos Tail,角竜の尻尾,Diablos Tail,,,yes,,no,yes,99,,5,yes,no
+644,LthrDiablosTail,LthrDiablosTail,Diablos Hrd Tail,角竜の靭尾,LthrDiablosTail,,,yes,,no,yes,99,,5,yes,no
+645,Blos Fang,Blos Fang,Blos Fang,角竜の牙,Blos Fang,,,yes,,no,yes,99,,4,yes,no
+646,TwstBlkBlosHrn,TwstBlkBlosHrn,TwstBlkBlosHorn,黒巻き角,TwstBlkBlosHrn,,,yes,,no,yes,99,,5,yes,no
+647,StoutBlkTwstdHrn,StoutBlkTwstdHrn,RobustBlkBlosHrn,堅牢な黒巻き角,StoutBlkTwstdHrn,,,yes,,no,yes,99,,5,yes,no
+648,Black Blos Shell,Black Blos Shell,Black Blos Shell,黒角竜の甲殻,Black Blos Shell,,,yes,,no,yes,99,,5,yes,no
+649,Black Blos Cpc,Black Blos Cpc,Black Blos Cpc,黒角竜の堅殻,Black Blos Cpc,,,yes,,no,yes,99,,5,yes,no
+650,HvyBlkBlosShell,HvyBlkBlosShell,Blk Blos Hvy Cpc,黒角竜の重殻,HvyBlkBlosShell,,,yes,,no,yes,99,,5,yes,no
+651,Black Blos Spine,Black Blos Spine,Black Blos Spine,黒角竜の背甲,Black Blos Spine,,,yes,,no,yes,99,,5,yes,no
+652,Blk Blos Thracic,Blk Blos Thracic,Blk Blos Thracic,黒角竜の堅甲,Blk Blos Thracic,,,yes,,no,yes,99,,5,yes,no
+653,HvyBlkBlosSpine,HvyBlkBlosSpine,Blk Blos Hvy Spn,黒角竜の重甲,HvyBlkBlosSpine,,,yes,,no,yes,99,,5,yes,no
+654,Black Blos Tail,Black Blos Tail,Black Blos Tail,黒角竜の尻尾,Black Blos Tail,,,yes,,no,yes,99,,5,yes,no
+655,LthrBlkBlosTail,LthrBlkBlosTail,Blk Blos HrdTail,黒角竜の靭尾,LthrBlkBlosTail,,,yes,,no,yes,99,,5,yes,no
+656,Vespoid Abdomen,Vespoid Abdomen,Vespoid Abdomen,女王虫の尻尾,Vespoid Abdomen,,,yes,,no,yes,99,,5,yes,no
+657,VespoidQn'sCrown,VespoidQn'sCrown,QueenVespoidShl,女王虫の冠殻,VespoidQn'sCrown,,,yes,,no,yes,99,,5,yes,no
+658,Vespoid Shell,Vespoid Shell,Vespoid Shell,ランゴスタの甲殻,Vespoid Shell,,,yes,,no,yes,99,,4,yes,no
+659,Vespoid Carapace,Vespoid Carapace,Vespoid Carapace,ランゴスタの堅殻,Vespoid Carapace,,,yes,,no,yes,99,,5,yes,no
+660,Vespoid Wing,Vespoid Wing,Vespoid Wing,ランゴスタの羽,Vespoid Wing,,,yes,,no,yes,99,,4,yes,no
+661,Vespoid InnrWng,Vespoid InnrWng,Vespoid InnrWng,ランゴスタの薄羽,Vespoid InnrWng,,,yes,,no,yes,99,,5,yes,no
+662,Vspoid Razorwing,Vspoid Razorwing,Vespoid RazrWng,ランゴスタの斬羽,Vspoid Razorwing,,,yes,,no,yes,99,,5,yes,no
+663,Hornetaur Shell,Hornetaur Shell,Hornetaur Shell,カンタロスの甲殻,Hornetaur Shell,,,yes,,no,yes,99,,4,yes,no
+664,Hornetaur Crapce,Hornetaur Crapce,Hornetaur Carpce,カンタロスの堅殻,Hornetaur Crapce,,,yes,,no,yes,99,,5,yes,no
+665,Hornetaur Head,Hornetaur Head,Hornetaur Head,カンタロスの頭,Hornetaur Head,,,yes,,no,yes,99,,4,yes,no
+666,Hornetaur Wing,Hornetaur Wing,Hornetaur Wing,カンタロスの羽,Hornetaur Wing,,,yes,,no,yes,99,,4,yes,no
+667,HornetaurInnrWng,HornetaurInnrWng,HornetaurInnrWng,カンタロスの薄羽,HornetaurInnrWng,,,yes,,no,yes,99,,5,yes,no
+668,Hornet Razorwing,Hornet Razorwing,HorneturRazrWng,カンタロスの斬羽,Hornet Razorwing,,,yes,,no,yes,99,,5,yes,no
+669,Blood Red Horn,Blood Red Horn,Blood Red Horn,真紅の角,Blood Red Horn,,,yes,,no,yes,99,,5,yes,no
+670,Top-GrdRedHorn,Top-GrdRedHorn,Majestic Red Hrn,上質な真紅の角,Top-GrdRedHorn,,,yes,,no,yes,99,,5,yes,no
+671,Monoblos Shell,Monoblos Shell,Monoblos Shell,一角竜の甲殻,Monoblos Shell,,,yes,,no,yes,99,,4,yes,no
+672,MonoblosCarapace,MonoblosCarapace,Monoblos Carpce,一角竜の堅殻,MonoblosCarapace,,,yes,,no,yes,99,,5,yes,no
+673,Monoblos Spine,Monoblos Spine,Monoblos Spine,一角竜の背甲,Monoblos Spine,,,yes,,no,yes,99,,5,yes,no
+674,MonoblosThoracic,MonoblosThoracic,Monoblos Thrcic,一角竜の堅甲,MonoblosThoracic,,,yes,,no,yes,99,,5,yes,no
+675,Monoblos Heart,Monoblos Heart,Monoblos Heart,モノブロスハート,Monoblos Heart,,,yes,,no,yes,99,,5,yes,no
+676,Wht Monoblos Hrn,Wht Monoblos Hrn,Wht Monoblos Hrn,白銀の角,Wht Monoblos Hrn,,,yes,,no,yes,99,,5,yes,no
+677,Top-GrdPlatHorn,Top-GrdPlatHorn,Majestic Wht Hrn,上質な白銀の角,Top-GrdPlatHorn,,,yes,,no,yes,99,,5,yes,no
+678,Wht Monoblos Shl,Wht Monoblos Shl,Wht Monoblos Shl,白一角竜の甲殻,Wht Monoblos Shl,,,yes,,no,yes,99,,5,yes,no
+679,Wht Monoblos Cpc,Wht Monoblos Cpc,Wht Monoblos Cpc,白一角竜の堅殻,Wht Monoblos Cpc,,,yes,,no,yes,99,,5,yes,no
+680,Wht Monoblos Spn,Wht Monoblos Spn,Wht Monoblos Spn,白一角竜の背甲,Wht Monoblos Spn,,,yes,,no,yes,99,,5,yes,no
+681,WhtMonoblosThora,WhtMonoblosThora,WhtMnoblosThrcic,白一角竜の堅甲,WhtMonoblosThora,,,yes,,no,yes,99,,5,yes,no
+682,Kirin Horn,Kirin Horn,Kirin Horn,キリンの雷角,Kirin Horn,,,yes,,no,yes,99,,5,yes,no
+683,Kirin Hide,Kirin Hide,Kirin Hide,キリンの皮,Kirin Hide,,,yes,,no,yes,99,,5,yes,no
+684,Kirin Hide+,Kirin Hide+,Kirin Hide+,キリンの上皮,Kirin Hide+,,,yes,,no,yes,99,,5,yes,no
+685,SpecialKirinHide,SpecialKirinHide,Kirin Hide G,キリンの特上皮,SpecialKirinHide,,,yes,,no,yes,99,,5,yes,no
+686,Kirin Mane,Kirin Mane,Kirin Mane,キリンのたてがみ,Kirin Mane,,,yes,,no,yes,99,,5,yes,no
+687,Platinum Mane,Platinum Mane,Kirin Slvr Mane,白銀のたてがみ,Platinum Mane,,,yes,,no,yes,99,,5,yes,no
+688,Kirin Thndr Tail,Kirin Thndr Tail,Kirin Thndr Tail,キリンの雷尾,Kirin Thndr Tail,,,yes,,no,yes,99,,5,yes,no
+689,LthrKirinThndrTl,LthrKirinThndrTl,KirinThndrTail G,キリンの靭雷尾,LthrKirinThndrTl,,,yes,,no,yes,99,,5,yes,no
+690,Kirin Azure Horn,Kirin Azure Horn,Kirin Azure Horn,キリンの蒼角,Kirin Azure Horn,,,yes,,no,yes,99,,5,yes,no
+691,Lao-Shan's Claw,Lao-Shan's Claw,Lao-Shan's Claw,老山龍の大爪,Lao-Shan's Claw,,,yes,,no,yes,99,,5,yes,no
+692,Lao-Shan's Horn,Lao-Shan's Horn,Lao-Shan's Horn,老山龍の角,Lao-Shan's Horn,,,yes,,no,yes,99,,5,yes,no
+693,Lao-Shan's Scale,Lao-Shan's Scale,Lao-Shan's Scale,老山龍の鱗,Lao-Shan's Scale,,,yes,,no,yes,99,,5,yes,no
+694,Lao-Shan Scale+,Lao-Shan Scale+,Lao-Shan Scale+,老山龍の上鱗,Lao-Shan Scale+,,,yes,,no,yes,99,,5,yes,no
+695,Lao-Shan'sThkScl,Lao-Shan'sThkScl,Lao-ShanThckScl,老山龍の厚鱗,Lao-Shan'sThkScl,,,yes,,no,yes,99,,5,no,no
+696,Lao-Shan's Ruby,Lao-Shan's Ruby,Lao-Shan's Ruby,老山龍の紅玉,Lao-Shan's Ruby,,,yes,,no,yes,99,,5,yes,no
+697,Lao-ShanHvnlyScl,Lao-ShanHvnlyScl,LaoS Dvine Plate,老山龍の天鱗,Lao-ShanHvnlyScl,,,yes,,no,yes,99,,5,yes,no
+698,Lao-Shan's Shell,Lao-Shan's Shell,Lao-Shan's Shell,老山龍の甲殻,Lao-Shan's Shell,,,yes,,no,yes,99,,5,yes,no
+699,Lao-ShanCarapace,Lao-ShanCarapace,Lao-ShanCarapace,老山龍の堅殻,Lao-ShanCarapace,,,yes,,no,yes,99,,5,yes,no
+700,Lao-Shan'sHvyShl,Lao-Shan'sHvyShl,Lao-Shan Hvy Cpc,老山龍の重殻,Lao-Shan'sHvyShl,,,yes,,no,yes,99,,5,yes,no
+701,Azure LaoS Horn,Azure LaoS Horn,Azure LaoS Horn,老山龍の蒼角,Azure LaoS Horn,,,yes,,no,yes,99,,5,yes,no
+702,Azure LaoS Shell,Azure LaoS Shell,Azure LaoS Shell,老山龍の蒼甲殻,Azure LaoS Shell,,,yes,,no,yes,99,,5,yes,no
+703,Azure LaoS Claw,Azure LaoS Claw,Azure LaoS Claw,老山龍の蒼大爪,Azure LaoS Claw,,,yes,,no,yes,99,,5,yes,no
+704,Gaoren Shell,Gaoren Shell,Gaoren Shell,砦蟹の甲殻,Gaoren Shell,,,yes,,no,yes,99,,5,yes,no
+705,Gaoren Carapace,Gaoren Carapace,Gaoren Carapace,砦蟹の堅殻,Gaoren Carapace,,,yes,,no,yes,99,,5,yes,no
+706,HvyGaorenShell,HvyGaorenShell,Gaoren Hvy Cpc,砦蟹の重殻,HvyGaorenShell,,,yes,,no,yes,99,,5,yes,no
+707,HvnlyGaorenShell,HvnlyGaorenShell,GaorenDvinePlate,砦蟹の天殻,HvnlyGaorenShell,,,yes,,no,yes,99,,5,yes,no
+708,Gaoren Spine,Gaoren Spine,Gaoren Spine,砦蟹の背甲,Gaoren Spine,,,yes,,no,yes,99,,5,yes,no
+709,Gaoren Thoracic,Gaoren Thoracic,Gaoren Thoracic,砦蟹の堅甲,Gaoren Thoracic,,,yes,,no,yes,99,,5,yes,no
+710,Hvy Gaoren Spine,Hvy Gaoren Spine,Gaoren Hvy Spn,砦蟹の重甲,Hvy Gaoren Spine,,,yes,,no,yes,99,,5,yes,no
+711,Gaoren Pincer,Gaoren Pincer,Gaoren Pincer,砦蟹の鋏,Gaoren Pincer,,,yes,,no,yes,99,,5,yes,no
+712,Gaoren Claw,Gaoren Claw,Gaoren Claw,砦蟹の尖爪,Gaoren Claw,,,yes,,no,yes,99,,5,yes,no
+713,Hard Gaoren Claw,Hard Gaoren Claw,GaorenStrngClaw,砦蟹の剛爪,Hard Gaoren Claw,,,yes,,no,yes,99,,5,yes,no
+714,Daora Shell,Daora Shell,Daora Shell,鋼龍の甲殻,Daora Shell,,,yes,,no,yes,99,,5,yes,no
+715,Daora Carapace,Daora Carapace,Daora Carapace,鋼龍の堅殻,Daora Carapace,,,yes,,no,yes,99,,5,yes,no
+716,Hvy Daora Shell,Hvy Daora Shell,Daora Hvy Carpce,鋼龍の重殻,Hvy Daora Shell,,,yes,,no,yes,99,,5,yes,no
+717,DaoraDragonScale,DaoraDragonScale,DaoraDragonScale,鋼の龍鱗,DaoraDragonScale,,,yes,,no,yes,99,,5,yes,no
+718,DaoraDragonScal+,DaoraDragonScal+,DaoraDragonScal+,鋼の上龍鱗,DaoraDragonScal+,,,yes,,no,yes,99,,5,yes,no
+719,ThckDaoraDrgnScl,ThckDaoraDrgnScl,DaoraDrgnThckScl,鋼の厚龍鱗,ThckDaoraDrgnScl,,,yes,,no,yes,99,,5,yes,no
+720,Daora Webbing,Daora Webbing,Daora Webbing,鋼龍の翼膜,Daora Webbing,,,yes,,no,yes,99,,5,yes,no
+721,Str Daora Wing,Str Daora Wing,Daora Webbing G,鋼龍の剛翼,Str Daora Wing,,,yes,,no,yes,99,,5,yes,no
+722,Daora Horn,Daora Horn,Daora Horn,鋼龍の角,Daora Horn,,,yes,,no,yes,99,,5,yes,no
+723,Hard Daora Horn,Hard Daora Horn,Daora Horn G,鋼龍の剛角,Hard Daora Horn,,,yes,,no,yes,99,,5,yes,no
+724,Daora Tail,Daora Tail,Daora Tail,鋼龍の尻尾,Daora Tail,,,yes,,no,yes,99,,5,yes,no
+725,Lthr Daora Tail,Lthr Daora Tail,Daora Tail G,鋼龍の靭尾,Lthr Daora Tail,,,yes,,no,yes,99,,5,yes,no
+726,Daora Claw,Daora Claw,Daora Claw,鋼龍の爪,Daora Claw,,,yes,,no,yes,99,,5,yes,no
+727,Daora Sharp Claw,Daora Sharp Claw,Daora Sharp Claw,鋼龍の尖爪,Daora Sharp Claw,,,yes,,no,yes,99,,5,yes,no
+728,Daora Jewel,Daora Jewel,Daora Jewel,鋼龍の宝玉,Daora Jewel,,,yes,,no,yes,99,,5,yes,no
+729,Chameleos Hide,Chameleos Hide,Chameleos Hide,霞龍の皮,Chameleos Hide,,,yes,,no,yes,99,,5,yes,no
+730,Chameleos Hide+,Chameleos Hide+,Chameleos Hide+,霞龍の上皮,Chameleos Hide+,,,yes,,no,yes,99,,5,yes,no
+731,SpecChameleHide+,SpecChameleHide+,Chameleos Hide G,霞龍の特上皮,SpecChameleHide+,,,yes,,no,yes,99,,5,yes,no
+732,Chameleos Horn,Chameleos Horn,Chameleos Horn,霞龍の角,Chameleos Horn,,,yes,,no,yes,99,,5,yes,no
+733,Chameleos Spike,Chameleos Spike,Chameleos Spike,霞龍の尖角,Chameleos Spike,,,yes,,no,yes,99,,5,yes,no
+734,HrdChameleosHorn,HrdChameleosHorn,Chameleos Horn G,霞龍の剛角,HrdChameleosHorn,,,yes,,no,yes,99,,5,yes,no
+735,Chameleos Claw,Chameleos Claw,Chameleos Claw,霞龍の爪,Chameleos Claw,,,yes,,no,yes,99,,5,yes,no
+736,ChameleosWebbing,ChameleosWebbing,ChameleosWebbing,霞龍の翼膜,ChameleosWebbing,,,yes,,no,yes,99,,5,yes,no
+737,StrChameleosWing,StrChameleosWing,ChameleosWbng G,霞龍の剛翼,StrChameleosWing,,,yes,,no,yes,99,,5,yes,no
+738,Chameleos Tail,Chameleos Tail,Chameleos Tail,霞龍の尻尾,Chameleos Tail,,,yes,,no,yes,99,,5,yes,no
+739,LthrChameleoTail,LthrChameleoTail,Chameleos Tail G,霞龍の靭尾,LthrChameleoTail,,,yes,,no,yes,99,,5,yes,no
+740,Chameleos Jewel,Chameleos Jewel,Chameleos Jewel,霞龍の宝玉,Chameleos Jewel,,,yes,,no,yes,99,,5,yes,no
+741,Fire Dragon Scl,Fire Dragon Scl,Fire Dragon Scl,炎の龍鱗,Fire Dragon Scl,,,yes,,no,yes,99,,5,yes,no
+742,Fire Drgn Scl+,Fire Drgn Scl+,Fire Drgn Scl+,獄炎の龍鱗,Fire Drgn Scl+,,,yes,,no,yes,99,,5,yes,no
+743,ThckFireDrgnScl,ThckFireDrgnScl,Fire Drgn HvyScl,獄炎の厚龍鱗,ThckFireDrgnScl,,,yes,,no,yes,99,,5,yes,no
+744,Fire Dragon Claw,Fire Dragon Claw,Fire Dragon Claw,炎龍の爪,Fire Dragon Claw,,,yes,,no,yes,99,,5,yes,no
+745,HrdFireDrgnClaw,HrdFireDrgnClaw,FireDrgnStrngClw,炎龍の剛爪,HrdFireDrgnClaw,,,yes,,no,yes,99,,5,yes,no
+746,Fire Drgn Webbng,Fire Drgn Webbng,Fire Drgn Wbng,炎龍の翼膜,Fire Drgn Webbng,,,yes,,no,yes,99,,5,yes,no
+747,Fire Dragon Pwdr,Fire Dragon Pwdr,Fire Dragon Pwdr,炎龍の塵粉,Fire Dragon Pwdr,,,yes,,no,yes,99,,5,yes,no
+748,Fire Drgn Jwl,Fire Drgn Jwl,Fire Drgn Jwl,炎龍の宝玉,Fire Drgn Jwl,,,yes,,no,yes,99,,5,yes,no
+749,ElderDragonBlood,ElderDragonBlood,ElderDragonBlood,古龍の血,ElderDragonBlood,,,yes,,no,yes,99,,5,yes,no
+750,Lunastra Shell,Lunastra Shell,Lunastra Shell,炎妃龍の甲殻,Lunastra Shell,,,yes,,no,yes,99,,5,yes,no
+751,LunastraCarapace,LunastraCarapace,Lunastra Carpace,炎妃龍の堅殻,LunastraCarapace,,,yes,,no,yes,99,,5,yes,no
+752,Lunastra Mane,Lunastra Mane,Lunastra Mane,炎妃龍のたてがみ,Lunastra Mane,,,yes,,no,yes,99,,5,yes,no
+753,Lunastra Tail,Lunastra Tail,Lunastra Tail,炎妃龍の尻尾,Lunastra Tail,,,yes,,no,yes,99,,5,yes,no
+754,Lunastra Horn,Lunastra Horn,Lunastra Horn,炎妃龍の角,Lunastra Horn,,,yes,,no,yes,99,,5,yes,no
+755,Lunastra Spike,Lunastra Spike,Lunastra Horn G,炎妃龍の尖角,Lunastra Spike,,,yes,,no,yes,99,,5,yes,no
+756,Teostra Shell,Teostra Shell,Teostra Shell,炎王龍の甲殻,Teostra Shell,,,yes,,no,yes,99,,5,yes,no
+757,Teostra Carapace,Teostra Carapace,Teostra Carapace,炎王龍の堅殻,Teostra Carapace,,,yes,,no,yes,99,,5,yes,no
+758,HvyTeostraShell,HvyTeostraShell,Teostra Hvy Cpc,炎王龍の重殻,HvyTeostraShell,,,yes,,no,yes,99,,5,yes,no
+759,Teostra Mane,Teostra Mane,Teostra Mane,炎王龍のたてがみ,Teostra Mane,,,yes,,no,yes,99,,5,yes,no
+760,Teostra Tail,Teostra Tail,Teostra Tail,炎王龍の尻尾,Teostra Tail,,,yes,,no,yes,99,,5,yes,no
+761,LthrTeostraTail,LthrTeostraTail,Teostra Tail G,炎王龍の靭尾,LthrTeostraTail,,,yes,,no,yes,99,,5,yes,no
+762,Teostra Horn,Teostra Horn,Teostra Horn,炎王龍の角,Teostra Horn,,,yes,,no,yes,99,,5,yes,no
+763,Teostra Horn+,Teostra Horn+,Teostra Horn+,炎王龍の尖角,Teostra Horn+,,,yes,,no,yes,99,,5,yes,no
+764,HardTeostraHorn,HardTeostraHorn,Teostra Horn G,炎王龍の剛角,HardTeostraHorn,,,yes,,no,yes,99,,5,yes,no
+765,Dragonmoss,Dragonmoss,Dragonmoss,龍苔,Dragonmoss,,,yes,,no,yes,99,,5,yes,no
+766,Dragonmoss+,Dragonmoss+,Dragonmoss+,神龍苔,Dragonmoss+,,,yes,,no,yes,99,,5,yes,no
+767,AncientDrgnmoss,AncientDrgnmoss,Dragonmoss G,太古の龍苔,AncientDrgnmoss,,,yes,,no,yes,99,,5,yes,no
+768,Dragonwood,Dragonwood,Dragonwood,龍木,Dragonwood,,,yes,,no,yes,99,,5,yes,no
+769,Dragonwood+,Dragonwood+,Dragonwood+,神龍木,Dragonwood+,,,yes,,no,yes,99,,5,yes,no
+770,AncientDrgnwood,AncientDrgnwood,Dragonwood G,太古の龍木,AncientDrgnwood,,,yes,,no,yes,99,,5,yes,no
+771,YamaTsukamiHide,YamaTsukamiHide,Yamatsukami Skin,浮岳龍の皮,YamaTsukamiHide,,,yes,,no,yes,99,,5,yes,no
+772,YamaTsukaFillet,YamaTsukaFillet,Yamatsukami Fin,浮岳龍のヒレ,YamaTsukaFillet,,,yes,,no,yes,99,,5,yes,no
+773,YamaTsukamiFluid,YamaTsukamiFluid,YamatsukamiFluid,浮岳龍の体液,YamaTsukamiFluid,,,yes,,no,yes,99,,5,yes,no
+774,Dark Piece,Dark Piece,Dark Piece,黒いかけら,Dark Piece,,,yes,,no,yes,99,,5,yes,no
+775,Dark Stone,Dark Stone,Dark Stone,黒い塊,Dark Stone,,,yes,,no,yes,99,,5,yes,no
+776,Fatalis Horn,Fatalis Horn,Fatalis Horn,黒龍の角,Fatalis Horn,,,yes,,no,yes,99,,5,yes,no
+777,HardFatalisHorn,HardFatalisHorn,Fatalis Hvy Horn,黒龍の剛角,HardFatalisHorn,,,yes,,no,yes,99,,5,yes,no
+778,Fatalis Scale,Fatalis Scale,Fatalis Scale,黒龍の鱗,Fatalis Scale,,,yes,,no,yes,99,,5,yes,no
+779,ThckFatalisScale,ThckFatalisScale,Fatalis Thck Scl,黒龍の厚鱗,ThckFatalisScale,,,yes,,no,yes,99,,5,yes,no
+780,Fatalis Shell,Fatalis Shell,Fatalis Shell,黒龍の甲殻,Fatalis Shell,,,yes,,no,yes,99,,5,yes,no
+781,Hvy Fatalis Shl,Hvy Fatalis Shl,Fatalis Hvy Shl,黒龍の重殻,Hvy Fatalis Shl,,,yes,,no,yes,99,,5,yes,no
+782,Fatalis Eye,Fatalis Eye,Fatalis Eye,黒龍の眼,Fatalis Eye,,,yes,,no,yes,99,,5,yes,no
+783,Fatalis Evil Eye,Fatalis Evil Eye,Fatalis Evil Eye,黒龍の邪眼,Fatalis Evil Eye,,,yes,,no,yes,99,,5,yes,no
+784,Fatalis Webbing,Fatalis Webbing,Fatalis Webbing,黒龍の翼膜,Fatalis Webbing,,,yes,,no,yes,99,,5,yes,no
+785,Str Fatalis Wng,Str Fatalis Wng,Fatalis Hrd Wbng,黒龍の剛翼,Str Fatalis Wng,,,yes,,no,yes,99,,5,yes,no
+786,Fatalis CrmsnHrn,Fatalis CrmsnHrn,Fatalis CrmsnHrn,黒龍の紅角,Fatalis CrmsnHrn,,,yes,,no,yes,99,,5,yes,no
+787,HrdFatlisCrmHorn,HrdFatlisCrmHorn,FataHvyCrmsnHrn,黒龍の剛紅角,HrdFatlisCrmHorn,,,yes,,no,yes,99,,5,yes,no
+788,Fatalis CrmsnScl,Fatalis CrmsnScl,Fatalis CrmsnScl,黒龍の紅鱗,Fatalis CrmsnScl,,,yes,,no,yes,99,,5,yes,no
+789,ThckFatlisCrmScl,ThckFatlisCrmScl,FataThkCrmsnScl,黒龍の厚紅鱗,ThckFatlisCrmScl,,,yes,,no,yes,99,,5,yes,no
+790,Fatalis CrmsnShl,Fatalis CrmsnShl,Fatalis CrmsnShl,黒龍の紅殻,Fatalis CrmsnShl,,,yes,,no,yes,99,,5,yes,no
+791,HvyFatalisCrmShl,HvyFatalisCrmShl,FataHvyCrmsnShl,黒龍の重紅殻,HvyFatalisCrmShl,,,yes,,no,yes,99,,5,yes,no
+792,Fatalis DevilEye,Fatalis DevilEye,Fatalis DevilEye,黒龍の魔眼,Fatalis DevilEye,,,yes,,no,yes,99,,5,yes,no
+793,Fatalis CrmsnWng,Fatalis CrmsnWng,Fatalis CrmsnWng,黒龍の紅翼,Fatalis CrmsnWng,,,yes,,no,yes,99,,5,yes,no
+794,StrFatlisCrmWing,StrFatlisCrmWing,FataHrdCrmsnWng,黒龍の剛紅翼,StrFatlisCrmWing,,,yes,,no,yes,99,,5,yes,no
+795,Wht Fatalis Scl,Wht Fatalis Scl,Wht Fatalis Scl,祖龍の白鱗,Wht Fatalis Scl,,,yes,,no,yes,99,,5,yes,no
+796,ThckWhtFatlisScl,ThckWhtFatlisScl,WhtFatalisThkScl,祖龍の厚白鱗,ThckWhtFatlisScl,,,yes,,no,yes,99,,5,yes,no
+797,Wht Fatalis Shl,Wht Fatalis Shl,Wht Fatalis Cpc,祖龍の堅殻,Wht Fatalis Shl,,,yes,,no,yes,99,,5,yes,no
+798,HvyWhtFatalisShl,HvyWhtFatalisShl,WhtFatalisHvyCpc,祖龍の重殻,HvyWhtFatalisShl,,,yes,,no,yes,99,,5,yes,no
+799,Wht Fatalis Wbng,Wht Fatalis Wbng,Wht Fatalis Wbng,祖龍の翼膜,Wht Fatalis Wbng,,,yes,,no,yes,99,,5,yes,no
+800,StrWhtFatalisWng,StrWhtFatalisWng,Wht Fatalis Wng,祖龍の剛翼,StrWhtFatalisWng,,,yes,,no,yes,99,,5,yes,no
+801,Wht Fatalis Horn,Wht Fatalis Horn,White Ftalis Hrn,祖龍の角,Wht Fatalis Horn,,,yes,,no,yes,99,,5,yes,no
+802,HrdWhtFatlisHorn,HrdWhtFatlisHorn,WhtFatalisHvyHrn,祖龍の剛角,HrdWhtFatlisHorn,,,yes,,no,yes,99,,5,yes,no
+803,Akantor Scale,Akantor Scale,Akantor Scale,覇竜の上鱗,Akantor Scale,,,yes,,no,yes,99,,5,yes,no
+804,Akantor Shell,Akantor Shell,Akantor Shell,覇竜の堅殻,Akantor Shell,,,yes,,no,yes,99,,5,yes,no
+805,Akantor Tail,Akantor Tail,Akantor Tail,覇竜の尻尾,Akantor Tail,,,yes,,no,yes,99,,5,yes,no
+806,Akantor Claw,Akantor Claw,Akantor Claw,覇竜の剛爪,Akantor Claw,,,yes,,no,yes,99,,5,yes,no
+807,Akantor Fang,Akantor Fang,Akantor Fang,覇竜の大牙,Akantor Fang,,,yes,,no,yes,99,,5,yes,no
+808,Akantor Spike,Akantor Spike,Akantor Spike,覇竜の大棘,Akantor Spike,,,yes,,no,yes,99,,5,yes,no
+809,HvyUkanlosShell,HvyUkanlosShell,Ucamulbas Shell,崩竜の重殻,HvyUkanlosShell,,,yes,,no,yes,99,,5,yes,no
+810,UkanlosUnderscl,UkanlosUnderscl,Ucamulbas Scale,崩竜の腹鱗,UkanlosUnderscl,,,yes,,no,yes,99,,5,yes,no
+811,Hvy Ukanlos Tail,Hvy Ukanlos Tail,Ucamulbas Tail,崩竜の重尾,Hvy Ukanlos Tail,,,yes,,no,yes,99,,5,yes,no
+812,UkanlosDiggngClw,UkanlosDiggngClw,Ucamulbas Fang,崩竜の穿爪,UkanlosDiggngClw,,,yes,,no,yes,99,,5,yes,no
+813,UkanlosShovelJaw,UkanlosShovelJaw,Ucamulbas Jaw,崩竜の削顎,UkanlosShovelJaw,,,yes,,no,yes,99,,5,yes,no
+814,StrongUkanlosFin,StrongUkanlosFin,Ucamulbas Fin,崩竜の剛ビレ,StrongUkanlosFin,,,yes,,no,yes,99,,5,yes,no
+815,Ukanlos Stone,Ukanlos Stone,Ucamu Divine Jwl,崩天玉,Ukanlos Stone,,,yes,,no,yes,99,,5,yes,no
+816,Wyverian Harp,Wyverian Harp,Wyverian Harp,龍頭の竪琴,Wyverian Harp,,,yes,,no,no,2,hard-capped at 2,5,yes,no
+817,Sinister Cloth,Sinister Cloth,Sinister Cloth,禍々しい布,Sinister Cloth,,,yes,,no,yes,99,,5,yes,no
+818,Lost Umbrella,Lost Umbrella,Lost Umbrella,落し物の傘,Lost Umbrella,,,yes,,no,yes,99,,5,yes,no
+819,Ruststone,Ruststone,Ruststone,さびた塊,Ruststone,,,yes,,no,yes,99,,5,yes,no
+820,Flat Ruststone,Flat Ruststone,Flat Ruststone,さびた板状の塊,Flat Ruststone,,,yes,,no,yes,99,,5,yes,no
+821,Large Ruststone,Large Ruststone,Lg Ruststone,さびた大きな塊,Large Ruststone,,,yes,,no,yes,99,,5,yes,no
+822,Small Ruststone,Small Ruststone,Sm Ruststone,さびた小さな塊,Small Ruststone,,,yes,,no,yes,99,,5,yes,no
+823,Ruststone Rod,Ruststone Rod,Ruststone Rod,さびた棒状の塊,Ruststone Rod,,,yes,,no,yes,99,,5,yes,no
+824,Ancient Stone,Ancient Stone,Ancient Stone,太古の塊,Ancient Stone,,,yes,,no,yes,99,,5,yes,no
+825,AncientFlatstone,AncientFlatstone,AncientFlatstone,太古の板状の塊,AncientFlatstone,,,yes,,no,yes,99,,5,yes,no
+826,Lg Ancient Stone,Lg Ancient Stone,Lg Ancient Stone,太古の大きな塊,Lg Ancient Stone,,,yes,,no,yes,99,,5,yes,no
+827,Sm Ancient Stone,Sm Ancient Stone,Sm Ancient Stone,太古の小さな塊,Sm Ancient Stone,,,yes,,no,yes,99,,5,yes,no
+828,Ancient StoneRod,Ancient StoneRod,Ancient StoneRod,太古の棒状の塊,Ancient StoneRod,,,yes,,no,yes,99,,5,yes,no
+829,Organizer Guide,Organizer Guide,Organizer Guide,収納上手・技の書,Organizer Guide,,,no,consumed on use - permanent capacity upgrade,no,no,0,,4,no,no
+830,Backpacker Guide,Backpacker Guide,BackPacker Guide,収納上手・力の書,Backpacker Guide,,,no,consumed on use - permanent capacity upgrade,no,no,0,,5,no,no
+831,Lynian Info,Lynian Info,Lynian Info,獣人種の書,Lynian Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+832,Shakalaka Info,Shakalaka Info,Shakalaka Info,チャチャブーの書,Shakalaka Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+833,Neopteron Info,Neopteron Info,Neopteron Info,甲虫種の書,Neopteron Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+834,GrtThundrbugInfo,GrtThundrbugInfo,Great Thunderbug Info,大雷光虫の書,GrtThundrbugInfo,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+835,Herbivore Info,Herbivore Info,Herbivore Info,草食種の書,Herbivore Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+836,Bird Wyvern Info,Bird Wyvern Info,Bird Wyvern Info,鳥竜種の書,Bird Wyvern Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+837,HypnocatriceInfo,HypnocatriceInfo,Hypnoc Info,ヒプノックの書,HypnocatriceInfo,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+838,Yian Garuga Info,Yian Garuga Info,Yian Garuga Info,イャンガルルガの書,Yian Garuga Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+839,FlyingWyvernInfo,FlyingWyvernInfo,FlyingWyvern Info,飛竜種の書,FlyingWyvernInfo,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+840,Remobra Info,Remobra Info,Remobra Info,ガブラスの書,Remobra Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+841,Tigrex Info,Tigrex Info,Tigrex Info,ティガレックスの書,Tigrex Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+842,Nargacuga Info,Nargacuga Info,Narugakuruga Info,ナルガクルガの書,Nargacuga Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+843,Akantor Info,Akantor Info,Akantor Info,アカムトルムの書,Akantor Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+844,Ukanlos Info,Ukanlos Info,Ucamulbas Info,ウカムルバスの書,Ukanlos Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+845,Piscine Info,Piscine Info,Piscine Info,魚竜種の書,Piscine Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+846,Lavasioth Info,Lavasioth Info,Volganos Info,ヴォルガノスの書,Lavasioth Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+847,Carapaceon Info1,Carapaceon Info1,Carapaceon Info 1,甲殻種の書【上巻】,Carapaceon Info1,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+848,Carapaceon Info2,Carapaceon Info2,Carapaceon Info 2,甲殻種の書【下巻】,Carapaceon Info2,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+849,Shen Gaoren Info,Shen Gaoren Info,Shen Gaoren Info,シェンガオレンの書,Shen Gaoren Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+850,Pelagus Info,Pelagus Info,Primatius Info,牙獣種の書,Pelagus Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+851,Rajang Info,Rajang Info,Rajang Info,ラージャンの書,Rajang Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+852,Kirin Info,Kirin Info,Kirin Info,キリンの書,Kirin Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+853,KushalaDaoraInfo,KushalaDaoraInfo,Kushala Daora Info,クシャルダオラの書,KushalaDaoraInfo,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+854,Chameleos Info,Chameleos Info,Chameleos Info,オオナズチの書,Chameleos Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+855,Lunastra Info,Lunastra Info,Lunastra Info,ナナ・テスカトリの書,Lunastra Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+856,Teostra Info,Teostra Info,Teostra Info,テオ・テスカトルの書,Teostra Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+857,Lao-Shan Info,Lao-Shan Info,Lao Shan Info,ラオシャンロンの書,Lao-Shan Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+858,YamaTsukamiInfo,YamaTsukamiInfo,Yamatsukami Info,ヤマツカミの書,YamaTsukamiInfo,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+859,Fatalis Info,Fatalis Info,Fatalis Info,ミラボレアスの書,Fatalis Info,,,no,consumed on use - unlocks a Monster List entry,no,no,0,,4-5,no,no
+860,Steel Egg,Steel Egg,Steel Egg,鋼のたまご,Steel Egg,,,yes,,no,yes,99,,5,yes,no
+861,Silver Egg,Silver Egg,Silver Egg,銀のたまご,Silver Egg,,,yes,,no,yes,99,,5,yes,no
+862,Golden Egg,Golden Egg,Gold Egg,金のたまご,Golden Egg,,,yes,,no,yes,99,,5,yes,no
+863,Map,Map,Map,地図,Map,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+864,First-Aid Med,First-Aid Med,First-Aid Med,応急薬,First-Aid Med,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+865,Ration,Ration,Ration,携帯食料,Ration,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+866,Portable Spit,Portable Spit,Portable Spit,携帯肉焼きセット,Portable Spit,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+867,Mini Whetstone,Mini Whetstone,Mini Whetstone,携帯砥石,Mini Whetstone,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+868,Prtbl Shock Trap,Prtbl Shock Trap,Prtbl Shock Trap,携帯シビレ罠,Prtbl Shock Trap,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+869,Supply Flash Bmb,Supply Flash Bmb,Supply Flash Bmb,支給専用閃光玉,Supply Flash Bmb,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+870,Sply Max Potion,Sply Max Potion,Sply Max Potion,支給専用秘薬,Sply Max Potion,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+871,Sply Pitfall Trp,Sply Pitfall Trp,Sply Pitfall Trp,支給専用落とし穴,Sply Pitfall Trp,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+872,Sply Lg Brrl Bmb,Sply Lg Brrl Bmb,Sply Lg Brrl Bmb,支給用大タル爆弾,Sply Lg Brrl Bmb,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+873,Ballista S,Ballista S,Ballista S,バリスタの弾,Ballista S,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+874,Cannon S,Cannon S,Cannon S,大砲の弾,Cannon S,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+875,Wyvern,Wyvern,Wyvern ,ワイバーン,Wyvern,,,no,not a real item - developer padding,no,no,0,,,no,no
+876,Wyvern Egg,Wyvern Egg,Wyvern Egg,飛竜の卵,Wyvern Egg,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+877,Herbivore Egg,Herbivore Egg,Herbivore Egg,草食竜の卵,Herbivore Egg,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+878,Carnivore Egg,Carnivore Egg,Carnivore Egg,肉食竜の卵,Carnivore Egg,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+879,Sootstone Ore,Sootstone Ore,Soot stone,灰水晶の原石,Sootstone Ore,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+880,Quartz Ore,Quartz Ore,Quartz Stone,白水晶の原石,Quartz Ore,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+881,Powderstone,Powderstone,PowderStone,火薬岩,Powderstone,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+882,Khezu Whelp,Khezu Whelp,Khezu Whelp,フルフルベビー,Khezu Whelp,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+883,Khz Whlp Ice Crm,Khz Whlp Ice Crm,Khezu Ice Cream,フルベビアイス,Khz Whlp Ice Crm,Account Item,精算アイテム,no,quest-only: Account Item tag,no,no,0,,,no,no
+884,Kut-Ku Coin,Kut-Ku Coin,Kut-ku Coin,クックコイン,Kut-Ku Coin,,,yes,,no,yes,99,,4,yes,no
+885,Congalala Coin,Congalala Coin,Congalala Coin,ババコイン,Congalala Coin,,,yes,,no,yes,99,,4,yes,no
+886,Khezu Coin,Khezu Coin,Khezu Coin,アルビノコイン,Khezu Coin,,,yes,,no,yes,99,,4,yes,no
+887,Daimyo Coin,Daimyo Coin,Daimyo Coin,ダイミョウコイン,Daimyo Coin,,,yes,,no,yes,99,,4,yes,no
+888,Blangonga Coin,Blangonga Coin,Blangonga Coin,ドドブラコイン,Blangonga Coin,,,yes,,no,yes,99,,4,yes,no
+889,Yian Garuga Coin,Yian Garuga Coin,Yian Garuga Coin,ガルルガコイン,Yian Garuga Coin,,,yes,,no,yes,99,,4,yes,no
+890,Tigrex Coin,Tigrex Coin,Tigrex Coin,レックスコイン,Tigrex Coin,,,yes,,no,yes,99,,4,yes,no
+891,Diablos Coin,Diablos Coin,Diablos Coin,ディアブロコイン,Diablos Coin,,,yes,,no,yes,99,,5,yes,no
+892,Gravios Coin,Gravios Coin,Gravios Coin,グラビドコイン,Gravios Coin,,,yes,,no,yes,99,,5,yes,no
+893,Kirin Coin,Kirin Coin,Kirin Coin,マボロシコイン,Kirin Coin,,,yes,,no,yes,99,,5,yes,no
+894,Cephadrome Coin,Cephadrome Coin,Cephalos Coin,ドスガレコイン,Cephadrome Coin,,,yes,,no,yes,99,,4,yes,no
+895,Plesioth Coin,Plesioth Coin,Plesioth Coin,ガノスコイン,Plesioth Coin,,,yes,,no,yes,99,,4,yes,no
+896,Shogun Coin,Shogun Coin,Shogun Coin,ショウグンコイン,Shogun Coin,,,yes,,no,yes,99,,4,yes,no
+897,Fire Coin,Fire Coin,Fire Coin,リオコイン,Fire Coin,,,yes,,no,yes,99,,5,yes,no
+898,Rajang Coin,Rajang Coin,Rajang Coin,キンピカコイン,Rajang Coin,,,yes,,no,yes,99,,5,yes,no
+899,BlackBeltCoinG,BlackBeltCoinG,Blackbelt Coin G,クロオビコインＧ,BlackBeltCoinG,,,yes,,no,yes,99,,5,yes,no
+900,Expert Coin G,Expert Coin G,Expert Coin G,タツジンコインＧ,Expert Coin G,,,yes,,no,yes,99,,5,yes,no
+901,Warrior Coin G,Warrior Coin G,Fighter Coin G,ツワモノコインＧ,Warrior Coin G,,,yes,,no,yes,99,,5,yes,no
+902,Legend Coin G,Legend Coin G,Legendary Coin G,デンセツコインＧ,Legend Coin G,,,yes,,no,yes,99,,5,no,no
+903,Commendation,Commendation,Commendation,勇気の証,Commendation,,,yes,,no,yes,99,,5,yes,no
+904,Commendation G,Commendation G,Commendation G,勇気の証Ｇ,Commendation G,,,yes,,no,yes,99,,5,yes,no
+905,Commendation S,Commendation S,Commendation S,勇気の証Ｓ,Commendation S,,,yes,,no,yes,99,,5,yes,no
+906,Pawprint Stamp,Pawprint Stamp,Pawprint Stamp,肉球のスタンプ,Pawprint Stamp,,,yes,,no,yes,99,,5,yes,no
+907,Pokke Ticket,Pokke Ticket,Pokke Ticket,ポッケチケット,Pokke Ticket,,,yes,,no,yes,99,,5,no,no
+908,Pokke Ticket+,Pokke Ticket+,Pokke Ticket+,ポッケチケットＧ,Pokke Ticket+,,,yes,,no,yes,99,,5,yes,no
+909,Normal Ticket,Normal Ticket,Normal ticket,ノーマルチケット,Normal Ticket,,,yes,,no,yes,99,,5,no,no
+910,Hard Ticket,Hard Ticket,Hard Ticket,ハードチケット,Hard Ticket,,,yes,,no,yes,99,,5,no,no
+911,Plus Class Tcket,Plus Class Tcket,G Class Ticket,Ｇクラスチケット,Plus Class Tcket,,,yes,,no,yes,99,,5,no,no
+912,Hero of Kkto Bio,Hero of Kkto Bio,Hero of Kkto Bio,ココット村英雄伝,Hero of Kkto Bio,,,yes,,no,no,2,hard-capped at 2,5,no,no
+913,Hero of JumboBio,Hero of JumboBio,Hero of JumboBio,ジャンボ村武勇伝,Hero of JumboBio,,,yes,,no,no,2,hard-capped at 2,5,no,no
+914,Elder Thank You,Elder Thank You,Elder Thank You,大長老の感謝状,Elder Thank You,,,yes,,no,no,2,hard-capped at 2,5,no,no
+915,Elder Thnk You+,Elder Thnk You+,Elder Thank You+,大長老の感謝状Ｇ,Elder Thnk You+,,,yes,,no,no,2,hard-capped at 2,5,no,no
+916,FlynMealPassReg,FlynMealPassReg,FlynMealPassReg,アイルー食券・並,FlynMealPassReg,,,yes,,no,yes,99,,4,no,no
+917,FlynMealPassPlus,FlynMealPassPlus,FlynMealPassPlus,アイルー食券・上,FlynMealPassPlus,,,yes,,no,yes,99,,5,no,no
+918,Comrade Ticket,Comrade Ticket,FlynFighterPass,オトモチケット,Comrade Ticket,,,yes,,no,yes,99,,5,no,no
+919,VeggieElderTcket,VeggieElderTcket,VeggieElderTcket,山菜組引換券,VeggieElderTcket,,,yes,,no,yes,99,,4,no,no
+920,VeggieElderTckt+,VeggieElderTckt+,VeggieElderTckt+,山菜組引換券Ｇ,VeggieElderTckt+,,,yes,,no,yes,99,,4,no,no
+921,VegElderTcktBrz,VegElderTcktBrz,VegElderTcktBrz,鋼の山菜組引換券,VegElderTcktBrz,,,yes,,no,yes,99,,4,no,no
+922,VegElderTcktSlv,VegElderTcktSlv,VegElderTcktSlv,銀の山菜組引換券,VegElderTcktSlv,,,yes,,no,yes,99,,4,no,no
+923,VegElderTcktGld,VegElderTcktGld,VegElderTcktGld,金の山菜組引換券,VegElderTcktGld,,,yes,,no,yes,99,,4,yes,no
+924,VegElderTcktSky,VegElderTcktSky,VegElderTcktDvne,天の山菜組引換券,VegElderTcktSky,,,yes,,no,yes,99,,5,yes,no
+925,Blackbelt Ticket,Blackbelt Ticket,Blackbelt Ticket,クロオビチケット,Blackbelt Ticket,,,yes,,no,yes,99,,5,yes,no
+926,Expert Ticket,Expert Ticket,Expert Ticket,タツジンチケット,Expert Ticket,,,yes,,no,yes,99,,5,yes,no
+927,Paw Pass Ticket,Paw Pass Ticket,Paw Pass Ticket,ネコタクチケット,Paw Pass Ticket,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+928,Limited Paw Pass,Limited Paw Pass,Limited Paw Pass,条件付きネコタク,Limited Paw Pass,Supply Item,支給品専用,no,quest-only: Supply Item tag,no,no,0,,,no,no
+929,dummy,Famitsu Ticket,Famitsu Ticket,ファミ通チケット,Famitsu Ticket,,,yes,,no,yes,99,,5,yes,no
+930,dummy,Famitsu PO,Famitsu Invoice,ファミ通の注文書,Famitsu Invoice,,,yes,,no,yes,99,,5,yes,no
+931,dummy,PtFamitsuTicket,Famitsu PT Tckt,ファミ通ＰＴ,Famitsu PT Tckt,,,yes,,no,yes,99,,5,yes,no
+932,dummy,SpecFamitsuTckt,FamitsuSpcialTkt,ファミ通の特注券,FamitsuCustomTkt,,,yes,,no,yes,99,,5,yes,no
+933,dummy,Dengeki Ticket,Dengeki Ticket,デンゲキチケット,Dengeki Ticket,,,yes,,no,yes,99,,5,yes,no
+934,dummy,Dengeki Ticket+,Dengeki Ticket+,電撃Ｇチケット,Dengeki G Ticket,,,yes,,no,yes,99,,5,yes,no
+935,dummy,Dengeki Ticket G,Dengeki Ticket G,電撃２Ｇチケット,Dengeki 2G Tckt,,,yes,,no,yes,99,,5,yes,no
+936,dummy,DemonKingTicket,One-HornedTicket,「マ）王チケット,Dengeki Maoh Tkt,,,yes,,no,yes,99,,5,yes,no
+937,dummy,Pirate Ticket J,Pirate J Ticket,海賊Ｊチケット,Pirate J Ticket,,,yes,,no,yes,99,,5,yes,no
+938,dummy,Pirate Tckt J G,Pirate J Tckt G,海賊ＪチケットＧ,Pirate J Tckt G,,,yes,,no,yes,99,,5,yes,no
+939,dummy,Magazine Ticket,Magazine Ticket,マガジンチケット,Magazine Ticket,,,yes,,no,yes,99,,5,yes,no
+940,Hunter's Ticket,Hunter's Ticket,Hunter's Ticket,狩人チケット,Hunter's Ticket,,,yes,,no,yes,99,,5,yes,no
+941,Hunter Soul Tkt,Hunter Soul Tkt,Hunter Soul Tckt,狩魂チケット,Hunter Soul Tkt,,,yes,,no,yes,99,,5,yes,no
+942,Puppet Ticket,Puppet Ticket,Puppet Ticket,パペットチケット,Puppet Ticket,,,yes,,no,yes,99,,5,yes,no
+943,SpecPuppetTicket,SpecPuppetTicket,Puppet Ticket+,特注パペット券,SpecPuppetTicket,,,yes,,no,yes,99,,5,yes,no
+944,Suiko Jewel,Suiko Jewel,Suiko Jewel,水光原珠,Suiko Jewel,,,yes,,no,yes,99,,4,no,no
+945,Akito Jewel,Akito Jewel,Akito Jewel,陽翔原珠,Akito Jewel,,,yes,,no,yes,99,,4,no,no
+946,BattlefieldJewel,BattlefieldJewel,BattlefieldJewel,修羅原珠,BattlefieldJewel,,,yes,,no,yes,99,,5,no,no
+947,LapisLazuliJewel,LapisLazuliJewel,LapislazuliJewel,瑠璃原珠,LapisLazuliJewel,,,yes,,no,yes,99,,5,no,no
+948,Paralysis Jewel,Paralysis Jewel,Paralysis Jewel,耐麻痺珠,Paralysis Jewel,,,yes,,yes,yes,99,,4-5,no,no
+949,Paralysis Jewel+,Paralysis Jewel+,Petrification Jewel,制麻痺珠,Paralysis Jewel+,,,yes,,yes,yes,99,,4-5,no,no
+950,Pep Jewel,Pep Jewel,Pep Jewel,耐眠珠,Pep Jewel,,,yes,,yes,yes,99,,4-5,no,no
+951,Jolt Jewel,Jolt Jewel,Jolt Jewel,抗眠珠,Jolt Jewel,,,yes,,yes,yes,99,,4-5,no,no
+952,Steadfast Jewel,Steadfast Jewel,Steadfast Jewel,耐絶珠,Steadfast Jewel,,,yes,,yes,yes,99,,4-5,no,no
+953,Steadfast Jewel+,Steadfast Jewel+,Vigilance Jewel,制絶珠,Steadfast Jewel+,,,yes,,yes,yes,99,,4-5,no,no
+954,Antidote Jewel,Antidote Jewel,Antidote Jewel,耐毒珠,Antidote Jewel,,,yes,,yes,yes,99,,4-5,no,no
+955,Antidote Jewel+,Antidote Jewel+,Anti-Toxin Jewel,制毒珠,Antidote Jewel+,,,yes,,yes,yes,99,,4-5,no,no
+956,Retroviral Jewel,Retroviral Jewel,Retroviral Jewel,耐菌珠,Retroviral Jewel,,,yes,,yes,yes,99,,4-5,no,no
+957,Antiviral Jewel,Antiviral Jewel,Antiviral Jewel,抗菌珠,Antiviral Jewel,,,yes,,yes,yes,99,,4-5,no,no
+958,Snowblower Jewel,Snowblower Jewel,Snowblower Jewel,耐雪珠,Snowblower Jewel,,,yes,,yes,yes,99,,4-5,no,no
+959,SnowblowerJewel+,SnowblowerJewel+,Defroster Jewel,制雪珠,SnowblowerJewel+,,,yes,,yes,yes,99,,4-5,no,no
+960,Tip Toe Jewel,Tip Toe Jewel,Tip Toe Jewel,潜伏珠,Tip Toe Jewel,,,yes,,yes,yes,99,,4-5,no,no
+961,Ninja Jewel,Ninja Jewel,Ninja Jewel,忍脚珠,Ninja Jewel,,,yes,,yes,yes,99,,4-5,no,no
+962,Strength Jewel,Strength Jewel,Strength Jewel,体力珠,Strength Jewel,,,yes,,yes,yes,99,,4-5,no,no
+963,Feel Good Jewel,Feel Good Jewel,Feel Good Jewel,早復珠,Feel Good Jewel,,,yes,,yes,yes,99,,4-5,no,no
+964,Razor Jewel,Razor Jewel,Razor Jewel,斬鉄珠,Razor Jewel,For Blademasters,剣士向け,yes,,yes,yes,99,,4-5,no,no
+965,Artisan Jewel,Artisan Jewel,Artisan Jewel,匠珠,Artisan Jewel,For Blademasters,剣士向け,yes,,yes,yes,99,,4-5,no,no
+966,Fencer Jewel,Fencer Jewel,Fencer Jewel,剣豪珠,Fencer Jewel,For Blademasters,剣士向け,yes,,yes,yes,99,,4-5,no,no
+967,Expert Jewel,Expert Jewel,Expert Jewel,達人珠,Expert Jewel,,,yes,,yes,yes,99,,4-5,no,no
+968,Grinder Jewel,Grinder Jewel,Grinder Jewel,研磨珠,Grinder Jewel,For Blademasters,剣士向け,yes,,yes,yes,99,,4-5,no,no
+969,Stone Wall Jewel,Stone Wall Jewel,Stone Wall Jewel,石壁珠,Stone Wall Jewel,For Blademasters,剣士向け,yes,,yes,yes,99,,4-5,no,no
+970,Hard Wall Jewel,Hard Wall Jewel,Hard Wall Jewel,強壁珠,Hard Wall Jewel,,,yes,,yes,yes,99,,4-5,no,no
+971,HvnlyShieldJewel,HvnlyShieldJewel,HvnlyShieldJewel,天盾珠,HvnlyShieldJewel,For Blademasters,剣士向け,yes,,yes,yes,99,,4-5,no,no
+972,Hardball Jewel,Hardball Jewel,Hardball Jewel,力投珠,Hardball Jewel,,,yes,,yes,yes,99,,4-5,no,no
+973,Early Bird Jewel,Early Bird Jewel,Early Bird Jewel,早填珠,Early Bird Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+974,Recoilless Jewel,Recoilless Jewel,Recoilless Jewel,抑反珠,Recoilless Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+975,StrongShot Jewel,StrongShot Jewel,StrongShot Jewel,強弾珠,StrongShot Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+976,Pierce Jewel,Pierce Jewel,Pierce Jewel,貫通珠,Pierce Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+977,Pellet Jewel,Pellet Jewel,Pellet Jewel,散弾珠,Pellet Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+978,Shot Bonus Jewel,Shot Bonus Jewel,Shot Bonus Jewel,加弾珠,Shot Bonus Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+979,PierceBonusJewel,PierceBonusJewel,PierceBonusJewel,加貫珠,PierceBonusJewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+980,PelletBonusJewel,PelletBonusJewel,PelletBonusJewel,加散珠,PelletBonusJewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+981,Crag Bonus Jewel,Crag Bonus Jewel,Bomb Bonus Jewel,加榴珠,Crag Bonus Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+982,ScattrBonusJewel,ScattrBonusJewel,ScatterBonusJewel,加拡珠,ScattrBonusJewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+983,SpecialAtk Jewel,SpecialAtk Jewel,SpecialAtk Jewel,特攻珠,SpecialAtk Jewel,,,yes,,yes,yes,99,,4-5,no,no
+984,Element Jewel,Element Jewel,Element Jewel,属攻珠,Element Jewel,,,yes,,yes,yes,99,,4-5,no,no
+985,Bombardier Jewel,Bombardier Jewel,Bombardier Jewel,爆師珠,Bombardier Jewel,,,yes,,yes,yes,99,,4-5,no,no
+986,PickyEater Jewel,PickyEater Jewel,PickyEater Jewel,小食珠,PickyEater Jewel,,,yes,,yes,yes,99,,4-5,no,no
+987,No Food Jewel,No Food Jewel,Anorexic Jewel,無食珠,No Food Jewel,,,yes,,yes,yes,99,,4-5,no,no
+988,Fatso Jewel,Fatso Jewel,Fatso Jewel,食漢珠,Fatso Jewel,,,yes,,yes,yes,99,,4-5,no,no
+989,Attack Jewel,Attack Jewel,Attack Jewel,攻撃珠,Attack Jewel,,,yes,,yes,yes,99,,4-5,no,no
+990,Defense Jewel,Defense Jewel,Defense Jewel,防御珠,Defense Jewel,,,yes,,yes,yes,99,,4-5,no,no
+991,Protection Jewel,Protection Jewel,Protection Jewel,加護珠,Protection Jewel,,,yes,,yes,yes,99,,4-5,no,no
+992,DivineProtectJwl,DivineProtectJwl,DivinePrtctionJewel,神護珠,DivineProtectJwl,,,yes,,yes,yes,99,,4-5,no,no
+993,Earplug Jewel,Earplug Jewel,Earplug Jewel,防音珠,Earplug Jewel,,,yes,,yes,yes,99,,4-5,no,no
+994,Alarm Jewel,Alarm Jewel,Alarm Jewel,防盗珠,Alarm Jewel,,,yes,,yes,yes,99,,4-5,no,no
+995,Friendship Jewel,Friendship Jewel,Friendship Jewel,友愛珠,Friendship Jewel,,,yes,,yes,yes,99,,4-5,no,no
+996,Backpacker Jewel,Backpacker Jewel,Backpacker Jewel,運搬珠,Backpacker Jewel,,,yes,,yes,yes,99,,4-5,no,no
+997,Impervious Jewel,Impervious Jewel,Impervious Jewel,全耐珠,Impervious Jewel,,,yes,,yes,yes,99,,4-5,no,no
+998,Inferno Jewel,Inferno Jewel,Inferno Jewel,火炎珠,Inferno Jewel,,,yes,,yes,yes,99,,4-5,no,no
+999,Crimson Jewel,Crimson Jewel,Crimson Jewel,紅蓮珠,Crimson Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1000,Stream Jewel,Stream Jewel,Stream Jewel,流水珠,Stream Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1001,Torrent Jewel,Torrent Jewel,Torrent Jewel,爆水珠,Torrent Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1002,Freeze Jewel,Freeze Jewel,Freeze Jewel,氷結珠,Freeze Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1003,Glacier Jewel,Glacier Jewel,Glacier Jewel,氷河珠,Glacier Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1004,Lightning Jewel,Lightning Jewel,Lightning Jewel,雷光珠,Lightning Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1005,Thunder Jewel,Thunder Jewel,Thunder Jewel,雷鳴珠,Thunder Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1006,Slayer Jewel,Slayer Jewel,Slayer Jewel,破龍珠,Slayer Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1007,DragonslyrJewel,DragonslyrJewel,Dracocide Jewel,絶龍珠,DragonslyrJewel,,,yes,,yes,yes,99,,4-5,no,no
+1008,CoolBreeze Jewel,CoolBreeze Jewel,CoolBreeze Jewel,涼風珠,CoolBreeze Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1009,ColdBreezeJewel,ColdBreezeJewel,Icy Gale Jewel,凍風珠,ColdBreezeJewel,,,yes,,yes,yes,99,,4-5,no,no
+1010,WarmBreeze Jewel,WarmBreeze Jewel,Warm Breeze Jewel,温風珠,WarmBreeze Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1011,HotBreezeJewel,HotBreezeJewel,Fiery Gale Jewel,燃風珠,HotBreezeJewel,,,yes,,yes,yes,99,,4-5,no,no
+1012,PaperweightJewel,PaperweightJewel,PaperweightJewel,文鎮珠,PaperweightJewel,,,yes,,yes,yes,99,,4-5,no,no
+1013,Map Jewel,Map Jewel,Map Jewel,地図珠,Map Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1014,Gathering Jewel,Gathering Jewel,Gathering Jewel,採取珠,Gathering Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1015,Grab'n'DashJewel,Grab'n'DashJewel,Grab'n'DashJewel,速集珠,Grab'n'DashJewel,,,yes,,yes,yes,99,,4-5,no,no
+1016,Good Luck Jewel,Good Luck Jewel,Good Luck Jewel,祝珠,Good Luck Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1017,Blessing Jewel,Blessing Jewel,Blessing Jewel,祝福珠,Blessing Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1018,Fate Jewel,Fate Jewel,Fate Jewel,運気珠,Fate Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1019,Fisher Jewel,Fisher Jewel,Fisher Jewel,釣力珠,Fisher Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1020,Psychic Jewel,Psychic Jewel,Psychic Jewel,千里珠,Psychic Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1021,Curing Jewel,Curing Jewel,Curing Jewel,治癒珠,Curing Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1022,Professor Jewel,Professor Jewel,Professor Jewel,博士珠,Professor Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1023,Armory Jewel,Armory Jewel,Armory Jewel,弾製珠,Armory Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1024,SecretArts Jewel,SecretArts Jewel,SecretArts Jewel,秘術珠,SecretArts Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1025,Evade Jewel,Evade Jewel,Evade Jewel,回避珠,Evade Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1026,Danger Jewel,Danger Jewel,Danger Jewel,危険珠,Danger Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1027,StayingPwr Jewel,StayingPwr Jewel,StayingPwr Jewel,持続珠,StayingPwr Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1028,Marathon Jewel,Marathon Jewel,Marathon Jewel,強走珠,Marathon Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1029,Ammo Box Jewel,Ammo Box Jewel,Ammo Box Jewel,弾穴珠,Ammo Box Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1030,Sniper Jewel,Sniper Jewel,Sniper Jewel,的射珠,Sniper Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1031,SharpshootrJewel,SharpshootrJewel,SharpshootrJewel,点射珠,SharpshootrJewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1032,QuickEaterJewel,QuickEaterJewel,QuickEaterJewel,早食珠,QuickEaterJewel,,,yes,,yes,yes,99,,4-5,no,no
+1033,HideCutter Jewel,HideCutter Jewel,HideCutter Jewel,皮剥珠,HideCutter Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1034,Melt-Proof Jewel,Melt-Proof Jewel,Melt-Proof Jewel,耐溶珠,Melt-Proof Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1035,Anchor Jewel,Anchor Jewel,Anchor Jewel,耐震珠,Anchor Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1036,BBQ Jewel,BBQ Jewel,BBQ Jewel,肉焼珠,BBQ Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1037,Small Arms Jewel,Small Arms Jewel,Small Arms Jewel,銃器珠,Small Arms Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1038,Howitzer Jewel,Howitzer Jewel,Howitzer Jewel,大砲珠,Howitzer Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1039,Fife Jewel,Fife Jewel,Fife Jewel,鼓笛珠,Fife Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1040,Tireless Jewel,Tireless Jewel,Tireless Jewel,抗疲珠,Tireless Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1041,Jumping Jewel,Jumping Jewel,Jump Jewel,跳躍珠,Jumping Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1042,Sword Draw Jewel,Sword Draw Jewel,Draw Jewel,抜刀珠,Sword Draw Jewel,For Blademasters,剣士向け,yes,,yes,yes,99,,4-5,no,no
+1043,Cat Guide Jewel,Cat Guide Jewel,FlynMaster Jewel,猫師珠,Cat Guide Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1044,Cat Attack Jewel,Cat Attack Jewel,FlynAttack Jewel,猫攻珠,Cat Attack Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1045,CatDefenseJewel,CatDefenseJewel,FlynDefence Jewel,猫守珠,CatDefenseJewel,,,yes,,yes,yes,99,,4-5,no,no
+1046,TrapMasterJewel,TrapMasterJewel,TrapMaster Jewel,罠師珠,TrapMasterJewel,,,yes,,yes,yes,99,,4-5,no,no
+1047,PoisonCoatJewel,PoisonCoatJewel,PoisnCoating Jewel,毒瓶珠,PoisonCoatJewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1048,ParalysCoatJewel,ParalysCoatJewel,ParaCoating Jewel,麻瓶珠,ParalysCoatJewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1049,Sleep Coat Jewel,Sleep Coat Jewel,SleepCoating Jewel,眠瓶珠,Sleep Coat Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1050,Power Coat Jewel,Power Coat Jewel,PowerCoating Jewel,強瓶珠,Power Coat Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1051,Combo Coat Jewel,Combo Coat Jewel,RazorCoating Jewel,接瓶珠,Combo Coat Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1052,Guts Jewel,Guts Jewel,Survivor Jewel,根性珠,Guts Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1053,ConstitutnJewel,ConstitutnJewel,Stamina Jewel,体操珠,ConstitutnJewel,,,yes,,yes,yes,99,,4-5,no,no
+1054,Tranq Jewel,Tranq Jewel,Bind Jewel,捕縄珠,Tranq Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1055,Perceive Jewel,Perceive Jewel,Observer Jewel,観察珠,Perceive Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1056,ShortChargeJewel,ShortChargeJewel,QuickCharge Jewel,短縮珠,ShortChargeJewel,,,yes,,yes,yes,99,,4-5,no,no
+1057,Cont. Fire Jewel,Cont. Fire Jewel,SpeedFire Jewel,連射珠,Cont. Fire Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1058,AntiParalyzJewel,AntiParalyzJewel,AntiParalyzJewel,抗麻痺珠,AntiParalyzJewel,,,yes,,yes,yes,99,,4-5,no,no
+1059,Anti-Faint Jewel,Anti-Faint Jewel,Anti-Faint Jewel,抗絶珠,Anti-Faint Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1060,Antivenin Jewel,Antivenin Jewel,Antivenin Jewel,抗毒珠,Antivenin Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1061,Snowplow Jewel,Snowplow Jewel,Snowplow Jewel,抗雪珠,Snowplow Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1062,SpeedyRecvrJewel,SpeedyRecvrJewel,Quick Fix Jewel,速復珠,SpeedyRecvrJewel,,,yes,,yes,yes,99,,4-5,no,no
+1063,Celebrity Jewel,Celebrity Jewel,Celebrity Jewel,名人珠,Celebrity Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1064,IronCurtainJewel,IronCurtainJewel,Iron Curtain Jewel,鉄壁珠,IronCurtainJewel,For Blademasters,剣士向け,yes,,yes,yes,99,,4-5,no,no
+1065,Wall Jewel,Wall Jewel,Rigid Wall Jewel,絶壁珠,Wall Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1066,High Speed Jewel,High Speed Jewel,High Speed Jewel,速填珠,High Speed Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1067,SpecialAtkJewel+,SpecialAtkJewel+,SpecialStrikeJewel,特襲珠,SpecialAtkJewel+,,,yes,,yes,yes,99,,4-5,no,no
+1068,Fasting Jewel,Fasting Jewel,Fasting Jewel,絶食珠,Fasting Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1069,Fierce Jewel,Fierce Jewel,Fierce Jewel,猛攻珠,Fierce Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1070,Turtle Jewel,Turtle Jewel,Turtle Jewel,堅守珠,Turtle Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1071,Beloved Jewel,Beloved Jewel,Beloved Jewel,親愛珠,Beloved Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1072,Omnipotent Jewel,Omnipotent Jewel,Omnipotent Jewel,天耐珠,Omnipotent Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1073,Extinction Jewel,Extinction Jewel,Extinction Jewel,滅龍珠,Extinction Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1074,Cold Wind Jewel,Cold Wind Jewel,Cold Wind Jewel,冷風珠,Cold Wind Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1075,Hot Wind Jewel,Hot Wind Jewel,Hot Wind Jewel,暖風珠,Hot Wind Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1076,HeavyMetal Jewel,HeavyMetal Jewel,HeavyMetal Jewel,重塊珠,HeavyMetal Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1077,Destiny Jewel,Destiny Jewel,Destiny Jewel,強運珠,Destiny Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1078,Cure All Jewel,Cure All Jewel,Cure All Jewel,全癒珠,Cure All Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1079,Cure All Jewel+,Cure All Jewel+,Divine Cure Jewel,天癒珠,Cure All Jewel+,,,yes,,yes,yes,99,,4-5,no,no
+1080,Dodge Jewel,Dodge Jewel,Dodge Jewel,光避珠,Dodge Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1081,Pinch Jewel,Pinch Jewel,Calamity Jewel,危難珠,Pinch Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1082,Permanence Jewel,Permanence Jewel,Permanence Jewel,恒久珠,Permanence Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1083,Eternal Jewel,Eternal Jewel,Eternal Jewel,永久珠,Eternal Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1084,Fast Food Jewel,Fast Food Jewel,Fast Food Jewel,速食珠,Fast Food Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1085,Anti-Thaw Jewel,Anti-Thaw Jewel,Anti-Thaw Jewel,抗溶珠,Anti-Thaw Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1086,Tectonic Jewel,Tectonic Jewel,Tectonic Jewel,抗震珠,Tectonic Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1087,UnsheathingJewel,UnsheathingJewel,Unsheathe Jewel,抜撃珠,UnsheathingJewel,For Blademasters,剣士向け,yes,,yes,yes,99,,4-5,no,no
+1088,ParalysisCAddJwl,ParalysisCAddJwl,Petrify Coating Jewel,痺瓶珠,ParalysisCAddJwl,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1089,PowerCAddJewel,PowerCAddJewel,Force Coating Jewel,剛瓶珠,PowerCAddJewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1090,More Guts Jewel,More Guts Jewel,Immortal Jewel,ド根性珠,More Guts Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1091,Health Jewel,Health Jewel,Body Arts Jewel,体術珠,Health Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1092,Knockout Jewel,Knockout Jewel,Cage Jewel,捕縛珠,Knockout Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1093,Cutter Jewel,Cutter Jewel,Cutter Jewel,斬空珠,Cutter Jewel,For Blademasters,剣士向け,yes,,yes,yes,99,,4-5,no,no
+1094,Master Jewel,Master Jewel,Master Jewel,名匠珠,Master Jewel,For Blademasters,剣士向け,yes,,yes,yes,99,,4-5,no,no
+1095,Swordsman Jewel,Swordsman Jewel,Swordsman Jewel,剣聖珠,Swordsman Jewel,For Blademasters,剣士向け,yes,,yes,yes,99,,4-5,no,no
+1096,Hermit Jewel,Hermit Jewel,Hermit Jewel,仙人珠,Hermit Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1097,StrongWall Jewel,StrongWall Jewel,StrongWall Jewel,剛壁珠,StrongWall Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1098,Shockless Jewel,Shockless Jewel,Shockless Jewel,無反珠,Shockless Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1099,StrongShotJewel+,StrongShotJewel+,MightyShot Jewel ,剛弾珠,StrongShotJewel+,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1100,Pierce Jewel+,Pierce Jewel+,Impale Jewel,剛貫珠,Pierce Jewel+,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1101,Pellet Jewel+,Pellet Jewel+,Scatter Jewel,剛散珠,Pellet Jewel+,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1102,Element Jewel+,Element Jewel+,Dire Element Jewel,属襲珠,Element Jewel+,,,yes,,yes,yes,99,,4-5,no,no
+1103,Strongest Jewel,Strongest Jewel,Merciless Jewel,超攻珠,Strongest Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1104,Silencer Jewel,Silencer Jewel,Silencer Jewel,絶音珠,Silencer Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1105,Tenderness Jewel,Tenderness Jewel,True Love Jewel,慈愛珠,Tenderness Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1106,TrueResistJewel,TrueResistJewel,Invulnerable Jewel,真耐珠,TrueResistJewel,,,yes,,yes,yes,99,,4-5,no,no
+1107,Solid Rock Jewel,Solid Rock Jewel,Solid Rock Jewel,如山珠,Solid Rock Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1108,Crisis Jewel,Crisis Jewel,Crisis Jewel,危機珠,Crisis Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1109,Sprinter Jewel,Sprinter Jewel,Sprinter Jewel,爆走珠,Sprinter Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1110,Magazine Jewel,Magazine Jewel,Magazine Jewel,弾倉珠,Magazine Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1111,Scarfing Jewel,Scarfing Jewel,Instant Meal Jewel,迅食珠,Scarfing Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1112,Carving Jewel,Carving Jewel,ShellCutter Jewel,殻剥珠,Carving Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1113,Flying Jewel,Flying Jewel,Leap Jewel,飛躍珠,Flying Jewel,,,yes,,yes,yes,99,,4-5,no,no
+1114,RapidChargeJewel,RapidChargeJewel,SpeedCharge Jewel,圧縮珠,RapidChargeJewel,,,yes,,yes,yes,99,,4-5,no,no
+1115,Barrage Jewel,Barrage Jewel,Barrage Jewel,流射珠,Barrage Jewel,For Gunners,ガンナー向け,yes,,yes,yes,99,,4-5,no,no
+1116,Giadrome Jewel,Giadrome Jewel,Giadrome Jewel,ギアノスの秘玉,Giadrome Jewel,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1117,Kut-Ku Jewel,Kut-Ku Jewel,Kut-Ku Jewel,怪鳥の秘玉,Kut-Ku Jewel,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1118,Daimyo Jewel,Daimyo Jewel,Daimyo Jewel,盾蟹の秘玉,Daimyo Jewel,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1119,Congalala Jewel,Congalala Jewel,Congalala Jewel,桃毛獣の秘玉,Congalala Jewel,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1120,Rathalos Jewel,Rathalos Jewel,Rathalos Jewel,火竜の秘玉,Rathalos Jewel,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1121,Gravios Jewel,Gravios Jewel,Gravios Jewel,鎧竜の秘玉,Gravios Jewel,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1122,Garuga Jewel,Garuga Jewel,Garuga Jewel,黒狼鳥の秘玉,Garuga Jewel,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1123,Eldr Drgn Tears,Eldr Drgn Tears,Eldr Drgn Tears,古龍の涙,Eldr Drgn Tears,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1124,Lao-Shan Melon,Lao-Shan Melon,Lao Shan Melon,ラオシャンメロン,Lao-Shan Melon,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1125,Eldr Drgn Fossil,Eldr Drgn Fossil,Eldr Drg Fossil,古龍の化石,Eldr Drgn Fossil,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1126,Gypceros Crystal,Gypceros Crystal,Gypceros Crystl,ゲリョスイショウ,Gypceros Crystal,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1127,Rathian Jewel,Rathian Jewel,Rathian Jewel,雌火竜の秘玉,Rathian Jewel,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1128,Teostra Meteor,Teostra Meteor,Teostra Meteor,メテオテスカトル,Teostra Meteor,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1129,ThsandYearForest,ThsandYearForest,Milnm Tree Seed,千年樹の種,ThsandYearForest,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1130,Frozen Meatball,Frozen Meatball,Frozen Meatball,氷結ミートボール,Frozen Meatball,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1131,Buckshot Acorn,Buckshot Acorn,Buckshot Acorn,砲丸どんぐり,Buckshot Acorn,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1132,Cephadrome Melon,Cephadrome Melon,Cephdrome Melon,ドスガレオスイカ,Cephadrome Melon,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1133,Golden Cocoon,Golden Cocoon,Golden Cocoon,金色タママユ,Golden Cocoon,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1134,Amber Egg,Amber Egg,Amber Egg,琥珀のたまご,Amber Egg,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1135,Graviscus Bulb,Graviscus Bulb,Graviscus Bulb,グラビスカス球根,Graviscus Bulb,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1136,Century Walnut,Century Walnut,Century Walnut,百年くるみ,Century Walnut,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1137,Hard Dragonrock,Hard Dragonrock,Hard Dragonrock,堅竜岩,Hard Dragonrock,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1138,Dragonrock+,Dragonrock+,Dragonrock+,上竜岩,Dragonrock+,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1139,Dragonrock,Dragonrock,Dragonrock,竜岩,Dragonrock,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1140,Green Fin,Green Fin,Green Fin,グリーンフィン,Green Fin,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1141,Kut-Ku Cartilage,Kut-Ku Cartilage,Kut-Ku Cartilge,怪鳥のナンコツ,Kut-Ku Cartilage,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1142,Hermitaur Brains,Hermitaur Brains,Hermtaur Brains,ザザミソブイ,Hermitaur Brains,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1143,Congalala Stomch,Congalala Stomch,Congalala Stmch,桃毛獣のセンマイ,Congalala Stomch,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1144,Rathalos Liver,Rathalos Liver,Rathalos Liver,火竜のキモ,Rathalos Liver,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1145,Gravios Giblets,Gravios Giblets,Gravios Giblets,鎧竜のセセリ,Gravios Giblets,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1146,Garuga Drumstick,Garuga Drumstick,Garuga Tendons,黒狼鳥のモミジ,Garuga Drumstick,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1147,Giadrome Thigh,Giadrome Thigh,Giadrome Thigh,ギアノスのモモ,Giadrome Thigh,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1148,Kut-Ku Gizzards,Kut-Ku Gizzards,Kut-Ku Gizzards,怪鳥のスナズリ,Kut-Ku Gizzards,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1149,Daimyo Legs,Daimyo Legs,Daimyo legs,盾蟹のボウニク,Daimyo Legs,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1150,Congalala Innrds,Congalala Innrds,Congalala Steak,桃毛獣のテッポウ,Congalala Innrds,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1151,Rathalos Tongue,Rathalos Tongue,Rathalos Tongue,火竜のタン,Rathalos Tongue,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1152,Gravios Wingtip,Gravios Wingtip,Gravios Wingtip,鎧竜の手羽先,Gravios Wingtip,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1153,GarugaClavclMeat,GarugaClavclMeat,Garuga Skin,黒狼鳥のマツバ,GarugaClavclMeat,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1154,Blango Bacon,Blango Bacon,Blango Bacon,ブランゴのカルビ,Blango Bacon,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1155,Kut-Ku Skin,Kut-Ku Skin,Kut-Ku Skin,怪鳥のカワ,Kut-Ku Skin,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1156,Cephalos Roe,Cephalos Roe,Cephalos Roe,魚竜の白子,Cephalos Roe,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1157,Twstd Bldrm Tsk,Twstd Bldrm Tsk,TwstdBldrmeTusk,大猪のねじれた牙,Twstd Bldrm Tsk,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1158,Rathian Chops,Rathian Chops,Rathian Chops,雌火竜のロース,Rathian Chops,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1159,Purple Crest,Purple Crest,Purple Crest,パープルヘッド,Purple Crest,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1160,GarugaWhiteLiver,GarugaWhiteLiver,Garuga WhtLiver,黒狼鳥の白肝,GarugaWhiteLiver,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1161,Dragonite (L),Dragonite (L),Dragonite(L),竜石【大】,Dragonite (L),Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1162,Dragonite (M),Dragonite (M),Dragonite(M),竜石【中】,Dragonite (M),Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1163,Dragonite (S),Dragonite (S),Dragonite(S),竜石【小】,Dragonite (S),Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1164,Pokke Snowman,Pokke Snowman,Pokke Snowman,ポッケ式雪だるま,Pokke Snowman,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1165,Felyne Crown,Felyne Crown,Felyne Crown,豪華なネコ王冠,Felyne Crown,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1166,GldFlynJewelSwd,GldFlynJewelSwd,GldFlyneJwlSwrd,黄金ネコの宝剣,GldFlynJewelSwd,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1167,Dynasty Vase,Dynasty Vase,Dynasty Vase,王家のマカ古ツボ,Dynasty Vase,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1168,Mysterious Mask,Mysterious Mask,Mysterious Mask,神秘の奇面,Mysterious Mask,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1169,Eldr Drgn Rfrnc,Eldr Drgn Rfrnc,EldrDrgn Scroll,文献【古龍生態】,Eldr Drgn Rfrnc,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1170,AncntCatKingStat,AncntCatKingStat,Anct Flyne Idol,古代ネコ王の石像,AncntCatKingStat,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1171,Blngo Blzrd Ball,Blngo Blzrd Ball,BlangoBlzrdBall,ブランゴの大雪玉,Blngo Blzrd Ball,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1172,Blngo Flrry Ball,Blngo Flrry Ball,BlangoFlrryBall,ブランゴの小雪玉,Blngo Flrry Ball,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1173,Inferior FlynCrn,Inferior FlynCrn,InfriorFlynCrwn,欠けたネコ王冠,Inferior FlynCrn,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1174,Flyn Crwn Frgmnt,Flyn Crwn Frgmnt,FlyneCrwnFrgmnt,ネコ王冠の破片,Flyn Crwn Frgmnt,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1175,Hndlelss Gld Bld,Hndlelss Gld Bld,HndlessGldBlade,柄のない黄金の刃,Hndlelss Gld Bld,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1176,GldBladelessHndl,GldBladelessHndl,GldBldlessHndle,刃のない黄金の柄,GldBladelessHndl,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1177,Bttmlss Old Vase,Bttmlss Old Vase,BttmlessOldVase,底のない古のツボ,Bttmlss Old Vase,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1178,Old Vase Bottom,Old Vase Bottom,Old Vase Bottom,古のツボ底,Old Vase Bottom,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1179,Holed Shaka Mask,Holed Shaka Mask,HoledShklakaMsk,穴の開いた奇面,Holed Shaka Mask,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1180,Shakalaka Stone,Shakalaka Stone,Shakalaka Stone,奇面族の輝石,Shakalaka Stone,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1181,Torn Old Book,Torn Old Book,Torn Old Book,破かれた古書,Torn Old Book,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1182,Old Book Scrap,Old Book Scrap,Old Book Scrap,古書の切れ端,Old Book Scrap,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1183,TaillessCatStatu,TaillessCatStatu,TailessFlynIdol,尾のないネコ石像,TaillessCatStatu,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1184,BrokenStoneTail,BrokenStoneTail,DetachedStnTail,折れた石の尾,BrokenStoneTail,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1185,Popo Dandelion,Popo Dandelion,Popo Dandelion,タンポポポ,Popo Dandelion,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1186,Velociprey Lily,Velociprey Lily,VelocipreyLilly,ランポスズラン,Velociprey Lily,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1187,Monoblos Rose,Monoblos Rose,Monoblos Rose,モノブローズ,Monoblos Rose,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1188,Chameleos' Purse,Chameleos' Purse,Chameleos'Purse,オオナズナ,Chameleos' Purse,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1189,Peach Clover,Peach Clover,HndrdLeafClover,百葉のクローバー,Peach Clover,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1190,Gravibiscus,Gravibiscus,Gravibiscus,グラビスカス,Gravibiscus,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1191,Shakalaka Ranka,Shakalaka Ranka,Shakalakashroom,チャチャブランカ,Shakalaka Ranka,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1192,Wyvern Grass,Wyvern Grass,Wyvern Grass,竜草,Wyvern Grass,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1193,Glitter Mushroom,Glitter Mushroom,Pikashrooms,キラメキノコ,Glitter Mushroom,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1194,Shining Jellyfsh,Shining Jellyfsh,JellyfishFlower,カガヤキクラゲ,Shining Jellyfsh,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1195,Bright Mushroom,Bright Mushroom,Bright Mushroom,マブシイタケ,Bright Mushroom,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1196,Glittr Capshroom,Glittr Capshroom,Glitter Capshrm,ピッカエリンギ,Glittr Capshroom,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1197,Skin Care Shroom,Skin Care Shroom,SkinCare Shroom,美白ダケ,Skin Care Shroom,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1198,Beauty Shroom,Beauty Shroom,Beauty Shroom,ウツクシメジ,Beauty Shroom,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1199,ShimmeringShroom,ShimmeringShroom,Pearlshrooms,ギラリエリンギ,ShimmeringShroom,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1200,Wyvernshroom,Wyvernshroom,Wyvernshroom,竜茸,Wyvernshroom,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1201,Blangonga Apple,Blangonga Apple,Blangonga Apple,ドドブラリンゴ,Blangonga Apple,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1202,Kelbi Nuts,Kelbi Nuts,Kelbi Nuts,ケルピーナッツ,Kelbi Nuts,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1203,Cephalos Wtrmeln,Cephalos Wtrmeln,CephalosWtrmeln,ガレオスイカ,Cephalos Wtrmeln,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1204,Khezu Seed,Khezu Seed,Khezu Seed,フルフルの実,Khezu Seed,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1205,Writhe Nut,Writhe Nut,Writhe Nut,のたうちドングリ,Writhe Nut,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1206,Basarios Peach,Basarios Peach,Basarios Peach,バサルモモ,Basarios Peach,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1207,Shakalaka Squash,Shakalaka Squash,ShaklakaPumpkin,チャチャカボチャ,Shakalaka Squash,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1208,Lady Mackerel,Lady Mackerel,Lady Mackerel,お嬢サバ,Lady Mackerel,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1209,Angler Snapper,Angler Snapper,Angler Snapper,鯛公望,Angler Snapper,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1210,Yokotuna,Yokotuna,Bluefin Tuna,ヨコツナ,Yokotuna,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1211,Nobunaga Bonito,Nobunaga Bonito,Beach Herring,ノブナガツオ,Nobunaga Bonito,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1212,Goldendrome,Goldendrome,Goldfishdrome,ドス金魚,Goldendrome,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1213,Amateratuna,Amateratuna,Amatera Whiting,アマテラキス,Amateratuna,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1214,Brilliant Aji,Brilliant Aji,Song Mackerel,アジソン,Brilliant Aji,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1215,Chuck Mackerel,Chuck Mackerel,Chuck Mackerel,サバスチャン,Chuck Mackerel,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1216,Victory Fish,Victory Fish,Victoryfish,勝海フィッシュ,Victory Fish,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1217,Plump Goldenfish,Plump Goldenfish,Lg Goldenfish,オオゼキンギョ,Plump Goldenfish,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1218,Hideyoshi Ambrjk,Hideyoshi Ambrjk,Great Amberjack,カンパチ秀吉,Hideyoshi Ambrjk,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1219,Silverdrome,Silverdrome,Silverdrome,ドス銀魚,Silverdrome,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1220,Susanofish,Susanofish,Susanofish,スサノウオ,Susanofish,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1221,Pharr Yellowtail,Pharr Yellowtail,FrryYellow-tail,ファーブリ,Pharr Yellowtail,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1222,Large Wyvernfish,Large Wyvernfish,Lrg Wyvernfish,竜魚【大】,Large Wyvernfish,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1223,Med Wyvernfish,Med Wyvernfish,Med Wyvernfish,竜魚【中】,Med Wyvernfish,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1224,Small Wyvernfish,Small Wyvernfish,Sm Wyvernfish,竜魚【小】,Small Wyvernfish,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1225,Pickaxe Fish,Pickaxe Fish,Pickaxe Fish,ピッケル活魚,Pickaxe Fish,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1226,Bugnet Fish,Bugnet Fish,Bugnet Fish,虫あみ活魚,Bugnet Fish,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1227,Cooler Fish,Cooler Fish,Cooler Fish,クーラー活魚,Cooler Fish,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1228,Pokke Quartz,Pokke Quartz,Pokke Quartz,ポッケクォーツ,Pokke Quartz,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1229,Telos Stone,Telos Stone,Telos stone,テロストーン,Telos Stone,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1230,Sekumaeya Pearl,Sekumaeya Pearl,Sekumaeya Pearl,セクメーアパール,Sekumaeya Pearl,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1231,Schradite,Schradite,Schradite,シュレイドタイト,Schradite,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1232,Minegarde Night,Minegarde Night,Minegardite,ミナガルデナイト,Minegarde Night,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1233,Lateobrium,Lateobrium,Lateobrium,ラティオベリル,Lateobrium,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1234,Mezeporter Topaz,Mezeporter Topaz,Mezeporu Topaz,メゼポルトパーズ,Mezeporter Topaz,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1235,Furiamond,Furiamond,Furiamond Ore,フラヒヤモンド,Furiamond,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1236,Jumboite,Jumboite,Jumboite,ジャンボカイト,Jumboite,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1237,Dragokurium,Dragokurium,Dragokurium,ドラコクルムアイ,Dragokurium,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1238,Liber Ruby,Liber Ruby,Liber Ruby,リーヴェルビー,Liber Ruby,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1239,Kokotoite,Kokotoite,Kokotoite,ココットライト,Kokotoite,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1240,Dondorumin,Dondorumin,Dondorumin,ドンドルマリン,Dondorumin,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1241,GrtForestCrystal,GrtForestCrystal,Forest Crystal,樹海結晶,GrtForestCrystal,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1242,Wyvern Ore,Wyvern Ore,Wyvern Ore,竜鉱石,Wyvern Ore,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1243,Pure Wyvern Ore,Pure Wyvern Ore,Pure Wyvern Ore,竜輝石,Pure Wyvern Ore,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1244,Pillow Bug,Pillow Bug,Pillow Bug,ムラサキシキブン,Pillow Bug,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1245,Cleopatris,Cleopatris,Cleo Butterfly,クレオパピヨン,Cleopatris,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1246,GiantStagBeetle,GiantStagBeetle,Grand Beetle,オオオクワガタ,GiantStagBeetle,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1247,Ghostly Cicada,Ghostly Cicada,Ghostly Cicada,ヨウキヒグラシ,Ghostly Cicada,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1248,Celeb Cicada,Celeb Cicada,Celeb Cidada,セミセレブ,Celeb Cicada,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1249,Athena Beetle,Athena Beetle,Athena Beetle,オノノコバチ,Athena Beetle,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1250,Hornfly Princess,Hornfly Princess,PrincessBttrfly,アゲハプリンセス,Hornfly Princess,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1251,Princess Scarab,Princess Scarab,Princess Scarab,ヒミコガネ,Princess Scarab,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1252,Marilyn Btterfly,Marilyn Btterfly,MarilynBtterfly,マリリンモンシロ,Marilyn Btterfly,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1253,Cricket of Troy,Cricket of Troy,Cricket of Troy,ヘレンオケラー,Cricket of Troy,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1254,Cutie Crawler,Cutie Crawler,Cutie Crawler,ワームキューレ,Cutie Crawler,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1255,Lovely Locust,Lovely Locust,Lovely Locust,イナゴージャス,Lovely Locust,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1256,Killer Venus,Killer Venus,Killer Venus,キラービーナス,Killer Venus,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1257,Hornfly Prince,Hornfly Prince,PrinceButterfly,アゲハプリンス,Hornfly Prince,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1258,Rathian Fly,Rathian Fly,Rathian Fly,竜虫【雌】,Rathian Fly,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1259,Rathalos Fly,Rathalos Fly,Rathalos Fly,竜虫【雄】,Rathalos Fly,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
+1260,Embroidered Flag,Embroidered Flag,EmbroideredFlag,刺繍入りの登頂旗,Embroidered Flag,Treasure,トレジャー,no,quest-only: Treasure tag,no,no,0,,,no,no
