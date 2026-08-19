@@ -1,4 +1,4 @@
-<!-- MHFU Save Viewer — v0.9 -->
+<!-- MHFU Save Viewer — v1.0 beta -->
 # MHFU Save Viewer
 
 A **read-only** viewer for Monster Hunter Freedom Unite / Portable 2nd G character saves.
@@ -6,6 +6,10 @@ Drop your raw **MHP2NDG.BIN** and the viewer decrypts it in your browser, or dro
 already-decrypted character save. Either way it shows what the file holds — hunt counts, the
 per-subspecies **size records** the game stores but never displays, and your progress toward
 the 48 Guild-Card Awards.
+
+**v1.0 is a beta.** Every section now reads live from the save, but the tool is not finished: 38 of
+the 48 awards show earned/not without reconstructed progress, and per-piece equipment detail
+(decorations, sharpness, skills, upgrade path) is still to come.
 
 This tool **never writes, edits, re-encrypts, or downloads** your save. It only reads and displays,
 and runs entirely in your browser; your save never leaves your machine. Decryption happens once, in
@@ -16,16 +20,27 @@ memory.
 
 ## Files
 
+Everything the website needs lives in `docs/` — that folder is what GitHub Pages publishes, and it
+holds nothing else:
+
 ```
-index.html      markup / layout (loads decryptor.js before app.js)
-styles.css      MHFU-styled theme (gold outline frames, translucent panels, game screenshot bg)
-decryptor.js    embedded "SaveTools" decryptor — raw MHP2NDG.BIN → character slots (self-contained)
-app.js          save parsing + all rendering (DATA / SLOTS offset tables live here)
-images/         static assets — mhfu-background.png is the background screenshot
+index.html                    markup / layout (loads decryptor.js before app.js)
+styles.css                    MHFU-styled theme (gold outline frames, translucent panels, screenshot bg)
+decryptor.js                  embedded "SaveTools" decryptor — raw MHP2NDG.BIN → character slots
+app.js                        save parsing + all rendering (DATA / SLOTS offset tables live here)
+item_master_table.csv         every item: 5 name sets, tag, storable, decoration, rarity, grindable
+equipment_full_table.csv      every weapon and armour piece: name, class, rarity, attack, flags
+item_data_fallback.js         generated from the item CSV — used only when opened over file://
+equipment_data_fallback.js    generated from the equipment CSV — same purpose
+images/                       static assets — mhfu-background.png is the background screenshot
 ```
 
-Open `index.html` directly in a browser — no build step, no server needed.
-Technical detail (offsets, proofs, open items) lives in `INTERNAL_NOTES.md` at the project root.
+Open `index.html` directly in a browser — no build step, no server needed. `app.js` fetches the two
+CSVs at startup; browsers block that over `file://`, so the two `_fallback.js` files carry the same
+data as plain scripts and are read only when the fetch fails. On a hosted copy they are unused.
+
+Outside `docs/`: `INTERNAL_NOTES.md` (offsets, proofs, open items) and `GENERATED_FILES.md` (which
+files are generated from which source, and what to regenerate after an edit).
 
 ## Use it
 
@@ -55,8 +70,8 @@ way but is not yet confirmed against a JP-region BIN.
 
 ## Interface
 
-A left sidebar switches sections. **Hunter, Quests, Monsters, Awards** and **Advanced** are
-functional; **Items** and **Equipment** are placeholders for later passes. The background is a
+A left sidebar switches sections — **Hunter, Quests, Monsters, Items, Equipment, Awards** and
+**Advanced**. All seven read live from the save. The background is a
 static in-game screenshot; the sidebar and content sit in outlined frames over it. Any scrollable
 list can be dragged (click-drag, axis-locked) as well as scrolled with the wheel.
 
@@ -121,6 +136,46 @@ Columns:
 **Size & crown columns** off collapses the view to **# → Monster → Slain → Captured**.
 The Rare Species Report view shows **# → Monster → Slain → Captured → Total → ✓/✗**.
 
+### Items
+
+Three collapsible sections, all collapsed by default, each with its counts in the header so you can
+read them without expanding anything. A search box filters all three by item name or id, and a
+dropdown picks which of the five **name sets** to display (EU, US, JP+English patch, Japanese, MHFU
+Complete) — it defaults to whichever matches the region the save was decrypted from.
+
+- **Item Box — 1000 slots** and **Item Pouch — 24 slots.** Every slot in on-screen order (the box as
+  10 pages of 100, the pouch as 3 pages of 8), with a page header every page-worth of slots. Slots
+  are not packed in the save, so occupied slots can sit after empty ones; both lists walk every slot.
+  Columns are slot number, id, item (with its tag chip where it has one) and count. Empty slots read
+  *— empty —*; a count of 255 reads **infinite** (only Normal S Lv1 stores it); an id that names no
+  item reads *Unknown (id N)* in red.
+- **Every item at 99 — tracker.** All 1,025 storable items, decorations included, in catalogue order:
+  id, rarity, name, amount held and ✓/✗. Amount reads as full stacks plus remainder (`99x2 + 52`),
+  counting box and pouch together, with a note when part of it sits in the pouch. The header reads
+  `X / 1,025 items at 99`.
+
+  Filters: **All obtainable items**, **Missing only (under 99)**, **Grindable items** and
+  **Grindable — missing only**, plus checkboxes to **hide decorations** and **hide low rarity (1–3)**.
+  The grindable list is the 675 farmable materials; in that mode the header switches to
+  `X / 675 grindable items at 99`.
+
+  Because more than 99 of an item means more than one slot, counts are shown per slot in the box
+  listing and totalled only here.
+
+### Equipment
+
+Every slot of the **1000-slot equipment box** in slot order, paged every 100 like the item box, with
+a search box and a category dropdown. Columns: slot, category, id, name, class, rarity, attack and a
+**G** flag for G-rank weapons. The header shows slots used, G-weapons held and rarity-9–10 armour
+held — the same numbers awards 2V and 2W count — with per-category chips beneath it.
+
+Empty slots read *— empty —*; a category byte above 6 reads *Unknown category N* and an unrecognised
+id reads *Unknown (id N)*, both in red. Attack is a weapon value: the equipment table carries no
+defence figures, so armour rows show a dash there.
+
+Each record's bytes `+4`..`+11` are still undecoded — presumed decorations and upgrade state. That
+is the per-piece detail planned for a later pass.
+
 ### Awards — Completion
 
 All 48 Guild-Card Awards in card order, with `X / 48 complete` in the header and an
@@ -180,12 +235,25 @@ set the data, clear one quest, read the game's own verdict.
 
 ## Status
 
-**v0.9.** Adds the **earned-flag backstop for all 48 awards** — every row now reads the game's own
-verdict from `0x67400`, so awards whose progress isn't reconstructed are still correct. Adds live
+**v1.0 (beta).** Adds the **Items** tab — the full 1000-slot item box, the 24-slot pouch, and a
+tracker for holding **every one of the 1,025 storable items at 99**, with grindable-only and
+missing-only filters, decoration and low-rarity toggles, and five selectable name sets. Adds the
+**Equipment** tab: the whole 1000-slot equipment box with name, class, rarity and attack resolved
+per piece. The last two placeholder tabs are gone, so all seven sections now read live from the save.
+
+Under the hood, item and equipment facts moved out of `app.js` into their CSVs — rarity and the
+grindable list became columns of `item_master_table.csv`, and each CSV gained a generated offline
+fallback so names still resolve when the page is opened straight off a disk.
+
+Still beta: 38 of the 48 awards show earned/not without reconstructed progress, per-piece equipment
+detail is not decoded, and the JP decryption path is unconfirmed against a real JP BIN.
+
+**v0.9.** Added the **earned-flag backstop for all 48 awards** — every row reads the game's own
+verdict from `0x67400`, so awards whose progress isn't reconstructed are still correct. Added live
 progress for four more: **1G King's Crown**, **1H Miniature Crown**, **1O Rare Species Report** and
-**1P Ecology Research Report**. Completion is now *requirement met OR earned flag*, with a note on
-rows earned before the save regressed. The Awards tab gains an All / Incomplete-only filter and
-**See details →** links into the tab holding the data; the Monsters tab gains **Subspecies only**
+**1P Ecology Research Report**. Completion became *requirement met OR earned flag*, with a note on
+rows earned before the save regressed. The Awards tab gained an All / Incomplete-only filter and
+**See details →** links into the tab holding the data; the Monsters tab gained **Subspecies only**
 and **Rare Species Report** views, a per-view stat line, and a hunted ✓/✗ column.
 
 **v0.8.** Added the **Awards — Completion** tab: all 48 awards in card order, six with live bars
@@ -201,12 +269,16 @@ quest-count internal-byte-order table.
   crown / min-size / max-size tags, across five views.
 - **Hunter** — name, playtime, funds, weapon-usage chart, guild-card greeting, Felyne comrades.
 - **Quests** — the 7 quest tallies.
+- **Items** — the 1000-slot box, the 24-slot pouch, and the x99 tracker for all 1,025 storable items.
+- **Equipment** — the 1000-slot equipment box with per-piece name, class, rarity and attack.
 - **Awards — Completion** — all 48, earned/not for every one, live progress for 10.
 - **Advanced** — the 90-slot offset map plus the weapon- and quest-count byte-order tables.
 
-**What's still placeholder** (needs byte-address mapping):
-- **Items** and **Equipment** tabs.
+**What's still missing:**
+- Per-piece equipment detail — decorations, sharpness, skills, upgrade path (record bytes `+4`..`+11`
+  are undecoded).
 - The other 38 awards, which show earned/not but no reconstructed progress.
+- Exact rarity for decoration jewels (shown as `4-5`) and the true cap on the five hard-capped items.
 
 ## Credits
 
@@ -218,6 +290,7 @@ quest-count internal-byte-order table.
 - **ryin77** — GameFAQs crown-size % guide (legal ranges).
 - **willthehunter** — MH-Freedom Quest Editor size tables.
 - **Guild Card Guide** (GameFAQs FAQ 55732) — award names and requirement text.
-- Offset & crown mapping done by edit-test on an untouched JP (Daigo) save.
+- **atwiki** massive MHP2G database in japanese.
+- Offset & crown mapping done by edit-test on my own savefiles and on multiple other dlsaves from gamefaqs used for cross-checking.
 
 Not affiliated with Capcom. For personal, offline use.
