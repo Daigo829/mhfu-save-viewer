@@ -275,6 +275,10 @@
   let itemSearch = "";
   let itemNameSet = null;          // null = auto from the decrypted region
   let itemOpen = { box: false, pouch: false, track: false };
+  // Per-section sort, each remembered independently. "slot" is the stored order
+  // (id order for the tracker); any other value flattens the list — page headers
+  // and empty slots only make sense in stored order.
+  let itemSort = { box: "slot", pouch: "slot", track: "slot" };
   // Tracker opens on the farming view: what you still have to grind for, with the
   // decorations and the buyable / tradeable shortcuts filtered out.
   let trackFilter = "grindMissing"; // all | missing | grind | grindMissing
@@ -980,11 +984,33 @@
     return nm !== null && nm.toLowerCase().indexOf(q) >= 0;
   }
 
+  // Sort comparators shared by the box, the pouch and the tracker. "amount" ranks
+  // by true total held, so 99x2 + 52 outranks 99x1 and unheld items sink; ties and
+  // unheld rows fall back to name so the order is stable rather than arbitrary.
+  function sortRows(rows, mode, nameOf, amountOf) {
+    const byName = (a, b) => String(nameOf(a) || "").localeCompare(String(nameOf(b) || ""));
+    if (mode === "nameAsc") return rows.sort(byName);
+    if (mode === "nameDesc") return rows.sort((a, b) => byName(b, a));
+    if (mode === "amtDesc") return rows.sort((a, b) => (amountOf(b) - amountOf(a)) || byName(a, b));
+    if (mode === "amtAsc") return rows.sort((a, b) => (amountOf(a) - amountOf(b)) || byName(a, b));
+    return rows;
+  }
+
   // One continuous table with a page header row every page-worth of slots.
   // While searching, empty slots drop out and only pages with hits are headed.
+  // Once sorted, both go: page numbers mean nothing in a reordered list, and a
+  // sorted run of ~950 empty rows is noise.
   function itemBodyHTML(struct, recs, q, opts) {
     const cols = (opts && opts.chk) ? 5 : 4;
+    const sort = (opts && opts.sort) || "slot";
     const out = [];
+    if (sort !== "slot") {
+      const rows = sortRows(recs.filter(r => r.id && (!q || itemMatches(r, q))), sort,
+        r => itemNameFor(r.id), r => (r.count === ITEM_INFINITE ? Infinity : r.count));
+      rows.forEach(r => out.push(itemRowHTML(r, opts)));
+      if (!out.length) out.push('<tr class="item-empty"><td colspan="' + cols + '">No matching items in this section.</td></tr>');
+      return out.join("");
+    }
     for (let p = 0; p * struct.page < struct.slots; p++) {
       const chunk = recs.slice(p * struct.page, (p + 1) * struct.page);
       const shown = q ? chunk.filter(r => itemMatches(r, q)) : chunk;
@@ -1005,7 +1031,7 @@
     const grindMode = trackFilter === "grind" || trackFilter === "grindMissing";
     const missingOnly = trackFilter === "missing" || trackFilter === "grindMissing";
     const inSet = (id) => grindMode ? itemIsGrindable(id) : itemStorable(id);
-    const out = [];
+    const rows = [];
     let at99 = 0, held = 0;
     for (let id = 1; id <= itemMaxId; id++) {
       if (!inSet(id)) continue;
@@ -1024,12 +1050,17 @@
         ? ' <span class="item-note">incl. ' + num(h.pouch) + ' in pouch</span>'
         : (h && h.pouch > 0 && !h.box ? ' <span class="item-note">in pouch</span>' : "");
       const rar = itemRarity(id);
-      out.push('<tr' + (h ? "" : ' class="track-none"') + '><td class="num idcol">' + id +
-        '</td><td class="num rarcol">' + (rar || "&mdash;") + '</td><td class="iname">' +
-        (nm === null ? '<span class="item-bad">Unknown</span>' : esc(nm)) +
-        '</td><td class="num">' + stackText(h) + note + '</td>' +
-        '<td class="chkcell">' + chkCell(ok) + '</td></tr>');
+      rows.push({
+        id: id, name: nm, total: h ? (h.inf ? Infinity : holdTotal(h)) : 0,
+        html: '<tr' + (h ? "" : ' class="track-none"') + '><td class="num idcol">' + id +
+          '</td><td class="num rarcol">' + (rar || "&mdash;") + '</td><td class="iname">' +
+          (nm === null ? '<span class="item-bad">Unknown</span>' : esc(nm)) +
+          '</td><td class="num">' + stackText(h) + note + '</td>' +
+          '<td class="chkcell">' + chkCell(ok) + '</td></tr>',
+      });
     }
+    sortRows(rows, itemSort.track, r => r.name, r => r.total);
+    const out = rows.map(r => r.html);
     if (!out.length) out.push('<tr class="item-empty"><td colspan="5">No items match.</td></tr>');
     $("trackBody").innerHTML = out.join("");
     const denom = grindMode ? itemGrindTotal : ITEM_STORABLE_TOTAL;
@@ -1042,8 +1073,8 @@
     const q = itemSearch.trim().toLowerCase();
     const box = readItemSlots(ITEM_BOX), pouch = readItemSlots(ITEM_POUCH);
     const hold = itemHoldings(box, pouch);
-    $("boxBody").innerHTML = itemBodyHTML(ITEM_BOX, box, q, { chk: true, hold: hold });
-    $("pouchBody").innerHTML = itemBodyHTML(ITEM_POUCH, pouch, q);
+    $("boxBody").innerHTML = itemBodyHTML(ITEM_BOX, box, q, { chk: true, hold: hold, sort: itemSort.box });
+    $("pouchBody").innerHTML = itemBodyHTML(ITEM_POUCH, pouch, q, { sort: itemSort.pouch });
     renderTracker(hold, q);
 
     const stat = (recs, struct) => {
@@ -1059,6 +1090,7 @@
       '<div>' + num(new Set(all.map(r => r.id)).size) + ' distinct items held</div>';
 
     ["box", "pouch", "track"].forEach(k => {
+      $(k + "Sort").value = itemSort[k];
       const open = itemOpen[k];
       $(k + "Frame").classList.toggle("hidden", !open);
       const btn = $(k + "Toggle");
@@ -1391,7 +1423,11 @@
 
     $("itemSearch").addEventListener("input", e => { itemSearch = e.target.value; renderItems(); });
     $("itemNameSet").addEventListener("change", e => { itemNameSet = e.target.value || null; renderItems(); });
-    ["box", "pouch", "track"].forEach(k => $(k + "Toggle").addEventListener("click", () => { itemOpen[k] = !itemOpen[k]; renderItems(); }));
+    ["box", "pouch", "track"].forEach(k => {
+      $(k + "Toggle").addEventListener("click", () => { itemOpen[k] = !itemOpen[k]; renderItems(); });
+      $(k + "Sort").addEventListener("change", e => { itemSort[k] = e.target.value; renderItems(); });
+      $(k + "SortReset").addEventListener("click", () => { itemSort[k] = "slot"; renderItems(); });
+    });
     $("trackFilter").addEventListener("change", e => { trackFilter = e.target.value; renderItems(); });
     $("trackHideDeco").addEventListener("change", e => { trackHideDeco = e.target.checked; renderItems(); });
     $("trackHideLowRar").addEventListener("change", e => { trackHideLowRar = e.target.checked; renderItems(); });
