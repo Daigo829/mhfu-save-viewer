@@ -1,4 +1,4 @@
-/*MHFU Save Viewer — v0.9*/
+/*MHFU Save Viewer — v1.0 beta*/
 :root {
   --bg: #140d0a;
   --accent: #c9963c;
@@ -364,3 +364,61 @@ input[type=file] { display: none; }
 .from-award:hover { border-color: var(--accent); color: #f0d79a; }
 .montbl.mode-rsr .szcol { display: none; }
 .montbl:not(.mode-rsr) .c-huntchk { display: none; }
+
+/* ---- v1.0: items tab (box + pouch) ---- */
+.item-block { margin-bottom: 18px; }
+.item-toggle {
+  display: flex; align-items: baseline; gap: 8px; width: 100%; cursor: pointer; text-align: left;
+  background: rgba(20,13,10,.5); border: 1px solid var(--accent-soft); border-bottom: none;
+  color: var(--accent); font: inherit; font-size: 13px; letter-spacing: .03em; padding: 9px 12px;
+}
+.item-toggle:hover { border-color: var(--accent); color: #f0d79a; }
+.item-toggle .tw { font-size: 11px; color: var(--accent); }
+.item-toggle .item-sub { margin-left: auto; color: var(--muted); font-size: 11.5px; letter-spacing: 0; }
+.itemtbl { width: 100%; }
+.itemtbl td.iname { text-align: left; padding-left: 1ch; white-space: normal; }
+.itemtbl td.idcol { color: var(--muted); font-size: 11.5px; }
+.itemtbl th:nth-child(3) { text-align: left; padding-left: 1ch; }
+.itemtbl tr.item-empty td { color: var(--dead); font-style: italic; }
+.itemtbl tr.item-page td {
+  background: rgba(202,161,83,.08); color: var(--accent); font-size: 10.5px; text-transform: uppercase;
+  letter-spacing: .06em; text-align: left; padding-left: 1ch;
+}
+.itemtbl tr.item-page .item-page-range { color: var(--muted); text-transform: none; letter-spacing: 0; margin-left: 10px; }
+.badge.tag { background: rgba(202,161,83,.16); color: var(--muted); font-weight: 600; }
+.item-inf { color: var(--blue); font-weight: 700; }
+.item-bad { color: var(--red); font-weight: 700; }
+
+/* ---- items: 99+ column and x99 tracker ---- */
+.itemtbl th.chkcol { text-align: center; }
+.itemtbl td.chkcell { text-align: center; }
+.itemtbl tr.track-none td { color: var(--dead); }
+.itemtbl tr.track-none td.iname { color: var(--muted); }
+.item-note { color: var(--muted); font-size: 11px; margin-left: 6px; }
+.track-controls {
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  padding: 10px 12px; border-bottom: 1px solid var(--accent-soft);
+}
+
+.itemtbl td.rarcol { color: var(--muted); font-size: 11.5px; }
+
+/* ---- equipment box listing ---- */
+.eqtbl td.ecat, .eqtbl td.ecls { text-align: left; padding-left: 1ch; color: var(--muted); font-size: 11.5px; }
+.eqtbl th:nth-child(2), .eqtbl th:nth-child(4), .eqtbl th:nth-child(5) { text-align: left; padding-left: 1ch; }
+#equipChips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+
+/* ---- tracker help: two collapsed explainers above the table ---- */
+.track-help { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-bottom: 1px solid var(--accent-soft); }
+.help-item > summary {
+  cursor: pointer; list-style: none; color: var(--accent); font-size: 12px; letter-spacing: .02em;
+  padding: 4px 0; display: flex; align-items: baseline; gap: 7px;
+}
+.help-item > summary::-webkit-details-marker { display: none; }
+.help-item > summary:hover { color: #f0d79a; }
+.help-item > summary .tw { font-size: 10px; }
+.help-item[open] > summary .tw { transform: rotate(90deg); }
+.help-item > summary .tw { display: inline-block; transition: transform .12s ease; }
+.help-item > p {
+  margin: 0 0 8px 17px; max-width: 78ch; color: var(--muted); font-size: 12px; line-height: 1.55;
+  text-wrap: pretty;
+}
