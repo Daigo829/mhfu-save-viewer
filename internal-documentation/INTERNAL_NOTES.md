@@ -1,17 +1,17 @@
 # MHFU Save Viewer — internal notes
 
 Technical reference for the viewer. Not part of the website; nothing here is
-shipped in `uploads/docs/`. Everything below is what the code in `app.js` and
-`decryptor.js` actually reads, as of **v0.9**.
+shipped in `docs/`. Everything below is what the code in `app.js` and
+`decryptor.js` actually reads, as of **v1.0 beta**.
 
 All offsets are into a **decrypted character save**: 438,528 bytes (`0x6B100`).
 All multi-byte values are **little-endian**. The viewer is read-only — it never
 writes, re-encrypts, or downloads.
 
-Provenance note: the pre-v0.9 offsets below are transcribed from the shipping
+Provenance note: the pre-v1.0 offsets below are transcribed from the shipping
 code, not from their original ground-truth files (those are not in this
-project). The v0.9 award offsets carry their proofs, which are in
-`uploads/v0.9/`.
+project). The v1.0 award offsets carry their proofs, which are in
+`uploads/v1.0/`.
 
 ---
 
@@ -108,14 +108,72 @@ On-screen display order is `[0,5,1,2,6,3,4]`.
 
 Equipment box: `0x00A8`, 1000 records × 12 bytes. `+0` non-zero = occupied,
 `+1` category (0 legs, 1 head, 2 body, 3 arms, 4 waist, 5 blademaster weapon,
-6 gunner weapon), `+2` u16 item ID. Category > 6 is treated as corrupt/cheated
-and skipped. IDs are resolved against `equipment_full_table.csv`, with an
-embedded fallback table (255 G-weapons, 532 rarity IDs) so `file://` opens work
-when the fetch is blocked.
+6 gunner weapon), `+2` u16 item ID. **Bytes `+4`..`+11` are undecoded** —
+presumed decoration slots and upgrade state; the Equipment tab does not show them.
+
+IDs resolve against `equipment_full_table.csv` (`cat_code:id` key) for name,
+class, rarity, the G-weapon flag (award 2V), the rarity-9/10 flag (award 2W) and
+`attack_display`. **The table has no defence column**, so armour rows show a dash
+in the Attack column. Category > 6 renders as *Unknown category N* and resolves
+no row; an id absent from the table renders as *Unknown (id N)*. Awards 2V/2W and
+the Equipment listing read the same table — one loader, no second source.
+
+Offline: `equipment_data_fallback.js` is generated from the CSV and loaded by a
+`<script>` tag, since `file://` blocks the fetch. It carries 3,600 rows
+(255 G-weapons; 1,166 rarity-9/10 rows, of which 532 are armour — `scanBox`
+counts armour only).
 
 ---
 
-## 4. Awards (v0.9)
+## 3.1 Item box and pouch (v1.0)
+
+Both structures share one 4-byte record: `+0` u16 item ID (0 = empty),
+`+2` u16 count.
+
+| Structure | Base | Slots | On-screen |
+|---|---|---|---|
+| Item box | `0x2F88` | 1000 | 10 pages × 100 |
+| Item pouch | `0x3F28` | 24 | 3 pages × 8 |
+
+**Slots are not packed.** Occupied slots can sit after empty ones, so both lists
+walk every slot rather than stopping at the first gap. Slot order *is* on-screen
+order.
+
+**Count 255 = infinite**, not a quantity — only Normal S Lv1 (id 96) stores it.
+Anything above 99 in a single slot is otherwise impossible: 99 is the stack cap,
+so holding more than 99 of an item means more than one slot.
+
+Known anomaly: the Daigo-JP save holds id **65535** in box slot 981, which names
+no item; the viewer renders it as *Unknown (id 65535)* rather than hiding it.
+
+### 3.2 The x99 tracker
+
+Denominator is **1,025 storable items** — every item that can sit in the box or
+pouch, decorations included. The 235 quest-only / consumed / not-real items are
+excluded (201 Supply/Account/Treasure, 31 consumed books, 3 non-items: 465 dummy,
+875 Wyvern, 128 No Coating).
+
+Holdings are counted **across box and pouch combined**; an item in the pouch is
+held. The amount reads as full stacks plus remainder (`99x2 + 52`).
+
+Five items are **hard-capped** and can never reach 99: 816 Wyverian Harp, 912,
+913, 914 Elder Thank You, 915. Holding **one or more** of them satisfies the
+goal (user's rule, 2026-08-18), and they stay in the 1,025 denominator. The cap
+itself is assumed to be 2 and is **unproven**.
+
+The **Grindable** filter lists the 675 ids in `MHFU_farmable_materials.csv`
+as-is; its denominator is counted from the table at load time. **Rarity** comes
+from `MHFU_obtainable_items.xlsx`; where that source publishes none the value is
+`4-5` (all such items are rarity 4 or 5), so the *hide low rarity (1–3)* filter
+never touches them. Item **902 Legend Coin G** is pinned to rarity 5
+(user-confirmed). Decoration jewels are all `4-5` for now.
+
+Both spreadsheets live **outside the repository** — see `GENERATED_FILES.md` for
+which generated file comes from which source.
+
+---
+
+## 4. Awards (v1.0)
 
 ### 4.1 Earned-flag bitset — `0x67400`
 
@@ -255,8 +313,8 @@ quest-clear bitfield, per-map counters, training matrices, and renovation flags.
 
 ## 6. Sources
 
-`uploads/v0.9/` holds the four spec files this build was written from:
-`00_V0.9_BUILD_SPEC.txt`, `13_awards_completion_bitset_GROUND_TRUTH.txt`,
+`uploads/v1.0/` holds the four spec files this build was written from:
+`00_V1.0_BUILD_SPEC.txt`, `13_awards_completion_bitset_GROUND_TRUTH.txt`,
 `1G_1H_crowns_BUILD_SPEC.txt`, `1O_rare_species_report_GROUND_TRUTH.txt`,
 `1P_ecology_research_report_GROUND_TRUTH.txt`.
 
