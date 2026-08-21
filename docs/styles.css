@@ -57,6 +57,7 @@ a:hover { color: #f3d998; }
 }
 .drop-panel {
   background: transparent; border: 2px solid var(--accent);
+  background: rgba(39, 34, 32, 0.5); border: 2px solid var(--accent);
   max-width: 560px; width: 100%; padding: 40px 36px; text-align: center;
 }
 .brand-title { font-size: 30px; letter-spacing: .03em; margin: 0 0 8px; }
