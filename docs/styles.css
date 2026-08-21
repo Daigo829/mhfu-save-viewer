@@ -31,7 +31,7 @@ a:hover { color: #f3d998; }
 /* background */
 .bg {
   position: fixed; inset: 0; z-index: 0;
-  background: url("images/mhfu-background.png") center/cover no-repeat;
+  background: url("images/mhfu-background.webp") center/cover no-repeat;
   opacity: .5;
 }
 .bg-overlay {
