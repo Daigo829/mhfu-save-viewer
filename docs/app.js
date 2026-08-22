@@ -741,10 +741,10 @@
     add("Silver Shield", "Clear all 2 Star G-rank Guild Hall Quests");
     add("Gold Shield", "Clear all 3 Star G-rank Guild Hall Quests");
     add("Heaven & Earth Emblem", "Complete all Elder Quests and all Guild Hall Quests (incl. urgents)");
-    add("Ring of Darkness", "Hunt a G-rank Black Fatalis");
-    add("Bracelet of Prominence", "Hunt a G-rank Crimson Fatalis");
-    add("Heavenly Crown", "Hunt a G-rank White Fatalis");
-    add("Golden Fur Boots", "Hunt a G-rank Gold Rajang");
+    add("Ring of Darkness", "Hunt a G-rank Black Fatalis", { bar: [huntTotal(0x424C, 0x4030) > 0 ? 1 : 0, 1] });
+    add("Bracelet of Prominence", "Hunt a G-rank Crimson Fatalis", { bar: [huntTotal(0x4290, 0x4074) > 0 ? 1 : 0, 1] });
+    add("Heavenly Crown", "Hunt a G-rank White Fatalis", { bar: [huntTotal(0x42D6, 0x40BA) > 0 ? 1 : 0, 1] });
+    add("Golden Fur Boots", "Hunt a G-rank Gold Rajang", { bar: [huntTotal(0x42FA, 0x40DE) > 0 ? 1 : 0, 1] });
     add("North Star Diamond", "Hunt an Ukanlos", { bar: [huntTotal(0x42F8, 0x40DC) > 0 ? 1 : 0, 1] });
     add("Monster Hunter's Bracelet", "Clear all Epic Quests in Elder and the Guild Hall");
     add("Fighter's Badge", "Clear all G-rank Training for every monster and weapon");

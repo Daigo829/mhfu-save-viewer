@@ -218,7 +218,7 @@ regenerated is still caught by the requirement side.
 Future intent (not built): a per-award rule, with quest awards using AND and
 equipment awards using OR.
 
-### 4.3 Reconstructed awards — 10 of 48
+### 4.3 Reconstructed awards — 14 of 48
 
 | Code | Award | Reconstruction |
 |---|---|---|
@@ -228,12 +228,32 @@ equipment awards using OR.
 | 1H | Miniature Crown | small crowns per monster / has-size families |
 | 1O | Rare Species Report | 16 variants hunted |
 | 1P | Ecology Research Report | 43 capturable monsters captured |
+| 2I | Ring of Darkness | Black Fatalis hunted: `0x424C` + `0x4030` > 0 (approx, see below) |
+| 2J | Bracelet of Prominence | Crimson Fatalis hunted: `0x4290` + `0x4074` > 0 (approx, see below) |
+| 2K | Heavenly Crown | White Fatalis hunted: `0x42D6` + `0x40BA` > 0 (**exact**) |
+| 2L | Golden Fur Boots | Gold Rajang hunted: `0x42FA` + `0x40DE` > 0 (**exact**) |
 | 2M | North Star Diamond | Ukanlos hunted: `0x42F8` + `0x40DC` > 0 |
 | 2Q | Guild Bouquet | Guild Points `0x6924C` / 1,000,000 |
 | 2V | Wyvernian Artisan Card | G-weapons in box / 50 |
 | 2W | Wyvernian Forger's Mitten | rarity-9/10 armour, min(5) per slot, / 25 |
 
-The other 38 show earned/not from the bitset only.
+The other 34 show earned/not from the bitset only.
+
+#### 2I/2J/2K/2L — G-rank hunt awards (added v0.10)
+
+The slain/captured arrays are cumulative across ranks; the game has no
+per-rank counters. Consequences:
+
+- **White Fatalis** (`0x42D6`) and **Gold Rajang** (`0x42FA`) exist only in
+  G-rank quests, so any-rank > 0 is *exactly* the award requirement.
+- **Black Fatalis** (`0x424C`, HR6 + G) and **Crimson Fatalis** (`0x4290`,
+  village 6★ "A Giant Dragon Invades!", HR5 "Envoy to Disaster", G) can be
+  hunted below G-rank, so the bar may read done while the true requirement
+  is not yet met. Same accepted-risk class as the crown denominators (§4.4):
+  a false-positive bar can only mis-state progress, never the verdict — the
+  earned bit still rules completion for legit saves.
+- Validated against both research saves: Dok-do (award-complete) reads
+  hunted on all four; Ulifly (pre-G, no bits 32–35) reads zero on all four.
 
 ### 4.4 1G / 1H — crowns
 
@@ -289,10 +309,12 @@ Fully proven: the 43-set derived from two award-complete saves (JP and US,
 identical), then confirmed in-game — 42/43 with Diablos missing did not grant,
 43/43 did, via both a real one-horn capture and a hex edit.
 
-### 4.7 Still unmapped — 38 of 48
+### 4.7 Still unmapped — 34 of 48
 
-Everything except {1E, 1F, 2M, 2Q, 2V, 2W} and {1G, 1H, 1O, 1P}. Needs the
-quest-clear bitfield, per-map counters, training matrices, and renovation flags.
+Everything except {1E, 1F, 2M, 2Q, 2V, 2W}, {1G, 1H, 1O, 1P} and {2I, 2J,
+2K, 2L}. Needs the quest-clear bitfield, per-map counters, training
+matrices, and renovation flags. See §7 for what the two-save research has
+established so far.
 
 ---
 
@@ -311,7 +333,58 @@ quest-clear bitfield, per-map counters, training matrices, and renovation flags.
 
 ---
 
-## 6. Sources
+## 6. Two-save research (v0.10)
+
+Method: byte-diff and bit-density analysis between the award-complete save
+("Dok-do", US) and a second partial save ("Ulifly", 106 h, awards bitset
+`17 01 08 00 00 00` = bits 0,1,2,4,8,19). Ulifly source:
+`github.com/ulifly/ULUS10391` (`MHP2NDG.BIN`, decrypts clean via the
+standard path).
+
+### 6.1 CWCheat RAM ↔ save flat mapping
+
+CWCheat codes for `ULUS10391` address live RAM. Mapping is flat:
+
+```
+save_offset = ram_addr − 0x119A240
+```
+
+Verified anchors (all match known fields): awards bitset RAM `0x1201640` →
+`0x67400`; item box `0x119D1C8` → `0x2F88`; pokke/guild/zenny
+`0x1203488/8C/90` → `0x69248/4C/50`. Cheat DBs mined: ULUS10391.txt and
+Saramagrean/CWCheat-Database-Plus- `cheat.db` (the latter adds comrade-skill
+and fondness codes relevant to awards 2Y/2Z — addresses not yet extracted).
+
+### 6.2 What the diff established
+
+| Region | Finding |
+|---|---|
+| `0x3F88..0x3FC7` | 512-bit field. NOT standard quest clears: Dok-do (complete) has unset bits while holding every medal those quests gate; shape vs Ulifly is incompatible with any linear ordering. Best hypothesis: **event/download quest flags** ("All Quests Clear" cheat writes here). |
+| `0x400C` | Confirmed **Reference Monster flags** (seen-species bitset): Dok-do `ff ff ff ff ff ff ff 3f` (62 bits), Ulifly `ff ff ff ff cf fd ff 0f`. Matches the CWCheat "Unlock all monsters in Reference Book". |
+| `0x402C` | Captured array confirmed on both saves (Dok-do starts `9b 02`, Ulifly `17 00` = 23 Rathian). |
+| `0x4300..0x45B8` | ~22-record table (repeating 32-byte units, `00 ff ff ff` padding, sparse u16 data). Differs heavily per save; values look like times/scores (e.g. Dok-do `56 00 99 01 c3 00 f0 01…`). Unidentified — training/farm/kitchen candidate. |
+| `0x45B8+` | Recent-multiplayer-partner cache: UTF-16 name + greeting per save ("jeff@" FR / "dantex" ES). Variable content, same layout. |
+| `0x5180..0x55FF` | Guild-card display cache entries (names UTF-16). Dok-do only. |
+| `~0x5778+` | Growing `[u16][u16][u32 timestamp]` records present only in Ulifly — likely downloaded-event play history. |
+
+Standard quest-clear flags are still **unfound**. Eliminated so far:
+`0x3F88` (§ above) and the item box tail. Remaining candidates:
+`0x4300..0x45B8` table and the unexamined gap `0x4670..0x5180`.
+
+Download quests do not live inside the character slot: FUCTool puts them at
+file offset `0x142300` (after the three slots, 18 slots × `0x22B0`).
+
+### 6.3 Quest ID reference
+
+FUComplete enumeration (450 standard quests): Village Elder 89
+(`m10001–m10511`), Nekoht 59 (`m11001–m11226`), GH Low Rank 87, GH High Rank
+76, GH G 85, Treasure 7 (`m04xxx`), Training 47 (`m20001–20018`,
+`m21001–21023` incl. G-training `m21017–21023`, group `m22001–22006`).
+Saved locally during research; counts needed once the flag bitfield is found.
+
+---
+
+## 7. Sources
 
 `uploads/v1.0/` holds the four spec files this build was written from:
 `00_V1.0_BUILD_SPEC.txt`, `13_awards_completion_bitset_GROUND_TRUTH.txt`,
