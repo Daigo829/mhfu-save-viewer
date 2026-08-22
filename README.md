@@ -271,13 +271,14 @@ quest-count internal-byte-order table.
 - **Quests** — the 7 quest tallies.
 - **Items** — the 1000-slot box, the 24-slot pouch, and the x99 tracker for all 1,025 storable items.
 - **Equipment** — the 1000-slot equipment box with per-piece name, class, rarity and attack.
-- **Awards — Completion** — all 48, earned/not for every one, live progress for 10.
+- **Awards — Completion** — all 48, earned/not for every one, live progress for 14.
 - **Advanced** — the 90-slot offset map plus the weapon- and quest-count byte-order tables.
 
 **What's still missing:**
 - Per-piece equipment detail — decorations, sharpness, skills, upgrade path (record bytes `+4`..`+11`
   are undecoded).
-- The other 38 awards, which show earned/not but no reconstructed progress.
+- The other 34 awards, which show earned/not but no reconstructed progress
+  (research log: `internal-documentation/INTERNAL_NOTES.md` §6).
 - Exact rarity for decoration jewels (shown as `4-5`) and the true cap on the five hard-capped items.
 
 ## Credits
